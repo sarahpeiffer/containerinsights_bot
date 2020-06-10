@@ -212,7 +212,6 @@ namespace Microsoft.BotBuilderSamples
             switch (card_id)
             {
                 case "node_info":
-                    //await turnContext.SendActivityAsync(MessageFactory.Text("you have asked for cluster info"), cancellationToken);
                     await Dialog.RunAsync(turnContext, ConversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken);
                     break;
                 case "help":

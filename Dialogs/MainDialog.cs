@@ -32,7 +32,6 @@ namespace Microsoft.BotBuilderSamples
         {
             var userStateAccessors = _userState.CreateProperty<UserProfile>(nameof(UserProfile));
             var userProfile = await userStateAccessors.GetAsync(stepContext.Context, () => new UserProfile());
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"UserState {userProfile.ClusterId}"), cancellationToken);
             return await stepContext.BeginDialogAsync(nameof(TopLevelDialog), userProfile, cancellationToken);
         }
 

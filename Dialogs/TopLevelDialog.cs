@@ -110,6 +110,8 @@ namespace Microsoft.BotBuilderSamples
             var token = userProfile.Token;
             var clusterId = userProfile.ClusterId;
             var nodeName = (string)stepContext.Result;
+
+            //get request
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             var responseString = await client.GetStringAsync("https://management.azure.com/" + clusterId + "?api-version=2020-03-01");
@@ -118,8 +120,8 @@ namespace Microsoft.BotBuilderSamples
 
             //post request
             var postLoc = "https://management.azure.com" + id + "/query?api-version=2017-10-01";
-            var jsonvalues = "{\"query\":\"set query_take_max_records = 2; set truncationmaxsize = 67108864;search * | summarize count() by Type\"}";
-            var content = new StringContent(jsonvalues, Encoding.UTF8, "application/json");
+            var jsonquery = "{ \"query\":\"set query_take_max_records=2;set truncationmaxsize=67108864;KubeNodeInventory| where Computer ==  \\\"" + nodeName + "\\\"\",\"workspaceFilters\":{ \"regions\":[]}}";
+            var content = new StringContent(jsonquery, Encoding.UTF8, "application/json");
             var response = await client.PostAsync(postLoc, content);
             var postResponseString = await response.Content.ReadAsStringAsync();
             await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Post Response {postResponseString}"), cancellationToken);

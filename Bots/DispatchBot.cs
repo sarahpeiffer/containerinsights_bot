@@ -69,6 +69,9 @@ namespace Microsoft.BotBuilderSamples
                 }
                 else
                 {
+                    List<Attachment> cards = GenerateWelcomeCards();
+                    await turnContext.SendActivityAsync(MessageFactory.Carousel(cards), cancellationToken);
+
                     var recognizerResult = await BotServices.Dispatch.RecognizeAsync(turnContext, cancellationToken);
 
                     // Top intent tell us which cognitive service to use.
@@ -112,7 +115,21 @@ namespace Microsoft.BotBuilderSamples
         protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
         {
             const string WelcomeText = "Welcome to Container Insights Troubleshooting Bot! Type a question or select an option to get started";
-            
+
+            List<Attachment> cards = GenerateWelcomeCards();
+            foreach (var member in membersAdded)
+            {
+                if (member.Id != turnContext.Activity.Recipient.Id)
+                {
+
+                    await turnContext.SendActivityAsync(MessageFactory.Carousel(cards), cancellationToken);
+                        await turnContext.SendActivityAsync(MessageFactory.Text($"{WelcomeText}"), cancellationToken);
+                }
+            }
+
+        }
+        protected List<Attachment> GenerateWelcomeCards()
+        {
             var adaptiveCardJson = File.ReadAllText(Path.Combine(".", "Resources", "json.json"));
             var adaptiveCardAttachment = new Attachment()
             {
@@ -126,18 +143,8 @@ namespace Microsoft.BotBuilderSamples
                 Content = JsonConvert.DeserializeObject(adaptiveCardJson2),
             };
             List<Attachment> cards = new List<Attachment> { adaptiveCardAttachment, adaptiveCardAttachment2 };
-            
             cards.Append(adaptiveCardAttachment);
-            foreach (var member in membersAdded)
-            {
-                if (member.Id != turnContext.Activity.Recipient.Id)
-                {
-
-                    await turnContext.SendActivityAsync(MessageFactory.Carousel(cards), cancellationToken);
-                        await turnContext.SendActivityAsync(MessageFactory.Text($"{WelcomeText}"), cancellationToken);
-                }
-            }
-
+            return cards;
         }
 
         private async Task DispatchToTopIntentAsync(ITurnContext<IMessageActivity> turnContext, string intent, RecognizerResult recognizerResult, CancellationToken cancellationToken)
@@ -243,4 +250,7 @@ class PropertyType { public AddOnType AddonProfiles { get; set; } }
 class AddOnType { public OmsType Omsagent { get; set; } }
 class OmsType { public ConfigType Config { get; set; } }
 class ConfigType { public String LogAnalyticsWorkspaceResourceID { get; set; } }
+
+
+
 

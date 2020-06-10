@@ -75,3 +75,5 @@ C:\Users\t-sapeif\dispatch_test_bot\obj\Release\netcoreapp3.1\staticwebassets\NL
 C:\Users\t-sapeif\dispatch_test_bot\obj\Release\netcoreapp3.1\NLP-With-Dispatch-Bot.dll
 C:\Users\t-sapeif\dispatch_test_bot\obj\Release\netcoreapp3.1\NLP-With-Dispatch-Bot.pdb
 C:\Users\t-sapeif\dispatch_test_bot\obj\Release\netcoreapp3.1\NLP-With-Dispatch-Bot.genruntimeconfig.cache
+C:\Users\t-sapeif\dispatch_test_bot\bin\Release\netcoreapp3.1\Resources\json.json
+C:\Users\t-sapeif\dispatch_test_bot\bin\Release\netcoreapp3.1\Resources\json1.json

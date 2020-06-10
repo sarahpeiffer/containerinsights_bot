@@ -120,11 +120,22 @@ namespace Microsoft.BotBuilderSamples
 
             //post request
             var postLoc = "https://management.azure.com" + id + "/query?api-version=2017-10-01";
-            var jsonquery = "{ \"query\":\"set query_take_max_records=2;set truncationmaxsize=67108864;KubeNodeInventory| where Computer ==  \\\"" + nodeName + "\\\"\",\"workspaceFilters\":{ \"regions\":[]}}";
+            var jsonquery = "{\"query\":\"set query_take_max_records = 1; set truncationmaxsize = 67108864;let endDateTime = now();let startDateTime = ago(30m);let trendBinSize = 1m; KubeNodeInventory | where Computer == \\\"" + nodeName + "\\\" | where TimeGenerated < endDateTime | where TimeGenerated >= startDateTime | summarize TotalCount = count(), ReadyCount = sumif(1, Status contains ('Ready')) by ClusterName, Computer,  bin(TimeGenerated, trendBinSize) | extend NotReadyCount = TotalCount - ReadyCount | limit 1 \",\"workspaceFilters\":{\"regions\":[]}}";
             var content = new StringContent(jsonquery, Encoding.UTF8, "application/json");
             var response = await client.PostAsync(postLoc, content);
             var postResponseString = await response.Content.ReadAsStringAsync();
-            await stepContext.Context.SendActivityAsync(MessageFactory.Text($"Post Response {postResponseString}"), cancellationToken);
+            //var readyStatus = JsonConvert.DeserializeObject<ReadyJson>(postResponseString);
+            dynamic obj = Newtonsoft.Json.JsonConvert.DeserializeObject(postResponseString);
+            var node_info = obj.tables[0].rows[0];
+            if(node_info[4] == 1)
+            {
+                await stepContext.Context.SendActivityAsync(MessageFactory.Text($"The node {node_info[1]} indicates a ready status"), cancellationToken);
+            }
+            else
+            {
+                await stepContext.Context.SendActivityAsync(MessageFactory.Text($"The node {node_info[1]} does not indicate a ready status"), cancellationToken);
+            }
+
 
             // Ask the user to enter their node name id.
             return await stepContext.EndDialogAsync(stepContext.Values[UserInfo], cancellationToken);

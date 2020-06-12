@@ -82,18 +82,18 @@ namespace Microsoft.BotBuilderSamples
             // Set the user's token to what they entered in response to the name prompt.
             var userProfile = (UserProfile)stepContext.Values[UserInfo];
             userProfile.Token = (string)stepContext.Result;
-            if(userProfile.ClusterId == null)
-            {
+            /*if(userProfile.ClusterId == null)
+            {*/
                 var promptOptions = new PromptOptions { Prompt = MessageFactory.Text("Please enter your cluster id.") };
 
                 // Ask the user to enter their cluster id.
                 return await stepContext.PromptAsync(nameof(TextPrompt), promptOptions, cancellationToken);
-            }
+            /*}
             else
             {
                 return await stepContext.NextAsync(userProfile.ClusterId, cancellationToken);
 
-            }
+            }*/
             
         }
         private async Task<DialogTurnResult> NodeNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
@@ -156,7 +156,7 @@ namespace Microsoft.BotBuilderSamples
             double memoryPercent = (double)memoryUsage;
 
             string ready = node_info[4] == 1 ? "Ready" : "Not Ready";
-            string jsonStringForCard = "{\"type\": \"AdaptiveCard\",\"body\": [{\"type\": \"TextBlock\",\"text\": \"" + nodeName + "\",\"size\": \"medium\",\"weight\": \"Bolder\"}, {\"type\": \"FactSet\", \"facts\": [{\"title\":\"Status:\", \"value\" : \"" + ready + "\"}, {\"title\":\"CPU usage per minute:\", \"value\" : \"" + Math.Round(cpuPercent, 2) + "\"}, {\"title\":\"Memory usage per minute:\", \"value\" : \"" + Math.Round(memoryPercent, 2) + "\"}, {\"title\":\"Disk Usage per minute: \", \"value\" : \"" + Math.Round(diskPercent, 2) + "\"}]}],\"$schema\": \"http://adaptivecards.io/schemas/adaptive-card.json\",\"version\": \"1.0\"}";
+            string jsonStringForCard = "{\"type\": \"AdaptiveCard\",\"body\": [{\"type\": \"TextBlock\",\"text\": \"" + nodeName + "\",\"size\": \"medium\",\"weight\": \"Bolder\"}, {\"type\": \"FactSet\", \"facts\": [{\"title\":\"Status:\", \"value\" : \"" + ready + "\"}, {\"title\":\"CPU Usage:\", \"value\" : \"" + Math.Round(cpuPercent, 2) + "\"}, {\"title\":\"Memory Usage:\", \"value\" : \"" + Math.Round(memoryPercent, 2) + "\"}, {\"title\":\"Disk Usage: \", \"value\" : \"" + Math.Round(diskPercent, 2) + "\"}]}],\"$schema\": \"http://adaptivecards.io/schemas/adaptive-card.json\",\"version\": \"1.0\"}";
             var adaptiveCardAttachment = new Attachment()
             {
                 ContentType = "application/vnd.microsoft.card.adaptive",

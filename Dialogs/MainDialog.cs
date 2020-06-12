@@ -39,7 +39,7 @@ namespace Microsoft.BotBuilderSamples
         {
             var userInfo = (UserProfile)stepContext.Result;
 
-            string status = "Finished Dialog";
+            string status = "Type out another question or select another option for more diagnostic information";
 
             await stepContext.Context.SendActivityAsync(status);
 

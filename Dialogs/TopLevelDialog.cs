@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
+using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -9,6 +10,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Builder.Dialogs.Debugging;
+using Microsoft.Bot.Schema;
 using Newtonsoft.Json;
 
 namespace Microsoft.BotBuilderSamples
@@ -56,20 +59,21 @@ namespace Microsoft.BotBuilderSamples
             {
                 stepContext.Values[UserInfo] = new UserProfile();
             }
-           
+            DateTime now = DateTime.Now;
+            DateTime old = now.AddHours(-24);
             // Create an object in which to collect the user's information within the dialog.
             var profile = (UserProfile)stepContext.Values[UserInfo];
-            if (profile.Token == null)
-            {
+            /*if (profile.Token == null)
+            {*/
                 var promptOptions = new PromptOptions { Prompt = MessageFactory.Text("Please enter your auth token.") };
 
                 // Ask the user to enter their token.
                 return await stepContext.PromptAsync(nameof(TextPrompt), promptOptions, cancellationToken);
-            }
+            /*}
             else
             {
                 return await stepContext.NextAsync(profile.Token, cancellationToken);
-            }
+            }*/
 
         }
 
@@ -120,24 +124,51 @@ namespace Microsoft.BotBuilderSamples
 
             //post request
             var postLoc = "https://management.azure.com" + id + "/query?api-version=2017-10-01";
-            var jsonquery = "{\"query\":\"set query_take_max_records = 1; set truncationmaxsize = 67108864;let endDateTime = now();let startDateTime = ago(30m);let trendBinSize = 1m; KubeNodeInventory | where Computer == \\\"" + nodeName + "\\\" | where TimeGenerated < endDateTime | where TimeGenerated >= startDateTime | summarize TotalCount = count(), ReadyCount = sumif(1, Status contains ('Ready')) by ClusterName, Computer,  bin(TimeGenerated, trendBinSize) | extend NotReadyCount = TotalCount - ReadyCount | limit 1 \",\"workspaceFilters\":{\"regions\":[]}}";
-            var content = new StringContent(jsonquery, Encoding.UTF8, "application/json");
-            var response = await client.PostAsync(postLoc, content);
-            var postResponseString = await response.Content.ReadAsStringAsync();
-            //var readyStatus = JsonConvert.DeserializeObject<ReadyJson>(postResponseString);
-            dynamic obj = Newtonsoft.Json.JsonConvert.DeserializeObject(postResponseString);
-            var node_info = obj.tables[0].rows[0];
-            if(node_info[4] == 1)
+            var readyQuery = "{\"query\":\"set query_take_max_records = 1; set truncationmaxsize = 67108864;let endDateTime = now();let startDateTime = ago(1h);let trendBinSize = 1m; KubeNodeInventory | where Computer == \\\"" + nodeName + "\\\" | where TimeGenerated < endDateTime | where TimeGenerated >= startDateTime | summarize TotalCount = count(), ReadyCount = sumif(1, Status contains ('Ready')) by ClusterName, Computer,  bin(TimeGenerated, trendBinSize) | extend NotReadyCount = TotalCount - ReadyCount | limit 1 \",\"workspaceFilters\":{\"regions\":[]}}";
+            var readyContent = new StringContent(readyQuery, Encoding.UTF8, "application/json");
+            var readyResponse = await client.PostAsync(postLoc, readyContent);
+            var readyResponseString = await readyResponse.Content.ReadAsStringAsync();
+            dynamic readyObj = JsonConvert.DeserializeObject(readyResponseString);
+            var node_info = readyObj.tables[0].rows[0];
+
+            var diskquery = "{\"query\":\"set query_take_max_records = 1; set truncationmaxsize = 67108864;let endDateTime = now();let startDateTime = ago(1h);let trendBinSize = 1m; InsightsMetrics | where TimeGenerated >= startDateTime and TimeGenerated < endDateTime | where Computer == \\\"" + nodeName + "\\\" | where Name == \\\"used_percent\\\" and Namespace == \\\"container.azm.ms/disk\\\" | summarize avg(Val) \",\"workspaceFilters\":{\"regions\":[]}}";
+            var diskcontent = new StringContent(diskquery, Encoding.UTF8, "application/json");
+            var diskResponse = await client.PostAsync(postLoc, diskcontent);
+            var diskResponseString = await diskResponse.Content.ReadAsStringAsync();
+            dynamic diskobj = JsonConvert.DeserializeObject(diskResponseString);
+            var diskUsage = diskobj.tables[0].rows[0][0];
+            double diskPercent = (double)diskUsage;
+
+            var cpuquery = "{\"query\":\"set query_take_max_records = 10001; set truncationmaxsize = 67108864; let endDateTime = now(); let startDateTime = ago(1h); let trendBinSize = 1m; let capacityCounterName = \'cpuCapacityNanoCores\';let usageCounterName = \'cpuUsageNanoCores\'; Perf | where TimeGenerated < endDateTime | where TimeGenerated >= startDateTime | where ObjectName == \'K8SNode\' | where Computer == \\\"" + nodeName + "\\\" | where CounterName == capacityCounterName | summarize LimitValue = max(CounterValue) by Computer, CounterName, bin(TimeGenerated, trendBinSize) | project Computer, CapacityStartTime = TimeGenerated, CapacityEndTime = TimeGenerated + trendBinSize, LimitValue | join kind=inner hint.strategy=shuffle (Perf | where TimeGenerated < endDateTime + trendBinSize | where TimeGenerated >= startDateTime - trendBinSize | where ObjectName == \'K8SNode\' | where CounterName == usageCounterName | project Computer, UsageValue = CounterValue, TimeGenerated) on Computer | where TimeGenerated >= CapacityStartTime and TimeGenerated < CapacityEndTime | project Computer, TimeGenerated, UsagePercent = UsageValue * 100.0 / LimitValue | summarize AggregatedValue = avg(UsagePercent)\",\"workspaceFilters\":{ \"regions\":[]}}";
+            var cpucontent = new StringContent(cpuquery, Encoding.UTF8, "application/json");
+            var cpuResponse = await client.PostAsync(postLoc, cpucontent);
+            var cpuResponseString = await cpuResponse.Content.ReadAsStringAsync();
+            dynamic cpuobj = JsonConvert.DeserializeObject(cpuResponseString);
+            var cpuUsage = cpuobj.tables[0].rows[0][0];
+            double cpuPercent = (double)cpuUsage;
+
+            var memoryquery = "{\"query\":\"set query_take_max_records = 10001; set truncationmaxsize = 67108864; let endDateTime = now(); let startDateTime = ago(1h); let trendBinSize = 1m; let capacityCounterName = \'memoryCapacityBytes\';let usageCounterName = \'memoryRssBytes\'; Perf | where TimeGenerated < endDateTime | where TimeGenerated >= startDateTime | where ObjectName == \'K8SNode\' | where Computer == \\\"" + nodeName + "\\\" | where CounterName == capacityCounterName | summarize LimitValue = max(CounterValue) by Computer, CounterName, bin(TimeGenerated, trendBinSize) | project Computer, CapacityStartTime = TimeGenerated, CapacityEndTime = TimeGenerated + trendBinSize, LimitValue | join kind=inner hint.strategy=shuffle (Perf | where TimeGenerated < endDateTime + trendBinSize | where TimeGenerated >= startDateTime - trendBinSize | where ObjectName == \'K8SNode\' | where CounterName == usageCounterName | project Computer, UsageValue = CounterValue, TimeGenerated) on Computer | where TimeGenerated >= CapacityStartTime and TimeGenerated < CapacityEndTime | project Computer, TimeGenerated, UsagePercent = UsageValue * 100.0 / LimitValue | summarize AggregatedValue = avg(UsagePercent)\",\"workspaceFilters\":{ \"regions\":[]}}";
+            var memoryContent = new StringContent(memoryquery, Encoding.UTF8, "application/json");
+            var memoryResponse = await client.PostAsync(postLoc, memoryContent);
+            var memoryResponseString = await memoryResponse.Content.ReadAsStringAsync();
+            dynamic memoryObj = JsonConvert.DeserializeObject(memoryResponseString);
+            var memoryUsage = memoryObj.tables[0].rows[0][0];
+            double memoryPercent = (double)memoryUsage;
+
+            string ready = node_info[4] == 1 ? "Ready" : "Not Ready";
+            string jsonStringForCard = "{\"type\": \"AdaptiveCard\",\"body\": [{\"type\": \"TextBlock\",\"text\": \"" + nodeName + "\",\"size\": \"medium\",\"weight\": \"Bolder\"}, {\"type\": \"FactSet\", \"facts\": [{\"title\":\"Status:\", \"value\" : \"" + ready + "\"}, {\"title\":\"CPU usage per minute:\", \"value\" : \"" + Math.Round(cpuPercent, 2) + "\"}, {\"title\":\"Memory usage per minute:\", \"value\" : \"" + Math.Round(memoryPercent, 2) + "\"}, {\"title\":\"Disk Usage per minute: \", \"value\" : \"" + Math.Round(diskPercent, 2) + "\"}]}],\"$schema\": \"http://adaptivecards.io/schemas/adaptive-card.json\",\"version\": \"1.0\"}";
+            var adaptiveCardAttachment = new Attachment()
             {
-                await stepContext.Context.SendActivityAsync(MessageFactory.Text($"The node {node_info[1]} indicates a ready status"), cancellationToken);
-            }
-            else
-            {
-                await stepContext.Context.SendActivityAsync(MessageFactory.Text($"The node {node_info[1]} does not indicate a ready status"), cancellationToken);
-            }
+                ContentType = "application/vnd.microsoft.card.adaptive",
+                Content = JsonConvert.DeserializeObject(jsonStringForCard),
+            };
+
+            //await stepContext.BeginDialogAsync(nameof(TopLevelDialog), null, cancellationToken);
+            await stepContext.Context.SendActivityAsync(MessageFactory.Attachment(adaptiveCardAttachment), cancellationToken);
+            
+            
 
 
-            // Ask the user to enter their node name id.
             return await stepContext.EndDialogAsync(stepContext.Values[UserInfo], cancellationToken);
         }
 

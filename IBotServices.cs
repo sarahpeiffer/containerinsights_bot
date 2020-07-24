@@ -10,5 +10,9 @@ namespace Microsoft.BotBuilderSamples
     {
         LuisRecognizer Dispatch { get; }
         QnAMaker SampleQnA { get; }
+        public QnAMaker DocumentationQnA { get;}
+
+        public QnAMaker KustoQnA { get; }
+
     }
 }

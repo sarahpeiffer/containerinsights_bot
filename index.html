@@ -20,19 +20,34 @@
 <body>
     <div id="webchat" role="main"></div>
     <script>
+        var botConnection = window.WebChat.createDirectLine({
+            token: 'TdRGYcKcEzc.C61yM7m1raVaE-_QILPJUGi25xEzqM9-BVJ-1kmV1OY'
+        });
+        var user = {
+            id: Math.floor(Math.random() * 100).toString(),
+            name: 'Web Chat User'
+        };
         window.WebChat.renderWebChat(
             {
-                directLine: window.WebChat.createDirectLine({
-                    token: 'TdRGYcKcEzc.C61yM7m1raVaE-_QILPJUGi25xEzqM9-BVJ-1kmV1OY'
-                }),
-                userID: '137508t79-84073575',
-                username: 'Web Chat User',
+                directLine: botConnection,
+                userID: user.id,
+                username: user.name,
                 locale: 'en-US',
                 botAvatarInitials: 'WC',
                 userAvatarInitials: 'WW'
             },
             document.getElementById('webchat')
         );
+        botConnection
+            .postActivity({
+                from: user,
+                name: 'requestWelcomeDialog',
+                type: 'event',
+                value: ''
+            })
+            .subscribe(function (id) {
+                console.log('"trigger requestWelcomeDialog" sent');
+            });
     </script>
 </body>
 </html>

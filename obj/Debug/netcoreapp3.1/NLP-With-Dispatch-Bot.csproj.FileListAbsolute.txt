@@ -82,8 +82,6 @@ C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\CognitiveModels\data
 C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\CognitiveModels\data\_L_Weather.json
 C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\CognitiveModels\data\_Q_q_sample-qna.json
 C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\CognitiveModels\dispatch2.json
-C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\CognitiveModels\HomeAutomation.json
-C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\CognitiveModels\Weather.json
 C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\DeploymentTemplates\new-rg-parameters.json
 C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\DeploymentTemplates\preexisting-rg-parameters.json
 C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\DeploymentTemplates\template-with-new-rg.json
@@ -141,9 +139,6 @@ C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\NuGet.Versioning.dll
 C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
 C:\Users\t-sapeif\dispatch_test_bot\obj\Debug\netcoreapp3.1\NLP-With-Dispatch-Bot.AssemblyInfoInputs.cache
 C:\Users\t-sapeif\dispatch_test_bot\obj\Debug\netcoreapp3.1\NLP-With-Dispatch-Bot.AssemblyInfo.cs
-C:\Users\t-sapeif\dispatch_test_bot\obj\Debug\netcoreapp3.1\NLP-With-Dispatch-Bot.csproj.CoreCompileInputs.cache
-C:\Users\t-sapeif\dispatch_test_bot\obj\Debug\netcoreapp3.1\NLP-With-Dispatch-Bot.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\t-sapeif\dispatch_test_bot\obj\Debug\netcoreapp3.1\NLP-With-Dispatch-Bot.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\t-sapeif\dispatch_test_bot\obj\Debug\netcoreapp3.1\NLP-With-Dispatch-Bot.RazorTargetAssemblyInfo.cache
 C:\Users\t-sapeif\dispatch_test_bot\obj\Debug\netcoreapp3.1\NLP-With-Dispatch-Bot.csproj.CopyComplete
 C:\Users\t-sapeif\dispatch_test_bot\obj\Debug\netcoreapp3.1\staticwebassets\NLP-With-Dispatch-Bot.StaticWebAssets.Manifest.cache
@@ -152,5 +147,13 @@ C:\Users\t-sapeif\dispatch_test_bot\obj\Debug\netcoreapp3.1\NLP-With-Dispatch-Bo
 C:\Users\t-sapeif\dispatch_test_bot\obj\Debug\netcoreapp3.1\NLP-With-Dispatch-Bot.pdb
 C:\Users\t-sapeif\dispatch_test_bot\obj\Debug\netcoreapp3.1\NLP-With-Dispatch-Bot.genruntimeconfig.cache
 C:\Users\t-sapeif\dispatch_test_bot\obj\Debug\netcoreapp3.1\NLP-With-Dispatch-Bot.csprojAssemblyReference.cache
-C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\Resources\json.json
-C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\Resources\json1.json
+C:\Users\t-sapeif\dispatch_test_bot\obj\Debug\netcoreapp3.1\NLP-With-Dispatch-Bot.csproj.CoreCompileInputs.cache
+C:\Users\t-sapeif\dispatch_test_bot\obj\Debug\netcoreapp3.1\NLP-With-Dispatch-Bot.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\t-sapeif\dispatch_test_bot\obj\Debug\netcoreapp3.1\NLP-With-Dispatch-Bot.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.WebApiCompatShim.dll
+C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\Microsoft.Azure.WebJobs.Host.dll
+C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\Microsoft.Azure.WebJobs.dll
+C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\Microsoft.Azure.WebJobs.Extensions.Http.dll
+C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\t-sapeif\dispatch_test_bot\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll

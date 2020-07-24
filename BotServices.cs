@@ -40,9 +40,28 @@ namespace Microsoft.BotBuilderSamples
                 EndpointKey = configuration["QnAEndpointKey"],
                 Host = configuration["QnAEndpointHostName"]
             });
+
+            DocumentationQnA = new QnAMaker(new QnAMakerEndpoint
+            {
+                KnowledgeBaseId = configuration["DocumentationQnAKnowledgebaseId"],
+                EndpointKey = configuration["DocumentationQnAEndpointKey"],
+                Host = configuration["DocumentationQnAEndpointHostName"]
+            });
+
+            KustoQnA = new QnAMaker(new QnAMakerEndpoint
+            {
+                KnowledgeBaseId = configuration["KustoQnAKnowledgebaseId"],
+                EndpointKey = configuration["KustoQnAEndpointKey"],
+                Host = configuration["KustoQnAEndpointHostName"]
+            });
+
+
         }
+        public QnAMaker KustoQnA { get; private set; }
 
         public LuisRecognizer Dispatch { get; private set; }
         public QnAMaker SampleQnA { get; private set; }
+        public QnAMaker DocumentationQnA { get; private set; }
+
     }
 }

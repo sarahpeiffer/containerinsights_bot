@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\corextcache": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -41,6 +42,14 @@
             "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
               "target": "Package",
               "version": "[3.1.1, )"
+            },
+            "Microsoft.Azure.WebJobs": {
+              "target": "Package",
+              "version": "[3.0.16, )"
+            },
+            "Microsoft.Azure.WebJobs.Extensions.Http": {
+              "target": "Package",
+              "version": "[3.0.2, )"
             },
             "Microsoft.Bot.Builder": {
               "target": "Package",

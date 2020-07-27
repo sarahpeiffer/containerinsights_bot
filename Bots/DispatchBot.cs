@@ -64,7 +64,7 @@ namespace Microsoft.BotBuilderSamples
                     }
                     else if (turnContext.Activity.Text == "kusto")
                     {
-                    await turnContext.SendActivityAsync("What kusto query are you looking for?");
+                    await turnContext.SendActivityAsync("What KQL query are you looking for?");
                     userProfile.isKusto = true;
                     await userStateAccessors.SetAsync(turnContext, userProfile, cancellationToken);
                     }
@@ -81,28 +81,7 @@ namespace Microsoft.BotBuilderSamples
                         await accessor.SetAsync(turnContext, dialogProfile, cancellationToken);
                         await Dialog.RunAsync(turnContext, ConversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken);
                     }
-                    else if (turnContext.Activity.Text.ToLower().Trim() == "node")
-                    {
-                        dialogProfile.DialogType = "node_info";
-                        var accessor = UserState.CreateProperty<DialogProfile>(nameof(DialogProfile));
-                        await accessor.SetAsync(turnContext, dialogProfile, cancellationToken);
-                        await Dialog.RunAsync(turnContext, ConversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken);
-                    }
-                    else if(turnContext.Activity.Text.ToLower().Trim() == "pod")
-                    {
-                        dialogProfile.DialogType = "pod_info";
-                        var accessor2 = UserState.CreateProperty<DialogProfile>(nameof(DialogProfile));
-                        await accessor2.SetAsync(turnContext, dialogProfile, cancellationToken);
-                        await Dialog.RunAsync(turnContext, ConversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken);
-                    }
-                    else if(turnContext.Activity.Text.ToLower().Trim() == "config" || turnContext.Activity.Text.ToLower().Trim() == "configuration errors")
-                    {
-                        dialogProfile.DialogType = "config_error";
-                        var accessor2 = UserState.CreateProperty<DialogProfile>(nameof(DialogProfile));
-                        await accessor2.SetAsync(turnContext, dialogProfile, cancellationToken);
-                        await Dialog.RunAsync(turnContext, ConversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken);
-                    }
-                    else if(turnContext.Activity.Text.ToLower().Trim() == "agent troubleshooting" || turnContext.Activity.Text == "kube api")
+                    else if(turnContext.Activity.Text.ToLower().Trim() == "agent troubleshooting")
                     {
                         dialogProfile.DialogType = "kube_api";
                         var accessor2 = UserState.CreateProperty<DialogProfile>(nameof(DialogProfile));

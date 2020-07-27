@@ -26,8 +26,6 @@ namespace Microsoft.BotBuilderSamples
 
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
-                TokenAsync,
-                CluserIdAync,
                 NodeNameAsync,
                 AccessNodeData
             }));
@@ -35,68 +33,18 @@ namespace Microsoft.BotBuilderSamples
             InitialDialogId = nameof(WaterfallDialog);
         }
 
-        private static async Task<DialogTurnResult> TokenAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-        {
-            var userProfile = (UserProfile)stepContext.Options;
-            var existingToken = userProfile.Token;
-            if (existingToken != null)
-            {
-                stepContext.Values[UserInfo] = userProfile;
-            }
-            else
-            {
-                stepContext.Values[UserInfo] = new UserProfile();
-            }
 
-            // Create an object in which to collect the user's information within the dialog.
-            var profile = (UserProfile)stepContext.Values[UserInfo];
-            if (profile.Token == null)
-            {
-                var promptOptions = new PromptOptions { Prompt = MessageFactory.Text("Please enter your auth token.") };
-
-                // Ask the user to enter their token.
-                return await stepContext.PromptAsync(nameof(TextPrompt), promptOptions, cancellationToken);
-            }
-            else
-            {
-                return await stepContext.NextAsync(profile.Token, cancellationToken);
-            }
-
-        }
-
-        private async Task<DialogTurnResult> CluserIdAync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-        {
-            // Set the user's token to what they entered in response to the name prompt.
-            var userProfile = (UserProfile)stepContext.Values[UserInfo];
-            userProfile.Token = (string)stepContext.Result;
-            if (userProfile.ClusterId == null)
-            {
-                var promptOptions = new PromptOptions { Prompt = MessageFactory.Text("Please enter your cluster id") };
-
-            // Ask the user to enter their cluster id.
-            return await stepContext.PromptAsync(nameof(TextPrompt), promptOptions, cancellationToken);
-            }
-            else
-            {
-                return await stepContext.NextAsync(userProfile.ClusterId, cancellationToken);
-
-            }
-
-        }
         private async Task<DialogTurnResult> NodeNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
 
-
-
-            // Set the user's id to what they entered in response to the name prompt.
+            stepContext.Values[UserInfo] = (UserProfile)stepContext.Options;
             var userProfile = (UserProfile)stepContext.Values[UserInfo];
-            userProfile.ClusterId = (string)stepContext.Result;
             if(userProfile.ObjectType == "node" && userProfile.ObjectName != "")
             {
                 return await stepContext.NextAsync(userProfile.ObjectName, cancellationToken);
             }
+
             var promptOptions = new PromptOptions { Prompt = MessageFactory.Text("Please enter the name of the node you would like to troubleshoot") };
-            // Ask the user to enter their node name id.
             return await stepContext.PromptAsync(nameof(TextPrompt), promptOptions, cancellationToken);
         }
         private async Task<DialogTurnResult> AccessNodeData(WaterfallStepContext stepContext, CancellationToken cancellationToken)

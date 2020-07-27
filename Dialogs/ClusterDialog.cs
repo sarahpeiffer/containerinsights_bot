@@ -2,9 +2,7 @@
 // Licensed under the MIT License.
 
 
-using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
-using Microsoft.Recognizers.Text.DataTypes.TimexExpression;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -27,72 +25,21 @@ namespace Microsoft.BotBuilderSamples
 
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
-                TokenAsync,
-                CluserIdAync,
-                AccessClusterData
+                AccessClusterData,
             }));
 
             InitialDialogId = nameof(WaterfallDialog);
         }
 
-        private static async Task<DialogTurnResult> TokenAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-        {
-            var userProfile = (UserProfile)stepContext.Options;
-            var existingToken = userProfile.Token;
-            if (existingToken != null)
-            {
-                stepContext.Values[UserInfo] = userProfile;
-            }
-            else
-            {
-                stepContext.Values[UserInfo] = new UserProfile();
-            }
-
-            // Create an object in which to collect the user's information within the dialog.
-            var profile = (UserProfile)stepContext.Values[UserInfo];
-            if (profile.Token == null)
-            {
-                var promptOptions = new PromptOptions { Prompt = MessageFactory.Text("Please enter your auth token.") };
-
-                // Ask the user to enter their token.
-                return await stepContext.PromptAsync(nameof(TextPrompt), promptOptions, cancellationToken);
-            }
-            else
-            {
-                return await stepContext.NextAsync(profile.Token, cancellationToken);
-            }
-
-        }
-
-        private async Task<DialogTurnResult> CluserIdAync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
-        {
-            // Set the user's token to what they entered in response to the name prompt.
-            var userProfile = (UserProfile)stepContext.Values[UserInfo];
-            userProfile.Token = (string)stepContext.Result;
-            if (userProfile.ClusterId == null)
-            {
-                var promptOptions = new PromptOptions { Prompt = MessageFactory.Text("Please enter your cluster id") };
-
-                // Ask the user to enter their cluster id.
-                return await stepContext.PromptAsync(nameof(TextPrompt), promptOptions, cancellationToken);
-            }
-            else
-            {
-                return await stepContext.NextAsync(userProfile.ClusterId, cancellationToken);
-
-            }
-
-        }
-        
 
         private async Task<DialogTurnResult> AccessClusterData(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
 
-            var userProfile = (UserProfile)stepContext.Values[UserInfo];
+            var userProfile = (UserProfile)stepContext.Options;
+            stepContext.Values[UserInfo] = userProfile;
             var token = userProfile.Token;
-            var clusterId = (string)stepContext.Result;
+            var clusterId = userProfile.ClusterId;
             var id = userProfile.WorkspaceId;
-            userProfile.ClusterId = clusterId;
             var timeRange = (userProfile.TimeRange != "") ? userProfile.TimeRange : "30m";
 
             await stepContext.Context.SendActivityAsync("Gathering cluster diagnostic information from the past " + timeRange + " now.  This may take a few seconds. To change the time range select the Time Range for Diagnostics shortcut");

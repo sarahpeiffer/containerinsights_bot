@@ -42,10 +42,6 @@ namespace Microsoft.BotBuilderSamples
             this.kubeCert = kubeCert;
             this.kubeClient = new HttpClient();
             kubeClient.DefaultRequestHeaders.Add("Authorization", "Bearer " + this.kubeToken);
-            if (this.kubeCert == null)
-            {
-
-            }
             this.timeRange = timeRange;
             this.postLocation = "https://management.azure.com" + resourceId + "/query?api-version=2017-10-01";
 
@@ -131,6 +127,105 @@ namespace Microsoft.BotBuilderSamples
             return kubeEvents;
         }
 
+        public async Task<dynamic> describePodAsync()
+        {
+            var describeResponseString = "";
+            if (this.kubeCert == null)
+            {
+                var proxyuri = this.apiServer + "/api/v1/namespaces/" + nameSpace + "/pods/" + podName;
+                var proxyresponse = await kubeClient.GetAsync(proxyuri);
+                describeResponseString = await proxyresponse.Content.ReadAsStringAsync();
+            }
+            else
+            {
+                var proxyUri = "https://aks-kubeapi-proxy-prod.trafficmanager.net/api/clusterApiProxy";
+                var query = "{\"kubeCertificateEncoded\" : \"" + this.kubeCert + "\"}";
+                var queryContent = new StringContent(query, Encoding.UTF8, "application/json");
+                var describeUri = proxyUri + "?query=" + System.Web.HttpUtility.UrlEncode(this.apiServer + "/api/v1/namespaces/" + nameSpace + "/pods/" + podName);
+                var describeResponse = await kubeClient.PostAsync(describeUri, queryContent);
+                describeResponseString = await describeResponse.Content.ReadAsStringAsync();
+            }
+            dynamic responseJson = JsonConvert.DeserializeObject(describeResponseString);
+            return responseJson;
+        }
+
+        public string conditionErrors(dynamic describeResponse)
+        {
+            var conditionErrors = "";
+            if (describeResponse != null)
+            {
+                if (describeResponse.status.ToString().Contains("conditions"))
+                {
+                    var conditions = describeResponse.status.conditions;
+                    for (int j = 0; j < conditions.Count; ++j)
+                    {
+                        string conditionStatus = conditions[j].status;
+                        if (conditionStatus.Contains("False"))
+                        {
+                            if (conditionErrors != "")
+                            {
+                                conditionErrors += ", ";
+                            }
+                            conditionErrors += "\"" + conditions[j].type + " is " + conditions[j].status + " Message " + conditions[j].message + "\"";
+
+                        }
+                    }
+                }
+            }
+            return conditionErrors;
+        }
+
+        public string containerErrors(dynamic describeResponse)
+        {
+            var containerErrors = "";
+            if (describeResponse.status.containerStatuses != null)
+            {
+
+                var containerStatuses = describeResponse.status.containerStatuses;
+                var restartCount = "";
+                var containerName = "";
+                var state = "";
+                var stateReason = "";
+                var stateMessage = "";
+                var lastState = "";
+                var lastStateMessage = "";
+                var lastStateReason = "";
+                for (int j = 0; j < containerStatuses.Count; ++j)
+                {
+                    restartCount = containerStatuses[j].restartCount;
+                    containerName = containerStatuses[j].name;
+                    var stateElement = containerStatuses[j].state;
+                    if (stateElement.waiting != null)
+                    {
+                        state = "Waiting";
+                        stateReason = stateElement.waiting.reason;
+                        stateMessage = stateElement.waiting.message;
+                    }
+                    if (stateElement.running != null)
+                    {
+                        state = "Running";
+                    }
+                    var lastStateElement = containerStatuses[j].lastState;
+                    if (lastStateElement != null)
+                    {
+                        if (lastStateElement.terminated != null)
+                        {
+                            lastState = "Terminated";
+                            Newtonsoft.Json.Linq.JObject terminated = lastStateElement.terminated;
+                            lastStateReason = lastStateElement.terminated.reason;
+                            lastStateMessage = terminated.ToString();
+                        }
+                    }
+                    if (containerErrors != "")
+                    {
+                        containerErrors += ", ";
+                    }
+                    var containerErrorTest = "\"" + containerName + "\", \"State:   " + state + "\", \"Reason:   " + stateReason + "\",  \"Last Terminated State:   " + lastState + "\", \"Reason:   " + lastStateReason + "\",  \"RestartCount:   " + restartCount + "\"";
+                    containerErrors += containerErrorTest;
+                }
+            }
+            return containerErrors;
+        }
 
 
 

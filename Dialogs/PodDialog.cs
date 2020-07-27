@@ -21,8 +21,6 @@ namespace Microsoft.BotBuilderSamples
         private string PodName = "";
         private string Namespace = "";
 
-        //private static UserState _userState;
-
         public PodDialog()
             : base(nameof(PodDialog))
         {
@@ -45,16 +43,15 @@ namespace Microsoft.BotBuilderSamples
 
         private async Task<DialogTurnResult> PodNameAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            // Set the user's id to what they entered in response to the name prompt.
             stepContext.Values[UserInfo] = (UserProfile)stepContext.Options;
             var userProfile = (UserProfile)stepContext.Values[UserInfo];
+
             if (userProfile.ObjectType == "pod" && userProfile.ObjectName != "")
             {
                 return await stepContext.NextAsync(userProfile.ObjectName, cancellationToken);
             }
             var promptOptions = new PromptOptions { Prompt = MessageFactory.Text("If you know the name of the pod you would like to troubleshoot, enter it now. If not, type \"search\" to search for a pod by node") };
 
-            // Ask the user to enter their node name id.
             return await stepContext.PromptAsync(nameof(TextPrompt), promptOptions, cancellationToken);
         }
 
@@ -71,7 +68,6 @@ namespace Microsoft.BotBuilderSamples
 
                 var promptOptions = new PromptOptions { Prompt = MessageFactory.Text("Please enter the name of the node this pod is on") };
 
-                // Ask the user to enter their node name id.
                 return await stepContext.PromptAsync(nameof(TextPrompt), promptOptions, cancellationToken);
             }
         }
@@ -195,110 +191,21 @@ namespace Microsoft.BotBuilderSamples
             }
 
             var kubeEvents = await podHandler.kubeEventsQueryAsync();
+
+            dynamic responseJson = await podHandler.describePodAsync();
+
+            var conditionErrors = podHandler.conditionErrors(responseJson);
+
+            var containerErrors = podHandler.containerErrors(responseJson);
             
-
             
-
-            HttpClient kubeClient = new HttpClient();
-            string tokenValue = "Bearer " + userProfile.KubeAPIToken;
-            string apiServerAddr = userProfile.APIServer;
-            kubeClient.DefaultRequestHeaders.Add("Authorization", tokenValue);
-            var describeResponseString = "";
-            if(userProfile.KubeCert == null)
-            {
-                var proxyuri = apiServerAddr + "/api/v1/namespaces/" + nameSpace + "/pods/" + podName;
-                var proxyresponse = await kubeClient.GetAsync(proxyuri);
-                describeResponseString = await proxyresponse.Content.ReadAsStringAsync();
-            }
-            else
-            {
-                var proxyUri = "https://aks-kubeapi-proxy-prod.trafficmanager.net/api/clusterApiProxy";
-                var query = "{\"kubeCertificateEncoded\" : \"" + userProfile.KubeCert + "\"}";
-                var queryContent = new StringContent(query, Encoding.UTF8, "application/json");
-                var describeUri = proxyUri + "?query=" + System.Web.HttpUtility.UrlEncode(apiServerAddr + "/api/v1/namespaces/" + nameSpace + "/pods/" + podName);
-                var describeResponse = await kubeClient.PostAsync(describeUri, queryContent);
-                describeResponseString = await describeResponse.Content.ReadAsStringAsync();
-            }
-           
-            dynamic responseJson = JsonConvert.DeserializeObject(describeResponseString);
-            var conditionErrors = "";
-            if (responseJson != null)
-            {
-                    if (responseJson.status.ToString().Contains("conditions"))
-                    {
-                        var conditions = responseJson.status.conditions;
-                        for (int j = 0; j < conditions.Count; ++j)
-                        {
-                            string conditionStatus = conditions[j].status;
-                            if (conditionStatus.Contains("False"))
-                            {
-                                if (conditionErrors != "")
-                                {
-                                    conditionErrors += ", ";
-                                }
-                                conditionErrors += "\"" + conditions[j].type + " is " + conditions[j].status + " Message " + conditions[j].message + "\"";
-
-                            }
-                        }
-                    }
-            }
-
-            var containerErrors = "";
-            if (responseJson.status.containerStatuses != null)
-            {
-                
-                var containerStatuses = responseJson.status.containerStatuses;
-                var restartCount = "";
-                var containerName = "";
-                var state = "";
-                var stateReason = "";
-                var stateMessage = "";
-                var lastState = "";
-                var lastStateMessage = "";
-                var lastStateReason = "";
-                for (int j = 0; j < containerStatuses.Count; ++j)
-                {
-                    restartCount = containerStatuses[j].restartCount;
-                    containerName = containerStatuses[j].name;
-                    var stateElement = containerStatuses[j].state;
-                    if (stateElement.waiting != null)
-                    {
-                        state = "Waiting";
-                        stateReason = stateElement.waiting.reason;
-                        stateMessage = stateElement.waiting.message;
-
-                    }
-                    if(stateElement.running != null)
-                    {
-                        state = "Running";
-                    }
-                    var lastStateElement = containerStatuses[j].lastState;
-                    if (lastStateElement != null)
-                    {
-                        if (lastStateElement.terminated != null)
-                        {
-                            lastState = "Terminated";
-                            Newtonsoft.Json.Linq.JObject terminated = lastStateElement.terminated;
-                            lastStateReason = lastStateElement.terminated.reason;
-                            lastStateMessage = terminated.ToString();
-                        }
-                    }
-                    if (containerErrors != "")
-                    {
-                        containerErrors += ", ";
-                    }
-                    var containerErrorTest = "\"" + containerName + "\", \"State:   " + state + "\", \"Reason:   " + stateReason + "\",  \"Last Terminated State:   " + lastState + "\", \"Reason:   " + lastStateReason + "\",  \"RestartCount:   " + restartCount + "\"";
-                    containerErrors += containerErrorTest;
-                }
-            }
-                string jsonForUX = "{\"Name\" : \"" + podName + "\", \"Status: \" : \"" + status + "\", \"Container Count: \" : \"" + containerCount + "\", \"Average CPU: \" : \"" + Math.Round(cpuPercent, 2) + "%\", \"Max CPU: \" : \"" + Math.Round(cpuMaxPercent, 2) + "%\", \"Average Memory: \" : \"" + Math.Round(memoryPercent, 2) + "%\",  \"Kube Events\" : [" + kubeEvents + "], \"Live Errors\" : [" + conditionErrors + "], \"Container Errors\" : [" + containerErrors + "]}";
+            string jsonForUX = "{\"Name\" : \"" + podName + "\", \"Status: \" : \"" + status + "\", \"Container Count: \" : \"" + containerCount + "\", \"Average CPU: \" : \"" + Math.Round(cpuPercent, 2) + "%\", \"Max CPU: \" : \"" + Math.Round(cpuMaxPercent, 2) + "%\", \"Average Memory: \" : \"" + Math.Round(memoryPercent, 2) + "%\",  \"Kube Events\" : [" + kubeEvents + "], \"Live Errors\" : [" + conditionErrors + "], \"Container Errors\" : [" + containerErrors + "]}";
 
             await stepContext.Context.SendActivityAsync(jsonForUX);
             if(containerCount != "0")
             {
                 var promptOptions = new PromptOptions { Prompt = MessageFactory.Text("Would you like to view logs for containers on this pod? *(Yes)* / *(No)*.") };
 
-                // Ask the user to enter their node name id.
                 return await stepContext.PromptAsync(nameof(TextPrompt), promptOptions, cancellationToken);
             }
             return await stepContext.EndDialogAsync(stepContext.Values[UserInfo], cancellationToken);

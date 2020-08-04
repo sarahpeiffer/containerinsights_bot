@@ -19,10 +19,6 @@ namespace Microsoft.BotBuilderSamples
             : base(nameof(TimeDialog))
         {
 
-            AddDialog(new TextPrompt(nameof(TextPrompt)));
-            AddDialog(new NumberPrompt<int>(nameof(NumberPrompt<int>)));
-
-
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
                 TimeRangeAsync,

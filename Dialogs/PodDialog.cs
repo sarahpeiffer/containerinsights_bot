@@ -3,6 +3,7 @@
 
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Schema;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -26,7 +27,6 @@ namespace Microsoft.BotBuilderSamples
         {
 
             AddDialog(new TextPrompt(nameof(TextPrompt)));
-            AddDialog(new NumberPrompt<int>(nameof(NumberPrompt<int>)));
 
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
@@ -88,12 +88,6 @@ namespace Microsoft.BotBuilderSamples
                 HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Add("Authorization", token);
                 var id = userProfile.WorkspaceId;
-                if (id == null)
-                {
-                    var responseString = await client.GetStringAsync("https://management.azure.com" + clusterId + "?api-version=2020-03-01");
-                    var myJsonObject = JsonConvert.DeserializeObject<MyJsonType>(responseString);
-                    id = myJsonObject.Properties.AddonProfiles.Omsagent.Config.LogAnalyticsWorkspaceResourceID;
-                }
 
                 var postLoc = "https://management.azure.com" + id + "/query?api-version=2017-10-01";
                 var podsQuery = "{\"query\":\"set query_take_max_records = 20; set truncationmaxsize = 67108864;let endDateTime = now();let startDateTime = ago(30m);let trendBinSize = 1m; KubePodInventory | where TimeGenerated < endDateTime   | where TimeGenerated >= startDateTime | where Computer == \\\"" + result + "\\\" | distinct Name\",\"workspaceFilters\":{\"regions\":[]}}";
@@ -131,6 +125,8 @@ namespace Microsoft.BotBuilderSamples
             var timeRange = (userProfile.TimeRange != "") ? userProfile.TimeRange : "30m";
 
             await stepContext.Context.SendActivityAsync("Gathering pod diagnostic information from the past " + timeRange + " now.  This may take a few seconds. To change the time range select the Time Range for Diagnostics shortcut");
+            await stepContext.Context.SendActivityAsync(new Activity { Type = ActivityTypes.Event, Value = "typing" });
+            await stepContext.Context.SendActivityAsync(new Activity { Type = ActivityTypes.Typing });
 
             PodQueryHelper podHandler = new PodQueryHelper(podName, token, clusterId, id, userProfile.KubeAPIToken, userProfile.APIServer, userProfile.KubeCert, timeRange);
 
@@ -197,12 +193,16 @@ namespace Microsoft.BotBuilderSamples
             var conditionErrors = podHandler.conditionErrors(responseJson);
 
             var containerErrors = podHandler.containerErrors(responseJson);
+
+            if(containerErrors != "")
+            {
+                containerErrors = " , \"Container Errors\" : \"\", " + containerErrors;
+            }
             
-            
-            string jsonForUX = "{\"Name\" : \"" + podName + "\", \"Status: \" : \"" + status + "\", \"Container Count: \" : \"" + containerCount + "\", \"Average CPU: \" : \"" + Math.Round(cpuPercent, 2) + "%\", \"Max CPU: \" : \"" + Math.Round(cpuMaxPercent, 2) + "%\", \"Average Memory: \" : \"" + Math.Round(memoryPercent, 2) + "%\",  \"Kube Events\" : [" + kubeEvents + "], \"Live Errors\" : [" + conditionErrors + "], \"Container Errors\" : [" + containerErrors + "]}";
+            string jsonForUX = "{\"Name\" : \"" + podName + "\", \"Status: \" : \"" + status + "\", \"Container Count: \" : \"" + containerCount + "\", \"Average CPU: \" : \"" + Math.Round(cpuPercent, 2) + "%\", \"Max CPU: \" : \"" + Math.Round(cpuMaxPercent, 2) + "%\", \"Average Memory: \" : \"" + Math.Round(memoryPercent, 2) + "%\",  \"Kube Events\" : [" + kubeEvents + "], \"Live Errors\" : [" + conditionErrors + "]" + containerErrors + "}";
 
             await stepContext.Context.SendActivityAsync(jsonForUX);
-            if(containerCount != "0")
+            if(containerCount != "0" && status == "Running")
             {
                 var promptOptions = new PromptOptions { Prompt = MessageFactory.Text("Would you like to view logs for containers on this pod? *(Yes)* / *(No)*.") };
 
@@ -219,6 +219,7 @@ namespace Microsoft.BotBuilderSamples
             string result = (string)stepContext.Result;
             if (result.ToLower() != "yes")
             {
+                this.PodName = "";
                 return await stepContext.EndDialogAsync(stepContext.Values[UserInfo], cancellationToken);
             }
             var podName = this.PodName;

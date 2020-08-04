@@ -77,7 +77,7 @@ namespace Microsoft.BotBuilderSamples
 
         public async Task<string> kubeEventsQuery()
         {
-            var kubeEventsQuery = "{\"query\":\"set query_take_max_records = 40; set truncationmaxsize = 67108864; let endDateTime = now(); let startDateTime = ago(" + timeRange + "); let trendBinSize = 1m; KubeEvents | where TimeGenerated < endDateTime | where TimeGenerated >= startDateTime | where Computer == \\\"" + nodeName + "\\\" | summarize count() by Reason, ObjectKind, Name\",\"workspaceFilters\":{ \"regions\":[]}}";
+            var kubeEventsQuery = "{\"query\":\"set query_take_max_records = 40; set truncationmaxsize = 67108864; let endDateTime = now(); let startDateTime = ago(" + timeRange + "); let trendBinSize = 1m; KubeEvents | where TimeGenerated < endDateTime | where TimeGenerated >= startDateTime | where Computer == \\\"" + nodeName + "\\\" | summarize count() by Reason, ObjectKind, Name | sort by count_\",\"workspaceFilters\":{ \"regions\":[]}}";
             var kubeEventContent = new StringContent(kubeEventsQuery, Encoding.UTF8, "application/json");
             var kubeEventResponse = await client.PostAsync(postLocation, kubeEventContent);
             var kubeEventResponseString = await kubeEventResponse.Content.ReadAsStringAsync();
@@ -108,6 +108,43 @@ namespace Microsoft.BotBuilderSamples
             }
             return kubeEvents;
         }
+
+        public async Task<string> nonReadyPods()
+        {
+
+            string nonReadyPods = "";
+
+            var failedPodsQuery = "{\"query\":\"set query_take_max_records = 10; set truncationmaxsize = 67108864;let endDateTime = now();let startDateTime = ago(" + timeRange + ");let trendBinSize = 1m; KubePodInventory | where TimeGenerated < endDateTime | where TimeGenerated >= startDateTime | where Computer == \\\"" + nodeName + "\\\" | where PodStatus != \\\"Running\\\" | distinct Name, PodStatus | summarize count() by Computer | sort by count_ \",\"workspaceFilters\":{\"regions\":[]}}";
+            var failedPodsContent = new StringContent(failedPodsQuery, Encoding.UTF8, "application/json");
+            var failedPodsResponse = await client.PostAsync(postLocation, failedPodsContent);
+            if (failedPodsResponse != null)
+            {
+                var failedPodsResponseString = await failedPodsResponse.Content.ReadAsStringAsync();
+                dynamic failedPodsObj = JsonConvert.DeserializeObject(failedPodsResponseString);
+                var failedPods = failedPodsObj.tables[0].rows;
+                for (var i = 0; i < failedPods.Count; ++i)
+                {
+                    if (nonReadyPods != "")
+                    {
+                        nonReadyPods += ", ";
+                    }
+                    nonReadyPods += "\"*(pod_" + failedPods[i][0] + ")* has a " + failedPods[i][1] + " state\"";
+                }
+            }
+            if (nonReadyPods != "")
+            {
+                string nonReadyJson = ", \"Not Ready Pods\" : [" + nonReadyPods + "]";
+                return nonReadyJson;
+            }
+            else
+            {
+                return "";
+            }
+
+        }
+            
+        
+    
         public async Task<dynamic> podQueryAsync()
         {
             var podQuery = "{\"query\":\"set query_take_max_records = 10001; set truncationmaxsize = 67108864; let endDateTime = now(); let startDateTime = ago(" + timeRange + "); let trendBinSize = 1m; KubePodInventory | where TimeGenerated < endDateTime | where TimeGenerated >= startDateTime | where Computer == \\\"" + nodeName + "\\\" | distinct ClusterName, Computer, PodUid, TimeGenerated, PodStatus | summarize TotalCount = count(), PendingCount = sumif(1, PodStatus =~ \'Pending\'), RunningCount = sumif(1, PodStatus =~ \'Running\'),  SucceededCount = sumif(1, PodStatus =~ \'Succeeded\'),   FailedCount = sumif(1, PodStatus =~ \'Failed\')  by Computer, bin(TimeGenerated, trendBinSize)   | extend UnknownCount = TotalCount - PendingCount - RunningCount - SucceededCount - FailedCount   | project TimeGenerated, TotalCount, PendingCount, RunningCount, SucceededCount, FailedCount, UnknownCount  | limit 1\",\"workspaceFilters\":{ \"regions\":[]}}";

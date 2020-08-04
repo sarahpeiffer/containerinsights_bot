@@ -7,7 +7,6 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime.Models;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Schema;
@@ -24,9 +23,11 @@ namespace Microsoft.BotBuilderSamples
         protected readonly Dialog Dialog;
         protected readonly BotState ConversationState;
         protected readonly BotState UserState;
+        private readonly IBotTelemetryClient TelemetryClient;
 
+        const string defaultTimeRange = "30m";
 
-        public DispatchBot(ConversationState conversationState, UserState userState, T dialog, IBotServices botServices, ILogger<DispatchBot<T>> logger)
+        public DispatchBot(ConversationState conversationState, UserState userState, T dialog, IBotServices botServices, ILogger<DispatchBot<T>> logger, IBotTelemetryClient telemetryClient)
         {
            
             Logger = logger;
@@ -34,6 +35,7 @@ namespace Microsoft.BotBuilderSamples
             Dialog = dialog;
             ConversationState = conversationState;
             UserState = userState;
+            TelemetryClient = telemetryClient;
         }
 
 
@@ -62,17 +64,17 @@ namespace Microsoft.BotBuilderSamples
                         await accessor.SetAsync(turnContext, dialogProfile, cancellationToken);
                         await Dialog.RunAsync(turnContext, ConversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken);
                     }
-                    else if (turnContext.Activity.Text == "kusto")
+                    else if (turnContext.Activity.Text.ToLower() == "kusto")
                     {
-                    await turnContext.SendActivityAsync("What KQL query are you looking for?");
-                    userProfile.isKusto = true;
-                    await userStateAccessors.SetAsync(turnContext, userProfile, cancellationToken);
+                        await turnContext.SendActivityAsync("What KQL query are you looking for?");
+                        userProfile.isKusto = true;
+                        await userStateAccessors.SetAsync(turnContext, userProfile, cancellationToken);
                     }
                     else if (userProfile.isKusto == true)
                     {
-                    userProfile.isKusto = false;
-                    await userStateAccessors.SetAsync(turnContext, userProfile, cancellationToken);
-                    await ProcessKustoQnAAsync(turnContext, cancellationToken);
+                        userProfile.isKusto = false;
+                        await userStateAccessors.SetAsync(turnContext, userProfile, cancellationToken);
+                        await ProcessKustoQnAAsync(turnContext, cancellationToken);
                     }
                     else if(turnContext.Activity.Text.ToLower().Trim() == "diagnostics")
                     {
@@ -108,7 +110,7 @@ namespace Microsoft.BotBuilderSamples
                         await accessor2.SetAsync(turnContext, dialogProfile, cancellationToken);
                         await Dialog.RunAsync(turnContext, ConversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken);
                     }
-                    else if(turnContext.Activity.Text == "time")
+                    else if(turnContext.Activity.Text.ToLower() == "time")
                     {
                         dialogProfile.DialogType = "time";
                         var accessor2 = UserState.CreateProperty<DialogProfile>(nameof(DialogProfile));
@@ -140,8 +142,8 @@ namespace Microsoft.BotBuilderSamples
                     HttpClient client = new HttpClient();
                     client.DefaultRequestHeaders.Add("Authorization", userProfile.Token);
                     var responseString = await client.GetStringAsync("https://management.azure.com" + userProfile.ClusterId + "?api-version=2020-03-01");
-                    dynamic myJsonObject = JsonConvert.DeserializeObject<MyJsonType>(responseString);
-                    userProfile.WorkspaceId = myJsonObject.Properties.AddonProfiles.Omsagent.Config.LogAnalyticsWorkspaceResourceID;
+                    dynamic userInfoObject = JsonConvert.DeserializeObject<MyJsonType>(responseString);
+                    userProfile.WorkspaceId = userInfoObject.Properties.AddonProfiles.Omsagent.Config.LogAnalyticsWorkspaceResourceID;
                 }
                 userProfile.KubeAPIToken = userJson.kubeAPIToken;
                 userProfile.APIServer = userJson.apiServer;
@@ -154,7 +156,7 @@ namespace Microsoft.BotBuilderSamples
         }
         protected override async Task OnMembersAddedAsync(IList<ChannelAccount> membersAdded, ITurnContext<IConversationUpdateActivity> turnContext, CancellationToken cancellationToken)
         {
-            const string WelcomeText = "Welcome to Container Insights Troubleshooting Bot! Type a question to query the Azure Monitor for Containers documentation or type/select diagnostics to view troubleshooting and error data related to your cluster.";
+            const string WelcomeText = "Welcome to Container Insights Troubleshooting Bot! Type a question to query the Azure Monitor for Containers documentation or select a shortcut option to get started.";
 
             foreach (var member in membersAdded)
             {
@@ -162,7 +164,7 @@ namespace Microsoft.BotBuilderSamples
                 {
                     var userStateAccessors = UserState.CreateProperty<UserProfile>(nameof(UserProfile));
                     var userProfile = await userStateAccessors.GetAsync(turnContext, () => new UserProfile());
-                    userProfile.TimeRange = "30m";
+                    userProfile.TimeRange = defaultTimeRange;
                     await turnContext.SendActivityAsync(MessageFactory.Text($"{WelcomeText}"), cancellationToken);
                 }
             }
@@ -181,6 +183,11 @@ namespace Microsoft.BotBuilderSamples
             }
             else
             {
+                var answerNotFoundProperties = new Dictionary<string, string>();
+                answerNotFoundProperties.Add(
+                                    "question",
+                                    turnContext.Activity.Text);
+                TelemetryClient.TrackEvent("QnANotFound", answerNotFoundProperties);
                 await turnContext.SendActivityAsync(MessageFactory.Text("Sorry, could not find an answer in the Q and A system."), cancellationToken);
             }
         }
@@ -195,6 +202,11 @@ namespace Microsoft.BotBuilderSamples
             }
             else
             {
+                var answerNotFoundProperties = new Dictionary<string, string>();
+                answerNotFoundProperties.Add(
+                                    "question",
+                                    turnContext.Activity.Text);
+                TelemetryClient.TrackEvent("QnANotFound", answerNotFoundProperties);
                 await turnContext.SendActivityAsync(MessageFactory.Text("Sorry, could not find an answer in the Q and A system."), cancellationToken);
             }
         }
@@ -206,13 +218,6 @@ namespace Microsoft.BotBuilderSamples
             // Save any state changes that might have occurred during the turn.
             await ConversationState.SaveChangesAsync(turnContext, false, cancellationToken);
             await UserState.SaveChangesAsync(turnContext, false, cancellationToken);
-        }
-        protected override async Task OnTokenResponseEventAsync(ITurnContext<IEventActivity> turnContext, CancellationToken cancellationToken)
-        {
-            Logger.LogInformation("Running dialog with Token Response Event Activity.");
-
-            // Run the Dialog with the new Token Response Event Activity.
-            await Dialog.RunAsync(turnContext, ConversationState.CreateProperty<DialogState>(nameof(DialogState)), cancellationToken);
         }
     }
 }

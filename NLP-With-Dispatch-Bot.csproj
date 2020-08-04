@@ -12,7 +12,8 @@
     <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Http" Version="3.0.2" />
     <PackageReference Include="Microsoft.Bot.Builder.AI.Luis" Version="4.9.1" />
     <PackageReference Include="Microsoft.Bot.Builder.AI.QnA" Version="4.9.1" />
-	  <PackageReference Include="Microsoft.Bot.Builder" Version="4.9.2" />
+	  <PackageReference Include="Microsoft.Bot.Builder" Version="4.9.4" />
+	  <PackageReference Include="Microsoft.Bot.Builder.Integration.ApplicationInsights.Core" Version="4.9.4" />
 	  <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.9.1" />
   </ItemGroup>
 
@@ -20,9 +21,5 @@
     <Content Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Resources\" />
   </ItemGroup>
 </Project>

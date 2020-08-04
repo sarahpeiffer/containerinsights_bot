@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
@@ -11,18 +10,21 @@ namespace Microsoft.BotBuilderSamples
 {
     public class MainDialog : ComponentDialog
     {
-        private readonly UserState _userState;
+        private readonly UserState UserState;
 
-        public MainDialog(UserState userState)
+        public MainDialog(UserState userState, IBotTelemetryClient telemetryClient)
             : base(nameof(MainDialog))
         {
-            _userState = userState;
 
-            AddDialog(new TopLevelDialog());
+            UserState = userState;
+            this.TelemetryClient = telemetryClient;
+
+
+            AddDialog(new NodeDialog());
             AddDialog(new PodDialog());
             AddDialog(new ConfigErrorDialog());
             AddDialog(new KubeAPIDialog());
-            AddDialog(new DiagnosticsDialog(_userState));
+            AddDialog(new DiagnosticsDialog(UserState));
             AddDialog(new TimeDialog());
             AddDialog(new LocalTestingDialog());
 
@@ -37,9 +39,9 @@ namespace Microsoft.BotBuilderSamples
 
         private async Task<DialogTurnResult> InitialStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            var userStateAccessors = _userState.CreateProperty<UserProfile>(nameof(UserProfile));
+            var userStateAccessors = UserState.CreateProperty<UserProfile>(nameof(UserProfile));
             var userProfile = await userStateAccessors.GetAsync(stepContext.Context, () => new UserProfile());
-            var dialogStateAccessors = _userState.CreateProperty<DialogProfile>(nameof(DialogProfile));
+            var dialogStateAccessors = UserState.CreateProperty<DialogProfile>(nameof(DialogProfile));
             var dialogProfile = await dialogStateAccessors.GetAsync(stepContext.Context, () => new DialogProfile());
             if(dialogProfile.ObjectType != null)
             {
@@ -53,7 +55,7 @@ namespace Microsoft.BotBuilderSamples
                 case "diagnostics":
                     return await stepContext.BeginDialogAsync(nameof(DiagnosticsDialog), userProfile, cancellationToken);
                 case "node_info":
-                    return await stepContext.BeginDialogAsync(nameof(TopLevelDialog), userProfile, cancellationToken);
+                    return await stepContext.BeginDialogAsync(nameof(NodeDialog), userProfile, cancellationToken);
                 case "pod_info":
                     return await stepContext.BeginDialogAsync(nameof(PodDialog), userProfile, cancellationToken);
                 case "config_error":
@@ -64,7 +66,7 @@ namespace Microsoft.BotBuilderSamples
                     return await stepContext.BeginDialogAsync(nameof(TimeDialog), userProfile, cancellationToken);
             }
 
-            return await stepContext.BeginDialogAsync(nameof(TopLevelDialog), userProfile, cancellationToken);
+            return await stepContext.BeginDialogAsync(nameof(NodeDialog), userProfile, cancellationToken);
         }
 
         private async Task<DialogTurnResult> FinalStepAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
@@ -79,7 +81,7 @@ namespace Microsoft.BotBuilderSamples
                 await stepContext.Context.SendActivityAsync(status);
 
 
-                var accessor = _userState.CreateProperty<UserProfile>(nameof(UserProfile));
+                var accessor = UserState.CreateProperty<UserProfile>(nameof(UserProfile));
                 await accessor.SetAsync(stepContext.Context, userInfo, cancellationToken);
             }
 

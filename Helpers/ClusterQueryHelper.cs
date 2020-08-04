@@ -63,7 +63,7 @@ namespace Microsoft.BotBuilderSamples
 
         public async Task<string> nodeEventsAsync(string nodesString)
         {
-            var eventsPerNode = "{\"query\":\"set query_take_max_records = 100; set truncationmaxsize = 67108864;let endDateTime = now();let startDateTime = ago(" + timeRange + ");let trendBinSize = 1m; KubeEvents | where TimeGenerated < endDateTime | where TimeGenerated >= startDateTime | where ClusterId == \\\"" + clusterId + "\\\" | summarize count() by Computer \",\"workspaceFilters\":{\"regions\":[]}}";
+            var eventsPerNode = "{\"query\":\"set query_take_max_records = 100; set truncationmaxsize = 67108864;let endDateTime = now();let startDateTime = ago(" + timeRange + ");let trendBinSize = 1m; KubeEvents | where TimeGenerated < endDateTime | where TimeGenerated >= startDateTime | where ClusterId == \\\"" + clusterId + "\\\" | summarize count() by Computer | sort by count_ \",\"workspaceFilters\":{\"regions\":[]}}";
             var eventsContent = new StringContent(eventsPerNode, Encoding.UTF8, "application/json");
             var eventsResponse = await client.PostAsync(postLocation, eventsContent);
             if (eventsResponse != null)
@@ -117,6 +117,28 @@ namespace Microsoft.BotBuilderSamples
                     nodesString += ", ";
                 }
                 nodesString += "\"*(node_" + highMemoryNodes[i][0] + ")* has had Memory Percent over 90%\"";
+            }
+            return nodesString;
+        }
+
+        public async Task<string> failedPodsCheckAsync(string nodesString)
+        {
+            var failedPodsQuery = "{\"query\":\"set query_take_max_records = 100; set truncationmaxsize = 67108864;let endDateTime = now();let startDateTime = ago(" + timeRange + ");let trendBinSize = 1m; KubePodInventory | where TimeGenerated < endDateTime | where TimeGenerated >= startDateTime | where ClusterId == \\\"" + clusterId + "\\\" | where PodStatus != \\\"Running\\\" | distinct PodUid, Computer | summarize count() by Computer | sort by count_ \",\"workspaceFilters\":{\"regions\":[]}}";
+            var failedPodsContent = new StringContent(failedPodsQuery, Encoding.UTF8, "application/json");
+            var failedPodsResponse = await client.PostAsync(postLocation, failedPodsContent);
+            if (failedPodsResponse != null)
+            {
+                var failedPodsResponseString = await failedPodsResponse.Content.ReadAsStringAsync();
+                dynamic failedPodsObj = JsonConvert.DeserializeObject(failedPodsResponseString);
+                var failedPods = failedPodsObj.tables[0].rows;
+                for (var i = 0; i < failedPods.Count; ++i)
+                {
+                    if (nodesString != "")
+                    {
+                        nodesString += ", ";
+                    }
+                    nodesString += "\"*(node_" + failedPods[i][0] + ")* has " + failedPods[i][1] + " pods with a non ready status\"";
+                }
             }
             return nodesString;
         }

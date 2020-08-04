@@ -1,7 +1,10 @@
 ﻿using Microsoft.Bot.Builder.Dialogs.Declarative.Resources;
+using Microsoft.Bot.Schema;
 using Newtonsoft.Json;
+using System.Linq.Expressions;
 using System.Net.Http;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -72,7 +75,7 @@ namespace Microsoft.BotBuilderSamples
             dynamic podInfo = JsonConvert.DeserializeObject(podsString);
             dynamic podArray = podInfo.items;
             var podErrorsString = "";
-
+          
             if (podArray.Count > 0)
             {
                 for (int i = 0; i < podArray.Count; ++i)
@@ -81,103 +84,146 @@ namespace Microsoft.BotBuilderSamples
                     if (podName.Contains("omsagent"))
                     {
                         this.podName = podName;
-                        string podError = "";
-
-                        podError += "\"" + podName + "\", \"Status:   " + podArray[i].status.phase + "\"";
                         bool errorFound = false;
 
-                        var conditions = podArray[i].status.conditions;
-
-                        for (int j = 0; j < conditions.Count; ++j)
+                        //get warning events
+                            var eventsuri = proxyUri + "?query=" + HttpUtility.UrlEncode(apiServer + "/api/v1/namespaces/kube-system/events?fieldSelector=type=Warning&name=" + podName);
+                            var eventsReponse = await kubeClient.PostAsync(eventsuri, queryContent);
+                            var eventsString = await eventsReponse.Content.ReadAsStringAsync();
+                            dynamic events = JsonConvert.DeserializeObject(eventsString);
+                            var podEvents = "";
+                        if (events != null)
                         {
-                            string status = conditions[j].status;
-                            if (status.Contains("False"))
+                            var eventItems = events.items;
+                            if (eventItems != null)
                             {
-                                podError = podName + ": " + conditions[j].type + ": " + conditions[j].status + " Message: " + conditions[j].message + " ";
-                                if (podErrorsString != "")
+                                for (int k = 0; k < eventItems.Count; ++k)
                                 {
-                                    podErrorsString += ", ";
-                                }
-                                podErrorsString += "\"Container " + podName + "\", \"Status:   " + podArray[i].status.phase + "\"";
-
-                                errorFound = true;
-                                podError += "\n\n";
-
-                            }
-                        }
-                        var containerStatuses = podArray[i].status.containerStatuses;
-                        for (int j = 0; j < containerStatuses.Count; ++j)
-                        {
-                            var restartCount = containerStatuses[j].restartCount;
-
-                            var state = containerStatuses[j].state;
-                            if (podError != "")
-                            {
-                                podError += ", ";
-                            }
-                            podError += "\"Container " + containerStatuses[j].name + "\"";
-
-                            if (state.waiting != null)
-                            {
-                                errorFound = true;
-                                if (podError != "")
-                                {
-                                    podError += ", ";
-                                }
-                                podError += "\"State:   Waiting\", \"Reason:   " + state.waiting.reason + "\"";
-
-                            }
-                            var lastState = containerStatuses[j].lastState;
-                            if (lastState != null)
-                            {
-                                if (lastState.running == null)
-                                {
-                                    if (lastState.terminated != null)
+                                    if (eventItems[k].message != null)
                                     {
-                                        var reason = lastState.terminated.reason;
-                                        if (podError != "")
+                                        errorFound = true;
+                                        var message = eventItems[k].message;
+                                        if (podEvents != "")
                                         {
-                                            podError += ", ";
+                                            podEvents += ", ";
                                         }
-                                        podError += "\"Last State:   Terminated\", \"Reason:   " + reason + "\"";
+                                        podEvents += "\"" + message + "\"";
+                                    }
+
+                                }
+                            }
+
+                        }
+                        var conditionErrors = "";
+                        if (podArray[i].status.ToString().Contains("conditions"))
+                        {
+                            if (podArray[i].status.conditions != null)
+                            {
+                                var conditions = podArray[i].status.conditions;
+                                for (int j = 0; j < conditions.Count; ++j)
+                                {
+                                    string conditionStatus = conditions[j].status;
+                                    if (conditionStatus.Contains("False"))
+                                    {
+                                        if (conditionErrors != "")
+                                        {
+                                            conditionErrors += ", ";
+                                        }
+                                        conditionErrors += "\"" + conditions[j].type + ":  " + conditions[j].status + "\"";
+                                        conditionErrors += ", \"     " + conditions[j].message + "\"";
                                         errorFound = true;
                                     }
                                 }
                             }
-                            if (podError != "")
-                            {
-                                podError += ", ";
-                            }
-                            podError += "\"Restart Count:   " + restartCount + "\"";
-
                         }
+                        var containerErrors = "";
+                        if (podArray[i].status.containerStatuses != null)
+                        {
 
+                            var containerStatuses = podArray[i].status.containerStatuses;
+                            var restartCount = "";
+                            var containerName = "";
+                            var state = "";
+                            var stateReason = "";
+                            var lastState = "";
+                            var lastStateReason = "";
+                            var lastStateExitCode = "";
+                            var lastStateMessage = "";
+                            for (int j = 0; j < containerStatuses.Count; ++j)
+                            {
+                                restartCount = containerStatuses[j].restartCount;
+                                containerName = containerStatuses[j].name;
+                                var stateElement = containerStatuses[j].state;
+                                if (stateElement.waiting != null)
+                                {
+                                    state = "Waiting";
+                                    stateReason = "\"Reason:   " + stateElement.waiting.reason + "\", ";
+                                    errorFound = true;
+                                }
+                                if (stateElement.running != null)
+                                {
+                                    state = "Running";
+                                    errorFound = false;
+                                }
+                                var lastStateElement = containerStatuses[j].lastState;
+                                if (lastStateElement != null)
+                                {
+                                    if (lastStateElement.terminated != null)
+                                    {
+                                        lastState = "\"Last State:   Terminated\", ";
+                                        Newtonsoft.Json.Linq.JObject terminated = lastStateElement.terminated;
+                                        lastStateReason = "\"-Reason:   " + lastStateElement.terminated.reason + "\", ";
+                                        if (lastStateElement.terminated.message != null)
+                                        {
+                                            string terminatedMessage = Regex.Replace((string)lastStateElement.terminated.message, @"\t|\n|\r", "");
+                                            terminatedMessage = Regex.Replace(terminatedMessage, "\"", "");
+                                            terminatedMessage = Regex.Replace(terminatedMessage, "\\\\", "");
+                                            lastStateMessage = "\"-Message:   " + terminatedMessage + "\", ";
+                                        }
+                                        lastStateExitCode = "\"-Exit Code:   " + lastStateElement.terminated.exitCode + "\", ";
+                                        errorFound = true;
+                                    }
+                                }
+                                
+                                }
+
+
+                                if (containerErrors != "")
+                                {
+                                    containerErrors += ", ";
+                                }
+                                var containerErrorTest = "\"Container Name:   " + containerName + "\", \"State:   " + state + "\", " + stateReason + lastState + lastStateReason + lastStateMessage + lastStateExitCode + "\"RestartCount:   " + restartCount + "\"";
+                                containerErrors += containerErrorTest;
+                            
+                        }
+                        
                         if (errorFound)
                         {
                             if (podErrorsString != "")
                             {
                                 podErrorsString += ", ";
                             }
-                            podErrorsString += podError;
+                            podErrorsString += "\"" + podName + "\" : [" + conditionErrors + containerErrors + "]";
+                            if (podEvents != "")
+                            {
+                                podErrorsString += ", \"Kube Events on " + podName + "\" : [" + podEvents + "]";
+                            }
                         }
 
                     }
 
                 }
-
-                if (podErrorsString == "")
-                {
-                    podErrorsString = "\"All omsagent pods are running and healthy\"";
-                }
-
-
+            }
+            else
+            {
+                podErrorsString = "There are no omsagent pods detected.";
             }
             return podErrorsString;
         }
 
         public async Task<string> workspaceStatusAsync()
         {
-            string workspaceStatus = "";
+            string workspaceStatus = "Unable to access workspace information";
             var logsuri = proxyUri + "?query=" + HttpUtility.UrlEncode(apiServer + "/api/v1/namespaces/kube-system/pods/" + podName + "/log");
             var logsResponse = await kubeClient.PostAsync(logsuri, queryContent);
             var logsResponseString = await logsResponse.Content.ReadAsStringAsync();

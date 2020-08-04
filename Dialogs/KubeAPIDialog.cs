@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Schema;
 using Newtonsoft.Json;
 using System.Net.Http;
 using System.Text;
@@ -37,8 +38,17 @@ namespace Microsoft.BotBuilderSamples
 
         private async Task<DialogTurnResult> AccessKubeAPIData(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
-            var userProfile = (UserProfile)stepContext.Options;
+            var userProfile = (UserProfile)stepContext.Options;   
             stepContext.Values[UserInfo] = userProfile;
+
+            if(userProfile.APIServer == null)
+            {
+                await stepContext.Context.SendActivityAsync("Unable to get KubeConfig information to access live data");
+                return await stepContext.EndDialogAsync(stepContext.Values[UserInfo], cancellationToken);
+            }
+
+            await stepContext.Context.SendActivityAsync(new Activity { Type = ActivityTypes.Event, Value = "typing" });
+            await stepContext.Context.SendActivityAsync(new Activity { Type = ActivityTypes.Typing });
 
             string apiServerAddr = userProfile.APIServer;
 
@@ -90,28 +100,48 @@ namespace Microsoft.BotBuilderSamples
 
                     return await stepContext.EndDialogAsync(stepContext.Values[UserInfo], cancellationToken);
                 }
-                var status = responseJson.status;
-                var message = responseJson.message;
-                deploymentInfo = responseJson.message.reason;
-                await stepContext.Context.SendActivityAsync("status " + status);
+                if(responseJson != null)
+                {
+                    var status = responseJson.status;
+                    var message = responseJson.message;
+                    deploymentInfo = responseJson.message.reason;
+                    await stepContext.Context.SendActivityAsync("status " + status);
+                }
+                else
+                {
+                    await stepContext.Context.SendActivityAsync("Could not access the Kube API server");
+                }
+                return await stepContext.EndDialogAsync(stepContext.Values[UserInfo], cancellationToken);
             }
             else
             {
                 string replicas = responseJson.status.replicas;
                 string readyReplicas = responseJson.status.readyReplicas;
+                if(readyReplicas == null)
+                {
+                    readyReplicas = "0";
+                }
                 deploymentInfo = readyReplicas + "/" + replicas;
                 string image = responseJson.spec.template.spec.containers[0].image;
                 agentVersion = image.Substring(image.IndexOf(":") + 1);
+
             }
 
 
             var podErrorsString = await agentTroubleshootingHandler.podErrorsAsyc();
+            if(podErrorsString == "")
+            {
+                podErrorsString = ", \"Omsagent Pod Errors\" : \"All omsagent pods are running and healthy\"";
+            }
+            else
+            {
+                podErrorsString = ", \"Omsagent Pods Errors\" : \"\", " + podErrorsString;
+            }
 
             var workspaceStatus = await agentTroubleshootingHandler.workspaceStatusAsync();
 
 
-
-            string troubleshootingJson = "{\"Name\": \"Agent Troubleshooting\", \"Agent Version: \" : \"" + agentVersion + "\", \"Ready Replicas: \" : \"" + deploymentInfo + "\", \"Daemonset Status: \" : \"" + daemonsetStatus + "\", \"Workspace Status: \" : \"" + workspaceStatus + "\", \"Omsagent Pods Errors\" : ["  + podErrorsString + "]}";
+            string troubleshootingJson = "{\"Name\": \"Agent Troubleshooting\", \"Agent Version: \" : \"" + agentVersion + "\", \"Ready Replicas: \" : \"" + deploymentInfo + "\", \"Daemonset Status: \" : \"" + daemonsetStatus + "\", \"Workspace Status: \" : \"" + workspaceStatus + "\"" + podErrorsString + "}";
             await stepContext.Context.SendActivityAsync(troubleshootingJson);
 
             return await stepContext.EndDialogAsync(stepContext.Values[UserInfo], cancellationToken);
@@ -120,47 +150,3 @@ namespace Microsoft.BotBuilderSamples
 
     }
 }
-
-
-/*HttpClient kubeEventsClient = new HttpClient();
-kubeEventsClient.DefaultRequestHeaders.Add("Authorization", userProfile.Token);
-var id = userProfile.WorkspaceId;
-if (id == null)
-{
-    var idResponse = await client.GetStringAsync("https://management.azure.com" + userProfile.ClusterId + "?api-version=2020-03-01");
-    var myJsonObject = JsonConvert.DeserializeObject<MyJsonType>(idResponse);
-    id = myJsonObject.Properties.AddonProfiles.Omsagent.Config.LogAnalyticsWorkspaceResourceID;
-}
-
-//post request
-var postLoc = "https://management.azure.com" + id + "/query?api-version=2017-10-01";
-var kubeEventsQuery = "{\"query\":\"set query_take_max_records = 1001; set truncationmaxsize = 67108864; let endDateTime = now(); let startDateTime = ago(30m); let trendBinSize = 1m; KubeEvents | where TimeGenerated < endDateTime | where TimeGenerated >= startDateTime | where Name == \\\"" + podName + "\\\" | summarize count() by Reason, ObjectKind\",\"workspaceFilters\":{ \"regions\":[]}}";
-var kubeEventContent = new StringContent(kubeEventsQuery, Encoding.UTF8, "application/json");
-var kubeEventResponse = await kubeEventsClient.PostAsync(postLoc, kubeEventContent);
-var kubeEventResponseString = await kubeEventResponse.Content.ReadAsStringAsync();
-dynamic kubeEventObj = JsonConvert.DeserializeObject(kubeEventResponseString);
-var kubeEvents = "There are no recent KubeEvents related to this pod";
-
-if (kubeEventObj != null)
-{
-    //await stepContext.Context.SendActivityAsync(kubeEventObj.ToString());
-
-    //var kubeEventData = kubeEventObj.tables[0].rows;
-
-
-    *//*if (kubeEventData.Count > 0)
-    {
-        kubeEvents = "KubeEvents: ";
-        kubeEvents += "\n\n";
-
-        for (int k = 0; k < kubeEventData.Count; ++k)
-        {
-            String count = kubeEventData[k][2] > 1 ? "counts" : "count";
-            String verb = kubeEventData[k][2] > 1 ? "are" : "is";
-            kubeEvents += "There " + verb + " " + kubeEventData[k][2] + " " + count + " of " + kubeEventData[k][0] + " for type " + kubeEventData[k][1] + ".";
-            kubeEvents += "\n\n";
-            errorFound = true;
-        }
-    }*//*
-}
-podError += kubeEvents;*/

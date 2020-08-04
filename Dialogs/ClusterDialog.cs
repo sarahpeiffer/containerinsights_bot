@@ -1,8 +1,8 @@
 ﻿// Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 
-
 using Microsoft.Bot.Builder.Dialogs;
+using Microsoft.Bot.Schema;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,11 +11,10 @@ namespace Microsoft.BotBuilderSamples
 {
     public class ClusterDialog : ComponentDialog
     {
-        // Define a "done" response for the company selection prompt.
-        private const string DoneOption = "done";
 
         // Define value names for values tracked inside the dialogs.
         private const string UserInfo = "value-userInfo";
+        private const string defaultTimeRange = "30m";
 
         public ClusterDialog()
             : base(nameof(ClusterDialog))
@@ -40,16 +39,19 @@ namespace Microsoft.BotBuilderSamples
             var token = userProfile.Token;
             var clusterId = userProfile.ClusterId;
             var id = userProfile.WorkspaceId;
-            var timeRange = (userProfile.TimeRange != "") ? userProfile.TimeRange : "30m";
+            var timeRange = (userProfile.TimeRange != "") ? userProfile.TimeRange : defaultTimeRange;
 
             await stepContext.Context.SendActivityAsync("Gathering cluster diagnostic information from the past " + timeRange + " now.  This may take a few seconds. To change the time range select the Time Range for Diagnostics shortcut");
+           
+            await stepContext.Context.SendActivityAsync(new Activity { Type = ActivityTypes.Event, Value = "typing"});
+            await stepContext.Context.SendActivityAsync(new Activity { Type = ActivityTypes.Typing });
 
             ClusterQueryHandler clusterHandler = new ClusterQueryHandler(token, clusterId, id, timeRange);
 
             string statusString = await clusterHandler.nodeStatusAsync();
             if(statusString == "")
             {
-                await stepContext.Context.SendActivityAsync("Something went wrong");
+                await stepContext.Context.SendActivityAsync("Unable to access diagnostic information");
                 return await stepContext.EndDialogAsync(stepContext.Values[UserInfo], cancellationToken);
             }
 
@@ -57,7 +59,6 @@ namespace Microsoft.BotBuilderSamples
             nodesString = await clusterHandler.nodeEventsAsync(nodesString);
             nodesString = await clusterHandler.highNodeCPUAsync(nodesString);
             nodesString = await clusterHandler.highNodeMemoryAsync(nodesString);
-
 
             dynamic cpuObj = await clusterHandler.clusterCPU();
             var cpu = cpuObj.tables[0].rows;

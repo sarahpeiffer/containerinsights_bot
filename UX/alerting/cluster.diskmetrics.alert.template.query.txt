@@ -1,0 +1,15 @@
+let clusterId = <cluster-id>;
+let endDateTime = now();
+let startDateTime = ago(<time-window-in-minutes>);
+let trendBinSize = 1m;
+InsightsMetrics
+| where TimeGenerated < endDateTime
+| where TimeGenerated >= startDateTime
+| where Origin =~ 'container.azm.ms/telegraf'            
+| where Name =~ 'used_percent'
+| extend Tags = todynamic(Tags)
+| extend ClusterId = tostring(Tags['container.azm.ms/clusterId'])
+| where ClusterId =~ clusterId          
+| where Namespace =~ 'disk'            
+| summarize AggregatedValue = max(Val) by bin(TimeGenerated, trendBinSize)
+| where AggregatedValue >= 90 

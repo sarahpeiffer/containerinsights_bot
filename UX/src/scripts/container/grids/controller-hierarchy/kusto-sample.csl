@@ -1,0 +1,194 @@
+let endDateTime = datetime('2020-01-27T03:01:49.167Z');        
+let startDateTime = datetime('2020-01-25T03:00:00.000Z');        
+let trendBinSize = 1h;        
+let metricLimitCounterName = 'cpuLimitNanoCores';        
+let metricUsageCounterName = 'cpuUsageNanoCores';        
+let primaryInventory = KubePodInventory        
+| where TimeGenerated >= startDateTime        
+| where TimeGenerated < endDateTime        
+| where isnotempty(ClusterName)         
+| where isnotempty(Namespace)         
+| where ClusterId =~ '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2/resourceGroups/brad-test-big/providers/Microsoft.ContainerService/managedClusters/brad-test-big'
+| project TimeGenerated, ClusterId, ClusterName, Namespace, ServiceName,             
+Node = Computer, ControllerName, Pod = Name,             
+ContainerInstance = ContainerName,             
+ContainerID,             
+InstanceName, PerfJoinKey = strcat(ClusterId, '/', ContainerName),             
+ReadySinceNow = format_timespan(endDateTime - ContainerCreationTimeStamp, 'ddd.hh:mm:ss.fff'),             
+Restarts = ContainerRestartCount, Status = ContainerStatus,            
+ContainerStatusReason = columnifexists('ContainerStatusReason', ''),            
+ControllerKind = ControllerKind, PodStatus, ControllerId = strcat(ClusterId, '/', ControllerName);
+let podStatusRollup = primaryInventory         
+| summarize arg_max(TimeGenerated, *) by Pod         
+| project ControllerId, PodStatus, TimeGenerated         
+| summarize count() by ControllerId, PodStatus = iif(TimeGenerated < ago(30m) and PodStatus == 'Running', 'Unknown', PodStatus)        
+| summarize PodStatusList = makelist(pack('Status', PodStatus, 'Count', count_)) by ControllerId;
+let latestContainersByController = primaryInventory        
+| where isnotempty(Node)        
+| summarize arg_max(TimeGenerated, *) by PerfJoinKey        
+| project ControllerId, PerfJoinKey;
+let filteredPerformance = Perf        
+| where TimeGenerated >= startDateTime        
+| where TimeGenerated < endDateTime        
+| where ObjectName == 'K8SContainer'        
+| where InstanceName startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2/resourceGroups/brad-test-big/providers/Microsoft.ContainerService/managedClusters/brad-test-big'        
+| project TimeGenerated, CounterName, CounterValue, InstanceName        ;
+let metricByController = filteredPerformance        
+| where CounterName =~ metricUsageCounterName        
+| extend PerfJoinKey = InstanceName        
+| summarize Value = percentile(CounterValue, 95) by PerfJoinKey, CounterName        
+| join (latestContainersByController) on PerfJoinKey        
+| summarize Value = sum(Value) by ControllerId, CounterName        
+| project ControllerId, CounterName, AggregationValue = iff(CounterName =~ 'cpuUsageNanoCores', Value/1000000, Value);
+let containerCountByController = latestContainersByController        
+| summarize ContainerCount = count() by ControllerId;
+let restartCountsByController = primaryInventory        
+| summarize Restarts = sum(Restarts) by ControllerId;
+let oldestRestart = primaryInventory        
+| where isnotempty(Node)
+| summarize arg_max(TimeGenerated, *) by ControllerId
+| project ControllerId, ReadySinceNow;
+let trendLineByController = filteredPerformance        
+| where CounterName =~ metricUsageCounterName        
+| extend PerfJoinKey = InstanceName        
+| summarize Value = percentile(CounterValue, 95) by bin(TimeGenerated, trendBinSize), PerfJoinKey, CounterName        
+| order by TimeGenerated asc        
+| join kind=leftouter (latestContainersByController) on PerfJoinKey        
+| summarize Value=sum(Value) by ControllerId, TimeGenerated, CounterName        
+| project TimeGenerated, Value = iff(CounterName =~ 'cpuUsageNanoCores', Value/1000000, Value), ControllerId        
+| summarize TrendList = makelist(pack("timestamp", TimeGenerated, "value", Value)) by ControllerId;let latestLimit = filteredPerformance        
+| where CounterName =~ metricLimitCounterName        
+| extend PerfJoinKey = InstanceName        
+| summarize arg_max(TimeGenerated, *) by PerfJoinKey        
+| join kind=leftouter (latestContainersByController) on PerfJoinKey        
+| summarize Value = sum(CounterValue) by ControllerId, CounterName        
+| project ControllerId, LimitValue = iff(CounterName =~ 'cpuLimitNanoCores', Value/1000000, Value);
+let latestTimeGeneratedByController = primaryInventory        
+| where isnotempty(Node)        
+| summarize arg_max(TimeGenerated, *) by ControllerId        
+| project ControllerId, LastTimeGenerated = TimeGenerated;
+primaryInventory        
+| distinct ControllerId, ControllerName, ControllerKind, Namespace        
+| join kind=leftouter (podStatusRollup) on ControllerId        
+| join kind=leftouter (metricByController) on ControllerId        
+| join kind=leftouter (containerCountByController) on ControllerId        
+| join kind=leftouter (restartCountsByController) on ControllerId        
+| join kind=leftouter (oldestRestart) on ControllerId        
+| join kind=leftouter (trendLineByController) on ControllerId        
+| join kind=leftouter (latestLimit) on ControllerId        
+| join kind=leftouter (latestTimeGeneratedByController) on ControllerId        
+| project ControllerId, ControllerName, ControllerKind, PodStatusList, AggregationValue, ContainerCount, Restarts, ReadySinceNow, Node = '-', TrendList, LimitValue, LastTimeGenerated, Namespace;
+
+
+
+
+
+let endDateTime = datetime('2020-01-27T03:01:49.167Z');        
+let startDateTime = datetime('2020-01-24T03:00:00.000Z');        
+let trendBinSize = 1h;        
+let metricLimitCounterName = 'cpuLimitNanoCores';        
+let metricUsageCounterName = 'cpuUsageNanoCores';        
+let primaryInventory = KubePodInventory        
+| where TimeGenerated >= startDateTime        
+| where TimeGenerated < endDateTime        
+| where isnotempty(ClusterName)         
+| where isnotempty(Namespace)         
+| where ClusterId =~ '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2/resourceGroups/brad-test-big/providers/Microsoft.ContainerService/managedClusters/brad-test-big'
+| project TimeGenerated, ClusterId, ClusterName, Namespace, ServiceName,             
+Node = Computer, ControllerName, Pod = Name,             
+ContainerInstance = ContainerName,             
+ContainerID,             
+InstanceName, PerfJoinKey = strcat(ClusterId, '/', ContainerName),             
+ReadySinceNow = format_timespan(endDateTime - ContainerCreationTimeStamp, 'ddd.hh:mm:ss.fff'),             
+Restarts = ContainerRestartCount, Status = ContainerStatus,            
+ContainerStatusReason = columnifexists('ContainerStatusReason', ''),            
+ControllerKind = ControllerKind, PodStatus, ControllerId = strcat(ClusterId, '/', ControllerName)
+| extend PodId = strcat(ControllerId, '/', Pod)
+| where ControllerId == '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2/resourceGroups/brad-test-big/providers/Microsoft.ContainerService/managedClusters/brad-test-big/kube-svc-redirect';
+let latestStatus = primaryInventory         
+| summarize arg_max(TimeGenerated, *) by PodId         
+| project PodId, PodStatus = iif(TimeGenerated < ago(30m), 'Unknown', PodStatus), TimeGenerated;
+let latestContainersForController = primaryInventory        
+| where isnotempty(Node)        
+| summarize arg_max(TimeGenerated, *) by PerfJoinKey        
+| project ControllerId, PodId, PerfJoinKey;
+let filteredPerformance = Perf        
+| where TimeGenerated >= startDateTime        
+| where TimeGenerated < endDateTime        
+| where ObjectName == 'K8SContainer'        
+| where InstanceName startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2/resourceGroups/brad-test-big/providers/Microsoft.ContainerService/managedClusters/brad-test-big'        
+| project TimeGenerated, CounterName, CounterValue, InstanceName        ;
+let metricByPod = filteredPerformance        
+| where CounterName =~ metricUsageCounterName        
+| extend PerfJoinKey = InstanceName        
+| summarize Value = percentile(CounterValue, 95) by PerfJoinKey, CounterName        
+| join (latestContainersForController) on PerfJoinKey        
+| summarize Value = sum(Value) by PodId, CounterName        
+| project PodId, CounterName, AggregationValue = iff(CounterName =~ 'cpuUsageNanoCores', Value/1000000, Value);
+let containerCountByPod = latestContainersForController        
+| summarize ContainerCount = count() by PodId;
+let restartCountsByController = primaryInventory        
+| summarize Restarts = sum(Restarts) by PodId;
+let oldestRestart = primaryInventory        
+| where isnotempty(Node)
+| summarize arg_max(TimeGenerated, *) by PodId
+| project PodId, ReadySinceNow;
+let oldestNodeName = primaryInventory
+| summarize arg_max(TimeGenerated, *) by PodId
+| project Node, PodId;
+let trendLineByPod = filteredPerformance        
+| where CounterName =~ metricUsageCounterName        
+| extend PerfJoinKey = InstanceName        
+| summarize Value = percentile(CounterValue, 95) by bin(TimeGenerated, trendBinSize), PerfJoinKey, CounterName        
+| order by TimeGenerated asc        
+| join kind=leftouter (latestContainersForController) on PerfJoinKey        
+| summarize Value=sum(Value) by PodId, TimeGenerated, CounterName        
+| project TimeGenerated, Value = iff(CounterName =~ 'cpuUsageNanoCores', Value/1000000, Value), PodId        
+| summarize TrendList = makelist(pack("timestamp", TimeGenerated, "value", Value)) by PodId;
+let latestLimit = filteredPerformance        
+| where CounterName =~ metricLimitCounterName        
+| extend PerfJoinKey = InstanceName        
+| summarize arg_max(TimeGenerated, *) by PerfJoinKey        
+| join kind=leftouter (latestContainersForController) on PerfJoinKey        
+| summarize Value = sum(CounterValue) by PodId, CounterName        
+| project PodId, LimitValue = iff(CounterName =~ 'cpuLimitNanoCores', Value/1000000, Value);
+let latestTimeGeneratedByController = primaryInventory              
+| summarize arg_max(TimeGenerated, *) by PodId        
+| project PodId, LastTimeGenerated = TimeGenerated;
+// ALL NEW CONTAINER STUFF
+let lastContainerStatus = primaryInventory
+| where isnotempty(ContainerInstance)
+| summarize arg_max(TimeGenerated, *) by PerfJoinKey
+| project PerfJoinKey, Status = iif(TimeGenerated < ago(30m), 'unknown', Status);
+let metricByContainer = filteredPerformance        
+| where CounterName =~ metricUsageCounterName        
+| extend PerfJoinKey = InstanceName        
+| summarize Value = percentile(CounterValue, 95) by PerfJoinKey, CounterName
+| project PerfJoinKey, AggregationValue = iff(CounterName =~ 'cpuUsageNanoCores', Value/1000000, Value);
+let containerInventory = primaryInventory
+| distinct PodId, ContainerInstance, PerfJoinKey
+| where isnotempty(ContainerInstance)
+| join kind=leftouter (lastContainerStatus) on PerfJoinKey
+| join kind=leftouter (metricByContainer) on PerfJoinKey
+| project ContainerInstance, PodId, Status = iif(isempty(Status), 'unknown', Status), 
+AggregationValue = iif(isempty(AggregationValue), todouble(-1), AggregationValue),
+ContainerCount = 1
+| summarize Containers = makelist(pack("ContainerName", ContainerInstance, "Status", Status, "AggregationValue", AggregationValue, "ContainerCount", ContainerCount)) by PodId;
+primaryInventory        
+| distinct Pod, ControllerId, ControllerName, PodId, Namespace
+| join kind=leftouter (latestStatus) on PodId
+| join kind=leftouter (containerCountByPod) on PodId
+| join kind=leftouter (metricByPod) on PodId 
+| join kind=leftouter (restartCountsByController) on PodId
+| join kind=leftouter (oldestRestart) on PodId
+| join kind=leftouter (oldestNodeName) on PodId
+| join kind=leftouter (trendLineByPod) on PodId
+| join kind=leftouter (latestLimit) on PodId
+| join kind=leftouter (latestTimeGeneratedByController) on PodId
+| join kind=leftouter (containerInventory) on PodId
+| project ControllerId, ControllerName, PodId, PodName = Pod, PodStatus, AggregationValue = iif(isempty(AggregationValue), todouble(-1), AggregationValue), 
+ContainerCount = iif(isempty(ContainerCount), 0, ContainerCount), Restarts, 
+ReadySinceNow = iif(isempty(ReadySinceNow), format_timespan(ago(1s) - now(), 'ddd.hh:mm:ss.fff'), ReadySinceNow),
+Node = iif(isempty(Node), '-', Node), TrendList = iif(isempty(TrendList), parse_json('[]'), TrendList),
+LimitValue = iif(isempty(LimitValue), todouble(1), LimitValue),
+LastTimeGenerated, Namespace, Containers = iif(isempty(Containers), parse_json('[]'), Containers)

@@ -1,0 +1,1390 @@
+/* from OMS environment, desktop core styles */
+
+h1 {
+    font-size: 1.25em;
+}
+
+.progress-indicator-bar {
+    position: relative;
+    overflow: hidden;
+    height: 3px;
+    margin: 3px 0 0 0;
+    width: 100%;
+}
+
+.progress-indicator-bar .progress-indicator-bar-mark {
+    height: 3px;
+    width: 3px;
+    left: 0px;
+    background-color: #429bd5;
+    position: absolute;
+    border: solid #6daed9 1px;
+
+    animation-name: progress-indicator-bar-mark-animation;
+    animation-timing-function: cubic-bezier(0,0.5,1,0.5);
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+}
+
+@keyframes progress-indicator-bar-mark-animation {
+    0% {
+        left: 0;
+        opacity: 0;
+    }
+
+    5% {
+        opacity: 1;
+    }
+
+    95% {
+        opacity: 1;
+    }
+
+    100% {
+        left: 100%;
+        opacity: 0;
+    }
+}
+
+/* end OMS environment imports */
+
+.adm-dashboard {
+    /* this initial section from OMS environment, desktop core styles */
+    font-family: "Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
+    font-size: 12px;
+    color: #464f59;
+    white-space: normal;
+
+    position: absolute;
+    /*
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff;
+}
+
+    .ibiza .adm-dashboard {
+        left: 0;
+        right: 0;
+        padding: 0 20px;
+    }
+
+    .ibiza.theme-dark .adm-dashboard {
+        background-color: #303030;
+    }
+
+    #aux-tabcontent .adm-dashboard {
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+
+#admMachineListBlade {
+    position: relative;
+    top: -20px;
+    float: left;
+    height: 100%;
+    width: 240px;
+    overflow-x: visible;
+}
+
+    #admMachineListBlade .basic-blade-content {
+        width: 100%;
+    }
+
+#admMap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+    .ibiza.theme-dark #admMap {
+        background-color: #3B3B3B;
+    }
+
+#admMap.showPanel {
+    right: 291px;
+}
+
+    .ibiza #admMap.showPanel {
+        right: 57px;
+    }
+
+.adm-faded-load {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 100ms linear 100ms, opacity 100ms;
+}
+
+    .adm-faded-load.loaded,
+    .adm-faded-load.fast.loaded {
+        visibility: visible;
+        opacity: 1;
+        transition-delay: 1ms;
+    }
+
+    .adm-faded-load.fast {
+        transition: visibility 1ms linear 250ms, opacity 250ms ease-in-out;
+    }
+
+/* everything between the ==== lines is necessary, everything after that should be reviewed for removal */
+/* ========================================= keep ========================================== */
+
+.hypergraph-feedback-container,
+.hypergraph-container,
+.hypergraph-event-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    cursor: move;
+}
+
+    .hypergraph-feedback-container:active,
+    .hypergraph-container:active,
+    .hypergraph-event-container:active {
+        cursor: move;
+    }
+
+.hypergraph-feedback-container {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/**
+ * Numbers and adornment text formatting
+ */
+.hypergraph-container {
+    font-family: 'Segoe UI';
+    font-size: 12pt;
+}
+
+.hypergraph-pointer-events-none {
+    pointer-events: none; 
+}
+
+/* This is a style control users put on their node content. This particular one will get filtered out in Ibiza, but can be used in standalone environments */
+.hypergraph-node-content { 
+    /*
+    color: #222; 
+    background-color: #fff;
+    border-width: 4px;
+    border-style: solid;
+    border-color: #d4d4d4;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    */
+}
+
+.hypergraph-node-content:hover {
+}
+    
+.selected .hypergraph-node-content:hover {
+    cursor: default;
+}
+
+.hypergraph-node-container2 {
+    border-color: white;
+    border-width: 4px; 
+    border-style: solid;
+    padding-top: 0px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* see AdmGraphStage for SVG constants - svg and css is manually sync'ed for now */
+/* fixme: can set at runtime via jquery if node insertion perf delta is acceptable */
+
+.hypergraph-node-container2:hover {
+    /* action bar full height - action bar min height */
+    /* transform: translateY(-10px);
+    padding-top: 10px; */
+}
+
+.hypergraph-node-container2:hover .hypergraph-node-content {
+    /* action bar full height - action bar min height */
+    /* transform: translateY(10px); */
+}
+    
+.hypergraph-node-expander,
+.hypergraph-node-context-menu-trigger {
+    visibility: hidden; 
+}
+
+.hypergraph-node-container2:hover .hypergraph-node-expander, 
+.hypergraph-node-container2.selected .hypergraph-node-expander, 
+.hypergraph-node-container2:hover .hypergraph-node-context-menu-trigger,
+.hypergraph-node-container2.selected .hypergraph-node-context-menu-trigger  {
+    visibility: visible;
+}
+
+.hypergraph-node-actionbar {
+    /* halo margin + border width + actionbar min height */
+    /* height: 30px */
+    pointer-events: none;
+}
+
+.hypergraph-node-menubar {
+    /* height: 6px; */
+}
+
+.hypergraph-node-container2:hover .hypergraph-node-actionbar {
+    /* halo margin + border width + actionbar full height */
+    /* height: 40px; */
+}
+
+
+.hypergraph-node-highlighting:hover {
+    fill: #fdfdfd; 
+}
+
+.hypergraph-node-container:hover .hypergraph-node-menubar,
+.hypergraph-node-container.selected .hypergraph-node-menubar {
+    /* transform: translateY(-10px);
+    height: 16px; */
+}
+
+.hypergraph-node-container:hover > .hypergraph-node-halo-top,
+.hypergraph-node-container.selected > .hypergraph-node-halo-top {
+    /* transform: translateY(-10px); */
+}
+
+
+/* ======================================= end keep ======================================== */
+
+.hypergraph-container.panning {
+    /* FIXME this doesnt show until mouse-up, disabling until fixed*/
+    /*cursor: move;*/
+}
+
+.hypergraph-edge {
+    position: absolute;
+    fill: none;
+}
+
+.hypergraph-edge.failed {
+    stroke: red;
+}
+
+.hypergraph-arrowhead {
+    /* fill: #738da8; */
+}
+
+.hypergraph-edge-marker {
+    stroke-dasharray: 1,0;
+}
+
+.hypergraph-edgeDraft {
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    margin: 0px;
+    border: 0px;
+    position: absolute;
+    fill: none;
+}
+
+.hypergraph-hiddenHitTestEdge {
+    stroke: #fff;
+    /* this is necessary to make the path clickable in Firefox */
+    opacity: 0; /* 0.01; */
+    stroke-width: 12px;
+    fill: none;
+}
+
+.hypergraph-node {
+    position: absolute;
+}
+
+.hypergraph-connections-container {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    pointer-events: none; /* this allows mouse click to fall through to nodes when svg layer is on top */
+}
+
+.hypergraph-overlay {
+    position: relative;
+    /* We set this to 0x0 and intentionally overflow. This allows transform with matrix to work properly for the child elements. */
+    height: 0;
+    width: 0;
+}
+
+.hypergraph-node-content.hypergraph-node-parent {
+    top: 10px;
+    margin: 1px;
+}
+
+    .selected .hypergraph-node-content.hypergraph-node-parent,
+    .hypergraph-node-content.hypergraph-node-parent:hover {
+        top: 0;
+    }
+
+    .selected .hypergraph-node-content.hypergraph-node-parent {
+        margin: 0;
+        border-width: 2px;
+        border-color: #7d7d7d;
+        box-shadow: 0px 0px 10px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .selected .hypergraph-node-content.hypergraph-node-expanded-true.hypergraph-node-parent {
+        box-shadow: 0px 0px 10px 6px rgba(0, 0, 0, 0.25);
+    }
+
+    .hypergraph-node-parent.hypergraph-node-emphasis-0 {
+        bottom: 25px;
+    }
+
+.hypergraph-node-content.hypergraph-node-child {
+    top: -1px;
+    border-color: #e8e8e8;
+}
+
+    .selected .hypergraph-node-content.hypergraph-node-child {
+    }
+
+    .hypergraph-node-content.hypergraph-node-child:hover {
+        background-color: #f0f0f0;
+    }
+
+    .hypergraph-node-menu-bar span {
+        display: none;
+    }
+
+    .selected .hypergraph-node-menu-bar,
+    .hypergraph-node-content:hover .hypergraph-node-menu-bar {
+        height: 16px;
+    }
+
+        .selected .hypergraph-node-menu-bar {
+            border-color: #7d7d7d;
+        }
+
+        .selected .hypergraph-node-menu-bar span,
+        .hypergraph-node-content:hover .hypergraph-node-menu-bar span {
+            display: inline-block;
+        }
+
+    .hypergraph-node-emphasis-2 .hypergraph-node-menu-bar {
+        background: #E5A800;
+    }
+
+    .hypergraph-node-emphasis-3 .hypergraph-node-menu-bar {
+        background: #B9141A;
+    }
+
+
+/*
+.hypergraph-node-expander {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 30px;
+    height: 17px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: center center;
+    background-image: url("../../images/dark/caret_down.svg");
+}
+
+.hypergraph-node-emphasis-2 .hypergraph-node-expander,
+.hypergraph-node-emphasis-3 .hypergraph-node-expander {
+    background-image: url("../../images/light/caret_down.svg");
+}
+
+.hypergraph-node-expanded-true .hypergraph-node-expander {
+    background-image: url("../../images/dark/caret_up.svg");
+}
+
+.hypergraph-node-emphasis-2.hypergraph-node-expanded-true .hypergraph-node-expander,
+.hypergraph-node-emphasis-3.hypergraph-node-expanded-true .hypergraph-node-expander {
+    background-image: url("../../images/light/caret_up.svg");
+}
+
+.hypergraph-node-expander:hover,
+.hypergraph-node-context-menu-trigger:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+*/
+
+.hypergraph-node-context-menu-trigger {
+    cursor: pointer;
+}
+
+.hypergraph-node-menubar {
+    /*
+    position: absolute;
+    position: relative;
+    top: 0;
+    width: 30px;
+    width: 16px;
+    height: 100%;
+    height: 17px;
+    cursor: pointer;
+    font-size: 16px;
+    letter-spacing: 0.1em;
+    user-select: none;
+    display: none;
+    float: right;
+    line-height: 100%;
+*/
+}
+
+.hypergraph-node-emphasis-2 .hypergraph-node-context-menu-trigger,
+.hypergraph-node-emphasis-3 .hypergraph-node-context-menu-trigger {
+    color: #f5f5f5;
+}
+
+/*
+.selected .hypergraph-node-display-name .hypergraph-node-context-menu-trigger,
+.hypergraph-node-content:hover .hypergraph-node-display-name .hypergraph-node-context-menu-trigger {
+    display: block;
+    color: #555555;
+}
+*/
+
+.hypergraph-node-display-name {
+    position: relative;
+    padding: 2px 4px;
+    margin: 0;
+    text-align: left;
+    font-size: 14px;
+    font-weight: normal;
+    border: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.hypergraph-node-display-name-tooltiptext-div {
+    position: absolute;
+    overflow: visible;
+    visibility: hidden;
+    z-index: 1;
+    border: 1px solid darkgrey;
+    color: grey;
+    text-align: center;
+    background-color:white;
+    bottom: 100%;
+    padding: 5px;
+    font-size: 11px;
+}
+
+    .hypergraph-node-parent .hypergraph-node-display-name {
+        padding: 2px 10px;
+    }
+
+    .hypergraph-node-child .hypergraph-node-display-name {
+        padding: 5px 3px;
+        font-size: 13px;
+    }
+
+.hypergraph-node-parent.hypergraph-node-expanded-true .hypergraph-node-display-name {
+    padding: 5px 18px;
+}
+
+.hypergraph-node-compact .hypergraph-node-display-name {
+    font-size: 12px;
+    top: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.graph-skin-style-document .selected .hypergraph-node-content {
+    border-width: 4px;
+    stroke-width: 4px;
+}
+
+.hypergraph-loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+}
+
+.hypergraph-loading-item {
+    display: block;
+    position: relative;
+    top: 50%;
+    width: 100%;
+    text-align: center;
+}
+
+.hypergraph-node-container {
+    cursor: pointer;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+}
+
+.panning .hypergraph-node-container {
+    /* FIXME this doesnt show until mouse-up, disabling until fixed*/
+    /*cursor: move;*/
+}
+
+.committing .hypergraph-node-container {
+    cursor: progress;
+}
+
+.locked .hypergraph-node-container {
+    cursor: not-allowed;
+}
+
+.hypergraph-container.committing {
+    cursor: progress;
+}
+
+.multiSelecting .hypergraph-selection-box {
+    display: block;
+}
+
+.hypergraph-selection-box {
+    display: none;
+    position: absolute;
+    border-style: solid;
+    border-width: 2px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.hypergraph:hover .hypergraph-horizontal-scrollbar,
+.hypergraph:hover .hypergraph-vertical-scrollbar {
+    visibility: visible;
+}
+
+.hypergraph-horizontal-scrollbar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    visibility: hidden;
+}
+
+.hypergraph-vertical-scrollbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    visibility: hidden;
+}
+
+.hypergraph-horizontal-scroll-range {
+    /* Make the range have a non-zero height so the scrollbars appear */
+    height: 1px;
+}
+
+.hypergraph-vertical-scroll-range {
+    /* Make the range have a non-zero height so the scrollbars appear */
+    width: 1px;
+}
+
+.hypergraph-entity-dimmed {
+    opacity: 0.4;
+}
+
+.hypergraph-node-dimmed {
+    opacity: 0.4;
+}
+
+.hypergraph-edge-dimmed {
+    /* opacity: 0.3; */
+    stroke-width: 1pt;
+    stroke: #bbb;
+}
+
+.hypergraph-arrowhead-dimmed {
+    /* opacity: 0.3; */
+    fill: #ccc;
+}
+
+.hypergraph-context-menu {
+    position: absolute;
+    width: 150px;
+}
+
+
+/* VIVA LIGHT THEME DEFINITIONS */
+
+.azc-light-theme {
+  background-color: #e8e8e8; 
+  color: #252525;
+}
+
+
+/* VIVA DARK THEME DEFINITIONS */
+
+/* AdmMap component styles - see AdmGraph.css for ServMap-specific HyperGraph styles */
+
+#admMapComponentContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+#admMapContainer {
+    position: absolute;
+    top: 25px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#admMapSkeleton,
+#admMapContextError {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+#admMapSkeleton .adm-hint-text,
+#admMapContextError .adm-hint-text {
+    margin: 0;
+    font-size: 20px;
+    color: #696969;
+    text-shadow: 1px 1px #eee;
+}
+
+#admMapSkeleton > img,
+#admMapContextError > img {
+    width: 30%;
+    height: 30%;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+#admMapSkeleton .adm-hint-text,
+#admMapContextError .adm-hint-text {
+    padding: 50px 0 20px 0;
+    text-align: center;
+}
+
+#admMapProgressBar {
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+}
+
+#admMapProgressBar .progress-indicator-bar {
+    display: inline-block;
+    height: 20px;
+    width: 400px;
+    transform: scale(1.3);
+}
+
+#admMapProgressBar .progress-status {
+    font-size: 16px;
+    color: #5f98bb;
+}
+
+/* NODE EXTENSION TEMPLATE STYLES */
+
+.adm-context-menu-content {
+    background: rgba(255, 255, 255, 0.95);
+    display: inline-block;
+    position: relative;
+    top: 17px;
+    left: -26px;
+    border: 1px solid #b3b3b3;
+    box-shadow: 0 10px 20px -5px rgba(58,58,58,.25);
+}
+
+.adm-context-menu-option {
+    padding: 8px 8px;
+    cursor: pointer;
+}
+
+    .adm-context-menu-option:last-child {
+        border-bottom: none;
+    }
+
+    .adm-context-menu-option:hover {
+        background-color: #e6e6e6;
+    }
+
+/* END NODE EXTENSION TEMPLATE STYLES */
+
+/* MAP CONTROL BAR STYLES */
+
+#admMapControlBar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 25px;
+    text-align: right;
+    display: flex;
+}
+
+.ibiza.theme-dark #admMapControlBar {
+    background-color: #303030;
+    border-color: #666;
+    border-top: 1px solid #666;
+}
+
+#admMapControlBar .map-navigation-container {
+    margin-right: auto;
+}
+
+    #admMapControlBar .map-navigation-option {
+        font-size: 13px;
+        cursor: default;
+        color: #333;
+    }
+
+    #admMapControlBar .map-navigation-container .navigation-button {
+        border-width: 1px;
+        border-color: #015cda;
+        cursor: pointer;
+        font-size: 13px;
+        color: #015cda;
+        background-color: white;
+        height: 25px;
+    }
+
+    #admMapControlBar .map-navigation-option:hover {
+        background: transparent;
+        cursor: default;
+    }
+
+        #admMapControlBar .map-navigation-option .text-decoration {
+            cursor: pointer;
+            color: blue;
+            border-bottom: 1px solid blue;
+        }
+
+        #admMapControlBar .map-navigation-option .text-decoration:hover {
+            cursor: pointer;
+            color: blue;
+            opacity: 0.8;
+        }
+
+    #admMapControlBar .map-navigation-option-seperator img {
+        width: 12px;
+        vertical-align: middle;
+    }
+
+#admMapControlBar .map-control-bar-container {
+    margin-left: auto;
+    display: flex;
+}
+
+#admMapControlBar .map-control-bar-container .map-control {
+    position: relative;
+    display: inline-block;
+    height: 100%;
+    font-size: 14px;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 100%;
+    min-width: 30px;
+    border: 0;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+    #admMapControlBar .map-control.disabled {
+        cursor: default;
+        opacity: 0.5;
+    }
+
+    #admMapControlBar .map-control:not(.disabled):hover {
+        background-color: #e7f8fd;
+    }
+
+.ibiza.theme-dark #admMapControlBar .map-control:not(.disabled):hover {
+    background-color: #303030;
+}
+
+#admMapControlBar .map-control button {
+    border: 0;
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+}
+
+#admMapControlBar select.map-control {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    background: url(../../images/dark/icon-chevron-collapsed.png) no-repeat right 4px center;
+    border-width: 0;
+    color: #464f59;
+    direction: rtl;
+    padding: 0 22px 1px 10px;
+    width: auto;
+}
+
+.critical-health {
+    fill: #a6282c
+}
+
+.warning-health {
+    fill: #e5a800
+}
+
+.ibiza.theme-dark #admMapControlBar select.map-control {
+    background-image: url(../../images/light/icon-chevron-collapsed-white.png);
+}
+
+    #admMapControlBar select.map-control option {
+        background-color: #ffffff;
+    }
+
+    .ibiza.theme-dark #admMapControlBar select.map-control option {
+        background-color: #252525;
+    }
+
+    .ibiza.theme-dark #admMapControlBar .map-control.map-control-label button {
+        color: #ffffff;
+    }
+
+#admMapControlBar .map-legend-container {
+    position: absolute;
+    top: 25px;
+    right: 0;
+    background: #fff;
+    width: 378px;
+    border: 1px solid #c5cbd1;
+    box-shadow: 0px 8px 4px -4px rgba(0, 0, 0, 0.20);
+    z-index: 1000;
+    cursor: default;
+    padding: 20px;
+}
+
+    .ibiza.theme-dark .map-legend-container {
+        background: #252525 !important;
+        color: #fff;
+    }
+
+    .map-legend-container button {
+        border: none;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+
+    .map-legend-container h3 {
+        font-family: "Segoe UI";
+        font-weight: bold;
+        margin: 0;
+        text-align: left;
+    }
+
+    .map-legend-container .connections-subtitle {
+        text-align: left;
+        margin: 5px 0;
+    }
+
+    .map-legend-container .row {
+        display: flex;
+    }
+
+    .map-legend-container .column {
+        flex: 1;
+        display: inline-flex;
+    }
+
+        .map-legend-container .column > p {
+            flex: 1;
+            text-align: center;
+        }
+
+    .map-legend-container .legend-symbol {
+        width: 55px;
+        height: 20px;
+        flex: 1;
+        margin: auto 0;
+    }
+
+    #admMapControlBar .map-legend-container #inboundSymbol.legend-symbol {
+        background: url("../../images/map/inbound.svg") center no-repeat;
+    }
+
+    #admMapControlBar .map-legend-container #outboundSymbol.legend-symbol {
+        background: url("../../images/map/outbound.svg") center no-repeat;
+    }
+
+    #admMapControlBar .map-legend-container #failedSymbol.legend-symbol {
+        background: url("../../images/map/failed.svg") center no-repeat;
+    }
+
+    #admMapControlBar .map-legend-container #selfLinkSymbol.legend-symbol {
+        background: url("../../images/map/self_link.svg") center no-repeat;
+    }
+/*
+#admMapControlBar #processesFilter.map-control {
+    background-image: url("../../images/map/dark/filter.svg");
+    background-size: 50%;
+    background-position: 50% 50%;
+}
+
+.ibiza.theme-dark #admMapControlBar #processesFilter.map-control {
+    background-image: url("../../images/map/light/filter.svg");
+}
+*/
+#admMapControlBar #processesFilter.map-control .processes-filter-click {
+    height: 30px;
+    width: 30px;
+}
+
+#admMapControlBar #processesFilter.map-control .processes-filter-container {
+    position: absolute;
+    top: 30px;
+    left: -115px;
+    background: #ffffff;
+    width: 225px;
+    height: 35px;
+    border: 1px solid #c5cbd1;
+    box-shadow: 0px 8px 4px -4px rgba(0, 0, 0, 0.20);
+    z-index: 1000;
+    cursor: default;
+}
+
+    #admMapControlBar #processesFilter.map-control .processes-filter-container #groupFilterOptions {
+        display: none;
+    }
+
+    #admMapControlBar #processesFilter.map-control .processes-filter-container.group-filter {
+        left: -165px;
+        width: 275px;
+        height: 135px;
+    }
+
+        #admMapControlBar #processesFilter.map-control .processes-filter-container.group-filter #groupFilterOptions {
+            display: block;
+        }
+
+.ibiza.theme-dark #admMapControlBar #processesFilter.map-control .processes-filter-container {
+    background: #252525;
+}
+
+    #admMapControlBar #processesFilter.map-control .processes-filter-container h1 {
+        font-family: "Segoe UI";
+        font-weight: bold;
+        margin: 5px 25px 10px 15px;
+        font-size: 14px;
+    }
+
+    #admMapControlBar #processesFilter.map-control .processes-filter-container input {
+        margin-left: 20px;
+        margin-right: 5px;
+        margin-bottom: 8px;
+    }
+
+    #admMapControlBar #processesFilter.map-control .processes-filter-container .seperator-line {
+        border-bottom: 1px solid #EEEEEE;
+        padding-bottom: 10px;
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-bottom: 5px;
+    }
+
+    #admMapControlBar #processesFilter.map-control .processes-filter-container .non-agent-backends-option {
+        margin-top: 10px;
+    }
+
+
+#admMapControlBar #mapZoom.map-control,
+#admMapControlBar #mapZoomIn.map-control {
+    margin-left: 0px;
+}
+
+#admMapControlBar #mapZoomMenu.map-control {
+    background-image: url("../../images/map/dark/zoom_100_percent.svg");
+    background-position: 50% 50%;
+    background-size: 55%;
+    width: 60px;
+    display: none;
+}
+
+.ibiza.theme-dark #admMapControlBar #mapZoomMenu.map-control {
+    background-image: url("../../images/map/light/zoom_100_percent.svg");
+}
+
+#admMapControlBar #mapExpandAll.map-control,
+#admMapControlBar #mapCollapseAll.map-control {
+    padding: 0 20px;
+    background-size: 35%;
+    box-shadow: none;
+    background-color: transparent;
+}
+
+    #admMapControlBar #mapExpandAll.map-control:hover,
+    #admMapControlBar #mapCollapseAll.map-control:hover {
+        background-color: #e7f8fd;
+    }
+/*
+#admMapControlBar #mapExpandAll.map-control {
+    background-image: url("../../images/map/dark/expand_all.svg");
+}
+
+.ibiza.theme-dark #admMapControlBar #mapExpandAll.map-control {
+    background-image: url("../../images/map/light/expand_all.svg");
+}
+*/
+
+#admMapControlBar #mapCollapseAll.map-control {
+    background-image: url("../../images/map/dark/collapse_all.svg");
+}
+
+.ibiza.theme-dark #admMapControlBar #mapCollapseAll.map-control {
+    background-image: url("../../images/map/light/collapse_all.svg");
+}
+
+#admMapControlBar #helpLink.map-control {
+    background-image: url("../../images/map/dark/question_mark.svg");
+    background-size: 30%;
+}
+
+.ibiza.theme-dark #admMapControlBar #helpLink.map-control {
+    background-image: url("../../images/map/light/question_mark.svg");
+}
+
+#admMapZoomControls {
+    opacity: 0.5;
+    transition: opacity 0.2s ease-in-out;
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+}
+
+    #admMapZoomControls:hover {
+        opacity: 0.8;
+    }
+
+#admMapZoomControls .map-control {
+    display: block;
+    background: #ffffff no-repeat;
+    background-size: 44%;
+    background-position: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #c5cbd1;
+    z-index: 1000;
+    cursor: pointer;
+    border-radius: 100%;
+    margin: 10px 0;
+}
+
+    .ibiza.theme-dark #admMapZoomControls .map-control {
+        background-color: #252525;
+    }
+
+#admMapZoomControls #mapZoomIn.map-control {
+    background-image: url("../../images/map/dark/zoom_in.svg");
+    background-size: 50%;
+    background-position-x: 8.5px;
+}
+
+    .ibiza.theme-dark #admMapZoomControls #mapZoomIn.map-control {
+        background-image: url("../../images/map/light/zoom_in.svg");
+    }
+
+#admMapZoomControls #mapZoomOut.map-control {
+    background-image: url("../../images/map/dark/zoom_out.svg");
+}
+
+    .ibiza.theme-dark #admMapZoomControls #mapZoomOut.map-control {
+        background-image: url("../../images/map/light/zoom_out.svg");
+    }
+
+#admMapZoomControls #mapZoomFit.map-control {
+    background-image: url("../../images/map/dark/zoom_fit.svg");
+}
+
+    .ibiza.theme-dark #admMapZoomControls #mapZoomFit.map-control {
+        background-image: url("../../images/map/light/zoom_fit.svg");
+    }
+
+@media screen and (-ms-high-contrast:active) {
+    #admMapControlBar select.map-control {
+        background-image: url(../../images/map/light/icon-chevron-collapsed-white.png);
+    }
+    #admMapControlBar #processesFilter.map-control {
+        background-image: url("../../images/map/light/filter.svg");
+    }
+    #admMapControlBar #mapZoomMenu.map-control {
+        background-image: url("../../images/map/light/zoom_100_percent.svg");
+    }
+    #admMapControlBar #mapExpandAll.map-control {
+        background-image: url("../../images/map/light/expand_all.svg");
+    }
+    #admMapControlBar #mapCollapseAll.map-control {
+        background-image: url("../../images/map/light/collapse_all.svg");
+    }
+    #admMapControlBar #helpLink.map-control {
+        background-image: url("../../images/map/light/question_mark.svg");
+    }
+    #admMapZoomControls #mapZoomIn.map-control {
+        background-image: url("../../images/map/light/zoom_in.svg");
+    }
+    #admMapZoomControls #mapZoomOut.map-control {
+        background-image: url("../../images/map/light/zoom_out.svg");
+    }
+    #admMapZoomControls #mapZoomFit.map-control {
+        background-image: url("../../images/map/light/zoom_fit.svg");
+    }
+}
+
+#admMapControlBar .map-control.map-style-toggle-button {
+    padding: 3px 0px 0px 0px;
+    width: auto;
+}
+
+.adm-unstyled-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.adm-preview-toggle {
+    font-family: 'Segoe UI'
+}
+
+.adm-unstyled-list .list-item {
+    display: inline-block;
+}
+
+.adm-preview-toggle .left-option,
+.adm-preview-toggle .right-option {
+    padding: 3px 15px;
+    border: 1px solid #015cda;
+    background-color: #fff;
+    color: #015cda;
+}
+
+.adm-preview-toggle .selected {
+    background-color: #015cda;
+    color: #fff;
+}
+
+/* END MAP CONTROL BAR STYLES */
+/* ADM-specific HyperGraph styles only */
+
+/* canvas styles */
+
+.hypergraph-container {
+    background-color: #fff;
+}
+
+.ibiza.theme-dark .hypergraph-container {
+    background-color: #303030;
+}
+
+/* node styles */
+
+.hypergraph-node-healthstate:hover {
+    opacity: 0.7;
+}
+
+.hypergraph-node-container2 text {
+    fill: #252525;
+    cursor: pointer;
+}
+
+.healthstate-filterbar text {
+    fill: white;
+    cursor: default;
+}
+
+.hypergraph-node-bg {
+    fill: #ffffff;
+    stroke: #ccc; 
+}
+
+.hypergraph-node-bg.selected {
+    stroke: #0874aa;
+    stroke-width: 3;
+}
+
+.hypergraph-node-bg.warning {
+    stroke: #e5a800;
+}
+
+.hypergraph-node-bg.critical {
+    stroke: #a6282c;
+}
+
+.hypergraph-node-bg.informational {
+    stroke: green;
+}
+
+.healthstate-filterbar-selected {
+    stroke: #0874aa;
+    stroke-width: 3px;
+}
+
+.hypergraph-node-selection {
+    stroke: #0874aa;
+}
+
+.hypergraph-node-bg.dimmed {
+    fill: #f0f0f0;
+}
+
+.hypergraph-node-container2:hover {
+}
+
+.ibiza.theme-dark .hypergraph-node-container2 text {
+    fill: #fff; 
+}
+
+.ibiza.theme-dark .hypergraph-node-container2 rect {
+    fill: #252525; 
+}
+
+.ibiza.theme-dark .hypergraph-node-bg {
+    fill: #222;
+    stroke: #888;
+}
+
+.ibiza.theme-dark .hypergraph-node-bg.selected {
+    stroke: #0874aa;
+}
+
+.ibiza.theme-dark .hypergraph-node-bg.dimmed {
+    fill: #666;
+}
+
+.ibiza.theme-dark .hypergraph-node-container2:hover {
+    fill: #444; 
+}
+
+/* node utils */
+use.link:hover {
+    opacity: 0.6;
+}
+
+/* edge styles */
+
+.adm-map-edge {
+    stroke-width: 2pt;
+    stroke-dasharray: none;
+    stroke: #758387;
+}
+
+.adm-map-edge.failed {
+    stroke-dasharray: 12 3;
+    stroke: red;
+}
+
+.adm-map-edge.wide {
+    stroke-width: 4pt;
+    stroke: transparent;
+}
+
+.adm-map-edge.dimmed {
+    stroke-width: 1pt;
+    stroke: #aaa;
+    opacity: 0.8;
+}
+
+.adm-map-edge.selected {
+    stroke-width: 4pt;
+    stroke: #0874aa;
+}
+
+.adm-map-edge.selected.failed {
+    stroke-width: 4pt;
+    stroke: red;
+}
+
+.adm-map-enable-edge-selection:hover,
+g:focus > .adm-map-enable-edge-selection {
+    stroke-width: 4pt;
+    stroke: #0874aa;
+}
+
+.adm-map-enable-edge-selection:hover ~ .adm-map-edge-arrowhead,
+g:focus > .adm-map-edge-arrowhead {
+    fill: #0874aa;
+    stroke: #0874aa;
+    stroke-width: 2pt;
+}
+
+.adm-map-enable-edge-selection.failed:hover,
+g:focus > .adm-map-enable-edge-selection.failed {
+    stroke-dasharray: 12 3;
+    stroke: red;
+    stroke-width: 4pt;
+}
+
+.adm-map-enable-edge-selection.failed:hover ~ .adm-map-edge-arrowhead.failed,
+g:focus > .adm-map-edge-arrowhead.failed {
+    fill: red;
+    stroke: red;
+    stroke-width: 2pt;
+}
+
+.adm-map-edge.dimmed.failed {
+    stroke-width: 1pt;
+    stroke: #e27e7e;
+    opacity: 0.8;
+}
+
+.adm-map-edge-arrowhead {
+    fill: #758387;
+}
+
+.adm-map-edge-arrowhead.selected {
+    fill: #0874aa;
+}
+
+.adm-map-edge-arrowhead.failed {
+    fill: red;
+}
+
+.adm-map-edge-arrowhead.failed.selected {
+    fill: red;
+}
+
+.adm-map-edge-arrowhead.dimmed {
+    fill: #ccc;
+    opacity: 0.9;
+}
+
+.adm-map-edge-arrowhead.dimmed.failed {
+    fill: #e26a6a;
+    opacity: 0.9;
+}

@@ -10413,11 +10413,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\t-sapeif\\dispatch_test_bot\\NLP-With-Dispatch-Bot.csproj",
+      "projectUniqueName": "C:\\Users\\t-sapeif\\CI_Bot\\NLP-With-Dispatch-Bot.csproj",
       "projectName": "NLP-With-Dispatch-Bot",
-      "projectPath": "C:\\Users\\t-sapeif\\dispatch_test_bot\\NLP-With-Dispatch-Bot.csproj",
+      "projectPath": "C:\\Users\\t-sapeif\\CI_Bot\\NLP-With-Dispatch-Bot.csproj",
       "packagesPath": "C:\\Users\\t-sapeif\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\t-sapeif\\dispatch_test_bot\\obj\\",
+      "outputPath": "C:\\Users\\t-sapeif\\CI_Bot\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\t-sapeif\\AppData\\Roaming\\NuGet\\NuGet.Config",

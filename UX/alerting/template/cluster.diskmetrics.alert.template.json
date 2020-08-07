@@ -1,0 +1,104 @@
+{
+    "$schema": "http://schemas.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterName": {
+            "type": "string",
+            "metadata": {
+                "description": "Friendly name of the cluster to use in alert name / description"
+            }
+        },
+        "clusterResourceId": {
+            "type": "string",
+            "metadata": {
+                "description": "Cluster Azure Resource Id (ARM id) for AKS cluster in form /subscriptions/{id}/resourceGroups/{group-name}/providers/Microsoft.ContainerService/managedClusters/{cluster-name}"
+            }
+        },
+        "workspaceResourceId": {
+            "type": "string",
+            "metadata": {
+                "description": "Log Analytics workspace Azure Resource Id (ARM id) for Log Analytics workspace in form /subscriptions/{id}/resourceGroups/{group-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name}"
+            }
+        },
+        "alertSeverity": {
+            "type": "int",
+            "allowedValues": [0, 1, 2, 3, 4],
+            "metadata": {
+                "description": "Alert severity"
+            }
+        },
+        "actionGroupResourceId": {
+            "type": "string",
+            "metadata": {
+                "description": "Action group to use for alert in form /subscriptions/{id}/resourceGroups/{group-name}/providers/microsoft.insights/actiongroups/{action-group-name}"
+            }
+        },
+        "frequencyInMinutes": {
+            "type": "int",
+            "defaultValue": 5,
+            "metadata": {
+                "description": "Frequency of alert query evaluation"
+            }
+        },
+        "timeWindowInMinutes": {
+            "type": "int",
+            "defaultValue": 60,
+            "metadata": {
+                "description": "Look-back time window of the alert query"
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "region where alert rule is created. Example: eastus"
+            }
+        },
+        "diskUsedPercentUnhealthyThreshold": {
+            "type": "int",
+            "defaultValue": 90,
+            "metadata": {
+                "description": "A disk is considered to be in a critical state if the used percentage of that disk is greater than this parameter value."
+            }
+        }
+    },
+    "variables": {
+        "alertName": "[concat('Cluster ', parameters('clusterName'), ' Disk Alert')]",
+        "alertDescription": "[concat('There is a disk on a node in Cluster ', parameters('clusterName'), ' that is in an unhealthy state. Insights in Montoring can help you diagnose this disk problem further')]",
+        "alertTagName": "[concat('hidden-link:', parameters('workspaceResourceId'))]"
+    },
+    "resources": [
+        {
+            "name": "[variables('alertName')]",
+            "type": "microsoft.insights/scheduledQueryRules",
+            "apiVersion": "2018-04-16",
+            "location": "[parameters('location')]",
+            "tags": {"[variables('alertTagName')]": "Resource"},
+            "properties": {
+                "description": "[variables('alertDescription')]",
+                "enabled": "true",
+                "source": {
+                    "query": "[concat('let clusterId = \"', parameters('clusterResourceId'), '\";', 'let endDateTime = now(); let startDateTime = ago(', concat(parameters('timeWindowInMinutes'), 'm'), '); let trendBinSize = 1m; InsightsMetrics | where TimeGenerated < endDateTime | where TimeGenerated >= startDateTime | where Origin =~ \"container.azm.ms/telegraf\" | where Name =~ \"used_percent\" | extend Tags = todynamic(Tags) | extend ClusterId = tostring(Tags[\"container.azm.ms/clusterId\"]) | where ClusterId =~ clusterId | where Namespace =~ \"disk\" | summarize AggregatedValue = max(Val) by bin(TimeGenerated, trendBinSize) | where AggregatedValue >= ', parameters('DiskUsedPercentUnhealthyThreshold'))]",
+                    "authorizedResources": [],
+                    "dataSourceId": "[parameters('workspaceResourceId')]",
+                    "queryType": "ResultCount"
+                },
+                "schedule": {
+                    "frequencyInMinutes": "[parameters('frequencyInMinutes')]",
+                    "timeWindowInMinutes": "[parameters('timeWindowInMinutes')]"
+                },
+                "action": {
+                    "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction",
+                    "severity": "[parameters('alertSeverity')]",
+                    "aznsAction":{
+                        "actionGroup":"[array(parameters('actionGroupResourceId'))]"
+                    },
+                    "trigger": {
+                        "thresholdOperator": "GreaterThan",
+                        "threshold": 0
+                    }
+                }
+            }
+        }
+    ]
+}

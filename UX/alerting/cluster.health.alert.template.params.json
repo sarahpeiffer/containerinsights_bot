@@ -1,0 +1,21 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterName": {
+            "value": "coin-test-i"
+        },
+        "clusterResourceId": {
+            "value": "/subscriptions/b90b0dec-9b9a-4778-a84e-4ffb73bb17f6/resourceGroups/InIn-CoIn-Scenario-Test/providers/Microsoft.ContainerService/managedClusters/coin-test-i"
+        },
+        "workspaceResourceId": {
+            "value": "/subscriptions/b90b0dec-9b9a-4778-a84e-4ffb73bb17f6/resourceGroups/DefaultResourceGroup-EUS/providers/Microsoft.OperationalInsights/workspaces/coin-test-i-wksp"
+        },
+        "alertSeverity": {
+            "value": 1
+        },
+        "actionGroupResourceId": {
+            "value": "/subscriptions/b90b0dec-9b9a-4778-a84e-4ffb73bb17f6/resourceGroups/DefaultResourceGroup-EUS/providers/microsoft.insights/actiongroups/sample-action-group"
+        }
+    }
+}

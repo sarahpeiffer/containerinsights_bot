@@ -1,0 +1,19 @@
+.vs/**
+*.csproj.user
+yarn-error.log
+
+.vscode/settings.json
+
+# Compiled output
+out/**
+dist/**
+
+.vscode/settings.json
+
+# Dev libraries
+ext/maps/lib/admmap.js
+ext/base-libs/react.development.js
+ext/base-libs/react-dom.development.js
+
+# Adding node modules to avoid build time dependency on npm repository
+!node_modules/**

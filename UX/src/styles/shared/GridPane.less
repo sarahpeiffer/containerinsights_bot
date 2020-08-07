@@ -1,0 +1,201 @@
+// ROWHEIGHT and LOADINGSVGHEIGHT are also constants in ../scripts/shared/ComparisonGrid.tsx
+// If you change them here, you must also change them in ComparisonGrid.tsx
+@COMPARISONGRIDROWHEIGHT: 37px;
+@LOADINGSVGHEIGHT: 25px;
+@COMPARISONGRIDSGWIDTH: 915px;
+@LOADMORECONTAINERHEIGHT: 48px;
+.grid-pane {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+// note: height of the grid container is 100% less 44px (grid control panel with metric selection)
+//       less 10px for bottom margin
+.comparison-grid-container {
+    height: ~'calc(100% - 44px)';
+    width: 95%;
+}
+
+#grid-item-count {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-family: az_ea_font, wf_segoe-ui_normal, "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: normal;
+    color: #474747;
+    padding: 0px;
+}
+
+.outer-sg {
+    height: 100%;
+    min-height: 300px;
+    width: 100%;
+    margin-left: 20px;
+}
+
+.unset-height {
+    height: auto !important;
+}
+
+.sg-loadmore-overlay-for-loading {
+    top: 0;
+}
+
+.loading-state {
+    display: flex;
+    position: absolute;
+    top: 5em;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    margin-left: 20px;
+}
+
+
+.loading-state-svg {
+    display: flex;
+    height: @COMPARISONGRIDROWHEIGHT  !important;
+}
+
+.loading-svg-positioner {
+    margin-top: 20em;
+}
+
+#loading-svg {
+    height: 30px !important;
+    svg {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+#sg {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.gridLoad {
+    width: 30px;
+}
+
+.grid-overlay {
+    width: 100%;
+    top: 0;
+    left: 20px; // would like to make this separate
+}
+
+.no-data-msg {
+    .no-data-msg-positioner {
+        position: relative;
+        top: 0;
+        left: 0;
+        display: flex;
+        height: @COMPARISONGRIDROWHEIGHT * 3 !important;
+        width: 100%;
+    }
+    #no-data-msg {
+        font-family: az_ea_font, wf_segoe-ui_normal, "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
+        font-size: 12px;
+        font-weight: normal;
+        line-height: normal;
+        color: rgb(37, 37, 37);
+    }
+}
+
+.error-msg {
+    .error-msg-positioner {
+        position: relative;    
+        top: 0;
+        left: 0;
+        display: flex;
+        height: @COMPARISONGRIDROWHEIGHT * 4 !important;
+        width: 100%;
+    }
+}
+
+.load-more-button {
+    display: flex;
+    height: @LOADMORECONTAINERHEIGHT;
+    flex: 0 1 70px;
+}
+
+#load-more-button {
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.colored-sg-cell-formatting {
+    position: absolute;
+    bottom: 0px;
+    width: 85% !important;
+    height: 32px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.position-absolute {
+    position: absolute;
+}
+
+.position-relative {
+    position: relative;
+}
+
+.not-click-through {
+    pointer-events: auto;
+}
+
+.click-through {
+    pointer-events: none;
+}
+
+.centering-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.center-flex-content {
+    justify-content: center;
+    align-items: center;
+}
+
+.invisible {
+    display: none;
+}
+
+.transparent {
+    opacity: 0.5;
+}
+.transparent-white-overlay {
+    opacity: 0.5;
+    background-color: white;
+    body.dark & {
+        background-color: #1a1a1a;
+    }
+}
+.grid-plus-load-more {
+    display: flex;
+    flex-flow: column;
+}
+
+.grid-plus-load-more-loaded {
+    height: 100%;
+}
+
+.sg-data-plus-loadmore-overlay {
+    position: relative;
+    top: @COMPARISONGRIDROWHEIGHT;
+    height: ~'calc(100% - 37px)';
+    width: 100%;
+}

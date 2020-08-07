@@ -1,0 +1,39 @@
+{
+	"extensions": [{
+		"Name": "BlobStorageCopy",
+		"Type": "Microsoft.InfraInsights.Deployment/BlobStorageCopy",
+		"Version": "2018-4-1",
+		"ConnectionProperties": {
+			"Endpoint": "https://inin-mceast2-ux-deploy-fn.chinacloudsites.cn/api/BlobStorageCopy/",
+			"ContentType": "application/json",
+			"MaxExecutionTime": "PT10M",
+			"Authentication": {
+				"Type": "CertificateAuthentication",
+				"Reference": {
+					"Provider": "AzureKeyVault",
+					"Parameters": {
+						"SecretId": "https://inin-mceast2-keyvault.vault.azure.cn/secrets/InIn-Mooncake-UX-Deployment-Certificate"
+					}
+				}
+			}
+		},
+		"Payloadproperties": {
+			"ArtifactsArchiveUri": {
+				"Reference": {
+					"Path": "web.zip"
+				}
+			},
+			"TargetContainerName": {
+				"Value": "web"
+			},
+			"TargetStorageAccountConnectionString": {
+				"Reference": {
+					"Provider": "AzureKeyVault",
+					"Parameters": {
+						"SecretId": "https://inin-mceast2-keyvault.vault.azure.cn/secrets/TargetStorageAccountConnectionString"
+					}
+				}
+			}
+		}
+	}]
+}

@@ -1,0 +1,19 @@
+.chart-control-panel {
+    margin-left: 20px;
+    display: inline-flex;
+    flex-direction: row;
+}
+
+.chart-control-panel-label-container {
+    min-height: 20px;
+    padding-right: 10px;
+}
+
+.chart-control-panel-label-container label {
+    color: #474747;
+    vertical-align: middle;
+}
+
+.chart-control-panel-control-container {
+    padding-right: 10px;
+}

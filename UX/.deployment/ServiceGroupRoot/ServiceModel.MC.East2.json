@@ -1,0 +1,35 @@
+{
+	"$schema": "http://schema.express.azure.com/schemas/2015-01-01-alpha/ServiceModel.json",
+	"contentVersion": "0.0.0.1",
+	
+	"ServiceMetadata": {
+		"ServiceGroup": "Azure.InfrastructureInsights.UX",
+		"Environment": "Mooncake"
+	},
+
+	"ServiceResourceGroupDefinitions": [{
+		"Name": "InfraInsightsUX",
+		"ServiceResourceDefinitions": [{
+			"Name": "InfraInsightsUX",
+			"ComposedOf": {
+				"Extension": {
+					"AllowedTypes": [{
+						"Type": "Microsoft.InfraInsights.Deployment/BlobStorageCopy"
+					}]
+				}
+			}
+		}]
+	}],
+
+	"ServiceResourceGroups": [{
+		"AzureResourceGroupName": "InfraInsights-MCeast2-UX",
+		"Location": "China East 2",
+		"InstanceOf": "InfraInsightsUX",
+		"AzureSubscriptionId": "fdbe2580-1746-4bb7-ae1a-da7ada55880b",
+		"ServiceResources": [{
+			"Name": "InfraInsightsUX",
+			"InstanceOf": "InfraInsightsUX",
+			"RolloutParametersPath": "RolloutParams.MC.East2.json"
+		}]
+	}]
+}

@@ -1,0 +1,85 @@
+// agnostic
+@button-color: #4894fe;
+@white: #fff;
+@black: #111;
+@button-hover-color: #6ca9fe;
+@button-active-color: #257ffe;
+
+// light
+@light-hover-color: rgba(85,179,255, 0.1);
+@light-button-color: #015cda;
+
+// dark
+@dark-hover-color: rgba(128,128,128,.3);
+@dark-button-color: #0089fa;
+@dark-text-color: #fff;
+
+.card {
+    margin-right: 16px;
+    margin-bottom: 36px;
+    flex: 1 1 300px;
+    max-width: 300px;
+    min-width: 240px;
+    flex-direction: column;
+
+    .card-image {
+        .image-container{}
+    }
+
+    .card-text {
+        margin-top: 10px;
+        height: 150px;
+        margin-bottom: 12px;
+
+        .title {
+            font-size: 17px; //1.3em;
+            font-weight: bold;
+            height: 45px;
+        }
+        .text {
+            font-size: 15px;
+        }
+    }
+
+    .card-button {
+        background-color: @button-color;
+        color: @white;
+        border: none;
+        padding: 4px 40px;
+        cursor: pointer;
+        text-align: center;
+        display: inline-block;
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 600;
+        
+        body.dark & {
+            color: @black;
+        }
+
+        &:hover {
+            background-color: @button-hover-color;
+        }
+
+        &:active {
+            background-color: @button-active-color;
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .card {
+        .card-image {
+            .image-container{}
+        }
+    
+        .card-text {
+            .title {
+                font-size: 16px;
+            }
+            .text {}
+        }
+    
+        .card-button {}
+    }    
+}

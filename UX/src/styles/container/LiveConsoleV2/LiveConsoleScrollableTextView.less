@@ -1,0 +1,24 @@
+@dark-mode-component-bg: #111;
+
+.scrollable-console-root {
+    color: white;
+    font-size: 12px;
+    height:~"calc(-74px + 100%)";
+    box-sizing:border-box;
+    padding-left: 10px;
+    background: #012456;
+
+    body.dark & {
+        background: @dark-mode-component-bg;
+    }
+}
+
+.logData.highlighted {
+    color: black;
+    background-color: #fff100;
+} 
+
+.logData.orangeHighlight {
+    color: black;
+    background-color: rgb(255,69,0);
+}

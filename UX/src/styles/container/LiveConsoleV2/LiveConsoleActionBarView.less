@@ -1,0 +1,103 @@
+@fontSemibold: "Segoe UI Semibold", "Segoe WP Semibold", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
+@dark-button-color-active: #00BCF2;
+@dark-mode-component-bg: #111;
+@dark-text-color: #fff;
+
+.liveconsole-header-control-line {
+    display: inline-flex;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    width: 100%;
+}
+
+.liveconsole-header-search {
+    display: flex;
+    flex: 0 0 300px;
+    padding-left: 1.5em;
+
+    .liveconsole-header-searchbar {
+        display: inline-flex;
+        justify-content: flex-end;
+        min-width: 150px;
+        position: relative;
+
+        .liveconsole-header-search-glass {
+            position: absolute;
+            height: 15px;
+            left: 5px;
+            top: 10px;
+            transform: scaleX(-1);
+            width: 5%;
+            margin-top: auto;
+            margin-bottom: auto;
+            opacity: 0.3;
+            min-width: 15px;
+        }
+
+        .liveconsole-searchbar-input {
+            padding-left: 25px;
+            height: 70%;
+            width: 50%;
+            margin-top: auto;
+            margin-bottom: auto;
+            min-width: 300px;
+
+            body.dark & {
+                color: @dark-text-color;
+                background: @dark-mode-component-bg;
+            }
+        }
+
+        .liveconsole-search-result-number {
+            position: absolute;
+            right: 60px;
+            font-size: 10px;
+        }
+
+        .liveconsole-search-bar-controls {
+            display: inline-flex;
+            border-color: #eeeeee;
+        }
+    }
+}
+
+.live-console-header-action-button {
+    color: black;
+    background: transparent;
+    border: none;
+    padding: 0;
+    height: 100%;
+    cursor: pointer;
+    display: inline-flex;
+    vertical-align: middle;
+
+    .live-console-header-action-button-icon {
+        height: 16px;
+        width: 16px;
+        margin: auto;
+    }
+
+    .live-console-header-action-button-text {
+        margin-top: auto;
+        margin-bottom: auto;
+        font-family: az_ea_font, wf_segoe-ui_normal, "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
+        font-size: 10px;
+        font-weight: lighter;
+        color: #757575;
+
+        body.dark & {
+            color: white;
+        }
+    }
+}
+
+.liveconsole-header-pill {
+    margin: 3px 0 0 5px;
+}
+
+.liveconsole-header-main-action-controls {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    padding-right: 1em;
+}

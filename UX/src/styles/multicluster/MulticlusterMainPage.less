@@ -1,0 +1,204 @@
+@import '~react-tabs/style/react-tabs.less';
+@import '~appinsights-iframe-shared/out/Css/global.less';
+@tab-blue: #095aaa;
+@font: "Segoe UI", "Segoe UI", "Segoe", Tahoma, Helvetica, Arial, sans-serif;
+@fontSemibold: "Segoe UI Semibold", "Segoe WP Semibold", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
+
+// heights, widths, padding, margins, etc.
+@action-bar-height: 36px;
+@page-lft-rt-margins: 25px;
+@multicluster-dashboard-height: 135px; // nib: height of the multicluster dashboard. See C:\Work\infrainsights\UX\src\styles\multicluster\ControlPanel.less
+
+// light theme
+@light-hyperlink-color: #015cda;
+@light-border-color: #bbb;
+@dark-border-color: rgb(96, 94, 92);
+@light-overlay-background-color: rgba(211,211,211, 0.25);
+@light-hover-color: rgba(85,179,255, 0.1);
+
+// dark theme
+@dark-text-color: #fff;
+@dark-button-color-active: #0078d4;
+@dark-button-color: #0089fa;
+@dark-background-color: #111111;
+@dark-overlay-background-color: rgba(17, 16, 0, 0.5);
+@dark-hover-color: rgba(128,128,128,.3);
+
+
+::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: lightgray;
+    font-size: 0.8em;
+}
+
+::-moz-placeholder {
+    /* Firefox 19+ */
+    color: lightgray;
+    font-size: 0.8em;
+}
+
+:-ms-input-placeholder {
+    /* IE 10+ */
+    color: lightgray;
+    font-size: 0.8em;
+}
+
+:-moz-placeholder {
+    /* Firefox 18- */
+    color: lightgray;
+    font-size: 0.8em;
+}
+
+.full-height {
+    height: 100%;
+    width: 100%;
+    
+    .MainPage-root { // Everything below here should be in every main page to allow for style tweaks
+        height: 100%;
+        width: 100%;
+
+        .content-root {
+            overflow: auto;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            height: 100%;    
+
+            body.dark & {
+                background-color: @dark-background-color;
+            }
+
+            .action-bar { 
+                display: block;
+                height: @action-bar-height; // Height!
+                min-height: @action-bar-height;
+                width: 100%;
+                box-sizing: border-box;
+                border-bottom: solid 1px @light-border-color;
+    
+                body.dark & {
+                    border-bottom: solid 1px @dark-border-color;
+                }
+            
+            }
+
+            .tab-content {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+
+                .init-msg-loading-dots {
+                    position: absolute;
+                    height: ~'calc(100% - 100px)'; // 100px = top
+                    width: 100%;
+                    top: 100px;
+                    left: 0;
+                    z-index: 999;
+                    background-color: @light-overlay-background-color;
+
+                    body.dark & {
+                        background-color: @dark-overlay-background-color;
+                    }
+
+                    .blue-loading-dots {}
+                }
+
+                .cloud-type-header-pill {
+                    padding: 10px 0;
+                }
+
+                .multicluster-dashboard {
+                    padding: 10px 0;
+                }
+            }
+
+            .infra-main-tabs {
+                display: flex;
+                flex-direction: column;
+                flex: 1 1 auto;
+                box-sizing: border-box;
+                padding-bottom: 5px;
+                
+                body.dark & {
+                    background-color: @dark-background-color;
+                }
+
+                .pane-header {
+                    display: flex;
+                    flex: 0 0 auto; // Height is currently 58px (including padding and margin). Confirm through browser
+                    justify-content: space-between;
+                    padding-right: 10px; // testing if its not needed
+                    margin: 10px @page-lft-rt-margins;
+                    border-bottom: 1px solid @light-border-color;
+                
+                    body.dark & {
+                        border-bottom-color: @dark-border-color;
+                    }
+
+                }
+
+                .react-tabs__tab-panel--selected { // N.B. refers to the tab panel selected
+                    display: flex;
+                    flex: 1 1 auto;
+                    padding: 0 @page-lft-rt-margins;
+
+                    .grid-pane {
+                        display: flex;
+                        flex-direction: column;
+                        width: 100%;
+                    }
+                }
+                
+                .react-tabs__tab-list {
+                    width: auto;
+                    min-width: 400px;
+                    box-sizing: border-box;
+                    margin: 0;
+                    border-bottom: 0;
+            
+                    .react-tabs__tab {
+                        font-size: 16px;
+                        font-weight: 400;
+                        font-family: @font;
+                        color: @tab-blue;
+                        cursor: pointer;
+            
+                        body.dark & {
+                            color: @dark-text-color;
+                        }
+            
+                        &.selected-tab { // N.B. refers to the tab selected
+                            color: black;
+                            border-bottom: 3px solid @dark-button-color-active;
+                            font-weight: 750;
+                            
+                            body.dark & {
+                                color: @dark-text-color;
+                            }
+                        }
+                        &:hover {
+                            background-color: @light-hover-color;
+                            
+                            body.dark & {
+                                background-color: @dark-hover-color;
+                            }
+                        }
+                        &:focus {
+                            box-shadow: inset 0px -2px 0px 0px hsl(208, 99%, 50%);
+                            border-top-style: dotted;
+                            border-left-style: dotted;
+                            border-right-style: dotted;
+                            border-top-left-radius: 2px;
+                            border-top-right-radius: 2px;
+            
+                            body.dark & {
+                                box-shadow: inset 0px -2px 0px 0px hsl(207, 100%, 49%);
+            
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

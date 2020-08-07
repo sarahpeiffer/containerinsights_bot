@@ -1,0 +1,178 @@
+@SCOPESELECTOR_COMPONENT_MARGIN: 3px 0px;
+@SCOPE_SELECTOR_BODY_MARGIN: 25px;
+@SCOPE_SELECTOR_PAPER_PADDING: 5px;
+@SCOPE_SELECTOR_CHIP_MARGIN: 4px;
+
+.scope-selector-body {
+    margin: @SCOPE_SELECTOR_BODY_MARGIN;
+    height: ~'calc(100% - 50px)'; // 50 = 2 * @SCOPE_SELECTOR_BODY_MARGIN
+    overflow: hidden;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    margin: @SCOPESELECTOR_COMPONENT_MARGIN;    
+    line-height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 0 0 40px;
+    box-sizing: border-box;
+}
+
+.header-text {}
+.nav-close {}
+
+.scopeSelectorSearchbar { 
+    margin: @SCOPESELECTOR_COMPONENT_MARGIN;    
+    position: relative;
+    overflow: inherit;
+    display: flex;
+    align-items: center;  
+    flex: 0 0 40px;
+    font-size: 14px;
+}
+
+.searchbar-input {
+    padding-left: 65px;
+    padding-right: 51px;
+    height: 70%;
+    font-size: 1em;
+    width: 100%;
+}
+
+.search-glass {
+    transform: scaleX(-1);
+    width: 5%;
+    height: 60%;
+    position: absolute;
+    left: 7px;
+    opacity: .8;
+}
+
+input::-webkit-input-placeholder {
+    font-style: italic;
+    font-size: 1em;
+}
+input::-moz-placeholder {
+    font-style: italic;
+    font-size: 1em;    
+}
+input:-moz-placeholder {
+    font-style: italic;
+    font-size: 1em;    
+}
+input:-ms-input-placeholder {
+    font-style: italic;
+    font-size: 1em;    
+}
+
+.group-by-options {
+    margin: @SCOPESELECTOR_COMPONENT_MARGIN;
+    flex: 0 0 40px; 
+    display: flex;
+    align-items: center;
+}
+
+.resource-directory {
+    margin: @SCOPESELECTOR_COMPONENT_MARGIN; 
+    flex: 1 0 375px;
+    display: flex;
+    flex-direction: column;
+    min-height: 375px;
+
+    .msg {
+        font-size: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.paper {
+    overflow: auto;
+    flex: 1;
+    padding: @SCOPE_SELECTOR_PAPER_PADDING;
+    border: 1px solid #ccc;
+}
+
+.selected-resources-pool {
+    margin: @SCOPESELECTOR_COMPONENT_MARGIN; 
+    flex: 1 0 225px;  
+    display: flex;
+    flex-direction: column;
+    min-height: 225px;
+    
+    .paper {
+        flex-wrap: wrap;
+        align-content: flex-start;
+    }
+
+    .msg {
+        font-size: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.apply-save {
+    margin: @SCOPESELECTOR_COMPONENT_MARGIN;
+    flex: 0 1 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;    
+}
+
+.chip {
+    margin: @SCOPE_SELECTOR_CHIP_MARGIN;
+    height: fit-content;
+}
+
+
+.horizontal-centering {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.vertical-centering {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.center {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);   
+}
+
+// moves the nested indicator to the right of the text
+.directory {
+    button {
+        position: absolute;
+        left: 4px;
+        top: 0px;
+    }
+
+    svg {
+        left: 48px !important;
+    }
+}
+
+.file {
+    .button {
+        padding: 0px; // fixes bug where svg inside button is not positioned properly in center
+    }
+}
+
+.save-filter-dialog-header {
+    position: relative;
+    margin: 7px;
+    top: 0px;
+    left: 0px;
+}

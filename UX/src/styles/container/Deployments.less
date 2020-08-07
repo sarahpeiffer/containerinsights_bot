@@ -1,0 +1,273 @@
+@light-hyperlink-color: #015cda;
+@light-hyperlink-color-hover: #016afe;
+@dark-text-color: #fff;
+
+@portalBorderColor: rgba(204,204,204,.8);
+
+
+.deploymentsItemRow:hover {
+    background-color: rgba(85, 179, 255, 0.1);
+    border: 1px solid darkgrey;
+}
+
+.deploymentsItemRowSelected {
+    background-color: rgba(85, 179, 255, 0.2);
+    border: 1px solid darkgrey;
+}
+
+.deploymentsHeaderCell {
+    font-weight: bold;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-right: 20px;
+    text-align: left;
+    font-size: 0.8em;
+    cursor: pointer;
+}
+
+.deploymentsHeaderRow {
+    user-select: none;
+}
+
+.deploymentsHeaderCell:hover {
+    font-style: italic;
+}
+
+.deploymentsItemCell {
+    padding: 0.75em 0em;
+}
+
+.deployments-panel-primary-header {
+    font-size: 1.7em;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+.deployments-panel-secondary-header {
+    font-size: 1.2em;
+    color: #757575;
+    white-space: nowrap;
+}
+
+.deployments-load-msg-container {
+    padding: 50px;
+}
+
+.deploymentsTable {
+    margin: 10px 20px 0 20px;
+    border-spacing: 0;    
+    width: ~"calc(100% - 40px)";
+    position: relative;
+    border-collapse: collapse;
+}
+
+.deploymentsItemRow {
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+}
+
+.loading {
+    opacity: 0.6;
+}
+
+.hidden-no-hack {
+    display: none !important;
+}
+
+.deployments-load-msg-container {
+    position: absolute;
+
+}
+
+.deployments-load-msg-buffer {
+    top: ~"calc(-20px + 50%)";
+    left: ~"calc(-20px + 50%)";
+}
+
+.deployments-load-msg-nobuffer {
+    top: ~"calc(-50px + 50%)";
+    left: ~"calc(-50px + 50%)";
+}
+
+.deployments-pane {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.deployments-search-filter {
+    margin-left: 20px;
+}
+
+.deployments-pane-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.deployments-panel-header {
+    padding: 1em 3em;
+    display: inline-block;
+}
+
+.deployments-grid {
+    flex: 1;
+    min-width: 80px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.deployments-grid-wrapper {
+    overflow: auto;
+    display: flex;
+    flex: 1;
+    min-height: 80px;
+}
+
+.deploymentsPropertyPane {
+    height: 100%;
+}
+
+.deploymentActionControl {
+    width: 250px;
+    cursor: pointer;
+    color: #fff;
+    padding: 4px 0px;
+    background-color: @light-hyperlink-color;
+    border: 1px solid darkgray;
+    box-shadow: 3px 3px 4px 0px lightgray;
+    min-width: 250px;
+    margin: 2em 0 1em 0;
+    text-align: center;
+
+    &:hover {
+        background-color: @light-hyperlink-color-hover;
+    }
+
+    body.dark & {
+        color: @dark-text-color;
+    }
+}
+
+.deploymentsPropertyPane.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.deployments-panel-body {
+    height: ~"calc(100% - 48px)"
+}
+
+.deploymentsPropertyWrapper {
+    margin: 2em;
+}
+
+.deploymentsPropertyKey {
+    font-weight: 500;
+    font-size: 1.2em;
+    padding-bottom: 0.2em;
+    color: #757575;
+}
+
+.deploymentsPropertyValue {
+    font-weight: 700;
+}
+
+.deploymentsPropertyValueParagraph {
+    overflow-wrap: break-word;
+    margin: 0;
+}
+
+.property-panel2 {
+    width: 25%;
+}
+
+.deployments-load-failed-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.deployments-load-failed-pane { 
+    margin: 20px;
+    width: 500px;
+    overflow-wrap: break-word;
+    text-align: center;
+}
+
+.extra-top-margin {
+    margin-top: 1.5em;
+}
+
+.troubleshooting-step-list-item {
+    margin-bottom: 1em;
+}
+
+.deployments-sub-title-second {
+    font-size: 1.3em;
+}
+
+.deployments-sub-title {
+    padding-bottom: 20px;
+}
+
+.deployments-advanced-diagnostics-pane-title-toggle {
+
+    body.dark & {
+        color: #0089fa;
+    }
+
+    color: #0000FF;
+    cursor: pointer;
+}
+
+.deployments-advanced-diagnostics-pane {
+    width: 100%;
+    // border: 1px solid lightgrey;
+    padding: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.deployments-failure-error-code-pane {
+    margin: 20px;
+    // font-weight: 500;
+}
+
+.deployments-yaml-final-note {
+    text-align: left;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.deployments-title-main {
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+.deployments-help-code-area {
+
+    body.dark & {
+        background: #282828;
+    }
+
+    margin-top: 0;
+    margin-bottom: 0;
+    text-align: left;
+    background: #f1f1f1;
+    padding: 15px;
+}
+
+.deployments-help-code-area-title {
+    margin-top: 10px;
+    text-align: left;
+    font-style: italic;
+    font-weight: 300;
+}
+
+.deployments-yaml-help {
+    margin-top: 20px;
+}

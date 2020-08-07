@@ -1,0 +1,114 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "workspaceResourceId": {
+      "type": "string"
+    },
+    "storageAccountName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "apiVersion": "2017-05-01-preview",
+      "type": "Microsoft.Storage/storageAccounts/providers/diagnosticsettings",
+      "name": "[concat(parameters('storageAccountName'), '/Microsoft.Insights/service')]",
+      "properties": {
+        "workspaceId": "[parameters('workspaceResourceId')]",
+        "logs": [ ],
+        "metrics": [
+          {
+            "timeGrain": "PT1M",
+            "category": "Transaction",
+            "enabled": true,
+            "retentionPolicy": {
+              "enabled": false,
+              "days": 30
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/queueServices/providers/diagnosticsettings",
+      "name": "[concat(parameters('storageAccountName'), '/default/Microsoft.Insights/service')]",
+      "apiVersion": "2017-05-01-preview",
+      "properties": {
+        "workspaceId": "[parameters('workspaceResourceId')]",
+        "logs": [ ],
+        "metrics": [
+          {
+            "timeGrain": "PT1M",
+            "category": "Transaction",
+            "enabled": true,
+            "retentionPolicy": {
+              "enabled": false,
+              "days": 30
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/providers/diagnosticsettings",
+      "name": "[concat(parameters('storageAccountName'), '/default/Microsoft.Insights/service')]",
+      "apiVersion": "2017-05-01-preview",
+      "properties": {
+        "workspaceId": "[parameters('workspaceResourceId')]",
+        "logs": [ ],
+        "metrics": [
+          {
+            "timeGrain": "PT1M",
+            "category": "Transaction",
+            "enabled": true,
+            "retentionPolicy": {
+              "enabled": false,
+              "days": 30
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/fileServices/providers/diagnosticsettings",
+      "name": "[concat(parameters('storageAccountName'), '/default/Microsoft.Insights/service')]",
+      "apiVersion": "2017-05-01-preview",
+      "properties": {
+        "workspaceId": "[parameters('workspaceResourceId')]",
+        "logs": [ ],
+        "metrics": [
+          {
+            "timeGrain": "PT1M",
+            "category": "Transaction",
+            "enabled": true,
+            "retentionPolicy": {
+              "enabled": false,
+              "days": 30
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/tableServices/providers/diagnosticsettings",
+      "name": "[concat(parameters('storageAccountName'), '/default/Microsoft.Insights/service')]",
+      "apiVersion": "2017-05-01-preview",
+      "properties": {
+        "workspaceId": "[parameters('workspaceResourceId')]",
+        "logs": [ ],
+        "metrics": [
+          {
+            "timeGrain": "PT1M",
+            "category": "Transaction",
+            "enabled": true,
+            "retentionPolicy": {
+              "enabled": false,
+              "days": 30
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

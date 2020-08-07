@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Compute.AtScale.Map</title>
+    <meta charset="utf-8">
+    <script type="text/javascript">
+        window.computeMapsInsights = {};
+        window.computeMapsInsights.performanceMeasures = { frame_htmlLoaded: Date.now() };
+
+        // Setup AppInsights instance.
+        var appInsights = window.appInsights || function (a) {
+            function b(a) { c[a] = function () { var b = arguments; c.queue.push(function () { c[a].apply(c, b) }) } } var c = { config: a }, d = document, e = window; setTimeout(function () { var b = d.createElement("script"); b.src = a.url || "https://az416426.vo.msecnd.net/scripts/a/ai.0.js", d.getElementsByTagName("script")[0].parentNode.appendChild(b) }); try { c.cookie = d.cookie } catch (a) { } c.queue = []; for (var f = ["Event", "Exception", "Metric", "PageView", "Trace", "Dependency"]; f.length;)b("track" + f.pop()); if (b("setAuthenticatedUserContext"), b("clearAuthenticatedUserContext"), b("startTrackEvent"), b("stopTrackEvent"), b("startTrackPage"), b("stopTrackPage"), b("flush"), !a.disableExceptionTracking) { f = "onerror", b("_" + f); var g = e[f]; e[f] = function (a, b, d, e, h) { var i = g && g(a, b, d, e, h); return !0 !== i && c["_" + f](a, b, d, e, h), i } } return c
+        }({
+            instrumentationKey: "6d0f5a98-ab2c-4a88-a3d1-5dc3770350fa"
+        });
+
+        window.appInsights = appInsights, appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView();
+    </script>
+    <link rel="stylesheet" href="lib/css/vmInsightsAdmmap.css" type="text/css" />
+
+    <!-- todo: split css styles into shared and compute- storage-specifc -->
+    <link rel="stylesheet" href="scale-compute-map.css">
+
+    <script type="text/javascript" src="/web/base-libs/react.16.7.0.production.min.js" integrity="sha256-TXF/qVkwDgEqDHeLDPRhW+uasmLTL6bmO9WasxU3DEU=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/web/base-libs/react-dom.16.7.0.production.min.js" integrity="sha256-JUiDlNe1TB2COu/RSFKmO8LKhGX476m0vMQeU80lPFs=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/web/base-libs/jquery.3.2.1.min.js" integrity="sha256-dbcH2HYeK/vSX71mHykKT3/RHEjhv1Ojbca9igA0+jU="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/web/base-libs/moment.2.20.1.min.js" integrity="sha256-ABVkpwb9K9PxubvRrHMkk6wmWcIHUE9eBxNZLXYQ84k="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="/web/base-libs/d3.3.5.12.min.js" integrity="sha256-DJ/IkLfX7hmZHDI2JBjora8AT9pprimvxS2rItF7B6Y="
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="lib/knockout-latest-3.4.2.js" integrity="sha512-ZI4cIXCRSBLCpDHNF6Dvmxq0tWcorYXK6J5AhZ6oIPMnllNaITW1JeSw15xvDBhzASiOkS8t9A8KcAyjfOQm4A=="
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" src="lib/q.js" integrity="sha512-fX2FB6fkvWQIh4mnQDQxvGT96gKE8qzsInRN/V+L2NW5EkT9Y9Bk9UQbpsVaZDbj2iG5XWFJ29VlnfyVSgRCsg=="
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="lib/admmap.min.js"></script>
+
+    <script type="text/javascript" src="scale-compute-map.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+</html>

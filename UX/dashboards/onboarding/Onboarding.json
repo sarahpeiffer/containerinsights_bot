@@ -1,0 +1,708 @@
+[
+  {
+    "Type": "dashboard",
+    "Id": "Onboarding",
+    "Title": "Onboarding",
+    "Body": {
+      "title": "Onboarding",
+      "hits": 0,
+      "panelsJSON": "[{\"id\":\"935bba4b-e1e1-4b87-a106-b39ccbb611d9\",\"type\":\"visualization\",\"isCloned\":false,\"isInputType\":false,\"isRequired\":false,\"size_x\":14,\"size_y\":6,\"uid\":\"a5ae2a5e-b6bf-4275-9231-5ffb2bb38b31\",\"col\":1,\"row\":29,\"vis_id\":\"bdf95967-c1f9-44f4-863f-6aa2a5fb7417\",\"saved_data\":\"\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"title\":\"Count of Onboarding Blade Inits By Initatior Blade\"}]",
+      "inputPanelsJSON": "[]",
+      "requiredInputMessage": "Please select required inputs.",
+      "version": 1,
+      "cachingEnabled": false,
+      "cachingDataFreshenessMinutes": 30,
+      "timeRestore": true,
+      "timeMode": "quick",
+      "timeTo": "now/m",
+      "timeFrom": "now/m-1M",
+      "timeRefreshIntervalValue": 0,
+      "timeRoundBy": "Auto",
+      "timeFormat": "Local",
+      "tabsJSON": "[{\"searchSource\":{},\"panels\":[{\"id\":\"All Onboarding Failures (last 24 hrs)\",\"type\":\"search\",\"isCloned\":false,\"size_x\":14,\"size_y\":4,\"uid\":\"7399f1a3-e4f9-464f-9e3c-05969196d11a\",\"col\":1,\"row\":1,\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}}},{\"id\":\"SolutionDeploymentFailureAndSuccessRate\",\"type\":\"search\",\"isCloned\":false,\"size_x\":9,\"size_y\":4,\"uid\":\"68252165-9df9-4f5d-8205-a2f3ec15f013\",\"col\":15,\"row\":1,\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}}},{\"type\":\"visualization\",\"size_x\":23,\"size_y\":4,\"isTempObject\":false,\"id\":\"SolutionDeploymentFailuresByDeploymentType(14D)\",\"uid\":\"a2fe397b-4e14-4ed0-9112-c80e574400d7\",\"col\":1,\"row\":5,\"vis_id\":\"bc3e0084-3617-4669-abe0-5c1bb0089f85\",\"saved_data\":\"\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"title\":\"SolutionDeploymentFailuresByDeploymentType(30D)\",\"vis_type\":\"line\"},{\"id\":\"AgentOnboardingFailuresByDeploymentType(30D)\",\"type\":\"visualization\",\"isCloned\":false,\"size_x\":13,\"size_y\":4,\"uid\":\"2f60e436-0887-4b74-b963-4eb8b6332bfa\",\"col\":1,\"row\":9,\"vis_id\":\"0e4f12f1-612a-4ec8-969f-c4e4848e3364\",\"saved_data\":\"\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"title\":\"MonitoringAddonFailuresByDeploymentType(30D)(Note: Only LA errors)\",\"vis_type\":\"line\"},{\"id\":\"AgentOnboardingFailureAndSuccessRate\",\"type\":\"search\",\"isCloned\":false,\"size_x\":11,\"size_y\":4,\"uid\":\"d12d8ce5-9ac8-4ef3-acc4-18de7b4551be\",\"col\":14,\"row\":9,\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"title\":\"MonitoringAddonOnboardingFailureAndSuccessRate(30D)(Note: All Errors)\"},{\"id\":\"AgentIssuesInAKS\",\"type\":\"visualization\",\"isCloned\":false,\"size_x\":13,\"size_y\":4,\"uid\":\"f81e0a87-c44e-43ff-bcc0-c96e1cb0022c\",\"col\":1,\"row\":13,\"vis_id\":\"3a358586-cf51-449c-a032-c0c659455090\",\"saved_data\":\"\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"title\":\"AgentIssuesInAKS(30D)\",\"vis_type\":\"line\"},{\"id\":\"AgentOnboardingByResultCode(30D)\",\"type\":\"visualization\",\"isCloned\":false,\"size_x\":11,\"size_y\":4,\"uid\":\"3fb0ceb6-d8d5-4245-87ea-fca21273ffb4\",\"col\":14,\"row\":13,\"vis_id\":\"a6aaa017-e8b7-4c94-a7e7-84efb814f442\",\"saved_data\":\"\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"vis_type\":\"line\"},{\"id\":\"27fc2af0-2938-4832-8cc9-484ac64dbdba\",\"type\":\"visualization\",\"isInputType\":false,\"isRequired\":false,\"size_x\":13,\"size_y\":4,\"uid\":\"ea9cde6e-73f7-414d-8977-3c0e83c6d98b\",\"col\":1,\"row\":17,\"vis_id\":\"82b198fc-d89b-4b4b-a278-f962429299ff\",\"saved_data\":\"\",\"Configure\":{\"Filters\":{\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false,\"FieldList\":[]}},\"title\":\"AgentIssuesInAKS - 2d\",\"vis_type\":\"line\"},{\"id\":\"ffc70182-e238-4788-8449-c8520a12bf77\",\"type\":\"search\",\"isCloned\":false,\"size_x\":11,\"size_y\":4,\"uid\":\"040f3a34-952b-48d7-89ff-e0c2c5b669c5\",\"col\":14,\"row\":17,\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}}}],\"inputPanels\":[],\"tabbedPanels\":[],\"title\":\"Onboarding Failures\",\"id\":\"5d2a8447-00e5-44c3-8e13-87f9bd0d7400\",\"configTemplate\":{\"current\":null},\"createSectionGroup\":true,\"timefilter\":{\"time\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\",\"to\":\"now/m\",\"from\":\"now/m-1M\",\"mode\":\"quick\"}},\"isActive\":true,\"isOpen\":true,\"refreshRequired\":false},{\"searchSource\":{},\"panels\":[{\"id\":\"SuccessfulAgentOnboardingByDeploymentAgent(30D)\",\"type\":\"visualization\",\"isCloned\":false,\"size_x\":24,\"size_y\":6,\"uid\":\"5a79a837-0e6f-4a79-825f-a3cbcc9f2a20\",\"col\":1,\"row\":1,\"vis_id\":\"37468b30-411a-4721-a1a9-3ddf5b15837b\",\"saved_data\":\"\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"title\":\"SuccessfulMonitoringAddonOnboardingByDeploymentAgent(30D)\"},{\"id\":\"SuccessfulAgentOnboardingByDeploymentType(30D)\",\"type\":\"visualization\",\"isCloned\":false,\"size_x\":24,\"size_y\":6,\"uid\":\"85cf52ea-73ba-4a13-b401-9a0307a421fb\",\"col\":1,\"row\":7,\"vis_id\":\"535c35a2-5966-40dd-9dc9-52d6d56102ee\",\"saved_data\":\"\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"title\":\"SuccessfulMonitoringAddonOnboardingByDeploymentType(30D)\"},{\"type\":\"visualization\",\"size_x\":24,\"size_y\":4,\"isTempObject\":false,\"id\":\"MonitoringAddonLatency\",\"uid\":\"b2eaa0c6-65e2-43e9-8b74-f2ffc4ba00db\",\"col\":1,\"row\":13,\"vis_id\":\"e72418d0-1ea6-4563-a31a-7972398e88a0\",\"saved_data\":\"\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}}},{\"type\":\"visualization\",\"size_x\":24,\"size_y\":4,\"isTempObject\":false,\"id\":\"AddContainerInsightsSolutionLatency\",\"uid\":\"23b2896b-67cd-4396-b697-9f84106411cd\",\"col\":1,\"row\":17,\"vis_id\":\"ebcc5b6c-7851-4166-85c1-4d62439b90ed\",\"saved_data\":\"\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}}},{\"id\":\"c0e714c3-0123-4978-a62e-4ce8a4c42b7d\",\"type\":\"visualization\",\"isCloned\":false,\"isInputType\":false,\"isRequired\":false,\"size_x\":9,\"size_y\":4,\"uid\":\"3162386e-9947-4259-8d0a-c565777d85fb\",\"col\":1,\"row\":21,\"vis_id\":\"14d9560d-3ee3-4a08-83bf-21698316eb50\",\"saved_data\":\"\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}}},{\"id\":\"54528d82-14aa-48ad-a86f-bc26454e283e\",\"type\":\"search\",\"isCloned\":false,\"size_x\":11,\"size_y\":4,\"uid\":\"18c1729f-8d12-4ac6-a329-14240bea044d\",\"col\":10,\"row\":21,\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}}},{\"id\":\"CIOnboarding-Failures\",\"type\":\"visualization\",\"isCloned\":false,\"isInputType\":false,\"isRequired\":false,\"size_x\":6,\"size_y\":4,\"uid\":\"3b23c105-fbe9-46bd-8240-147aa7da7ffa\",\"col\":1,\"row\":25,\"vis_id\":\"89c3cf15-3e69-41c2-b551-39819355578c\",\"saved_data\":\"\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}}},{\"id\":\"935bba4b-e1e1-4b87-a106-b39ccbb611d9\",\"type\":\"visualization\",\"isCloned\":false,\"isInputType\":false,\"isRequired\":false,\"size_x\":14,\"size_y\":6,\"uid\":\"a5ae2a5e-b6bf-4275-9231-5ffb2bb38b31\",\"col\":1,\"row\":29,\"vis_id\":\"bdf95967-c1f9-44f4-863f-6aa2a5fb7417\",\"saved_data\":\"\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"title\":\"Count of Onboarding Blade Inits By Initatior Blade\"},{\"id\":\"828a85d9-e6cc-4f45-ab90-f5048434aeba\",\"type\":\"visualization\",\"isInputType\":false,\"isRequired\":false,\"size_x\":14,\"size_y\":7,\"uid\":\"98ce816c-1e3f-4c2d-bce8-5cf2667d6c1b\",\"col\":1,\"row\":35,\"vis_id\":\"4b9ee35a-c223-4b07-8f7f-5a7a6f716225\",\"saved_data\":\"\",\"Configure\":{\"Filters\":{\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false,\"FieldList\":[]}},\"title\":\"Count of Successful Onboardings By Initatior Blade\"}],\"inputPanels\":[],\"tabbedPanels\":[],\"title\":\"Successful Onboarding\",\"id\":\"f79686e9-7e8e-4868-ac0c-c2f1f46cdc49\",\"configTemplate\":{\"current\":null},\"createSectionGroup\":true,\"timefilter\":{\"time\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\",\"to\":\"now/m\",\"from\":\"now/m-1M\",\"mode\":\"quick\"}},\"isActive\":false,\"isOpen\":false,\"refreshRequired\":false}]",
+      "tabsType": "horizontal",
+      "useGlobalFilters": false,
+      "mode": "Authoring Mode",
+      "showTitle": true,
+      "showTitleButtons": false,
+      "renameTile": true,
+      "editVisualization": true,
+      "exportDataToCSV": true,
+      "showClonePanel": true,
+      "showRefresh": true,
+      "showExportToImage": true,
+      "showInspectQuery": true,
+      "showMoveToOtherSection": true,
+      "showDebug": false,
+      "showTime": false,
+      "showBorders": true,
+      "showFilter": true,
+      "showCustomTimeAggregation": false,
+      "showPanelTitle": true,
+      "showWorkspaceInfo": false,
+      "panelTitle": {
+        "alignment": "center",
+        "font": "",
+        "style": {
+          "bold": false,
+          "italic": false,
+          "underline": false
+        },
+        "size": "1.3em",
+        "color": "#3d85c6"
+      },
+      "capitalizedTitles": false,
+      "extraColumns": true,
+      "dashboardTimeFilterLimit": {
+        "options": {
+          "text": "Weeks",
+          "value": "Week(s)"
+        },
+        "value": 2,
+        "limitEnabled": false
+      },
+      "queryOptimizationEnabled": false,
+      "inspectQuery": true,
+      "exportPanelToImage": true,
+      "clonePanel": true,
+      "refreshPanel": true,
+      "removePanel": true,
+      "moveToSection": true,
+      "makeItInput": true,
+      "openInExplore": true,
+      "showPanelMenu": true,
+      "showInputPanelMenu": true,
+      "showInputApplyButton": false,
+      "showInputTitle": false,
+      "editInput": true,
+      "inputRequired": true,
+      "refreshInput": true,
+      "removeInput": true,
+      "moveInputToSection": true,
+      "groupsJson": "{\"keys\":[\"global\",\"17f9298d-b591-4324-8636-b75a317e691f\",\"cf09c9a1-5578-4e39-8a50-d2f7a8eb1029\",\"218f2c1e-2abd-4b19-8c60-87c46f845488\"],\"groups\":{\"global\":{\"title\":\"global\",\"color\":\"#00bcf2\"},\"17f9298d-b591-4324-8636-b75a317e691f\":{\"title\":\"Onboarding Failures\",\"color\":\"#006e8a\",\"editing\":false,\"newTitle\":\"Onboarding Failures\"},\"cf09c9a1-5578-4e39-8a50-d2f7a8eb1029\":{\"title\":\"Onboarding Failures (Section)\",\"tabId\":\"5d2a8447-00e5-44c3-8e13-87f9bd0d7400\",\"color\":\"#6f87d8\"},\"218f2c1e-2abd-4b19-8c60-87c46f845488\":{\"title\":\"Successful Onboarding (Section)\",\"tabId\":\"f79686e9-7e8e-4868-ac0c-c2f1f46cdc49\",\"color\":\"#663db8\"}},\"groupsByPanel\":{\"7399f1a3-e4f9-464f-9e3c-05969196d11a\":{\"sourceGroups\":[\"cf09c9a1-5578-4e39-8a50-d2f7a8eb1029\"],\"destinationGroups\":[],\"title\":\"\"},\"a2fe397b-4e14-4ed0-9112-c80e574400d7\":{\"sourceGroups\":[\"cf09c9a1-5578-4e39-8a50-d2f7a8eb1029\"],\"destinationGroups\":[],\"title\":\"\"},\"68252165-9df9-4f5d-8205-a2f3ec15f013\":{\"sourceGroups\":[\"cf09c9a1-5578-4e39-8a50-d2f7a8eb1029\"],\"destinationGroups\":[],\"title\":\"\"},\"2f60e436-0887-4b74-b963-4eb8b6332bfa\":{\"sourceGroups\":[\"cf09c9a1-5578-4e39-8a50-d2f7a8eb1029\"],\"destinationGroups\":[],\"title\":\"\"},\"f81e0a87-c44e-43ff-bcc0-c96e1cb0022c\":{\"sourceGroups\":[\"cf09c9a1-5578-4e39-8a50-d2f7a8eb1029\"],\"destinationGroups\":[],\"title\":\"\"},\"d12d8ce5-9ac8-4ef3-acc4-18de7b4551be\":{\"sourceGroups\":[\"cf09c9a1-5578-4e39-8a50-d2f7a8eb1029\"],\"destinationGroups\":[],\"title\":\"\"},\"5a79a837-0e6f-4a79-825f-a3cbcc9f2a20\":{\"sourceGroups\":[\"218f2c1e-2abd-4b19-8c60-87c46f845488\"],\"destinationGroups\":[],\"title\":\"\"},\"85cf52ea-73ba-4a13-b401-9a0307a421fb\":{\"sourceGroups\":[\"218f2c1e-2abd-4b19-8c60-87c46f845488\"],\"destinationGroups\":[],\"title\":\"\"},\"3fb0ceb6-d8d5-4245-87ea-fca21273ffb4\":{\"sourceGroups\":[\"cf09c9a1-5578-4e39-8a50-d2f7a8eb1029\"],\"destinationGroups\":[],\"title\":\"\"},\"undefined\":{\"sourceGroups\":[\"218f2c1e-2abd-4b19-8c60-87c46f845488\"],\"destinationGroups\":[]},\"b2eaa0c6-65e2-43e9-8b74-f2ffc4ba00db\":{\"sourceGroups\":[\"218f2c1e-2abd-4b19-8c60-87c46f845488\"],\"destinationGroups\":[],\"title\":\"\"},\"23b2896b-67cd-4396-b697-9f84106411cd\":{\"sourceGroups\":[\"218f2c1e-2abd-4b19-8c60-87c46f845488\"],\"destinationGroups\":[],\"title\":\"\"},\"ea9cde6e-73f7-414d-8977-3c0e83c6d98b\":{\"sourceGroups\":[\"218f2c1e-2abd-4b19-8c60-87c46f845488\",\"cf09c9a1-5578-4e39-8a50-d2f7a8eb1029\"],\"destinationGroups\":[],\"title\":\"\"},\"040f3a34-952b-48d7-89ff-e0c2c5b669c5\":{\"sourceGroups\":[\"cf09c9a1-5578-4e39-8a50-d2f7a8eb1029\"],\"destinationGroups\":[],\"title\":\"\"},\"3162386e-9947-4259-8d0a-c565777d85fb\":{\"sourceGroups\":[\"218f2c1e-2abd-4b19-8c60-87c46f845488\"],\"destinationGroups\":[],\"title\":\"\"},\"18c1729f-8d12-4ac6-a329-14240bea044d\":{\"sourceGroups\":[\"218f2c1e-2abd-4b19-8c60-87c46f845488\"],\"destinationGroups\":[],\"title\":\"\"},\"a5ae2a5e-b6bf-4275-9231-5ffb2bb38b31\":{\"sourceGroups\":[\"218f2c1e-2abd-4b19-8c60-87c46f845488\"],\"destinationGroups\":[],\"title\":\"\"},\"3b23c105-fbe9-46bd-8240-147aa7da7ffa\":{\"sourceGroups\":[\"218f2c1e-2abd-4b19-8c60-87c46f845488\"],\"destinationGroups\":[],\"title\":\"\"},\"98ce816c-1e3f-4c2d-bce8-5cf2667d6c1b\":{\"sourceGroups\":[\"218f2c1e-2abd-4b19-8c60-87c46f845488\"],\"destinationGroups\":[],\"title\":\"\"}},\"groupsByTab\":{\"5d2a8447-00e5-44c3-8e13-87f9bd0d7400\":\"cf09c9a1-5578-4e39-8a50-d2f7a8eb1029\",\"f79686e9-7e8e-4868-ac0c-c2f1f46cdc49\":\"218f2c1e-2abd-4b19-8c60-87c46f845488\"},\"filtersByTab\":{\"5d2a8447-00e5-44c3-8e13-87f9bd0d7400\":[],\"f79686e9-7e8e-4868-ac0c-c2f1f46cdc49\":[]},\"allOtherFilters\":[],\"filtersToBeApplied\":[],\"modifiedPanels\":[\"7b35b242-5099-49bc-84fa-9e40238dbc0a\",\"7b35b242-5099-49bc-84fa-9e40238dbc0a\",null,\"7b35b242-5099-49bc-84fa-9e40238dbc0a\",\"7b35b242-5099-49bc-84fa-9e40238dbc0a\",\"2124ce89-7248-4e5a-8f1b-6fd2bea66f70\",null,null,\"5a79a837-0e6f-4a79-825f-a3cbcc9f2a20\",\"85cf52ea-73ba-4a13-b401-9a0307a421fb\",\"b2eaa0c6-65e2-43e9-8b74-f2ffc4ba00db\",\"23b2896b-67cd-4396-b697-9f84106411cd\",\"3162386e-9947-4259-8d0a-c565777d85fb\",\"18c1729f-8d12-4ac6-a329-14240bea044d\",\"3b23c105-fbe9-46bd-8240-147aa7da7ffa\",\"a5ae2a5e-b6bf-4275-9231-5ffb2bb38b31\",\"98ce816c-1e3f-4c2d-bce8-5cf2667d6c1b\"]}",
+      "vis_id": "f613bc7f-af78-41c9-a6f5-3cf1b88c775b",
+      "customTimeagg": "",
+      "filterPrompt": false,
+      "supportGroupsJSON": "[]",
+      "customMessageText": "",
+      "customMessageIsEnabled": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "search",
+    "Id": "SolutionDeploymentFailureAndSuccessRate",
+    "Title": "SolutionDeploymentFailureAndSuccessRate",
+    "Body": {
+      "title": "SolutionDeploymentFailureAndSuccessRate",
+      "columns": [
+        {
+          "id": 0,
+          "name": "RateType"
+        },
+        {
+          "id": 1,
+          "name": "Success"
+        },
+        {
+          "id": 2,
+          "name": "Failure"
+        },
+        {
+          "id": 3,
+          "name": "Tried"
+        },
+        {
+          "id": 4,
+          "name": "Failed"
+        },
+        {
+          "id": 5,
+          "name": "Succeeded"
+        }
+      ],
+      "formats": {
+        "Failed": {
+          "name": "Failed",
+          "type": "Int64"
+        },
+        "Failure": {
+          "name": "Failure",
+          "type": "String"
+        },
+        "RateType": {
+          "name": "RateType",
+          "type": "String"
+        },
+        "Succeeded": {
+          "name": "Succeeded",
+          "type": "Int64"
+        },
+        "Success": {
+          "name": "Success",
+          "type": "String"
+        },
+        "Tried": {
+          "name": "Tried",
+          "type": "Int64"
+        }
+      },
+      "aggregations": {},
+      "sort": [],
+      "showGridGroupingBar": true,
+      "showFilterButton": true,
+      "showDetails": true,
+      "wrapText": false,
+      "showPagination": false,
+      "excelStyleFilter": true,
+      "showSearchToolbar": false,
+      "headerFontSize": "1.0em",
+      "headerFontWeight": "bold",
+      "headerFontStyle": "normal",
+      "headerFont": "",
+      "bodyFontSize": "1.0em",
+      "bodyFontWeight": "normal",
+      "bodyFontStyle": "normal",
+      "bodyFont": "",
+      "showColumnSettingOnDashboard": false,
+      "isClickable": true,
+      "searchFilterTags": [],
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"armprod.kusto.windows.net\",\"database\":\"ARMProd\",\"query\":\"let 30DaysCategory = \\\"Last 30 Days\\\";\\nlet 14DaysCategory = \\\"Last 14 Days\\\";\\nlet 7DaysCategory = \\\"Last 7 Days\\\";\\nlet 3DaysCategory = \\\"Last 3 Days\\\";\\nlet 1DaysCategory = \\\"Last 1 Days\\\";\\n\\nlet TriedOnboardingInLast30Days = DeploymentOperations\\n| where PreciseTimeStamp > ago(30d)\\n| where resourceName contains \\\"ContainerInsights\\\"\\n| summarize Tried = count() by Category = 30DaysCategory;\\n\\nlet FailedOnboardingInLast30Days = DeploymentOperations\\n| where PreciseTimeStamp > ago(30d)\\n| where resourceName contains \\\"ContainerInsights\\\"\\n| where executionStatus contains \\\"Fail\\\"\\n| summarize Failed = count() by Category = 30DaysCategory;\\n\\nlet SuccessfulOnboardingInLast30Days = DeploymentOperations\\n| where PreciseTimeStamp > ago(30d)\\n| where resourceName contains \\\"ContainerInsights\\\"\\n| where executionStatus !contains \\\"Fail\\\"\\n| summarize Succeeded = count() by Category = 30DaysCategory;\\n\\nlet 30DaysRate = TriedOnboardingInLast30Days\\n| join FailedOnboardingInLast30Days on Category\\n| join SuccessfulOnboardingInLast30Days on Category\\n| extend SuccessRate = Succeeded * 100 / Tried\\n| extend FailureRate = Failed * 100 / Tried\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index = 5;\\n\\nlet TriedOnboardingInLast14Days = DeploymentOperations\\n| where PreciseTimeStamp > ago(14d)\\n| where resourceName contains \\\"ContainerInsights\\\"\\n| summarize Tried = count() by Category = 14DaysCategory;\\n\\nlet FailedOnboardingInLast14Days = DeploymentOperations\\n| where PreciseTimeStamp > ago(14d)\\n| where resourceName contains \\\"ContainerInsights\\\"\\n| where executionStatus contains \\\"Fail\\\"\\n| summarize Failed = count() by Category = 14DaysCategory;\\n\\nlet SuccessfulOnboardingInLast14Days = DeploymentOperations\\n| where PreciseTimeStamp > ago(14d)\\n| where resourceName contains \\\"ContainerInsights\\\"\\n| where executionStatus !contains \\\"Fail\\\"\\n| summarize Succeeded = count() by Category = 14DaysCategory;\\n\\nlet 14DaysRate = TriedOnboardingInLast14Days\\n| join FailedOnboardingInLast14Days on Category\\n| join SuccessfulOnboardingInLast14Days on Category\\n| extend SuccessRate = Succeeded * 100 / Tried\\n| extend FailureRate = Failed * 100 / Tried\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index = 4;\\n\\n\\nlet TriedOnboardingInLast7Days = DeploymentOperations\\n| where PreciseTimeStamp > ago(7d)\\n| where resourceName contains \\\"ContainerInsights\\\"\\n| summarize Tried = count() by Category = 7DaysCategory;\\n\\nlet FailedOnboardingInLast7Days = DeploymentOperations\\n| where PreciseTimeStamp > ago(7d)\\n| where resourceName contains \\\"ContainerInsights\\\"\\n| where executionStatus contains \\\"Fail\\\"\\n| summarize Failed = count() by Category = 7DaysCategory;\\n\\nlet SuccessfulOnboardingInLast7Days = DeploymentOperations\\n| where PreciseTimeStamp > ago(7d)\\n| where resourceName contains \\\"ContainerInsights\\\"\\n| where executionStatus !contains \\\"Fail\\\"\\n| summarize Succeeded = count() by Category = 7DaysCategory;\\n\\nlet 7DaysRate = TriedOnboardingInLast7Days\\n| join FailedOnboardingInLast7Days on Category\\n| join SuccessfulOnboardingInLast7Days on Category\\n| extend SuccessRate = Succeeded * 100 / Tried\\n| extend FailureRate = Failed * 100 / Tried\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index = 3;\\n\\nlet TriedOnboardingInLast3Days = DeploymentOperations\\n| where PreciseTimeStamp > ago(3d)\\n| where resourceName contains \\\"ContainerInsights\\\"\\n| summarize Tried = count() by Category = 3DaysCategory;\\n\\nlet FailedOnboardingInLast3Days = DeploymentOperations\\n| where PreciseTimeStamp > ago(3d)\\n| where resourceName contains \\\"ContainerInsights\\\"\\n| where executionStatus contains \\\"Fail\\\"\\n| summarize Failed = count() by Category = 3DaysCategory;\\n\\nlet SuccessfulOnboardingInLast3Days = DeploymentOperations\\n| where PreciseTimeStamp > ago(3d)\\n| where resourceName contains \\\"ContainerInsights\\\"\\n| where executionStatus !contains \\\"Fail\\\"\\n| summarize Succeeded = count() by Category = 3DaysCategory;\\n\\nlet 3DaysRate = TriedOnboardingInLast3Days\\n| join FailedOnboardingInLast3Days on Category\\n| join SuccessfulOnboardingInLast3Days on Category\\n| extend SuccessRate = Succeeded * 100 / Tried\\n| extend FailureRate = Failed * 100 / Tried\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index =2;\\n\\nlet TriedOnboardingInLast1Days = DeploymentOperations\\n| where PreciseTimeStamp > ago(1d)\\n| where resourceName contains \\\"ContainerInsights\\\"\\n| summarize Tried = count() by Category = 1DaysCategory;\\n\\nlet FailedOnboardingInLast1Days = DeploymentOperations\\n| where PreciseTimeStamp > ago(1d)\\n| where resourceName contains \\\"ContainerInsights\\\"\\n| where executionStatus contains \\\"Fail\\\"\\n| summarize Failed = count() by Category = 1DaysCategory;\\n\\nlet SuccessfulOnboardingInLast1Days = DeploymentOperations\\n| where PreciseTimeStamp > ago(1d)\\n| where resourceName contains \\\"ContainerInsights\\\"\\n| where executionStatus !contains \\\"Fail\\\"\\n| summarize Succeeded = count() by Category = 1DaysCategory;\\n\\nlet 1DayRate = TriedOnboardingInLast1Days\\n| join FailedOnboardingInLast1Days on Category\\n| join SuccessfulOnboardingInLast1Days on Category\\n| extend SuccessRate = Succeeded * 100 / Tried\\n| extend FailureRate = Failed * 100 / Tried\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index =1;\\n\\n30DaysRate\\n| union 14DaysRate\\n| union 7DaysRate\\n| union 3DaysRate\\n| union 1DayRate\\n| sort by index asc\\n| extend Success = strcat(SuccessRate, \\\"%\\\"), Failure = strcat(FailureRate, \\\"%\\\")\\n| project RateType = Category, Success, Failure, Tried, Failed, Succeeded\",\"allQueries\":{\"content\":\"let 30DaysCategory = \\\"Last 30 Days\\\";\\r\\nlet 14DaysCategory = \\\"Last 14 Days\\\";\\r\\nlet 7DaysCategory = \\\"Last 7 Days\\\";\\r\\nlet 3DaysCategory = \\\"Last 3 Days\\\";\\r\\nlet 1DaysCategory = \\\"Last 1 Days\\\";\\r\\n\\r\\nlet TriedOnboardingInLast30Days = DeploymentOperations\\r\\n| where PreciseTimeStamp > ago(30d)\\r\\n| where resourceName contains \\\"ContainerInsights\\\"\\r\\n| summarize Tried = count() by Category = 30DaysCategory;\\r\\n\\r\\nlet FailedOnboardingInLast30Days = DeploymentOperations\\r\\n| where PreciseTimeStamp > ago(30d)\\r\\n| where resourceName contains \\\"ContainerInsights\\\"\\r\\n| where executionStatus contains \\\"Fail\\\"\\r\\n| summarize Failed = count() by Category = 30DaysCategory;\\r\\n\\r\\nlet SuccessfulOnboardingInLast30Days = DeploymentOperations\\r\\n| where PreciseTimeStamp > ago(30d)\\r\\n| where resourceName contains \\\"ContainerInsights\\\"\\r\\n| where executionStatus !contains \\\"Fail\\\"\\r\\n| summarize Succeeded = count() by Category = 30DaysCategory;\\r\\n\\r\\nlet 30DaysRate = TriedOnboardingInLast30Days\\r\\n| join FailedOnboardingInLast30Days on Category\\r\\n| join SuccessfulOnboardingInLast30Days on Category\\r\\n| extend SuccessRate = Succeeded * 100 / Tried\\r\\n| extend FailureRate = Failed * 100 / Tried\\r\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index = 5;\\r\\n\\r\\nlet TriedOnboardingInLast14Days = DeploymentOperations\\r\\n| where PreciseTimeStamp > ago(14d)\\r\\n| where resourceName contains \\\"ContainerInsights\\\"\\r\\n| summarize Tried = count() by Category = 14DaysCategory;\\r\\n\\r\\nlet FailedOnboardingInLast14Days = DeploymentOperations\\r\\n| where PreciseTimeStamp > ago(14d)\\r\\n| where resourceName contains \\\"ContainerInsights\\\"\\r\\n| where executionStatus contains \\\"Fail\\\"\\r\\n| summarize Failed = count() by Category = 14DaysCategory;\\r\\n\\r\\nlet SuccessfulOnboardingInLast14Days = DeploymentOperations\\r\\n| where PreciseTimeStamp > ago(14d)\\r\\n| where resourceName contains \\\"ContainerInsights\\\"\\r\\n| where executionStatus !contains \\\"Fail\\\"\\r\\n| summarize Succeeded = count() by Category = 14DaysCategory;\\r\\n\\r\\nlet 14DaysRate = TriedOnboardingInLast14Days\\r\\n| join FailedOnboardingInLast14Days on Category\\r\\n| join SuccessfulOnboardingInLast14Days on Category\\r\\n| extend SuccessRate = Succeeded * 100 / Tried\\r\\n| extend FailureRate = Failed * 100 / Tried\\r\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index = 4;\\r\\n\\r\\n\\r\\nlet TriedOnboardingInLast7Days = DeploymentOperations\\r\\n| where PreciseTimeStamp > ago(7d)\\r\\n| where resourceName contains \\\"ContainerInsights\\\"\\r\\n| summarize Tried = count() by Category = 7DaysCategory;\\r\\n\\r\\nlet FailedOnboardingInLast7Days = DeploymentOperations\\r\\n| where PreciseTimeStamp > ago(7d)\\r\\n| where resourceName contains \\\"ContainerInsights\\\"\\r\\n| where executionStatus contains \\\"Fail\\\"\\r\\n| summarize Failed = count() by Category = 7DaysCategory;\\r\\n\\r\\nlet SuccessfulOnboardingInLast7Days = DeploymentOperations\\r\\n| where PreciseTimeStamp > ago(7d)\\r\\n| where resourceName contains \\\"ContainerInsights\\\"\\r\\n| where executionStatus !contains \\\"Fail\\\"\\r\\n| summarize Succeeded = count() by Category = 7DaysCategory;\\r\\n\\r\\nlet 7DaysRate = TriedOnboardingInLast7Days\\r\\n| join FailedOnboardingInLast7Days on Category\\r\\n| join SuccessfulOnboardingInLast7Days on Category\\r\\n| extend SuccessRate = Succeeded * 100 / Tried\\r\\n| extend FailureRate = Failed * 100 / Tried\\r\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index = 3;\\r\\n\\r\\nlet TriedOnboardingInLast3Days = DeploymentOperations\\r\\n| where PreciseTimeStamp > ago(3d)\\r\\n| where resourceName contains \\\"ContainerInsights\\\"\\r\\n| summarize Tried = count() by Category = 3DaysCategory;\\r\\n\\r\\nlet FailedOnboardingInLast3Days = DeploymentOperations\\r\\n| where PreciseTimeStamp > ago(3d)\\r\\n| where resourceName contains \\\"ContainerInsights\\\"\\r\\n| where executionStatus contains \\\"Fail\\\"\\r\\n| summarize Failed = count() by Category = 3DaysCategory;\\r\\n\\r\\nlet SuccessfulOnboardingInLast3Days = DeploymentOperations\\r\\n| where PreciseTimeStamp > ago(3d)\\r\\n| where resourceName contains \\\"ContainerInsights\\\"\\r\\n| where executionStatus !contains \\\"Fail\\\"\\r\\n| summarize Succeeded = count() by Category = 3DaysCategory;\\r\\n\\r\\nlet 3DaysRate = TriedOnboardingInLast3Days\\r\\n| join FailedOnboardingInLast3Days on Category\\r\\n| join SuccessfulOnboardingInLast3Days on Category\\r\\n| extend SuccessRate = Succeeded * 100 / Tried\\r\\n| extend FailureRate = Failed * 100 / Tried\\r\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index =2;\\r\\n\\r\\nlet TriedOnboardingInLast1Days = DeploymentOperations\\r\\n| where PreciseTimeStamp > ago(1d)\\r\\n| where resourceName contains \\\"ContainerInsights\\\"\\r\\n| summarize Tried = count() by Category = 1DaysCategory;\\r\\n\\r\\nlet FailedOnboardingInLast1Days = DeploymentOperations\\r\\n| where PreciseTimeStamp > ago(1d)\\r\\n| where resourceName contains \\\"ContainerInsights\\\"\\r\\n| where executionStatus contains \\\"Fail\\\"\\r\\n| summarize Failed = count() by Category = 1DaysCategory;\\r\\n\\r\\nlet SuccessfulOnboardingInLast1Days = DeploymentOperations\\r\\n| where PreciseTimeStamp > ago(1d)\\r\\n| where resourceName contains \\\"ContainerInsights\\\"\\r\\n| where executionStatus !contains \\\"Fail\\\"\\r\\n| summarize Succeeded = count() by Category = 1DaysCategory;\\r\\n\\r\\nlet 1DayRate = TriedOnboardingInLast1Days\\r\\n| join FailedOnboardingInLast1Days on Category\\r\\n| join SuccessfulOnboardingInLast1Days on Category\\r\\n| extend SuccessRate = Succeeded * 100 / Tried\\r\\n| extend FailureRate = Failed * 100 / Tried\\r\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index =1;\\r\\n\\r\\n30DaysRate\\r\\n| union 14DaysRate\\r\\n| union 7DaysRate\\r\\n| union 3DaysRate\\r\\n| union 1DayRate\\r\\n| sort by index asc\\r\\n| extend Success = strcat(SuccessRate, \\\"%\\\"), Failure = strcat(FailureRate, \\\"%\\\")\\r\\n| project RateType = Category, Success, Failure, Tried, Failed, Succeeded\",\"startLine\":1,\"startColumn\":1,\"endLine\":135,\"endColumn\":74}}"
+      }
+    }
+  },
+  {
+    "Type": "search",
+    "Id": "AgentOnboardingFailureAndSuccessRate",
+    "Title": "AgentOnboardingFailureAndSuccessRate",
+    "Body": {
+      "title": "AgentOnboardingFailureAndSuccessRate",
+      "columns": [
+        {
+          "name": "RateType",
+          "id": 0,
+          "type": "String",
+          "display": true,
+          "filterable": true
+        },
+        {
+          "name": "Success",
+          "id": 1,
+          "type": "String",
+          "display": true,
+          "filterable": true
+        },
+        {
+          "name": "Failure",
+          "id": 2,
+          "type": "String",
+          "display": true,
+          "filterable": true
+        },
+        {
+          "name": "Tried",
+          "id": 3,
+          "type": "Int64",
+          "display": true,
+          "filterable": true
+        },
+        {
+          "name": "Failed",
+          "id": 4,
+          "type": "Int64",
+          "display": true,
+          "filterable": true
+        },
+        {
+          "name": "Succeeded",
+          "id": 5,
+          "type": "Int64",
+          "display": true,
+          "filterable": true
+        }
+      ],
+      "formats": {
+        "Failed": {
+          "name": "Failed",
+          "type": "Int64"
+        },
+        "Failure": {
+          "name": "Failure",
+          "type": "String"
+        },
+        "RateType": {
+          "name": "RateType",
+          "type": "String"
+        },
+        "Succeeded": {
+          "name": "Succeeded",
+          "type": "Int64"
+        },
+        "Success": {
+          "name": "Success",
+          "type": "String"
+        },
+        "Tried": {
+          "name": "Tried",
+          "type": "Int64"
+        }
+      },
+      "aggregations": {},
+      "sort": [],
+      "showGridGroupingBar": true,
+      "showFilterButton": true,
+      "showDetails": true,
+      "wrapText": false,
+      "showPagination": false,
+      "excelStyleFilter": true,
+      "showSearchToolbar": false,
+      "headerFontSize": "1.0em",
+      "headerFontWeight": "bold",
+      "headerFontStyle": "normal",
+      "headerFont": "",
+      "bodyFontSize": "1.0em",
+      "bodyFontWeight": "normal",
+      "bodyFontStyle": "normal",
+      "bodyFont": "",
+      "showColumnSettingOnDashboard": false,
+      "isClickable": true,
+      "searchFilterTags": [],
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"aks.kusto.windows.net\",\"database\":\"AKSprod\",\"query\":\"let 30DaysCategory = \\\"Last 30 Days\\\";\\nlet 14DaysCategory = \\\"Last 14 Days\\\";\\nlet 7DaysCategory = \\\"Last 7 Days\\\";\\nlet 3DaysCategory = \\\"Last 3 Days\\\";\\nlet 1DaysCategory = \\\"Last 1 Days\\\";\\n\\nlet TriedOnboardingInLast30Days = AsyncQoSEvents\\n| where PreciseTimeStamp > ago(30d)\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| summarize Tried = count() by Category = 30DaysCategory;\\n\\nlet FailedOnboardingInLast30Days = AsyncQoSEvents\\n| where PreciseTimeStamp > ago(30d)\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| where resultType != 0\\n| summarize Failed =count() by Category = 30DaysCategory;\\n\\nlet SuccessfulOnboardingInLast30Days = AsyncQoSEvents\\n| where PreciseTimeStamp > ago(30d)\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| where resultType == 0\\n| summarize Succeeded = count() by Category = 30DaysCategory;\\n\\nlet 30DaysRate = TriedOnboardingInLast30Days\\n| join FailedOnboardingInLast30Days on Category\\n| join SuccessfulOnboardingInLast30Days on Category\\n| extend SuccessRate = Succeeded * 100 / Tried\\n| extend FailureRate = Failed * 100 / Tried\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index = 5;\\n\\nlet TriedOnboardingInLast14Days = AsyncQoSEvents\\n| where PreciseTimeStamp > ago(14d)\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| summarize Tried = count() by Category = 14DaysCategory;\\n\\nlet FailedOnboardingInLast14Days = AsyncQoSEvents\\n| where PreciseTimeStamp > ago(14d)\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| where resultType != 0\\n| summarize Failed =count() by Category = 14DaysCategory;\\n\\nlet SuccessfulOnboardingInLast14Days = AsyncQoSEvents\\n| where PreciseTimeStamp > ago(14d)\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| where resultType == 0\\n| summarize Succeeded = count() by Category = 14DaysCategory;\\n\\nlet 14DaysRate = TriedOnboardingInLast14Days\\n| join FailedOnboardingInLast14Days on Category\\n| join SuccessfulOnboardingInLast14Days on Category\\n| extend SuccessRate = Succeeded * 100 / Tried\\n| extend FailureRate = Failed * 100 / Tried\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index = 4;\\n\\nlet TriedOnboardingInLast7Days = AsyncQoSEvents\\n| where PreciseTimeStamp > ago(7d)\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| summarize Tried = count() by Category = 7DaysCategory;\\n\\nlet FailedOnboardingInLast7Days = AsyncQoSEvents\\n| where PreciseTimeStamp > ago(7d)\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| where resultType != 0\\n| summarize Failed =count() by Category = 7DaysCategory;\\n\\nlet SuccessfulOnboardingInLast7Days = AsyncQoSEvents\\n| where PreciseTimeStamp > ago(7d)\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| where resultType == 0\\n| summarize Succeeded = count() by Category = 7DaysCategory;\\n\\nlet 7DaysRate = TriedOnboardingInLast7Days\\n| join FailedOnboardingInLast7Days on Category\\n| join SuccessfulOnboardingInLast7Days on Category\\n| extend SuccessRate = Succeeded * 100 / Tried\\n| extend FailureRate = Failed * 100 / Tried\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index = 3;\\n\\nlet TriedOnboardingInLast3Days = AsyncQoSEvents\\n| where PreciseTimeStamp > ago(3d)\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| summarize Tried = count() by Category = 3DaysCategory;\\n\\nlet FailedOnboardingInLast3Days = AsyncQoSEvents\\n| where PreciseTimeStamp > ago(3d)\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| where resultType != 0\\n| summarize Failed =count() by Category = 3DaysCategory;\\n\\nlet SuccessfulOnboardingInLast3Days = AsyncQoSEvents\\n| where PreciseTimeStamp > ago(3d)\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| where resultType == 0\\n| summarize Succeeded = count() by Category = 3DaysCategory;\\n\\nlet 3DaysRate = TriedOnboardingInLast3Days\\n| join FailedOnboardingInLast3Days on Category\\n| join SuccessfulOnboardingInLast3Days on Category\\n| extend SuccessRate = Succeeded * 100 / Tried\\n| extend FailureRate = Failed * 100 / Tried\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index = 2;\\n\\nlet TriedOnboardingInLast1Days = AsyncQoSEvents\\n| where PreciseTimeStamp > ago(1d)\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| summarize Tried = count() by Category = 1DaysCategory;\\n\\nlet FailedOnboardingInLast1Days = AsyncQoSEvents\\n| where PreciseTimeStamp > ago(1d)\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| where resultType != 0\\n| summarize Failed =count() by Category = 1DaysCategory;\\n\\nlet SuccessfulOnboardingInLast1Days = AsyncQoSEvents\\n| where PreciseTimeStamp > ago(1d)\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| where resultType == 0\\n| summarize Succeeded = count() by Category = 1DaysCategory;\\n\\nlet 1DayRate = TriedOnboardingInLast1Days\\n| join FailedOnboardingInLast1Days on Category\\n| join SuccessfulOnboardingInLast1Days on Category\\n| extend SuccessRate = Succeeded * 100 / Tried\\n| extend FailureRate = Failed * 100 / Tried\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index = 1;\\n\\n30DaysRate\\n| union 14DaysRate\\n| union 7DaysRate\\n| union 3DaysRate\\n| union 1DayRate\\n| sort by index asc\\n| extend Success = strcat(SuccessRate, \\\"%\\\"), Failure = strcat(FailureRate, \\\"%\\\")\\n| project RateType = Category, Success, Failure, Tried, Failed, Succeeded\",\"allQueries\":{\"content\":\"let 30DaysCategory = \\\"Last 30 Days\\\";\\r\\nlet 14DaysCategory = \\\"Last 14 Days\\\";\\r\\nlet 7DaysCategory = \\\"Last 7 Days\\\";\\r\\nlet 3DaysCategory = \\\"Last 3 Days\\\";\\r\\nlet 1DaysCategory = \\\"Last 1 Days\\\";\\r\\n\\r\\nlet TriedOnboardingInLast30Days = AsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(30d)\\r\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| summarize Tried = count() by Category = 30DaysCategory;\\r\\n\\r\\nlet FailedOnboardingInLast30Days = AsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(30d)\\r\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| where resultType != 0\\r\\n| summarize Failed =count() by Category = 30DaysCategory;\\r\\n\\r\\nlet SuccessfulOnboardingInLast30Days = AsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(30d)\\r\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| where resultType == 0\\r\\n| summarize Succeeded = count() by Category = 30DaysCategory;\\r\\n\\r\\nlet 30DaysRate = TriedOnboardingInLast30Days\\r\\n| join FailedOnboardingInLast30Days on Category\\r\\n| join SuccessfulOnboardingInLast30Days on Category\\r\\n| extend SuccessRate = Succeeded * 100 / Tried\\r\\n| extend FailureRate = Failed * 100 / Tried\\r\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index = 5;\\r\\n\\r\\nlet TriedOnboardingInLast14Days = AsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(14d)\\r\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| summarize Tried = count() by Category = 14DaysCategory;\\r\\n\\r\\nlet FailedOnboardingInLast14Days = AsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(14d)\\r\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| where resultType != 0\\r\\n| summarize Failed =count() by Category = 14DaysCategory;\\r\\n\\r\\nlet SuccessfulOnboardingInLast14Days = AsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(14d)\\r\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| where resultType == 0\\r\\n| summarize Succeeded = count() by Category = 14DaysCategory;\\r\\n\\r\\nlet 14DaysRate = TriedOnboardingInLast14Days\\r\\n| join FailedOnboardingInLast14Days on Category\\r\\n| join SuccessfulOnboardingInLast14Days on Category\\r\\n| extend SuccessRate = Succeeded * 100 / Tried\\r\\n| extend FailureRate = Failed * 100 / Tried\\r\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index = 4;\\r\\n\\r\\nlet TriedOnboardingInLast7Days = AsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(7d)\\r\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| summarize Tried = count() by Category = 7DaysCategory;\\r\\n\\r\\nlet FailedOnboardingInLast7Days = AsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(7d)\\r\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| where resultType != 0\\r\\n| summarize Failed =count() by Category = 7DaysCategory;\\r\\n\\r\\nlet SuccessfulOnboardingInLast7Days = AsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(7d)\\r\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| where resultType == 0\\r\\n| summarize Succeeded = count() by Category = 7DaysCategory;\\r\\n\\r\\nlet 7DaysRate = TriedOnboardingInLast7Days\\r\\n| join FailedOnboardingInLast7Days on Category\\r\\n| join SuccessfulOnboardingInLast7Days on Category\\r\\n| extend SuccessRate = Succeeded * 100 / Tried\\r\\n| extend FailureRate = Failed * 100 / Tried\\r\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index = 3;\\r\\n\\r\\nlet TriedOnboardingInLast3Days = AsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(3d)\\r\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| summarize Tried = count() by Category = 3DaysCategory;\\r\\n\\r\\nlet FailedOnboardingInLast3Days = AsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(3d)\\r\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| where resultType != 0\\r\\n| summarize Failed =count() by Category = 3DaysCategory;\\r\\n\\r\\nlet SuccessfulOnboardingInLast3Days = AsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(3d)\\r\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| where resultType == 0\\r\\n| summarize Succeeded = count() by Category = 3DaysCategory;\\r\\n\\r\\nlet 3DaysRate = TriedOnboardingInLast3Days\\r\\n| join FailedOnboardingInLast3Days on Category\\r\\n| join SuccessfulOnboardingInLast3Days on Category\\r\\n| extend SuccessRate = Succeeded * 100 / Tried\\r\\n| extend FailureRate = Failed * 100 / Tried\\r\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index = 2;\\r\\n\\r\\nlet TriedOnboardingInLast1Days = AsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(1d)\\r\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| summarize Tried = count() by Category = 1DaysCategory;\\r\\n\\r\\nlet FailedOnboardingInLast1Days = AsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(1d)\\r\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| where resultType != 0\\r\\n| summarize Failed =count() by Category = 1DaysCategory;\\r\\n\\r\\nlet SuccessfulOnboardingInLast1Days = AsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(1d)\\r\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| where resultType == 0\\r\\n| summarize Succeeded = count() by Category = 1DaysCategory;\\r\\n\\r\\nlet 1DayRate = TriedOnboardingInLast1Days\\r\\n| join FailedOnboardingInLast1Days on Category\\r\\n| join SuccessfulOnboardingInLast1Days on Category\\r\\n| extend SuccessRate = Succeeded * 100 / Tried\\r\\n| extend FailureRate = Failed * 100 / Tried\\r\\n| project Category, Tried, Failed, Succeeded, FailureRate, SuccessRate, index = 1;\\r\\n\\r\\n30DaysRate\\r\\n| union 14DaysRate\\r\\n| union 7DaysRate\\r\\n| union 3DaysRate\\r\\n| union 1DayRate\\r\\n| sort by index asc\\r\\n| extend Success = strcat(SuccessRate, \\\"%\\\"), Failure = strcat(FailureRate, \\\"%\\\")\\r\\n| project RateType = Category, Success, Failure, Tried, Failed, Succeeded\\r\\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":164,\"endColumn\":74},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "search",
+    "Id": "ffc70182-e238-4788-8449-c8520a12bf77",
+    "Title": "FailedReOnBoardingErrorReasonCounts",
+    "Body": {
+      "title": "FailedReOnBoardingErrorReasonCounts",
+      "columns": [],
+      "formats": {
+        "message": {
+          "name": "message",
+          "type": "Object"
+        },
+        "reason": {
+          "name": "reason",
+          "type": "Object"
+        },
+        "refinedData": {
+          "name": "refinedData",
+          "type": "String"
+        },
+        "status": {
+          "name": "status",
+          "type": "Object"
+        },
+        "TIMESTAMP": {
+          "name": "TIMESTAMP",
+          "type": "DateTime"
+        },
+        "uri": {
+          "name": "uri",
+          "type": "Object"
+        }
+      },
+      "aggregations": {},
+      "sort": [],
+      "showGridGroupingBar": true,
+      "showFilterButton": true,
+      "showDetails": true,
+      "wrapText": false,
+      "showPagination": false,
+      "excelStyleFilter": true,
+      "showSearchToolbar": false,
+      "headerFontSize": "1.0em",
+      "headerFontWeight": "bold",
+      "headerFontStyle": "normal",
+      "headerFont": "",
+      "bodyFontSize": "1.0em",
+      "bodyFontWeight": "normal",
+      "bodyFontStyle": "normal",
+      "bodyFont": "",
+      "showColumnSettingOnDashboard": false,
+      "isClickable": true,
+      "searchFilterTags": [],
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"azportalpartner.kusto.windows.net\",\"database\":\"AzPtlCosmos\",\"query\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\n| where TIMESTAMP > ago(30d)\\n| where action == \\\"EnableReOnboarding\\\"\\n| extend refinedData = replace(\\\"\\\\\\\\\\\\\\\\\\\",\\\"\\\",data)\\n| extend reason = split(split(refinedData, \\\"reason\\\\\\\":\\\\\\\"\\\")[1], \\\"\\\\\\\"\\\")[0]\\n| extend message = split(split(refinedData, \\\"message\\\\\\\":\\\\\\\"\\\")[1], \\\"\\\\\\\"\\\")[0]\\n| extend uri = split(split(refinedData, \\\"uri\\\\\\\":\\\\\\\"\\\")[1], \\\"\\\\\\\"\\\")[0]\\n| extend status = split(split(refinedData, \\\"status\\\\\\\":\\\")[1], \\\",\\\")[0]\\n| extend isError = refinedData contains \\\"error\\\"\\n| where isError==1 //and reason !startswith \\\"Failed\\\"\\n| project TIMESTAMP, reason, message, status, uri, refinedData\\n| order by TIMESTAMP desc\\n\",\"allQueries\":{\"content\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\r\\n| where TIMESTAMP > ago(30d)\\r\\n| where action == \\\"EnableReOnboarding\\\"\\r\\n| extend refinedData = replace(\\\"\\\\\\\\\\\\\\\\\\\",\\\"\\\",data)\\r\\n| extend reason = split(split(refinedData, \\\"reason\\\\\\\":\\\\\\\"\\\")[1], \\\"\\\\\\\"\\\")[0]\\r\\n| extend message = split(split(refinedData, \\\"message\\\\\\\":\\\\\\\"\\\")[1], \\\"\\\\\\\"\\\")[0]\\r\\n| extend uri = split(split(refinedData, \\\"uri\\\\\\\":\\\\\\\"\\\")[1], \\\"\\\\\\\"\\\")[0]\\r\\n| extend status = split(split(refinedData, \\\"status\\\\\\\":\\\")[1], \\\",\\\")[0]\\r\\n| extend isError = refinedData contains \\\"error\\\"\\r\\n| where isError==1 //and reason !startswith \\\"Failed\\\"\\r\\n| project TIMESTAMP, reason, message, status, uri, refinedData\\r\\n| order by TIMESTAMP desc\",\"startLine\":1,\"startColumn\":1,\"endLine\":12,\"endColumn\":26},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[],\"timefield\":\"TIMESTAMP\"}"
+      }
+    }
+  },
+  {
+    "Type": "search",
+    "Id": "54528d82-14aa-48ad-a86f-bc26454e283e",
+    "Title": "SuccessfulReOnBoardingClusters",
+    "Body": {
+      "title": "SuccessfulReOnBoardingClusters",
+      "columns": [],
+      "formats": {
+        "clusterId": {
+          "name": "clusterId",
+          "type": "String"
+        },
+        "count_": {
+          "name": "count_",
+          "type": "Int64"
+        }
+      },
+      "aggregations": {},
+      "sort": [],
+      "showGridGroupingBar": true,
+      "showFilterButton": true,
+      "showDetails": true,
+      "wrapText": false,
+      "showPagination": false,
+      "excelStyleFilter": true,
+      "showSearchToolbar": false,
+      "headerFontSize": "1.0em",
+      "headerFontWeight": "bold",
+      "headerFontStyle": "normal",
+      "headerFont": "",
+      "bodyFontSize": "1.0em",
+      "bodyFontWeight": "normal",
+      "bodyFontStyle": "normal",
+      "bodyFont": "",
+      "showColumnSettingOnDashboard": false,
+      "isClickable": true,
+      "searchFilterTags": [],
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"azportalpartner.kusto.windows.net\",\"database\":\"AzPtlCosmos\",\"query\":\" cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\n| where TIMESTAMP > ago(30d)\\n| where action == \\\"EnableReOnboarding\\\"\\n| extend refinedData = replace(\\\"\\\\\\\\\\\\\\\\\\\",\\\"\\\",data)\\n| extend reason = split(split(refinedData, \\\"reason\\\\\\\":\\\\\\\"\\\")[1], \\\"\\\\\\\"\\\")[0]\\n| extend clusterId = split(split(refinedData, \\\"id\\\\\\\":\\\\\\\"\\\")[1], \\\"\\\\\\\"\\\")[0]\\n| where reason == 'Successfully enabled monitoring addon config on cluster'\\n| where clusterId !contains \\\"692aea0b-2d89-4e7e-ae30-fffe40782ee2\\\"\\n| summarize count() by tostring(clusterId)\\n\",\"allQueries\":{\"content\":\" cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\r\\n| where TIMESTAMP > ago(30d)\\r\\n| where action == \\\"EnableReOnboarding\\\"\\r\\n| extend refinedData = replace(\\\"\\\\\\\\\\\\\\\\\\\",\\\"\\\",data)\\r\\n| extend reason = split(split(refinedData, \\\"reason\\\\\\\":\\\\\\\"\\\")[1], \\\"\\\\\\\"\\\")[0]\\r\\n| extend clusterId = split(split(refinedData, \\\"id\\\\\\\":\\\\\\\"\\\")[1], \\\"\\\\\\\"\\\")[0]\\r\\n| where reason == 'Successfully enabled monitoring addon config on cluster'\\r\\n| where clusterId !contains \\\"692aea0b-2d89-4e7e-ae30-fffe40782ee2\\\"\\r\\n| summarize count() by tostring(clusterId)\\r\\n\\r\\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":9,\"endColumn\":43},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "SolutionDeploymentFailuresByDeploymentType(14D)",
+    "Title": "SolutionDeploymentFailuresByDeploymentType(14D)",
+    "Body": {
+      "title": "SolutionDeploymentFailuresByDeploymentType(14D)",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":false,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"All\",\"color\":\"#00bcf2\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"GreenField\",\"color\":\"#006e8a\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"BrownField\",\"color\":\"#6f87d8\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"DevOps\",\"color\":\"#663db8\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"AzCLI\",\"color\":\"#bc52bc\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#848e96\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"count\",\"type\":\"Int64\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"TIMESTAMP\",\"type\":\"DateTime\"}}},{\"id\":\"3\",\"type\":\"bucketValueOf\",\"schema\":\"group\",\"params\":{\"field\":{\"name\":\"DeploymentType\",\"type\":\"String\"}}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"bc3e0084-3617-4669-abe0-5c1bb0089f85\"}",
+      "vis_id": "bc3e0084-3617-4669-abe0-5c1bb0089f85",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"armprod.kusto.windows.net\",\"database\":\"ARMProd\",\"timefield\":\"TIMESTAMP\",\"query\":\"let All=\\nDeploymentOperations\\n| where PreciseTimeStamp > ago(30d)\\n| where resourceName contains \\\"ContainerInsights\\\" \\n| where executionStatus contains \\\"Fail\\\"\\n| extend DeploymentType = \\\"All\\\"\\n| summarize count = count() by bin(TIMESTAMP, 1d), DeploymentType;\\n\\nlet BrownField =\\nDeploymentOperations\\n| where PreciseTimeStamp > ago(30d)\\n| where deploymentName contains  \\\"SolutionOnboarding\\\" \\n| where resourceName contains \\\"ContainerInsights\\\" \\n| where executionStatus contains \\\"Fail\\\"\\n| extend DeploymentType = \\\"Portal(BrownField)\\\"\\n| summarize count = count() by bin(TIMESTAMP, 1d), DeploymentType;\\n\\nlet GreenField =\\nDeploymentOperations\\n| where PreciseTimeStamp > ago(30d)\\n| where deploymentName contains  \\\"SolutionDeployment\\\" \\n| where resourceName contains \\\"ContainerInsights\\\" \\n| where executionStatus contains \\\"Fail\\\"\\n| extend DeploymentType = \\\"Portal(GreenField)\\\"\\n| summarize count = count() by bin(TIMESTAMP, 1d), DeploymentType;\\n\\nlet AzCLI =\\nDeploymentOperations\\n| where PreciseTimeStamp > ago(30d)\\n| where userAgent  contains \\\"AzureCLI\\\"\\n| where resourceName contains \\\"ContainerInsights\\\"\\n| where deploymentName contains  \\\"aks-monitoring-\\\" \\n| where executionStatus contains \\\"Fail\\\"\\n| extend DeploymentType = \\\"AzCLI\\\" \\n| summarize count = count() by bin(TIMESTAMP, 1d), DeploymentType ;\\n\\nlet DevOps =\\nDeploymentOperations\\n| where PreciseTimeStamp > ago(30d)\\n| where userAgent  contains \\\"VSTS\\\"\\n| where resourceName contains \\\"ContainerInsights\\\"\\n| where executionStatus contains \\\"Fail\\\"\\n| extend DeploymentType = \\\"DevOps\\\"\\n| summarize count = count() by bin(TIMESTAMP, 1d), DeploymentType ;\\n\\nlet Terraform =\\nDeploymentOperations\\n| where PreciseTimeStamp > ago(30d)\\n| where userAgent  contains \\\"Terraform\\\"\\n| where resourceName contains \\\"ContainerInsights\\\"\\n| where executionStatus contains \\\"Fail\\\"\\n| extend DeploymentType = \\\"Terraform\\\"\\n| summarize count = count() by bin(TIMESTAMP, 1d), DeploymentType ;\\n\\nAll \\n| union GreenField\\n| union BrownField\\n| union AzCLI\\n| union Terraform\\n| union DevOps\\n\",\"filter\":[],\"timefilter\":{\"roundBy\":\"Auto\",\"from\":null,\"to\":null},\"allQueries\":{\"content\":\"let All=\\r\\nDeploymentOperations\\r\\n| where PreciseTimeStamp > ago(30d)\\r\\n| where resourceName contains \\\"ContainerInsights\\\" \\r\\n| where executionStatus contains \\\"Fail\\\"\\r\\n| extend DeploymentType = \\\"All\\\"\\r\\n| summarize count = count() by bin(TIMESTAMP, 1d), DeploymentType;\\r\\n\\r\\nlet BrownField =\\r\\nDeploymentOperations\\r\\n| where PreciseTimeStamp > ago(30d)\\r\\n| where deploymentName contains  \\\"SolutionOnboarding\\\" \\r\\n| where resourceName contains \\\"ContainerInsights\\\" \\r\\n| where executionStatus contains \\\"Fail\\\"\\r\\n| extend DeploymentType = \\\"Portal(BrownField)\\\"\\r\\n| summarize count = count() by bin(TIMESTAMP, 1d), DeploymentType;\\r\\n\\r\\nlet GreenField =\\r\\nDeploymentOperations\\r\\n| where PreciseTimeStamp > ago(30d)\\r\\n| where deploymentName contains  \\\"SolutionDeployment\\\" \\r\\n| where resourceName contains \\\"ContainerInsights\\\" \\r\\n| where executionStatus contains \\\"Fail\\\"\\r\\n| extend DeploymentType = \\\"Portal(GreenField)\\\"\\r\\n| summarize count = count() by bin(TIMESTAMP, 1d), DeploymentType;\\r\\n\\r\\nlet AzCLI =\\r\\nDeploymentOperations\\r\\n| where PreciseTimeStamp > ago(30d)\\r\\n| where userAgent  contains \\\"AzureCLI\\\"\\r\\n| where resourceName contains \\\"ContainerInsights\\\"\\r\\n| where deploymentName contains  \\\"aks-monitoring-\\\" \\r\\n| where executionStatus contains \\\"Fail\\\"\\r\\n| extend DeploymentType = \\\"AzCLI\\\" \\r\\n| summarize count = count() by bin(TIMESTAMP, 1d), DeploymentType ;\\r\\n\\r\\nlet DevOps =\\r\\nDeploymentOperations\\r\\n| where PreciseTimeStamp > ago(30d)\\r\\n| where userAgent  contains \\\"VSTS\\\"\\r\\n| where resourceName contains \\\"ContainerInsights\\\"\\r\\n| where executionStatus contains \\\"Fail\\\"\\r\\n| extend DeploymentType = \\\"DevOps\\\"\\r\\n| summarize count = count() by bin(TIMESTAMP, 1d), DeploymentType ;\\r\\n\\r\\nlet Terraform =\\r\\nDeploymentOperations\\r\\n| where PreciseTimeStamp > ago(30d)\\r\\n| where userAgent  contains \\\"Terraform\\\"\\r\\n| where resourceName contains \\\"ContainerInsights\\\"\\r\\n| where executionStatus contains \\\"Fail\\\"\\r\\n| extend DeploymentType = \\\"Terraform\\\"\\r\\n| summarize count = count() by bin(TIMESTAMP, 1d), DeploymentType ;\\r\\n\\r\\nAll \\r\\n| union GreenField\\r\\n| union BrownField\\r\\n| union AzCLI\\r\\n| union Terraform\\r\\n| union DevOps\\r\\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":61,\"endColumn\":1},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "AgentOnboardingFailuresByDeploymentType(30D)",
+    "Title": "AgentOnboardingFailuresByDeploymentType(30D)",
+    "Body": {
+      "title": "AgentOnboardingFailuresByDeploymentType(30D)",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":false,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"GreenField\",\"color\":\"#00bcf2\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#848e96\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"count_\",\"type\":\"Int64\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"TIMESTAMP\",\"type\":\"DateTime\"}}},{\"id\":\"3\",\"type\":\"bucketValueOf\",\"schema\":\"group\",\"params\":{\"field\":{\"name\":\"DeploymentType\",\"type\":\"String\"}}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"0e4f12f1-612a-4ec8-969f-c4e4848e3364\"}",
+      "vis_id": "0e4f12f1-612a-4ec8-969f-c4e4848e3364",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"aks.kusto.windows.net\",\"database\":\"AKSprod\",\"timefield\":\"TIMESTAMP\",\"query\":\"\\nAsyncQoSEvents\\n| where PreciseTimeStamp > ago(30d)\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| where resultType != 0   \\n| where resultCode contains \\\"loganalytics\\\" or errorDetails contains \\\"loganalytics\\\"\\n| extend DeploymentType = iff(suboperationName contains \\\"Creating\\\", \\\"GreenField\\\", \\\"BrownField\\\")\\n| summarize count() by bin(TIMESTAMP, 1d), DeploymentType  \",\"filter\":[],\"timefilter\":{\"roundBy\":\"Auto\",\"from\":null,\"to\":null},\"allQueries\":{\"content\":\"\\r\\nAsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(30d)\\r\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| where resultType != 0   \\r\\n| where resultCode contains \\\"loganalytics\\\" or errorDetails contains \\\"loganalytics\\\"\\r\\n| extend DeploymentType = iff(suboperationName contains \\\"Creating\\\", \\\"GreenField\\\", \\\"BrownField\\\")\\r\\n| summarize count() by bin(TIMESTAMP, 1d), DeploymentType  \\r\\n\\r\\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":10,\"endColumn\":60},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "AgentIssuesInAKS",
+    "Title": "AgentIssuesInAKS",
+    "Body": {
+      "title": "AgentIssuesInAKS",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":false,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"OmsAgentTerminating\",\"color\":\"#663db8\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsAgentRsCrashed\",\"color\":\"#006e8a\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsAgentNotReady\",\"color\":\"#6f87d8\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsAgentCrashed\",\"color\":\"#00bcf2\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsNetworkIssue\",\"color\":\"#40bf58\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsAgentRsNotReady\",\"color\":\"#9e3533\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsAgentRsTerminating\",\"color\":\"#bc52bc\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#848e96\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false,\"polyfit\":{\"fit\":false,\"line_type\":\"linear\",\"reg_only\":false}},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"dcount_fqdn\",\"type\":\"Int64\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"TIMESTAMP\",\"type\":\"DateTime\"}}},{\"id\":\"3\",\"type\":\"bucketValueOf\",\"schema\":\"group\",\"params\":{\"field\":{\"name\":\"addonPodsState\",\"type\":\"String\"}}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"3a358586-cf51-449c-a032-c0c659455090\"}",
+      "vis_id": "3a358586-cf51-449c-a032-c0c659455090",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"aks.kusto.windows.net\",\"database\":\"AKSprod\",\"timefield\":\"TIMESTAMP\",\"query\":\"union\\n( BlackboxMonitoringActivity \\n| where TIMESTAMP > ago(30d)\\n| where addonPodsState  contains \\\"Oms\\\"\\n| summarize dcount(fqdn) by bin (TIMESTAMP, 1d), addonPodsState\\n),\\n( BlackboxMonitoringActivity \\n| where TIMESTAMP > ago(30d)\\n| where addonPodsState  contains \\\"Oms\\\"\\n| summarize dcount_fqdn=dcount(fqdn) by bin (TIMESTAMP, 1d)\\n)\\n\",\"filter\":[],\"timefilter\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\",\"from\":null,\"to\":null},\"allQueries\":{\"content\":\"union\\r\\n( BlackboxMonitoringActivity \\r\\n| where TIMESTAMP > ago(30d)\\r\\n| where addonPodsState  contains \\\"Oms\\\"\\r\\n| summarize dcount(fqdn) by bin (TIMESTAMP, 1d), addonPodsState\\r\\n),\\r\\n( BlackboxMonitoringActivity \\r\\n| where TIMESTAMP > ago(30d)\\r\\n| where addonPodsState  contains \\\"Oms\\\"\\r\\n| summarize dcount_fqdn=dcount(fqdn) by bin (TIMESTAMP, 1d)\\r\\n)\\r\\n\\r\\n\\r\\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":11,\"endColumn\":2},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "AgentOnboardingByResultCode(30D)",
+    "Title": "AgentOnboardingByResultCode(30D)",
+    "Body": {
+      "title": "AgentOnboardingByResultCode(30D)",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":false,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"QuotaExceeded\",\"color\":\"#00bcf2\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ControlPlaneAddOnsNotReady\",\"color\":\"#40bf87\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"RequestDisallowedByPolicy\",\"color\":\"#4097bf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"NotFound\",\"color\":\"#7840bf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ControlPlaneProvisioningInternalError\",\"color\":\"#4840bf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"InvalidParameter\",\"color\":\"#bf6840\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ProvisioningFailed\",\"color\":\"#bf4078\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ControlPlaneInternalError\",\"color\":\"#b7bf40\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ControlPlaneProvisioningSyncError\",\"color\":\"#bf8b40\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OSProvisioningTimedOut\",\"color\":\"#40bfab\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"SubnetIsFull\",\"color\":\"#6c40bf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"InternalOperationError\",\"color\":\"#bf4054\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"InvalidTemplate\",\"color\":\"#4074bf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"CreateDNSZoneError\",\"color\":\"#93bf40\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"VMExtensionProvisioningError\",\"color\":\"#bf40b3\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ControlPlaneAddOnsValidationError\",\"color\":\"#58bf40\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"NodesNotReady\",\"color\":\"#a740bf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ResourceGroupBeingDeleted\",\"color\":\"#40bf4c\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OperationNotAllowed\",\"color\":\"#bf4083\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"TemplateDeploymentTimedoutError\",\"color\":\"#40bf7c\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"PreconditionFailed\",\"color\":\"#bf5c40\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"AgentCountNotMatch\",\"color\":\"#bfbb40\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"UnderlayNotSet\",\"color\":\"#4044bf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"VMAgentStatusCommunicationError\",\"color\":\"#9b40bf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"InvalidResourceReference\",\"color\":\"#64bf40\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ResourceUpdateBlockedOnPlatformUpdate\",\"color\":\"#40a3bf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"InternalDiskManagementError\",\"color\":\"#bf409b\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"GetLogAnalyticsWorkspaceError\",\"color\":\"#40bf64\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ControlPlaneUnexpectedValue\",\"color\":\"#405cbf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"GatewaySubnet\",\"color\":\"#bfa340\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"StorageAccountOperationInternalError\",\"color\":\"#40bbbf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"DiskServiceInternalError\",\"color\":\"#bf4440\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ControlPlaneNotReady\",\"color\":\"#8340bf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"VMStartTimedOut\",\"color\":\"#7cbf40\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OperationPreempted\",\"color\":\"#bf406c\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"InternalExecutionError\",\"color\":\"#40bf93\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ServicePrincipalNotFound\",\"color\":\"#abbf40\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ClusterResourceGroupNotFound\",\"color\":\"#408bbf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"AllocationFailed\",\"color\":\"#bf7440\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ResourceNotPermittedOnDelegatedSubnet\",\"color\":\"#5440bf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ResourceNotFound\",\"color\":\"#bf40b9\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ApplicationGatewaySubnetCannotBeUsedByOtherResources\",\"color\":\"#4cbf40\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ConflictWithNetworkIntentPolicy\",\"color\":\"#b340bf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"CreateRoleAssignmentError\",\"color\":\"#6abf40\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"TemplateFailedPrevalidation\",\"color\":\"#40bf46\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ResourceDeploymentFailure\",\"color\":\"#9540bf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ResourceReferenceUsesWrongSubscriptionId\",\"color\":\"#bf40a1\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"SubnetWithExternalResourcesCannotBeUsedByOtherResources\",\"color\":\"#bf9d40\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ExistingAvailabilitySetWasNotDeployedOnAcceleratedNetworkingEnabledCluster\",\"color\":\"#40bf5e\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"NetworkingInternalOperationError\",\"color\":\"#40bfbd\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"InternalServerError\",\"color\":\"#bf4042\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"Canceled\",\"color\":\"#4062bf\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#848e96\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"count\",\"type\":\"Int64\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"TIMESTAMP\",\"type\":\"DateTime\"}}},{\"id\":\"3\",\"type\":\"bucketValueOf\",\"schema\":\"group\",\"params\":{\"field\":{\"name\":\"resultCode\",\"type\":\"String\"}}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"a6aaa017-e8b7-4c94-a7e7-84efb814f442\"}",
+      "vis_id": "a6aaa017-e8b7-4c94-a7e7-84efb814f442",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"aks.kusto.windows.net\",\"database\":\"AKSprod\",\"filter\":[],\"timefield\":\"TIMESTAMP\",\"query\":\"AsyncQoSEvents\\n| where PreciseTimeStamp > ago(30d)\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| where resultType != 0\\n| summarize count = count() by bin(TIMESTAMP, 1d), resultCode \\n| render timechart \",\"timefilter\":{\"roundBy\":\"Auto\",\"from\":null,\"to\":null},\"allQueries\":{\"content\":\"AsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(30d)\\r\\n| where  operationName =~ \\\"PutManagedClusterHandler.PUT\\\"  and ( suboperationName contains \\\"Creating\\\" or suboperationName contains \\\"updating\\\" )  \\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| where resultType != 0\\r\\n| summarize count = count() by bin(TIMESTAMP, 1d), resultCode \\r\\n| render timechart \",\"startLine\":1,\"startColumn\":1,\"endLine\":8,\"endColumn\":20}}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "27fc2af0-2938-4832-8cc9-484ac64dbdba",
+    "Title": "AgentIssuesInAKS - Copy",
+    "Body": {
+      "title": "AgentIssuesInAKS - Copy",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":false,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"OmsAgentOOMKilled\",\"color\":\"#4068bf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsAgentNotFound\",\"color\":\"#daa05d\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsAgentImagePullBackOff\",\"color\":\"#70bf40\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsAgentTerminating\",\"color\":\"#663db8\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsWorkspaceDeleted\",\"color\":\"#bf5040\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsAgentRsCrashed\",\"color\":\"#006e8a\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsNetworkIssue\",\"color\":\"#40bf58\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsInvalidWorkspaceKey\",\"color\":\"#bfaf40\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsAgentNotReady\",\"color\":\"#6f87d8\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsAgentRsOOMKilled\",\"color\":\"#4050bf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsAgentCrashed\",\"color\":\"#00bcf2\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsAgentRsImagePullBackOff\",\"color\":\"#bf4048\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsAgentRsNotReady\",\"color\":\"#9e3533\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"OmsAgentRsNotFound\",\"color\":\"#7840bf\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#848e96\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false,\"polyfit\":{\"fit\":false,\"line_type\":\"linear\",\"reg_only\":false},\"highlightFilteredRange\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"dcount_fqdn\",\"type\":\"Int64\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"TIMESTAMP\",\"type\":\"DateTime\"},\"aggCustomLabel\":\"\"}},{\"id\":\"3\",\"type\":\"bucketValueOf\",\"schema\":\"group\",\"params\":{\"field\":{\"name\":\"addonPodsState\",\"type\":\"String\"},\"aggCustomLabel\":\"\"}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"82b198fc-d89b-4b4b-a278-f962429299ff\"}",
+      "vis_id": "82b198fc-d89b-4b4b-a278-f962429299ff",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"aks.kusto.windows.net\",\"database\":\"AKSprod\",\"timefield\":\"TIMESTAMP\",\"query\":\"BlackboxMonitoringActivity \\n| where TIMESTAMP > ago(2d)\\n| where addonPodsState  contains \\\"Oms\\\"\\n| summarize dcount(fqdn) by bin (TIMESTAMP, 1h), addonPodsState\\n\",\"filter\":[],\"timefilter\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\",\"from\":null,\"to\":null},\"allQueries\":{\"content\":\"BlackboxMonitoringActivity \\r\\n| where TIMESTAMP > ago(2d)\\r\\n| where addonPodsState  contains \\\"Oms\\\"\\r\\n| summarize dcount(fqdn) by bin (TIMESTAMP, 1h), addonPodsState\\r\\n\\r\\n\\r\\n\\r\\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":4,\"endColumn\":64},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "CIOnboarding-Failures",
+    "Title": "CIOnboarding-Failures",
+    "Body": {
+      "title": "CIOnboarding-Failures",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":false,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"Count\",\"color\":\"#00bcf2\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#848e96\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"hide_metric\":false,\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"TIMESTAMP\",\"type\":\"DateTime\"},\"show_interval\":true,\"interval\":\"auto\",\"autoIntervalVal\":\"d\",\"customInterval\":\"2h\",\"customStart\":\"Monday\",\"min_doc_count\":1,\"extended_bounds\":{},\"aggCustomLabel\":\"\"}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"89c3cf15-3e69-41c2-b551-39819355578c\"}",
+      "vis_id": "89c3cf15-3e69-41c2-b551-39819355578c",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"armprod.kusto.windows.net\",\"database\":\"ARMProd\",\"filter\":[],\"timefield\":\"TIMESTAMP\",\"query\":\"DeploymentOperations\\n| where TIMESTAMP > ago(14d)\\n| where providerNamespace contains \\\"Microsoft.OperationsManagement\\\" \\n| where resourceName startswith \\\"ContainerInsights\\\" \\n| where executionStatus contains \\\"Failed\\\" \",\"timefilter\":{\"roundBy\":\"Auto\",\"from\":null,\"to\":null},\"allQueries\":{\"content\":\"let startTimestamp = ago(1d);\\r\\nlet endTimestamp = now();\\r\\nDeploymentOperations\\r\\n| where TIMESTAMP > startTimestamp\\r\\n| where TIMESTAMP <= endTimestamp\\r\\n| where resourceName startswith \\\"ContainerInsights\\\"\\r\\n| where executionStatus contains \\\"Failed\\\" \\r\\n| extend deploymentType = iff(deploymentName startswith  \\\"aks-monitoring-\\\", \\\"CLI\\\", iff(deploymentName startswith \\\"SolutionOnboarding-\\\", \\\"UX-BrownField\\\",  \\r\\n   iff(deploymentName == \\\"SolutionDeployment\\\", \\\"Ux-GreenField\\\", \\\"Others\\\")))\\r\\n| project subscriptionId, resourceGroupName, resourceName, deploymentType, correlationId \\r\\n| join (\\r\\n EventServiceEntries\\r\\n | where TIMESTAMP > startTimestamp\\r\\n | where TIMESTAMP <= endTimestamp\\r\\n | where status contains \\\"Failed\\\"\\r\\n | where subStatus != \\\"\\\"  \\r\\n | extend provider = iff(resourceProvider contains  \\\"Microsoft.ContainerService\\\", \\\"AKS\\\", iff(resourceProvider contains \\\"Microsoft.OperationsManagement\\\", \\\"OMS(solutions)\\\",  \\r\\n   iff(resourceProvider contains \\\"Microsoft.OperationalInsights\\\", \\\"OMS(workspaces)\\\", \\r\\n   iff(resourceProvider contains \\\"Microsoft.Network\\\" , \\\"Network\\\" , \\r\\n   iff(resourceProvider contains  \\\"Microsoft.ContainerRegistry\\\",  \\\"ACR\\\",\\r\\n   iff(resourceProvider contains  \\\"Microsoft.Resources\\\", \\\"ARM\\\", resourceProvider))))))   \\r\\n | extend ErrorMessage = tostring(properties) \\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"BadGateway\\\" and ErrorMessage contains \\\"The network connectivity issue encountered\\\"), \\\"BadGateway(NetworkError)\\\", ErrorMessage )\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"BadGateway\\\" and ErrorMessage contains \\\"BadGatewayConnection\\\"), \\\"BadGateway(BadGatewayConnection)\\\", ErrorMessage )\\r\\n | extend ErrorMessage = iff(ErrorMessage contains \\\"GatewayTimeout\\\" , \\\"GatewayTimeout\\\", ErrorMessage)\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"InvalidDeployment\\\" and ErrorMessage contains \\\"exceeds the maximum length\\\"), \\\"InvalidDeployment(ExceedsMaxLength)\\\", ErrorMessage )\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"InvalidTemplateDeployment\\\" and ErrorMessage contains \\\"RequestDisallowedByPolicy\\\"), \\\"InvalidTemplateDeployment(RequestDisallowedByPolicy)\\\", ErrorMessage )\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"InvalidTemplateDeployment\\\" and ErrorMessage contains \\\"Authorization failed for template resource\\\"), \\\"InvalidTemplateDeployment(AccessDenied)\\\", ErrorMessage )\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"InvalidTemplateDeployment\\\" and ErrorMessage contains \\\"OperationNotAllowed\\\"), \\\"InvalidTemplateDeployment(OperationNotAllowed)\\\", ErrorMessage )\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"BadRequest\\\" and ErrorMessage contains \\\"InvalidTemplate\\\"), \\\"BadRequest(InvalidTemplate)\\\", ErrorMessage )\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"BadRequest\\\" and ErrorMessage contains \\\"GetLogAnalyticsWorkspaceError\\\"), \\\"BadRequest(GetLogAnalyticsWorkspaceError)\\\", ErrorMessage ) \\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"BadRequest\\\" and ErrorMessage contains \\\"Value cannot be null\\\"), \\\"BadRequest(ValueNull)\\\", ErrorMessage ) \\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"BadRequest\\\" and ErrorMessage contains \\\"RequestIsNotValidJson\\\"), \\\"BadRequest(RequestIsNotValidJson)\\\", ErrorMessage ) \\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"BadRequest\\\" and ErrorMessage contains \\\"PrincipalTypeNotSupported\\\"), \\\"BadRequest(PrincipalTypeNotSupported)\\\", ErrorMessage ) \\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"BadRequest\\\" and ErrorMessage contains \\\"RoleAssignmentUpdateNotPermitted\\\"), \\\"BadRequest(RoleAssignmentUpdateNotPermitted)\\\", ErrorMessage ) \\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"BadRequest\\\" and ErrorMessage contains \\\"NoRegisteredProviderFound\\\"), \\\"BadRequest(NoRegisteredProviderFound)\\\", ErrorMessage )\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"BadRequest\\\" and ErrorMessage contains \\\"LocationNotAvailableForResourceType\\\"), \\\"BadRequest(LocationNotAvailableForResourceType)\\\", ErrorMessage )\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"BadRequest\\\" and ErrorMessage contains \\\"Bad request. Diagnostic information\\\"), \\\"BadRequest(MissingError)\\\", ErrorMessage ) \\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"BadRequest\\\" and ErrorMessage contains \\\"InternalOperationError\\\"), \\\"BadRequest(InternalOperationError)\\\", ErrorMessage )\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"BadRequest\\\" and ErrorMessage contains \\\"LocationRequired\\\"), \\\"BadRequest(LocationRequired)\\\", ErrorMessage ) \\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"BadRequest\\\" and ErrorMessage contains \\\"DockerBridgeCidrInvalid\\\"), \\\"BadRequest(DockerBridgeCidrInvalid)\\\", ErrorMessage )\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"BadRequest\\\" and ErrorMessage contains \\\"GetSubnetCidrError\\\"), \\\"BadRequest(GetSubnetCidrError)\\\", ErrorMessage )\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"BadRequest\\\" and ErrorMessage contains \\\"PodCidrOverlapServiceCidr\\\"), \\\"BadRequest(PodCidrOverlapServiceCidr)\\\", ErrorMessage)\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"BadRequest\\\" and ErrorMessage contains \\\"SubnetCidrOverlapServiceCidr\\\"), \\\"BadRequest(SubnetCidrOverlapServiceCidr)\\\", ErrorMessage) \\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"BadRequest\\\" and todynamic(ErrorMessage).statusMessage startswith \\\"{\\\\\\\"error\\\\\\\":{\\\\\\\"code\\\\\\\":\\\\\\\"BadRequest\\\\\\\",\\\\\\\"message\\\\\\\":\\\\\\\"\\\\\\\"}}\\\"), \\\"BadRequest(MissingError)\\\", ErrorMessage)\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"Conflict\\\" and ErrorMessage contains \\\"MissingSubscriptionRegistration\\\"), \\\"Conflict(MissingSubscriptionRegistration)\\\", ErrorMessage )\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"Conflict\\\" and ErrorMessage contains \\\"OperationNotAllowed\\\"), \\\"Conflict(OperationNotAllowed)\\\", ErrorMessage)\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"Conflict\\\" and ErrorMessage contains \\\"ResourceGroupBeingDeleted\\\"), \\\"Conflict(ResourceGroupBeingDeleted)\\\", ErrorMessage)\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"Conflict\\\" and ErrorMessage contains \\\"DeploymentActive\\\"), \\\"Conflict(DeploymentActive)\\\", ErrorMessage)  \\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"Conflict\\\" and ErrorMessage contains \\\"The workspace name\\\" and ErrorMessage contains \\\"is not unique\\\"), \\\"Conflict(WorkspaceNotUnique)\\\", ErrorMessage) \\r\\n | extend ErrorMessage = iff(ErrorMessage contains \\\"NotFound\\\" , \\\"NotFound\\\", ErrorMessage)\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"ServiceUnavailable\\\" and ErrorMessage contains \\\"ServerTimeout\\\"), \\\"ServiceUnavailable(ServerTimeout)\\\", ErrorMessage)\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"Unauthorized\\\" and ErrorMessage contains \\\"Access is denied due to invalid credentials\\\")  , \\\"Unauthorized(InvalidCredentials)\\\", ErrorMessage)\\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"InternalServerError\\\" and ErrorMessage contains \\\"MultipleErrorsOccurred\\\")  , \\\"InternalServerError(MultipleErrorsOccurred)\\\", ErrorMessage) \\r\\n | extend ErrorMessage = iff((ErrorMessage contains \\\"InternalServerError\\\" and ErrorMessage contains \\\"InternalOperationError\\\")  , \\\"InternalServerError(InternalOperationError)\\\", ErrorMessage) \\r\\n | project TIMESTAMP, subscriptionId, correlationId, status, subStatus, ErrorMessage , provider        \\r\\n) on subscriptionId, correlationId\\r\\n| project TIMESTAMP, deploymentType, subscriptionId, resourceGroupName, resourceName,  ErrorMessage , provider \\r\\n| summarize Customers = dcount(subscriptionId), Resources = dcount(resourceName), Errors = count() by deploymentType, ErrorMessage, provider\\r\\n| order by Customers desc, Resources desc, Errors desc, deploymentType, ErrorMessage, provider\\r\\n| extend Affected_R_C = strcat(Resources, \\\"/\\\", Customers)\\r\\n| project deploymentType, provider, ErrorMessage, Affected_R_C, Errors\\r\\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":1,\"endColumn\":1},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "935bba4b-e1e1-4b87-a106-b39ccbb611d9",
+    "Title": "Count of Onboarding Blade Init Sliced By Initatior Blade",
+    "Body": {
+      "title": "Count of Onboarding Blade Init Sliced By Initatior Blade",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"highlightFilteredRange\":false,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":false,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"InBladeContainerInsightsFrameBlade\",\"color\":\"#006e8a\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#323130\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"polyfit\":{\"fit\":false,\"line_type\":\"linear\",\"reg_only\":false},\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"count_\",\"type\":\"Int64\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"TIMESTAMP\",\"type\":\"DateTime\"},\"aggCustomLabel\":\"\"}},{\"id\":\"3\",\"type\":\"bucketValueOf\",\"schema\":\"group\",\"params\":{\"field\":{\"name\":\"source\",\"type\":\"String\"},\"aggCustomLabel\":\"\"}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"bdf95967-c1f9-44f4-863f-6aa2a5fb7417\"}",
+      "vis_id": "bdf95967-c1f9-44f4-863f-6aa2a5fb7417",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"azportalpartner.kusto.windows.net\",\"database\":\"AzPtlCosmos\",\"filter\":[],\"timefield\":\"TIMESTAMP\",\"query\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\n| where TIMESTAMP > ago(30d)\\n//| where source == \\\"InBladeContainerInsightsFrameBlade\\\" or source == \\\"UsageNotebookBlade\\\" or source == 'InfraInsightsMultiClusterInsightsFrameBlade' or source == 'ContainerInsights'\\n| where action == \\\"BladeInit\\\" \\n| summarize count() by source, bin(TIMESTAMP, 1d)\\n| render timechart\\n\",\"timefilter\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\",\"to\":\"now/m\",\"from\":\"now/m-1M\",\"mode\":\"quick\"},\"allQueries\":{\"content\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\r\\n| where TIMESTAMP > ago(30d)\\r\\n//| where source == \\\"InBladeContainerInsightsFrameBlade\\\" or source == \\\"UsageNotebookBlade\\\" or source == 'InfraInsightsMultiClusterInsightsFrameBlade' or source == 'ContainerInsights'\\r\\n| where action == \\\"BladeInit\\\" \\r\\n| summarize count() by source, bin(TIMESTAMP, 1d)\\r\\n| render timechart\\r\\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":6,\"endColumn\":19},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "828a85d9-e6cc-4f45-ab90-f5048434aeba",
+    "Title": "Count of Onboarding Blade Init Sliced By Initatior Blade - Copy",
+    "Body": {
+      "title": "Count of Onboarding Blade Init Sliced By Initatior Blade - Copy",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"highlightFilteredRange\":false,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":false,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"InfraInsightsMultiClusterInsightsFrameBlade\",\"color\":\"#bc52bc\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"InBladeContainerInsightsFrameBlade\",\"color\":\"#006e8a\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"UsageNotebookBlade\",\"color\":\"#daa05d\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"MetricsExplorer\",\"color\":\"#bf40a7\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#323130\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"polyfit\":{\"fit\":false,\"line_type\":\"linear\",\"reg_only\":false},\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"count_\",\"type\":\"Int64\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"TIMESTAMP\",\"type\":\"DateTime\"},\"aggCustomLabel\":\"\"}},{\"id\":\"3\",\"type\":\"bucketValueOf\",\"schema\":\"group\",\"params\":{\"field\":{\"name\":\"source\",\"type\":\"String\"},\"aggCustomLabel\":\"\"}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"4b9ee35a-c223-4b07-8f7f-5a7a6f716225\"}",
+      "vis_id": "4b9ee35a-c223-4b07-8f7f-5a7a6f716225",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"azportalpartner.kusto.windows.net\",\"database\":\"AzPtlCosmos\",\"filter\":[],\"timefield\":\"TIMESTAMP\",\"query\":\" cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\n| where TIMESTAMP > ago(30d)\\n| where source == \\\"InBladeContainerInsightsFrameBlade\\\" or source == \\\"UsageNotebookBlade\\\" or source == 'InfraInsightsMultiClusterInsightsFrameBlade' or source == 'MetricsExplorer'\\n| where action == \\\"OnboardingSuceeded\\\" or action == \\\"DeploymentSuceeded\\\" or action == \\\"DeploymentSucceeded\\\"\\n| summarize count() by source, bin(TIMESTAMP, 1d)\\n| render timechart\\n\",\"timefilter\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\",\"to\":\"now/m\",\"from\":\"now/m-1M\",\"mode\":\"quick\"},\"allQueries\":{\"content\":\" cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\r\\n| where TIMESTAMP > ago(30d)\\r\\n| where source == \\\"InBladeContainerInsightsFrameBlade\\\" or source == \\\"UsageNotebookBlade\\\" or source == 'InfraInsightsMultiClusterInsightsFrameBlade' or source == 'MetricsExplorer'\\r\\n| where action == \\\"OnboardingSuceeded\\\" or action == \\\"DeploymentSuceeded\\\" or action == \\\"DeploymentSucceeded\\\"\\r\\n| summarize count() by source, bin(TIMESTAMP, 1d)\\r\\n| render timechart\\r\\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":6,\"endColumn\":19},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "search",
+    "Id": "All Onboarding Failures (last 24 hrs)",
+    "Title": "All Onboarding Failures (last 24 hrs)",
+    "Body": {
+      "title": "All Onboarding Failures (last 24 hrs)",
+      "columns": [
+        {
+          "id": 0,
+          "name": "DeploymentType"
+        },
+        {
+          "id": 1,
+          "name": "ErrorInProvider"
+        },
+        {
+          "id": 2,
+          "name": "StatusCode"
+        },
+        {
+          "id": 3,
+          "name": "SubstatusCode"
+        },
+        {
+          "id": 4,
+          "name": "Affected_Resources_By_Subscriptions"
+        },
+        {
+          "id": 5,
+          "name": "ErrorsCount"
+        }
+      ],
+      "formats": {
+        "Affected_Resources_By_Subscriptions": {
+          "name": "Affected_Resources_By_Subscriptions",
+          "type": "String"
+        },
+        "DeploymentType": {
+          "name": "DeploymentType",
+          "type": "String"
+        },
+        "ErrorInProvider": {
+          "name": "ErrorInProvider",
+          "type": "String"
+        },
+        "ErrorsCount": {
+          "name": "ErrorsCount",
+          "type": "Int64"
+        },
+        "StatusCode": {
+          "name": "StatusCode",
+          "type": "String"
+        },
+        "SubstatusCode": {
+          "name": "SubstatusCode",
+          "type": "String"
+        }
+      },
+      "aggregations": {},
+      "sort": [],
+      "showGridGroupingBar": true,
+      "showFilterButton": true,
+      "showDetails": true,
+      "wrapText": false,
+      "showPagination": false,
+      "excelStyleFilter": true,
+      "showSearchToolbar": false,
+      "headerFontSize": "1.0em",
+      "headerFontWeight": "bold",
+      "headerFontStyle": "normal",
+      "headerFont": "",
+      "bodyFontSize": "1.0em",
+      "bodyFontWeight": "normal",
+      "bodyFontStyle": "normal",
+      "bodyFont": "",
+      "showColumnSettingOnDashboard": false,
+      "isClickable": true,
+      "searchFilterTags": [],
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"armprod.kusto.windows.net\",\"database\":\"ARMProd\",\"query\":\"let startTimestamp = ago(1d);\\nlet endTimestamp = now();\\nDeploymentOperations\\n| where TIMESTAMP > startTimestamp\\n| where TIMESTAMP <= endTimestamp\\n| where resourceName startswith \\\"ContainerInsights\\\"\\n| where executionStatus contains \\\"Failed\\\" \\n| extend DeploymentType = iff(deploymentName startswith  \\\"aks-monitoring-\\\", \\\"CLI\\\", iff(deploymentName startswith \\\"SolutionOnboarding-\\\", \\\"UX-BrownField\\\",  \\n   iff(deploymentName == \\\"SolutionDeployment\\\", \\\"Ux-GreenField\\\", \\\"CustomerOwned\\\")))\\n| project subscriptionId, resourceGroupName, resourceName, DeploymentType, correlationId\\n| join (\\n EventServiceEntries\\n | where TIMESTAMP > startTimestamp\\n | where TIMESTAMP <= endTimestamp  \\n | where resourceProvider in (\\\"Microsoft.ContainerService\\\", \\\"Microsoft.OperationsManagement\\\", \\\"Microsoft.OperationalInsights\\\",  \\\"Microsoft.Resources\\\")\\n | where status contains \\\"Failed\\\"\\n | where subStatus != \\\"\\\"\\n | extend ErrorInProvider = iff(resourceProvider contains  \\\"Microsoft.ContainerService\\\", \\\"AKS\\\", iff(resourceProvider contains \\\"Microsoft.OperationsManagement\\\", \\\"OMS(solutions)\\\",  \\n   iff(resourceProvider contains \\\"Microsoft.OperationalInsights\\\", \\\"OMS(workspaces)\\\", \\n   iff(resourceProvider contains  \\\"Microsoft.Resources\\\", \\\"ARM\\\", resourceProvider))))   \\n | extend ErrorMessage = tostring(properties) \\n | extend statusCode = todynamic(ErrorMessage).statusCode \\n | extend code = iff(isempty(todynamic(tostring(todynamic(tostring(todynamic(ErrorMessage).statusMessage)).error)).code) == true, \\n todynamic(tostring(todynamic(tostring(todynamic(ErrorMessage).statusMessage)).code)), todynamic(tostring(todynamic(tostring(todynamic(ErrorMessage).statusMessage)).error)).code) \\n | extend innerErrorCode = iff(isempty(todynamic(tostring(todynamic(tostring(todynamic(ErrorMessage).statusMessage)).error)).details) == true, \\\"\\\", todynamic(tostring(todynamic(tostring(todynamic(ErrorMessage).statusMessage)).error)).details[0].code) \\n | project TIMESTAMP, subscriptionId, correlationId,  ErrorInProvider, statusCode, code = iff(isempty(innerErrorCode) == true,code,  strcat(code, \\\"(\\\", innerErrorCode, \\\")\\\"))         \\n) on subscriptionId, correlationId \\n| project TIMESTAMP, DeploymentType, subscriptionId, resourceGroupName, resourceName, ErrorInProvider, StatusCode = tostring(statusCode) , SubstatusCode = tostring(code)  \\n| summarize Subscriptions = dcount(subscriptionId), Resources = dcount(resourceName), ErrorsCount = count() by DeploymentType, StatusCode, SubstatusCode, ErrorInProvider\\n| order by Subscriptions desc, Resources desc, ErrorsCount desc, DeploymentType, StatusCode, SubstatusCode, ErrorInProvider\\n| extend Affected_Resources_By_Subscriptions = strcat(Resources, \\\"/\\\", Subscriptions)\\n| project DeploymentType, ErrorInProvider, StatusCode , SubstatusCode, Affected_Resources_By_Subscriptions, ErrorsCount\",\"allQueries\":{\"content\":\"let startTimestamp = ago(1d);\\r\\nlet endTimestamp = now();\\r\\nDeploymentOperations\\r\\n| where TIMESTAMP > startTimestamp\\r\\n| where TIMESTAMP <= endTimestamp\\r\\n| where resourceName startswith \\\"ContainerInsights\\\"\\r\\n| where executionStatus contains \\\"Failed\\\" \\r\\n| extend DeploymentType = iff(deploymentName startswith  \\\"aks-monitoring-\\\", \\\"CLI\\\", iff(deploymentName startswith \\\"SolutionOnboarding-\\\", \\\"UX-BrownField\\\",  \\r\\n   iff(deploymentName == \\\"SolutionDeployment\\\", \\\"Ux-GreenField\\\", \\\"CustomerOwned\\\")))\\r\\n| project subscriptionId, resourceGroupName, resourceName, DeploymentType, correlationId\\r\\n| join (\\r\\n EventServiceEntries\\r\\n | where TIMESTAMP > startTimestamp\\r\\n | where TIMESTAMP <= endTimestamp  \\r\\n | where resourceProvider in (\\\"Microsoft.ContainerService\\\", \\\"Microsoft.OperationsManagement\\\", \\\"Microsoft.OperationalInsights\\\",  \\\"Microsoft.Resources\\\")\\r\\n | where status contains \\\"Failed\\\"\\r\\n | where subStatus != \\\"\\\"\\r\\n | extend ErrorInProvider = iff(resourceProvider contains  \\\"Microsoft.ContainerService\\\", \\\"AKS\\\", iff(resourceProvider contains \\\"Microsoft.OperationsManagement\\\", \\\"OMS(solutions)\\\",  \\r\\n   iff(resourceProvider contains \\\"Microsoft.OperationalInsights\\\", \\\"OMS(workspaces)\\\", \\r\\n   iff(resourceProvider contains  \\\"Microsoft.Resources\\\", \\\"ARM\\\", resourceProvider))))   \\r\\n | extend ErrorMessage = tostring(properties) \\r\\n | extend statusCode = todynamic(ErrorMessage).statusCode \\r\\n | extend code = iff(isempty(todynamic(tostring(todynamic(tostring(todynamic(ErrorMessage).statusMessage)).error)).code) == true, \\r\\n todynamic(tostring(todynamic(tostring(todynamic(ErrorMessage).statusMessage)).code)), todynamic(tostring(todynamic(tostring(todynamic(ErrorMessage).statusMessage)).error)).code) \\r\\n | extend innerErrorCode = iff(isempty(todynamic(tostring(todynamic(tostring(todynamic(ErrorMessage).statusMessage)).error)).details) == true, \\\"\\\", todynamic(tostring(todynamic(tostring(todynamic(ErrorMessage).statusMessage)).error)).details[0].code) \\r\\n | project TIMESTAMP, subscriptionId, correlationId,  ErrorInProvider, statusCode, code = iff(isempty(innerErrorCode) == true,code,  strcat(code, \\\"(\\\", innerErrorCode, \\\")\\\"))         \\r\\n) on subscriptionId, correlationId \\r\\n| project TIMESTAMP, DeploymentType, subscriptionId, resourceGroupName, resourceName, ErrorInProvider, StatusCode = tostring(statusCode) , SubstatusCode = tostring(code)  \\r\\n| summarize Subscriptions = dcount(subscriptionId), Resources = dcount(resourceName), ErrorsCount = count() by DeploymentType, StatusCode, SubstatusCode, ErrorInProvider\\r\\n| order by Subscriptions desc, Resources desc, ErrorsCount desc, DeploymentType, StatusCode, SubstatusCode, ErrorInProvider\\r\\n| extend Affected_Resources_By_Subscriptions = strcat(Resources, \\\"/\\\", Subscriptions)\\r\\n| project DeploymentType, ErrorInProvider, StatusCode , SubstatusCode, Affected_Resources_By_Subscriptions, ErrorsCount\",\"startLine\":1,\"startColumn\":1,\"endLine\":32,\"endColumn\":120},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "SuccessfulAgentOnboardingByDeploymentAgent(30D)",
+    "Title": "SuccessfulAgentOnboardingByDeploymentAgent(30D)",
+    "Body": {
+      "title": "SuccessfulAgentOnboardingByDeploymentAgent(30D)",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":false,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"Portal\",\"color\":\"#00bcf2\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ARM\",\"color\":\"#6f87d8\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"CLI\",\"color\":\"#006e8a\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"Azure-SDK-For-GO\",\"color\":\"#663db8\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"Terraform\",\"color\":\"#bc52bc\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"Ansible\",\"color\":\"#bfaf40\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"resources.azure.com\",\"color\":\"#daa05d\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"Azure-SDK-For-Python\",\"color\":\"#4050bf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"PSVersion/v5.1.16299.820 AzurePowershell/v5.7.0\",\"color\":\"#bf6840\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"AzurePowershell/v6.6.0 PSVersion/v5.1.15063.726\",\"color\":\"#4097bf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"PSVersion/v6.1.2 ps-cloud-shell/0.1.0 AzurePowershell/v1.0.0\",\"color\":\"#58bf40\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"AzurePowershell/v6.7.0 PSVersion/v5.1.14393.2636\",\"color\":\"#a740bf\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"AzurePowershell/v6.7.0 PSVersion/v5.1.14393.2791\",\"color\":\"#bf40b3\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"Puppetlabs-azure_arm\",\"color\":\"#40bf4c\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"AzurePowershell/v5.7.0 PSVersion/v5.1.16299.820\",\"color\":\"#bf8b40\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#848e96\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false,\"polyfit\":{\"fit\":false,\"line_type\":\"linear\",\"reg_only\":false}},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"count\",\"type\":\"Int64\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"TIMESTAMP\",\"type\":\"DateTime\"}}},{\"id\":\"3\",\"type\":\"bucketValueOf\",\"schema\":\"group\",\"params\":{\"field\":{\"name\":\"deploymentAgent\",\"type\":\"String\"}}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"37468b30-411a-4721-a1a9-3ddf5b15837b\"}",
+      "vis_id": "37468b30-411a-4721-a1a9-3ddf5b15837b",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"aks.kusto.windows.net\",\"database\":\"AKSprod\",\"query\":\"AsyncQoSEvents\\n| where PreciseTimeStamp > ago(30d)\\n| where resultType == 0\\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| where operationName contains \\\"PutManagedCluster\\\" and ( suboperationName contains \\\"Creating\\\" or  suboperationName contains \\\"Updating\\\")\\n| summarize arg_max(TIMESTAMP, *) by resourceName, resourceGroupName, subscriptionID\\n| project TIMESTAMP, resourceName, resourceGroupName, subscriptionID\\n| join (\\nFrontEndQoSEvents\\n| where PreciseTimeStamp > ago(30d)\\n| where operationName contains \\\"PutManagedCluster\\\" and ( suboperationName contains \\\"Creating\\\" or  suboperationName contains \\\"Updating\\\")\\n| summarize by resourceName, resourceGroupName, subscriptionID, userAgent\\n| project  resourceName, resourceGroupName, subscriptionID, userAgent )\\n on resourceName, resourceGroupName, subscriptionID\\n| extend deploymentAgent = iff(userAgent contains  \\\"CLI\\\" ,\\\"CLI\\\", iff(userAgent contains \\\"azure-resource-manager\\\", \\\"ARM\\\", iff(userAgent contains \\\"Terraform\\\", \\\"Terraform\\\", \\niff(userAgent contains \\\"Ansible\\\", \\\"Ansible\\\", iff(userAgent contains \\\"Ruby\\\", \\\"Ruby\\\", \\n iff(((userAgent contains \\\"Chrome\\\") or (userAgent contains \\\"FireFox\\\") or (userAgent contains \\\"Edge\\\") or (userAgent contains \\\"Mozilla\\\")), \\\"Portal\\\", \\n  iff(userAgent contains \\\"Azure-SDK-For-GO\\\", \\\"Azure-SDK-For-GO\\\", \\n  iff(userAgent contains \\\"Azure-SDK-For-Python\\\", \\\"Azure-SDK-For-Python\\\", \\n  iff(userAgent contains \\\"puppetlabs-azure_arm\\\", \\\"Puppetlabs-azure_arm\\\",\\n  iff(userAgent contains \\\"AzurePowershell\\\", \\\"AzurePowershell\\\",\\n  iff(isempty(userAgent), \\\"Unknown\\\", \\n  userAgent )))))))))))\\n| project TIMESTAMP, subscriptionID, resourceGroupName, resourceName, deploymentAgent    \\n| summarize count = count() by bin(TIMESTAMP, 1d) ,deploymentAgent\\n| render timechart \\n\",\"filter\":[],\"timefilter\":{\"roundBy\":\"Auto\",\"from\":null,\"to\":null},\"allQueries\":{\"content\":\"AsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(30d)\\r\\n| where resultType == 0\\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| where operationName contains \\\"PutManagedCluster\\\" and ( suboperationName contains \\\"Creating\\\" or  suboperationName contains \\\"Updating\\\")\\r\\n| summarize arg_max(TIMESTAMP, *) by resourceName, resourceGroupName, subscriptionID\\r\\n| project TIMESTAMP, resourceName, resourceGroupName, subscriptionID\\r\\n| join (\\r\\nFrontEndQoSEvents\\r\\n| where PreciseTimeStamp > ago(30d)\\r\\n| where operationName contains \\\"PutManagedCluster\\\" and ( suboperationName contains \\\"Creating\\\" or  suboperationName contains \\\"Updating\\\")\\r\\n| summarize by resourceName, resourceGroupName, subscriptionID, userAgent\\r\\n| project  resourceName, resourceGroupName, subscriptionID, userAgent )\\r\\n on resourceName, resourceGroupName, subscriptionID\\r\\n| extend deploymentAgent = iff(userAgent contains  \\\"CLI\\\" ,\\\"CLI\\\", iff(userAgent contains \\\"azure-resource-manager\\\", \\\"ARM\\\", iff(userAgent contains \\\"Terraform\\\", \\\"Terraform\\\", \\r\\niff(userAgent contains \\\"Ansible\\\", \\\"Ansible\\\", iff(userAgent contains \\\"Ruby\\\", \\\"Ruby\\\", \\r\\n iff(((userAgent contains \\\"Chrome\\\") or (userAgent contains \\\"FireFox\\\") or (userAgent contains \\\"Edge\\\") or (userAgent contains \\\"Mozilla\\\")), \\\"Portal\\\", \\r\\n  iff(userAgent contains \\\"Azure-SDK-For-GO\\\", \\\"Azure-SDK-For-GO\\\", \\r\\n  iff(userAgent contains \\\"Azure-SDK-For-Python\\\", \\\"Azure-SDK-For-Python\\\", \\r\\n  iff(userAgent contains \\\"puppetlabs-azure_arm\\\", \\\"Puppetlabs-azure_arm\\\",\\r\\n  iff(userAgent contains \\\"AzurePowershell\\\", \\\"AzurePowershell\\\",\\r\\n  iff(isempty(userAgent), \\\"Unknown\\\", \\r\\n  userAgent )))))))))))\\r\\n| project TIMESTAMP, subscriptionID, resourceGroupName, resourceName, deploymentAgent    \\r\\n| summarize count = count() by bin(TIMESTAMP, 1d) ,deploymentAgent\\r\\n| render timechart \",\"startLine\":1,\"startColumn\":1,\"endLine\":27,\"endColumn\":20},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "SuccessfulAgentOnboardingByDeploymentType(30D)",
+    "Title": "SuccessfulAgentOnboardingByDeploymentType(30D)",
+    "Body": {
+      "title": "SuccessfulAgentOnboardingByDeploymentType(30D)",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":false,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"BrownField\",\"color\":\"#006e8a\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"GreenField\",\"color\":\"#00bcf2\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#848e96\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false,\"polyfit\":{\"fit\":false,\"line_type\":\"linear\",\"reg_only\":false}},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"count\",\"type\":\"Int64\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"TIMESTAMP\",\"type\":\"DateTime\"}}},{\"id\":\"3\",\"type\":\"bucketValueOf\",\"schema\":\"group\",\"params\":{\"field\":{\"name\":\"DeploymentType\",\"type\":\"String\"}}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"535c35a2-5966-40dd-9dc9-52d6d56102ee\"}",
+      "vis_id": "535c35a2-5966-40dd-9dc9-52d6d56102ee",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"aks.kusto.windows.net\",\"database\":\"AKSprod\",\"timefield\":\"TIMESTAMP\",\"query\":\"AsyncQoSEvents\\n| where PreciseTimeStamp > ago(30d)\\n| where resultType == 0\\n| extend oms = todynamic(propertiesBag).omsagent\\n| where oms == \\\"true\\\"\\n| where operationName contains \\\"PutManagedCluster\\\" and ( suboperationName contains \\\"Creating\\\" or  suboperationName contains \\\"Updating\\\")\\n| summarize arg_max(TIMESTAMP, *) by resourceName, resourceGroupName, subscriptionID\\n| project TIMESTAMP, resourceName, resourceGroupName, subscriptionID\\n| join (\\nFrontEndQoSEvents\\n| where PreciseTimeStamp > ago(30d)\\n| where operationName contains \\\"PutManagedCluster\\\" and ( suboperationName contains \\\"Creating\\\" or  suboperationName contains \\\"Updating\\\")\\n| summarize by resourceName, resourceGroupName, subscriptionID, suboperationName\\n| project  resourceName, resourceGroupName, subscriptionID, suboperationName )\\n on resourceName, resourceGroupName, subscriptionID\\n| project TIMESTAMP, subscriptionID, resourceGroupName, resourceName, suboperationName\\n| extend DeploymentType = iff(suboperationName contains \\\"Creating\\\", \\\"GreenField\\\", \\\"BrownField\\\")\\n| summarize count = count() by bin(TIMESTAMP, 1d), DeploymentType\\n| render timechart \\n\",\"filter\":[],\"timefilter\":{\"roundBy\":\"Auto\",\"from\":null,\"to\":null},\"allQueries\":{\"content\":\"AsyncQoSEvents\\r\\n| where PreciseTimeStamp > ago(30d)\\r\\n| where resultType == 0\\r\\n| extend oms = todynamic(propertiesBag).omsagent\\r\\n| where oms == \\\"true\\\"\\r\\n| where operationName contains \\\"PutManagedCluster\\\" and ( suboperationName contains \\\"Creating\\\" or  suboperationName contains \\\"Updating\\\")\\r\\n| summarize arg_max(TIMESTAMP, *) by resourceName, resourceGroupName, subscriptionID\\r\\n| project TIMESTAMP, resourceName, resourceGroupName, subscriptionID\\r\\n| join (\\r\\nFrontEndQoSEvents\\r\\n| where PreciseTimeStamp > ago(30d)\\r\\n| where operationName contains \\\"PutManagedCluster\\\" and ( suboperationName contains \\\"Creating\\\" or  suboperationName contains \\\"Updating\\\")\\r\\n| summarize by resourceName, resourceGroupName, subscriptionID, suboperationName\\r\\n| project  resourceName, resourceGroupName, subscriptionID, suboperationName )\\r\\n on resourceName, resourceGroupName, subscriptionID\\r\\n| project TIMESTAMP, subscriptionID, resourceGroupName, resourceName, suboperationName\\r\\n| extend DeploymentType = iff(suboperationName contains \\\"Creating\\\", \\\"GreenField\\\", \\\"BrownField\\\")\\r\\n| summarize count = count() by bin(TIMESTAMP, 1d), DeploymentType\\r\\n| render timechart \\r\\n\\r\\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":19,\"endColumn\":20},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "MonitoringAddonLatency",
+    "Title": "MonitoringAddonLatency",
+    "Body": {
+      "title": "MonitoringAddonLatency",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":false,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"AVG\",\"color\":\"#663db8\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"P95\",\"color\":\"#006e8a\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"P99\",\"color\":\"#6f87d8\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#848e96\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"polyfit\":{\"fit\":false,\"line_type\":\"linear\",\"reg_only\":false},\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"AVG\",\"type\":\"Double\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"TIMESTAMP\",\"type\":\"DateTime\"}}},{\"id\":\"3\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"P95\",\"type\":\"Int64\"},\"aggCustomLabel\":\"\"}},{\"id\":\"4\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"P99\",\"type\":\"Int64\"},\"aggCustomLabel\":\"\"}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"e72418d0-1ea6-4563-a31a-7972398e88a0\"}",
+      "vis_id": "e72418d0-1ea6-4563-a31a-7972398e88a0",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"aks.kusto.windows.net\",\"database\":\"AKSprod\",\"timefield\":\"TIMESTAMP\",\"query\":\"LatencyTraceEvent\\n| where TIMESTAMP > ago(30d)\\n| where Name =~ \\\"getLogAnalyticsWorkspaceInfo\\\"\\n| project TIMESTAMP, Latency, subscription, resourceGroupName, resourceName \\n| summarize AVG = avg(Latency), P95 = percentile(Latency, 95), P99 = percentile(Latency, 99) by bin(TIMESTAMP , 1d)\\n| render timechart \",\"filter\":[],\"allQueries\":{\"content\":\"LatencyTraceEvent\\r\\n| where TIMESTAMP > ago(30d)\\r\\n| where Name =~ \\\"getLogAnalyticsWorkspaceInfo\\\"\\r\\n| project TIMESTAMP, Latency, subscription, resourceGroupName, resourceName \\r\\n| summarize AVG = avg(Latency), P95 = percentile(Latency, 95), P99 = percentile(Latency, 99) by bin(TIMESTAMP , 1d)\\r\\n| render timechart \\r\\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":6,\"endColumn\":20},\"timefilter\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\",\"from\":null,\"to\":null},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "AddContainerInsightsSolutionLatency",
+    "Title": "AddContainerInsightsSolutionLatency",
+    "Body": {
+      "title": "AddContainerInsightsSolutionLatency",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":false,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"AVG\",\"color\":\"#00bcf2\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"P95\",\"color\":\"#006e8a\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"P99\",\"color\":\"#6f87d8\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#848e96\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"polyfit\":{\"fit\":false,\"line_type\":\"linear\",\"reg_only\":false},\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"AVG\",\"type\":\"Double\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"TIMESTAMP\",\"type\":\"DateTime\"}}},{\"id\":\"3\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"P95\",\"type\":\"Int64\"},\"aggCustomLabel\":\"\"}},{\"id\":\"4\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"P99\",\"type\":\"Int64\"},\"aggCustomLabel\":\"\"}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"ebcc5b6c-7851-4166-85c1-4d62439b90ed\"}",
+      "vis_id": "ebcc5b6c-7851-4166-85c1-4d62439b90ed",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"aks.kusto.windows.net\",\"database\":\"AKSprod\",\"timefield\":\"TIMESTAMP\",\"query\":\"\\nLatencyTraceEvent\\n| where TIMESTAMP > ago(30d)\\n| where Name =~ \\\"addContainerInsightsSolution\\\"\\n| project TIMESTAMP, Latency, subscription, resourceGroupName, resourceName \\n| summarize AVG = avg(Latency), P95 = percentile(Latency, 95), P99 = percentile(Latency, 99) by bin(TIMESTAMP , 1d)\\n| render timechart \",\"filter\":[],\"timefilter\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\",\"from\":null,\"to\":null},\"allQueries\":{\"content\":\"\\r\\nLatencyTraceEvent\\r\\n| where TIMESTAMP > ago(30d)\\r\\n| where Name =~ \\\"addContainerInsightsSolution\\\"\\r\\n| project TIMESTAMP, Latency, subscription, resourceGroupName, resourceName \\r\\n| summarize AVG = avg(Latency), P95 = percentile(Latency, 95), P99 = percentile(Latency, 99) by bin(TIMESTAMP , 1d)\\r\\n| render timechart \",\"startLine\":1,\"startColumn\":1,\"endLine\":7,\"endColumn\":20},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "c0e714c3-0123-4978-a62e-4ce8a4c42b7d",
+    "Title": "SuccessfulReOnBoardingTrend",
+    "Body": {
+      "title": "SuccessfulReOnBoardingTrend",
+      "visState": "{\"type\":\"histogram\",\"params\":{\"addRefLine\":false,\"refValue\":0,\"shareYAxis\":true,\"addTooltip\":true,\"highlightFilteredRange\":false,\"addLegend\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"mode\":\"grouped\",\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"Success\",\"color\":\"#006e8a\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"Clicked Enable\",\"color\":\"#00bcf2\",\"paletteName\":\"\",\"paletteIndex\":0}],\"isHorizontal\":false,\"showHorizontal\":true,\"showLabels\":false,\"labelcolor\":\"white\",\"enableAnalysis\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"count_\",\"type\":\"Int64\"},\"field_format\":{\"name\":\"Number\",\"pattern\":\"0,0.[00]\",\"patternTypes\":[\"0,0.[00]\",\"0,0.[0]\",\"Custom\"],\"showFormat\":true},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"TIMESTAMP\",\"type\":\"DateTime\"},\"aggCustomLabel\":\"\"}},{\"id\":\"3\",\"type\":\"bucketValueOf\",\"schema\":\"group\",\"params\":{\"field\":{\"name\":\"userStatus\",\"type\":\"String\"},\"aggCustomLabel\":\"\"}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"14d9560d-3ee3-4a08-83bf-21698316eb50\"}",
+      "vis_id": "14d9560d-3ee3-4a08-83bf-21698316eb50",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"azportalpartner.kusto.windows.net\",\"database\":\"AzPtlCosmos\",\"query\":\" cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\n| where TIMESTAMP > ago(30d)\\n| where action == \\\"EnableReOnboarding\\\"\\n| extend refinedData = replace(\\\"\\\\\\\\\\\\\\\\\\\",\\\"\\\",data)\\n| extend reason = split(split(refinedData, \\\"reason\\\\\\\":\\\\\\\"\\\")[1], \\\"\\\\\\\"\\\")[0]\\n| extend clusterId = split(split(refinedData, \\\"id\\\\\\\":\\\\\\\"\\\")[1], \\\"\\\\\\\"\\\")[0]\\n| extend userStatus = case(reason == 'Successfully enabled monitoring addon config on cluster', \\\"Success\\\", refinedData contains \\\"EnableMonitoring\\\\\\\":true}\\\", \\\"Clicked Enable\\\", \\\"Other\\\")\\n| where userStatus != \\\"Other\\\"\\n| where clusterId !contains \\\"692aea0b-2d89-4e7e-ae30-fffe40782ee2\\\" and clusterId !contains \\\"\\\"\\n| summarize count() by userStatus, bin(TIMESTAMP, 1d)\\n//| render timechart \\n\",\"allQueries\":{\"content\":\" cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\r\\n| where TIMESTAMP > ago(30d)\\r\\n| where action == \\\"EnableReOnboarding\\\"\\r\\n| extend refinedData = replace(\\\"\\\\\\\\\\\\\\\\\\\",\\\"\\\",data)\\r\\n| extend reason = split(split(refinedData, \\\"reason\\\\\\\":\\\\\\\"\\\")[1], \\\"\\\\\\\"\\\")[0]\\r\\n| extend clusterId = split(split(refinedData, \\\"id\\\\\\\":\\\\\\\"\\\")[1], \\\"\\\\\\\"\\\")[0]\\r\\n| extend userStatus = case(reason == 'Successfully enabled monitoring addon config on cluster', \\\"Success\\\", refinedData contains \\\"EnableMonitoring\\\\\\\":true}\\\", \\\"Clicked Enable\\\", \\\"Other\\\")\\r\\n| where userStatus != \\\"Other\\\"\\r\\n| where clusterId !contains \\\"692aea0b-2d89-4e7e-ae30-fffe40782ee2\\\" and clusterId !contains \\\"\\\"\\r\\n| summarize count() by userStatus, bin(TIMESTAMP, 1d)\\r\\n//| render timechart \\r\\n\\r\\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":11,\"endColumn\":22},\"filter\":[],\"timefield\":\"TIMESTAMP\",\"timefilter\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\"},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  }
+]

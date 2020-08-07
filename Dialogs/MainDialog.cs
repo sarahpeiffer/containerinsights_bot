@@ -26,7 +26,6 @@ namespace Microsoft.BotBuilderSamples
             AddDialog(new KubeAPIDialog());
             AddDialog(new DiagnosticsDialog(UserState));
             AddDialog(new TimeDialog());
-            AddDialog(new LocalTestingDialog());
 
             AddDialog(new WaterfallDialog(nameof(WaterfallDialog), new WaterfallStep[]
             {
@@ -43,6 +42,7 @@ namespace Microsoft.BotBuilderSamples
             var userProfile = await userStateAccessors.GetAsync(stepContext.Context, () => new UserProfile());
             var dialogStateAccessors = UserState.CreateProperty<DialogProfile>(nameof(DialogProfile));
             var dialogProfile = await dialogStateAccessors.GetAsync(stepContext.Context, () => new DialogProfile());
+            //if we know the name of node or pod already we pass that to the dialog profile so the user isn't prompted for it
             if(dialogProfile.ObjectType != null)
             {
                 userProfile.ObjectType = dialogProfile.ObjectType;
@@ -50,8 +50,6 @@ namespace Microsoft.BotBuilderSamples
             }
 
             switch (dialogProfile.DialogType) {
-                case "local":
-                    return await stepContext.BeginDialogAsync(nameof(LocalTestingDialog), userProfile, cancellationToken);
                 case "diagnostics":
                     return await stepContext.BeginDialogAsync(nameof(DiagnosticsDialog), userProfile, cancellationToken);
                 case "node_info":

@@ -1,0 +1,35 @@
+{
+	"$schema": "http://schema.express.azure.com/schemas/2015-01-01-alpha/ServiceModel.json",
+	"contentVersion": "0.0.0.1",
+	
+	"ServiceMetadata": {
+		"ServiceGroup": "Azure.InfrastructureInsights.UX",
+		"Environment": "Prod"
+	},
+
+	"ServiceResourceGroupDefinitions": [{
+		"Name": "InfraInsightsUX",
+		"ServiceResourceDefinitions": [{
+			"Name": "InfraInsightsUX",
+			"ComposedOf": {
+				"Extension": {
+					"AllowedTypes": [{
+						"Type": "Microsoft.InfraInsights.Deployment/BlobStorageCopy"
+					}]
+				}
+			}
+		}]
+	}],
+
+	"ServiceResourceGroups": [{
+		"AzureResourceGroupName": "InfraInsights-Prod-EUS-UX",
+		"Location": "East US",
+		"InstanceOf": "InfraInsightsUX",
+		"AzureSubscriptionId": "35fc882f-b586-4b21-a654-aaaa1999e0e4",
+		"ServiceResources": [{
+			"Name": "InfraInsightsUX",
+			"InstanceOf": "InfraInsightsUX",
+			"RolloutParametersPath": "RolloutParams.Prod.Eus.json"
+		}]
+	}]
+}

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 3">
+  <title>ellipsis</title>
+  <circle cx="2.5" cy="1.5" r="1.2" style="fill: #fff"/>
+  <circle cx="8" cy="1.5" r="1.2" style="fill: #fff"/>
+  <circle cx="13.5" cy="1.5" r="1.2" style="fill: #fff"/>
+</svg>

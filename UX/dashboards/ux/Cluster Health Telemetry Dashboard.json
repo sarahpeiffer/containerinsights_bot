@@ -1,0 +1,2574 @@
+{
+  "properties": {
+    "lenses": {
+      "0": {
+        "order": 0,
+        "parts": {
+          "0": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 12,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "# Health Navigation Telemetry",
+                    "title": "",
+                    "subtitle": "",
+                    "markdownSource": 1
+                  }
+                }
+              }
+            }
+          },
+          "1": {
+            "position": {
+              "x": 0,
+              "y": 1,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "union\n(pageViews\n| where name contains 'Health'\n| where timestamp > ago(60d)\n| where (url contains 'ininprodeususbase.microsoft.com') or (url contains 'afd.') or (url contains 'monitoring.')\n| project cluster_id = tostring(customDimensions.cluster_id) , timestamp\n| summarize clusters = dcount(cluster_id) by bin(timestamp, 1d)\n), \n(pageViews\n| where name contains 'Health'\n| where timestamp > ago(60d)\n| where (url contains 'ininprodeususbase.microsoft.com') or (url contains 'afd.') or (url contains 'monitoring.')\n| project user_Id, timestamp\n| summarize users = dcount(user_Id) by bin(timestamp, 1d)\n), (pageViews\n| where name contains 'Health'\n| where timestamp > ago(60d)\n| where (url contains 'ininprodeususbase.microsoft.com') or (url contains 'afd.') or (url contains 'monitoring.')\n| summarize sessions = count() by bin(timestamp, 1d)\n)\n| render barchart\n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "clusters",
+                        "type": "long"
+                      },
+                      {
+                        "name": "users",
+                        "type": "long"
+                      },
+                      {
+                        "name": "sessions",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "77f2b5b9-547d-4373-931a-90e5a6083fd1"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Bar"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Page Views/ Clusters/ Users",
+                  "PartSubTitle": "30d",
+                  "Query": "union\n(pageViews\n| where name contains 'Health'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| where (url contains 'ininprodeususbase.microsoft.com') or (url contains 'afd.') or (url contains 'monitoring.')\n| project cluster_id = tostring(customDimensions.cluster_id) , timestamp\n| summarize clusters = dcount(cluster_id) by bin(timestamp, 1d)\n), \n(pageViews\n| where name contains 'Health'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| where (url contains 'ininprodeususbase.microsoft.com') or (url contains 'afd.') or (url contains 'monitoring.')\n| project user_Id, timestamp\n| summarize users = dcount(user_Id) by bin(timestamp, 1d)\n), (pageViews\n| where name contains 'Health'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| where (url contains 'ininprodeususbase.microsoft.com') or (url contains 'afd.') or (url contains 'monitoring.')\n| summarize sessions = count() by bin(timestamp, 1d)\n)\n| render barchart\n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "2": {
+            "position": {
+              "x": 6,
+              "y": 1,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "pageViews\n| where timestamp > ago(30d)\n| where name == \"ContainerHealth\"\n| where operation_Name contains \"container-perf\"\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains 'monitoring.'\n| where customDimensions.cluster_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n| extend Cluster_Id = tostring(customDimensions.cluster_id)\n| summarize count() by Cluster_Id, bin(timestamp, 1d)\n| top 50 by count_ desc\n| render timechart\n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "Cluster_Id",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "6dd99a77-5972-4b71-8d50-d1e1421fc8b8"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Page Views by ClusterId per Week (Top 25)",
+                  "PartSubTitle": "Last 30d",
+                  "Query": "pageViews\n| where name == \"ContainerHealth\"\n| where operation_Name contains \"container-perf\"\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains 'monitoring.'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| extend Cluster_Id = tostring(customDimensions.cluster_id)\n| summarize count() by Cluster_Id, bin(timestamp, 7d)\n| top 25 by count_ desc\n| render timechart\n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "3": {
+            "position": {
+              "x": 12,
+              "y": 1,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "pageViews\r\n| where timestamp > ago(7d)\r\n| where name == \"ContainerHealth\"\r\n| where operation_Name contains \"container-perf\"\r\n| extend pageUrl = tostring(customDimensions.urlHint)\r\n| extend pageBase = tostring(split(pageUrl, '?')[0])\r\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains 'monitoring.'\r\n| where customDimensions.cluster_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\r\n| extend Cluster_Id = tostring(customDimensions.cluster_id)\r\n| summarize count() by Cluster_Id, bin(timestamp, 1d)\r\n| render timechart \n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "Cluster_Id",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "104e08ad-14af-40af-a0c6-08c17e55a275"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Page Views by ClusterId per Day (Top 100)",
+                  "PartSubTitle": "Last 30d",
+                  "Query": "pageViews\n| where name == \"ContainerHealth\"\n| where operation_Name contains \"container-perf\"\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains 'monitoring.'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| extend Cluster_Id = tostring(customDimensions.cluster_id)\n| summarize count() by Cluster_Id, bin(timestamp, 1d)\n| top 100 by Cluster_Id asc\n| render timechart\n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "4": {
+            "position": {
+              "x": 18,
+              "y": 1,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "pageViews\n| where name == \"ContainerHealth\"\n| where operation_Name contains \"container-perf\"\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains 'monitoring.'\n| where customDimensions.cluster_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n| extend User_Id = user_Id\n| summarize count() by User_Id, bin(timestamp, 7d)\n| top 50 by count_ desc\n| render timechart\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "2020-01-01T20:10:14.000Z/2020-01-15T20:10:14.936Z"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "User_Id",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "135941e6-157c-4cb8-8151-431ce0863430"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Page Views By UserId per Week (Top 25)",
+                  "PartSubTitle": "Last 30d",
+                  "Query": "pageViews\n| where name == \"ContainerHealth\"\n| where operation_Name contains \"container-perf\"\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains 'monitoring.'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| extend User_Id = user_Id\n| summarize count() by User_Id, bin(timestamp, 7d)\n| top 25 by count_ desc\n| render timechart\n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "5": {
+            "position": {
+              "x": 6,
+              "y": 5,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "pageViews\n| where timestamp > ago(30d)\n| where name == \"ContainerHealth\"\n| where operation_Name contains \"container-perf\"\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains 'monitoring.'\n| where customDimensions.cluster_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n| extend Cluster_Id = tostring(customDimensions.cluster_id)\n| summarize count() by Cluster_Id, bin(timestamp, 7d)\n| top 10 by count_ desc\n| render timechart\n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "Cluster_Id",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "6e69f6e7-0566-47b0-a710-a394dbd66c83"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Top 10 clusters by page views",
+                  "PartSubTitle": "7d"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "6": {
+            "position": {
+              "x": 12,
+              "y": 5,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let customEventsData = materialize(customEvents\n| where itemType == 'customEvent'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a');\nlet allClicks = customEventsData\n// health tabs\n| where name == 'DetailsPanelTabSelectionChanged'\n| extend TabName = tostring(customDimensions.tabName), TelemetryName = tostring(customDimensions.telemetryName)\n| project timestamp, UIComponent = strcat('Tab: ', iif(isempty(TelemetryName), TabName, TelemetryName)), user_Id\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)\n| union (\n// health aspects\ncustomEventsData\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthAspectSelected'\n| project UIComponent = strcat('Aspect: ', tostring(customDimensions.destination)), timestamp, user_Id\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)    ), (\n// health tree node\ncustomEventsData\n| where name == 'HealthTreeNodeExpandedCollapsed'\n| project Data = todynamic(customDimensions.data), timestamp, MonitorSubjectId = tostring(customDimensions.monitorSubjectId), MonitorTypeId = tostring(customDimensions.monitorTypeId), isExpanded = tostring(customDimensions.isExpanded), ClusterName = tostring(customDimensions.cluster_name), user_Id\n| extend UIComponent = strcat('HealthTreeNodeToggle: ', MonitorTypeId)\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)   ), (     customEventsData\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthTreeNodeSelected'\n| extend AdditionalInfo = parse_json(tostring(customDimensions.additionalInformation))\n| extend SourceMonitorSubjectId = tostring(AdditionalInfo.sourceMonitorSubjectId), SourceMonitorTypeId = tostring(AdditionalInfo.sourceMonitorTypeId), SourceMonitorHealthState = tostring(AdditionalInfo.sourceMonitorHealthState)\n| extend DestinationMonitorSubjectId = tostring(AdditionalInfo.destinationMonitorSubjectId), DestinationMonitorTypeId = tostring(AdditionalInfo.destinationMonitorTypeId), DestinationMonitorHealthState = tostring(AdditionalInfo.destinationMonitorHealthState)\n| project timestamp, SourceMonitorSubjectId, SourceMonitorTypeId, SourceMonitorHealthState, DestinationMonitorSubjectId, DestinationMonitorTypeId, DestinationMonitorHealthState, user_Id\n| extend UIComponent = strcat('HealthTreeNodeSelected: ', DestinationMonitorTypeId));\nlet top25Users = allClicks\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)   \n| summarize ClickSum = sum(Clicks) by user_Id, bin(timestamp, 1d)\n| top 25 by ClickSum desc;\ntop25Users\n| join kind=leftouter (\n   allClicks \n) on user_Id \n| summarize Clicks = count() by UIComponent, bin(timestamp, 1d)\n| render timechart\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P30D"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Clicks",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "UIComponent",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "1d968d51-88ca-469b-af3f-fa533e64545d"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Clicks by the Top 25 Most Interactive Users",
+                  "PartSubTitle": "Last 7d"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "7d"
+                  }
+                }
+              }
+            }
+          },
+          "7": {
+            "position": {
+              "x": 18,
+              "y": 5,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let customEventsData = materialize(customEvents\n| where itemType == 'customEvent'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a');\ncustomEventsData\n// health tabs\n| where name == 'DetailsPanelTabSelectionChanged'\n| extend TabName = tostring(customDimensions.tabName), TelemetryName = tostring(customDimensions.telemetryName)\n| project timestamp, UIComponent = strcat('Tab: ', iif(isempty(TelemetryName), TabName, TelemetryName)), user_Id\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)\n| union (\n// health aspects\ncustomEventsData\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthAspectSelected'\n| project UIComponent = strcat('Aspect: ', tostring(customDimensions.destination)), timestamp, user_Id\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)    ), (\n// health tree node\ncustomEventsData\n| where name == 'HealthTreeNodeExpandedCollapsed'\n| project Data = todynamic(customDimensions.data), timestamp, MonitorSubjectId = tostring(customDimensions.monitorSubjectId), MonitorTypeId = tostring(customDimensions.monitorTypeId), isExpanded = tostring(customDimensions.isExpanded), ClusterName = tostring(customDimensions.cluster_name), user_Id\n| extend UIComponent = strcat('HealthTreeNodeToggle: ', MonitorTypeId)\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)   ), (     customEventsData\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthTreeNodeSelected'\n| extend AdditionalInfo = parse_json(tostring(customDimensions.additionalInformation))\n| extend SourceMonitorSubjectId = tostring(AdditionalInfo.sourceMonitorSubjectId), SourceMonitorTypeId = tostring(AdditionalInfo.sourceMonitorTypeId), SourceMonitorHealthState = tostring(AdditionalInfo.sourceMonitorHealthState)\n| extend DestinationMonitorSubjectId = tostring(AdditionalInfo.destinationMonitorSubjectId), DestinationMonitorTypeId = tostring(AdditionalInfo.destinationMonitorTypeId), DestinationMonitorHealthState = tostring(AdditionalInfo.destinationMonitorHealthState)\n| project timestamp, SourceMonitorSubjectId, SourceMonitorTypeId, SourceMonitorHealthState, DestinationMonitorSubjectId, DestinationMonitorTypeId, DestinationMonitorHealthState, user_Id\n| extend UIComponent = strcat('HealthTreeNodeSelected: ', DestinationMonitorTypeId)\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)   )\n| summarize ClickSum = sum(Clicks) by user_Id, bin(timestamp, 1d)\n| top 25 by ClickSum desc\n| render timechart\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P30D"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "ClickSum",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "user_Id",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "79a47167-a758-4249-bc35-1c3c74939a62"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Total Clicks by the Most Interactive Users",
+                  "PartSubTitle": "Last 7d"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "8": {
+            "position": {
+              "x": 0,
+              "y": 9,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\n// health tabs\n| where itemType == 'customEvent'\n| where name == 'DetailsPanelTabSelectionChanged'\n| project timestamp, UIComponent = strcat('Tab: ', tostring(customDimensions.tabName))\n| summarize Clicks = count() by UIComponent, bin(timestamp, 1d)\n| union (\n// health aspects\ncustomEvents\n| where itemType == 'customEvent'\n| where name == 'navigate'\n| where customDimensions.destination == 'k8s_infrastructure' or customDimensions.destination == 'all_nodes'\n| project UIComponent = strcat('Aspect: ', tostring(customDimensions.destination)), timestamp\n| summarize Clicks = count() by UIComponent, bin(timestamp, 1d)    ), (\n// health tabs\ncustomEvents\n| where itemType == 'customEvent'\n| where name == 'HealthTreeNodeExpandedCollapsed'\n| project timestamp, MonitorSubjectId = tostring(customDimensions.monitorSubjectId), MonitorTypeId = tostring(customDimensions.monitorTypeId), isExpanded = tostring(customDimensions.isExpanded), ClusterName = tostring(customDimensions.cluster_name)\n| extend UIComponent = strcat('HealthTreeNodeToggle: ', MonitorTypeId)\n| where isnotempty(MonitorTypeId) and isnotempty(isExpanded)\n| summarize Clicks = count() by UIComponent, bin(timestamp, 1d)   ), (     customEvents\n| where itemType == 'customEvent'\n| where name == 'navigate'\n| where customDimensions.cluster_id contains 'nickb'\n| where customDimensions.destination contains 'HealthTreeNodeSelected'\n| extend AdditionalInfo = parse_json(tostring(customDimensions.additionalInformation))\n| extend SourceMonitorSubjectId = tostring(AdditionalInfo.sourceMonitorSubjectId), SourceMonitorTypeId = tostring(AdditionalInfo.sourceMonitorTypeId), SourceMonitorHealthState = tostring(AdditionalInfo.sourceMonitorHealthState)\n| extend DestinationMonitorSubjectId = tostring(AdditionalInfo.destinationMonitorSubjectId), DestinationMonitorTypeId = tostring(AdditionalInfo.destinationMonitorTypeId), DestinationMonitorHealthState = tostring(AdditionalInfo.destinationMonitorHealthState)\n| project timestamp, SourceMonitorSubjectId, SourceMonitorTypeId, SourceMonitorHealthState, DestinationMonitorSubjectId, DestinationMonitorTypeId, DestinationMonitorHealthState, tostring(customDimensions.client_Browser)\n| project UIComponent = strcat('HealthTreeNodeSelected: ', DestinationMonitorTypeId), timestamp\n| summarize Clicks = count() by UIComponent, bin(timestamp, 1d)  )\n| render timechart\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Clicks",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "UIComponent",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "14d92899-05e6-4eff-9f11-6b53f312d47e"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Click Telemetry Inside Health Tab",
+                  "PartSubTitle": "Last 7d",
+                  "Query": "customEvents\n// health tabs\n| where itemType == 'customEvent'\n| where name == 'DetailsPanelTabSelectionChanged'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| extend TabName = tostring(customDimensions.tabName), TelemetryName = tostring(customDimensions.telemetryName)\n| where TabName != 'Raw' and TabName != 'Describe'\n| project timestamp, UIComponent = strcat('Tab: ', iif(isempty(TelemetryName), TabName, TelemetryName))\n| summarize Clicks = count() by UIComponent, bin(timestamp, 1d)\n| union (\n// health aspects\ncustomEvents\n| where itemType == 'customEvent'\n| where name == 'navigate'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| where customDimensions.destination contains 'HealthAspectSelected'\n| project UIComponent = strcat('Aspect: ', tostring(customDimensions.destination)), timestamp\n| summarize Clicks = count() by UIComponent, bin(timestamp, 1d)    ), (\n// health tree nodes\ncustomEvents\n| where itemType == 'customEvent'\n| where name == 'HealthTreeNodeExpandedCollapsed'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| project timestamp, MonitorSubjectId = tostring(customDimensions.monitorSubjectId), MonitorTypeId = tostring(customDimensions.monitorTypeId), isExpanded = tostring(customDimensions.isExpanded), ClusterName = tostring(customDimensions.cluster_name)\n| extend UIComponent = strcat('Toggle: ', MonitorTypeId)\n| where isnotempty(MonitorTypeId) and isnotempty(isExpanded)\n| summarize Clicks = count() by UIComponent, bin(timestamp, 1d)), (\ncustomEvents\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| where itemType == 'customEvent'\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthTreeNodeSelected'\n| extend AdditionalInfo = parse_json(tostring(customDimensions.additionalInformation))\n| extend SourceMonitorSubjectId = tostring(AdditionalInfo.sourceMonitorSubjectId), SourceMonitorTypeId = tostring(AdditionalInfo.sourceMonitorTypeId), SourceMonitorHealthState = tostring(AdditionalInfo.sourceMonitorHealthState)\n| extend DestinationMonitorSubjectId = tostring(AdditionalInfo.destinationMonitorSubjectId), DestinationMonitorTypeId = tostring(AdditionalInfo.destinationMonitorTypeId), DestinationMonitorHealthState = tostring(AdditionalInfo.destinationMonitorHealthState)\n| project timestamp, SourceMonitorSubjectId, SourceMonitorTypeId, SourceMonitorHealthState, DestinationMonitorSubjectId, DestinationMonitorTypeId, DestinationMonitorHealthState, tostring(customDimensions.client_Browser)\n| extend UIComponent = strcat('Selected: ', DestinationMonitorTypeId)\n| summarize Clicks = count() by UIComponent, bin(timestamp, 1d)  )\n| render timechart"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "7d"
+                  }
+                }
+              }
+            }
+          },
+          "9": {
+            "position": {
+              "x": 6,
+              "y": 9,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\n| where itemType == 'customEvent'\n| where name == 'DetailsPanelTabSelectionChanged'\n| project timestamp, TabName = tostring(customDimensions.tabName), session_Id\n| summarize Clicks = count() by TabName, session_Id, bin(timestamp, 1d)\n| render timechart\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Clicks",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "TabName",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "0877406a-c0ad-4cc3-b148-8538dd1ab28d"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "# Tab Clicks per Session",
+                  "PartSubTitle": "Last 7d",
+                  "Query": "customEvents\n| where itemType == 'customEvent'\n| where name == 'DetailsPanelTabSelectionChanged'\n| where tostring(customDimensions.subArea) == 'ContainerHealth'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| extend TabName = tostring(customDimensions.tabName), TelemetryName = tostring(customDimensions.telemetryName)\n| where TabName != 'Raw' and TabName != 'Describe'\n| project timestamp, TabName = iif(isempty(TelemetryName), TabName, TelemetryName), session_Id\n| summarize Clicks = count() by TabName, session_Id, bin(timestamp, 1d)\n| render timechart\n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "10": {
+            "position": {
+              "x": 12,
+              "y": 9,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let customEventsData = materialize(customEvents\n| where itemType == 'customEvent'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a');\ncustomEventsData\n// health tabs\n| where name == 'DetailsPanelTabSelectionChanged'\n| extend TabName = tostring(customDimensions.tabName), TelemetryName = tostring(customDimensions.telemetryName)\n| project timestamp, UIComponent = strcat('Tab: ', iif(isempty(TelemetryName), TabName, TelemetryName)), session_Id\n| summarize Clicks = count() by UIComponent, session_Id, bin(timestamp, 1d)\n| union (\n// health aspects\ncustomEventsData\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthAspectSelected'\n| project UIComponent = strcat('Aspect: ', tostring(customDimensions.destination)), timestamp, session_Id\n| summarize Clicks = count() by UIComponent, session_Id, bin(timestamp, 1d)    ), (\n// health tree node\ncustomEventsData\n| where name == 'HealthTreeNodeExpandedCollapsed'\n| project Data = todynamic(customDimensions.data), timestamp, MonitorSubjectId = tostring(customDimensions.monitorSubjectId), MonitorTypeId = tostring(customDimensions.monitorTypeId), isExpanded = tostring(customDimensions.isExpanded), ClusterName = tostring(customDimensions.cluster_name), session_Id\n| extend UIComponent = strcat('HealthTreeNodeToggle: ', MonitorTypeId)\n| summarize Clicks = count() by UIComponent, session_Id, bin(timestamp, 1d)   ), (     customEventsData\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthTreeNodeSelected'\n| extend AdditionalInfo = parse_json(tostring(customDimensions.additionalInformation))\n| extend SourceMonitorSubjectId = tostring(AdditionalInfo.sourceMonitorSubjectId), SourceMonitorTypeId = tostring(AdditionalInfo.sourceMonitorTypeId), SourceMonitorHealthState = tostring(AdditionalInfo.sourceMonitorHealthState)\n| extend DestinationMonitorSubjectId = tostring(AdditionalInfo.destinationMonitorSubjectId), DestinationMonitorTypeId = tostring(AdditionalInfo.destinationMonitorTypeId), DestinationMonitorHealthState = tostring(AdditionalInfo.destinationMonitorHealthState)\n| project timestamp, SourceMonitorSubjectId, SourceMonitorTypeId, SourceMonitorHealthState, DestinationMonitorSubjectId, DestinationMonitorTypeId, DestinationMonitorHealthState, session_Id\n| extend UIComponent = strcat('HealthTreeNodeSelected: ', DestinationMonitorTypeId)\n| summarize Clicks = count() by UIComponent, session_Id, bin(timestamp, 1d)   )\n| summarize sum(Clicks) by session_Id, bin(timestamp, 1d)\n| summarize avg(sum_Clicks) by bin(timestamp, 1d)\n| render timechart\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "avg_sum_Clicks",
+                        "type": "real"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "15860615-113e-438e-a5b9-0ae104a40f4a"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Avg Clicks Per Session Per Day",
+                  "PartSubTitle": "Last 7d",
+                  "Query": "let customEventsData = materialize(customEvents\n| where itemType == 'customEvent'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a');\ncustomEventsData\n// health tabs\n| where name == 'DetailsPanelTabSelectionChanged'\n| extend TabName = tostring(customDimensions.tabName), TelemetryName = tostring(customDimensions.telemetryName)\n| where TabName != 'Raw' and TabName != 'Describe'\n| project timestamp, UIComponent = strcat('Tab: ', iif(isempty(TelemetryName), TabName, TelemetryName)), session_Id\n| summarize Clicks = count() by UIComponent, session_Id, bin(timestamp, 1d)\n| union (\n// health aspects\ncustomEventsData\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthAspectSelected'\n| project UIComponent = strcat('Aspect: ', tostring(customDimensions.destination)), timestamp, session_Id\n| summarize Clicks = count() by UIComponent, session_Id, bin(timestamp, 1d)    ), (\n// health tree node\ncustomEventsData\n| where name == 'HealthTreeNodeExpandedCollapsed'\n| project Data = todynamic(customDimensions.data), timestamp, MonitorSubjectId = tostring(customDimensions.monitorSubjectId), MonitorTypeId = tostring(customDimensions.monitorTypeId), isExpanded = tostring(customDimensions.isExpanded), ClusterName = tostring(customDimensions.cluster_name), session_Id\n| extend UIComponent = strcat('HealthTreeNodeToggle: ', MonitorTypeId)\n| summarize Clicks = count() by UIComponent, session_Id, bin(timestamp, 1d)   ), (     customEventsData\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthTreeNodeSelected'\n| extend AdditionalInfo = parse_json(tostring(customDimensions.additionalInformation))\n| extend SourceMonitorSubjectId = tostring(AdditionalInfo.sourceMonitorSubjectId), SourceMonitorTypeId = tostring(AdditionalInfo.sourceMonitorTypeId), SourceMonitorHealthState = tostring(AdditionalInfo.sourceMonitorHealthState)\n| extend DestinationMonitorSubjectId = tostring(AdditionalInfo.destinationMonitorSubjectId), DestinationMonitorTypeId = tostring(AdditionalInfo.destinationMonitorTypeId), DestinationMonitorHealthState = tostring(AdditionalInfo.destinationMonitorHealthState)\n| project timestamp, SourceMonitorSubjectId, SourceMonitorTypeId, SourceMonitorHealthState, DestinationMonitorSubjectId, DestinationMonitorTypeId, DestinationMonitorHealthState, session_Id\n| extend UIComponent = strcat('HealthTreeNodeSelected: ', DestinationMonitorTypeId)\n| summarize Clicks = count() by UIComponent, session_Id, bin(timestamp, 1d)   )\n| summarize sum(Clicks) by session_Id, bin(timestamp, 1d)\n| summarize avg(sum_Clicks) by bin(timestamp, 1d)\n| render timechart\n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "11": {
+            "position": {
+              "x": 18,
+              "y": 9,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let customEventsData = materialize(customEvents\n| where itemType == 'customEvent'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a');\ncustomEventsData\n// health tabs\n| where name == 'DetailsPanelTabSelectionChanged'\n| extend TabName = tostring(customDimensions.tabName), TelemetryName = tostring(customDimensions.telemetryName)\n| project timestamp, UIComponent = strcat('Tab: ', iif(isempty(TelemetryName), TabName, TelemetryName)), session_Id\n| summarize Clicks = count() by UIComponent, session_Id, bin(timestamp, 1d)\n| union (\n// health aspects\ncustomEventsData\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthAspectSelected'\n| project UIComponent = strcat('Aspect: ', tostring(customDimensions.destination)), timestamp, session_Id\n| summarize Clicks = count() by UIComponent, session_Id, bin(timestamp, 1d)    ), (\n// health tree node\ncustomEventsData\n| where name == 'HealthTreeNodeExpandedCollapsed'\n| project Data = todynamic(customDimensions.data), timestamp, MonitorSubjectId = tostring(customDimensions.monitorSubjectId), MonitorTypeId = tostring(customDimensions.monitorTypeId), isExpanded = tostring(customDimensions.isExpanded), ClusterName = tostring(customDimensions.cluster_name), session_Id\n| extend UIComponent = strcat('HealthTreeNodeToggle: ', MonitorTypeId)\n| summarize Clicks = count() by UIComponent, session_Id, bin(timestamp, 1d)   ), (     customEventsData\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthTreeNodeSelected'\n| extend AdditionalInfo = parse_json(tostring(customDimensions.additionalInformation))\n| extend SourceMonitorSubjectId = tostring(AdditionalInfo.sourceMonitorSubjectId), SourceMonitorTypeId = tostring(AdditionalInfo.sourceMonitorTypeId), SourceMonitorHealthState = tostring(AdditionalInfo.sourceMonitorHealthState)\n| extend DestinationMonitorSubjectId = tostring(AdditionalInfo.destinationMonitorSubjectId), DestinationMonitorTypeId = tostring(AdditionalInfo.destinationMonitorTypeId), DestinationMonitorHealthState = tostring(AdditionalInfo.destinationMonitorHealthState)\n| project timestamp, SourceMonitorSubjectId, SourceMonitorTypeId, SourceMonitorHealthState, DestinationMonitorSubjectId, DestinationMonitorTypeId, DestinationMonitorHealthState, session_Id\n| extend UIComponent = strcat('HealthTreeNodeSelected: ', DestinationMonitorTypeId)\n| summarize Clicks = count() by UIComponent, session_Id, bin(timestamp, 1d)   )\n| summarize ClickSum = sum(Clicks) by session_Id, bin(timestamp, 1d)\n| top 25 by ClickSum desc\n| render timechart\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P30D"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "ClickSum",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "session_Id",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "0a68e963-c85e-4555-be26-13f47ccac1e7"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Total Clicks Per Session (Top 25)",
+                  "PartSubTitle": "Last 7d",
+                  "Query": "let customEventsData = materialize(customEvents\n| where itemType == 'customEvent'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a');\ncustomEventsData\n// health tabs\n| where name == 'DetailsPanelTabSelectionChanged'\n| extend TabName = tostring(customDimensions.tabName), TelemetryName = tostring(customDimensions.telemetryName)\n| where TabName != 'Raw' and TabName != 'Describe'\n| project timestamp, UIComponent = strcat('Tab: ', iif(isempty(TelemetryName), TabName, TelemetryName)), session_Id\n| summarize Clicks = count() by UIComponent, session_Id, bin(timestamp, 1d)\n| union (\n// health aspects\ncustomEventsData\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthAspectSelected'\n| project UIComponent = strcat('Aspect: ', tostring(customDimensions.destination)), timestamp, session_Id\n| summarize Clicks = count() by UIComponent, session_Id, bin(timestamp, 1d)    ), (\n// health tree node\ncustomEventsData\n| where name == 'HealthTreeNodeExpandedCollapsed'\n| project Data = todynamic(customDimensions.data), timestamp, MonitorSubjectId = tostring(customDimensions.monitorSubjectId), MonitorTypeId = tostring(customDimensions.monitorTypeId), isExpanded = tostring(customDimensions.isExpanded), ClusterName = tostring(customDimensions.cluster_name), session_Id\n| extend UIComponent = strcat('HealthTreeNodeToggle: ', MonitorTypeId)\n| summarize Clicks = count() by UIComponent, session_Id, bin(timestamp, 1d)   ), (     customEventsData\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthTreeNodeSelected'\n| extend AdditionalInfo = parse_json(tostring(customDimensions.additionalInformation))\n| extend SourceMonitorSubjectId = tostring(AdditionalInfo.sourceMonitorSubjectId), SourceMonitorTypeId = tostring(AdditionalInfo.sourceMonitorTypeId), SourceMonitorHealthState = tostring(AdditionalInfo.sourceMonitorHealthState)\n| extend DestinationMonitorSubjectId = tostring(AdditionalInfo.destinationMonitorSubjectId), DestinationMonitorTypeId = tostring(AdditionalInfo.destinationMonitorTypeId), DestinationMonitorHealthState = tostring(AdditionalInfo.destinationMonitorHealthState)\n| project timestamp, SourceMonitorSubjectId, SourceMonitorTypeId, SourceMonitorHealthState, DestinationMonitorSubjectId, DestinationMonitorTypeId, DestinationMonitorHealthState, session_Id\n| extend UIComponent = strcat('HealthTreeNodeSelected: ', DestinationMonitorTypeId)\n| summarize Clicks = count() by UIComponent, session_Id, bin(timestamp, 1d)   )\n| summarize ClickSum = sum(Clicks) by session_Id, bin(timestamp, 1d)\n| top 25 by ClickSum desc\n| render timechart\n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "7d"
+                  }
+                }
+              }
+            }
+          },
+          "12": {
+            "position": {
+              "x": 0,
+              "y": 13,
+              "colSpan": 7,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let aspectClicks = materialize(customEvents\n| where itemType == 'customEvent'\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthAspectSelected'\n| extend Data = parse_json(tostring(customDimensions.additionalInformation))\n| extend HealthState = tostring(Data.destinationHealthState)\n| extend UIComponent = tostring(customDimensions.destination));\nlet healthyAspectClicks = materialize(aspectClicks\n| where HealthState == 'Healthy'\n| summarize HealthyAspectClicks = count() by HealthState, session_Id, bin(timestamp, 1d));\nlet unhealthyAspectClicks = materialize(aspectClicks\n| where HealthState != 'Healthy'\n| summarize UnhealthyAspectClicks = count() by HealthState, session_Id, bin(timestamp, 1d));\nlet treeNodeClicks = materialize(customEvents\n| where itemType == 'customEvent'\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthTreeNodeSelected'\n| extend AdditionalInfo = parse_json(tostring(customDimensions.additionalInformation))\n| extend SourceMonitorSubjectId = tostring(AdditionalInfo.sourceMonitorSubjectId), SourceMonitorTypeId = tostring(AdditionalInfo.sourceMonitorTypeId), SourceMonitorHealthState = tostring(AdditionalInfo.sourceMonitorHealthState)\n| extend DestinationMonitorSubjectId = tostring(AdditionalInfo.destinationMonitorSubjectId), DestinationMonitorTypeId = tostring(AdditionalInfo.destinationMonitorTypeId), DestinationMonitorHealthState = tostring(AdditionalInfo.destinationMonitorHealthState)\n| extend HealthState = DestinationMonitorHealthState\n| extend UIComponent = strcat('HealthTreeNodeSelected: ', DestinationMonitorTypeId));\nlet healthyTreeNodeClicks = materialize(treeNodeClicks\n| where HealthState == 'Healthy'\n| summarize HealthyTreeNodeClicks = count() by HealthState, session_Id, bin(timestamp, 1d));\nlet unhealthyTreeNodeClicks = materialize(treeNodeClicks\n| where HealthState != 'Healthy'\n| summarize UnhealthyTreeNodeClicks = count() by HealthState, session_Id, bin(timestamp, 1d));\nlet allClicks = healthyAspectClicks\n| project-away HealthState\n| join kind = fullouter ( unhealthyAspectClicks ) on session_Id\n| extend session_Id = iif(isnotempty(session_Id), session_Id, session_Id1)\n| extend timestamp = iif(isnotempty(timestamp), timestamp, timestamp1)\n| project-away session_Id1, HealthState, timestamp1\n| join kind = fullouter ( healthyTreeNodeClicks ) on session_Id\n| extend session_Id = iif(isnotempty(session_Id), session_Id, session_Id1)\n| extend timestamp = iif(isnotempty(timestamp), timestamp, timestamp1)\n| project-away session_Id1, HealthState, timestamp1\n| join kind = fullouter ( unhealthyTreeNodeClicks ) on session_Id\n| extend session_Id = iif(isnotempty(session_Id), session_Id, session_Id1)\n| extend timestamp = iif(isnotempty(timestamp), timestamp, timestamp1)\n| project-away session_Id1, HealthState, timestamp1;\nallClicks\n| extend HealthyAspectClicks = iif(isempty(HealthyAspectClicks), 0, HealthyAspectClicks)\n| extend UnhealthyAspectClicks = iif(isempty(UnhealthyAspectClicks), 0, UnhealthyAspectClicks)\n| extend HealthyTreeNodeClicks = iif(isempty(HealthyTreeNodeClicks), 0, HealthyTreeNodeClicks)\n| extend UnhealthyTreeNodeClicks = iif(isempty(UnhealthyTreeNodeClicks), 0, UnhealthyTreeNodeClicks)\n| extend UnhealthyClicks = UnhealthyAspectClicks + UnhealthyTreeNodeClicks\n| extend HealthyClicks = HealthyAspectClicks + HealthyTreeNodeClicks\n//| extend Ratio = UnhealthyAspectClicks / HealthyClicks\n| extend RatioString = strcat(UnhealthyAspectClicks, ' / ', HealthyClicks)\n| take 100\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "2020-01-01T01:26:50.000Z/2020-01-15T01:26:50.185Z"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "334501d6-ee86-49c1-9124-a6cf75018506"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Unhealthy to Healthy Clicks Per Session",
+                  "PartSubTitle": "Last 7d",
+                  "Query": "let aspectClicks = materialize(customEvents\n| where itemType == 'customEvent'\n| where name == 'navigate'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| where customDimensions.destination contains 'HealthAspectSelected'\n| extend Data = parse_json(tostring(customDimensions.additionalInformation))\n| extend HealthState = tostring(Data.destinationHealthState)\n| extend UIComponent = tostring(customDimensions.destination));\nlet healthyAspectClicks = materialize(aspectClicks\n| where HealthState == 'Healthy'\n| summarize HealthyAspectClicks = count() by HealthState, session_Id, bin(timestamp, 1d));\nlet unhealthyAspectClicks = materialize(aspectClicks\n| where HealthState != 'Healthy'\n| summarize UnhealthyAspectClicks = count() by HealthState, session_Id, bin(timestamp, 1d));\nlet treeNodeClicks = materialize(customEvents\n| where itemType == 'customEvent'\n| where name == 'navigate'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| where customDimensions.destination contains 'HealthTreeNodeSelected'\n| extend AdditionalInfo = parse_json(tostring(customDimensions.additionalInformation))\n| extend SourceMonitorSubjectId = tostring(AdditionalInfo.sourceMonitorSubjectId), SourceMonitorTypeId = tostring(AdditionalInfo.sourceMonitorTypeId), SourceMonitorHealthState = tostring(AdditionalInfo.sourceMonitorHealthState)\n| extend DestinationMonitorSubjectId = tostring(AdditionalInfo.destinationMonitorSubjectId), DestinationMonitorTypeId = tostring(AdditionalInfo.destinationMonitorTypeId), DestinationMonitorHealthState = tostring(AdditionalInfo.destinationMonitorHealthState)\n| extend HealthState = DestinationMonitorHealthState\n| extend UIComponent = strcat('HealthTreeNodeSelected: ', DestinationMonitorTypeId));\nlet healthyTreeNodeClicks = materialize(treeNodeClicks\n| where HealthState == 'Healthy'\n| summarize HealthyTreeNodeClicks = count() by HealthState, session_Id, bin(timestamp, 1d));\nlet unhealthyTreeNodeClicks = materialize(treeNodeClicks\n| where HealthState != 'Healthy'\n| summarize UnhealthyTreeNodeClicks = count() by HealthState, session_Id, bin(timestamp, 1d));\nlet allClicks = healthyAspectClicks\n| project-away HealthState\n| join kind = fullouter\n(\n    unhealthyAspectClicks\n)\non session_Id\n| extend session_Id = iif(isnotempty(session_Id), session_Id, session_Id1)\n| extend timestamp = iif(isnotempty(timestamp), timestamp, timestamp1)\n| project-away session_Id1, HealthState, timestamp1\n| join kind = fullouter\n(\n    healthyTreeNodeClicks\n)\non session_Id\n| extend session_Id = iif(isnotempty(session_Id), session_Id, session_Id1)\n| extend timestamp = iif(isnotempty(timestamp), timestamp, timestamp1)\n| project-away session_Id1, HealthState, timestamp1\n| join kind = fullouter\n(\n    unhealthyTreeNodeClicks\n)\non session_Id\n| extend session_Id = iif(isnotempty(session_Id), session_Id, session_Id1)\n| extend timestamp = iif(isnotempty(timestamp), timestamp, timestamp1)\n| project-away session_Id1, HealthState, timestamp1;\nallClicks\n| extend HealthyAspectClicks = iif(isempty(HealthyAspectClicks), 0, HealthyAspectClicks)\n| extend UnhealthyAspectClicks = iif(isempty(UnhealthyAspectClicks), 0, UnhealthyAspectClicks)\n| extend HealthyTreeNodeClicks = iif(isempty(HealthyTreeNodeClicks), 0, HealthyTreeNodeClicks)\n| extend UnhealthyTreeNodeClicks = iif(isempty(UnhealthyTreeNodeClicks), 0, UnhealthyTreeNodeClicks)\n| extend UnhealthyClicks = UnhealthyAspectClicks + UnhealthyTreeNodeClicks\n| extend HealthyClicks = HealthyAspectClicks + HealthyTreeNodeClicks\n| extend Ratio = iif(HealthyClicks == 0 and UnhealthyClicks == 0, 0.0, iif(UnhealthyClicks > 0 and HealthyClicks == 0, todouble(UnhealthyClicks), todouble(UnhealthyAspectClicks) / todouble(HealthyClicks)))\n| extend RatioUnhealthyToHealthy = strcat(UnhealthyAspectClicks, ' / ', HealthyClicks)\n| project timestamp, session_Id, RatioUnhealthyToHealthy, Ratio\n| take 100",
+                  "GridColumnsWidth": {
+                    "session_Id": "104px",
+                    "RatioUnhealthyToHealthy": "190px",
+                    "Ratio": "93px"
+                  }
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "7d"
+                  }
+                }
+              }
+            }
+          },
+          "13": {
+            "position": {
+              "x": 7,
+              "y": 13,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\n| where itemType == 'customEvent'\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthAspectSelected'\n| extend Data = parse_json(tostring(customDimensions.additionalInformation))\n| extend SourceAspectState = tostring(Data.sourceAspectHealthState), DestinationHealthState = tostring(Data.destinationHealthState), SourceAspectIdentifier = tostring(Data.sourceAspectIdentifier), DestinationAspectIdentifier = tostring(Data.destinationAspectIdentifier)\n| project timestamp, Destination = tostring(customDimensions.destination), Source = tostring(customDimensions.source), SourceAspectState , DestinationHealthState, SourceAspectIdentifier, DestinationAspectIdentifier\n| where SourceAspectState == 'Healthy'\n| summarize UnhealthyAspectCount = count() by SourceAspectIdentifier, SourceAspectState, bin(timestamp, 1d)\n| render timechart\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "PT1H"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "UnhealthyAspectCount",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "SourceAspectIdentifier",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "63e36dda-5dba-4113-b116-b1139265f685"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "# Unhealthy Aspects from Navigation Telemetry",
+                  "PartSubTitle": "Last 7d",
+                  "Query": "customEvents\n| where itemType == 'customEvent'\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthAspectSelected'\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| extend Data = parse_json(tostring(customDimensions.additionalInformation))\n| extend SourceAspectState = tostring(Data.sourceAspectHealthState), DestinationHealthState = tostring(Data.destinationHealthState), SourceAspectIdentifier = tostring(Data.sourceAspectIdentifier), DestinationAspectIdentifier = tostring(Data.destinationAspectIdentifier)\n| project timestamp, Destination = tostring(customDimensions.destination), Source = tostring(customDimensions.source), SourceAspectState , DestinationHealthState, SourceAspectIdentifier, DestinationAspectIdentifier\n| where SourceAspectState != 'Healthy'\n| summarize UnhealthyAspectCount = count() by SourceAspectIdentifier, SourceAspectState, bin(timestamp, 1d)\n| render timechart\n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "7d"
+                  }
+                }
+              }
+            }
+          },
+          "14": {
+            "position": {
+              "x": 13,
+              "y": 13,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\n| where itemType == 'customEvent'\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthTreeNodeSelected'\n| extend Data = parse_json(tostring(customDimensions.additionalInformation))\n| extend SourceMonitorSubjectId = tostring(Data.sourceMonitorSubjectId), SourceMonitorTypeId = tostring(Data.sourceMonitorTypeId), SourceMonitorHealthState = tostring(Data.sourceMonitorHealthState)\n| extend DestinationMonitorSubjectId = tostring(Data.destinationMonitorSubjectId), DestinationMonitorTypeId = tostring(Data.destinationMonitorTypeId), DestinationMonitorHealthState = tostring(Data.destinationMonitorHealthState)\n| project timestamp, SourceMonitorSubjectId, SourceMonitorTypeId, SourceMonitorHealthState, DestinationMonitorSubjectId, DestinationMonitorTypeId, DestinationMonitorHealthState, session_Id\n| extend UIComponent = DestinationMonitorTypeId\n| where DestinationMonitorHealthState == 'Healthy'\n| summarize UnhealthyStateCount = count() by UIComponent\n| render barchart\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "2019-12-15T08:50:36.838Z/2020-01-14T08:50:36.838Z"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "UIComponent",
+                      "type": "string"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "UnhealthyStateCount",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "66ca2776-0ed0-4e7e-9624-71c58a2f3a70"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Bar"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "# Unhealth Tree Nodes from Navigation Telemetry",
+                  "PartSubTitle": "Last 7d",
+                  "Query": "customEvents\n| where itemType == 'customEvent'\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthTreeNodeSelected'\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| extend Data = parse_json(tostring(customDimensions.additionalInformation))\n| extend SourceMonitorSubjectId = tostring(Data.sourceMonitorSubjectId), SourceMonitorTypeId = tostring(Data.sourceMonitorTypeId), SourceMonitorHealthState = tostring(Data.sourceMonitorHealthState)\n| extend DestinationMonitorSubjectId = tostring(Data.destinationMonitorSubjectId), DestinationMonitorTypeId = tostring(Data.destinationMonitorTypeId), DestinationMonitorHealthState = tostring(Data.destinationMonitorHealthState)\n| project timestamp, SourceMonitorSubjectId, SourceMonitorTypeId, SourceMonitorHealthState, DestinationMonitorSubjectId, DestinationMonitorTypeId, DestinationMonitorHealthState, session_Id\n| extend UIComponent = DestinationMonitorTypeId\n| where DestinationMonitorHealthState != 'Healthy'\n| summarize UnhealthyStateCount = count() by UIComponent\n| render barchart\n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "7d"
+                  }
+                }
+              }
+            }
+          },
+          "15": {
+            "position": {
+              "x": 19,
+              "y": 13,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\n| where itemType == 'customEvent'\n| where name == 'HealthTreeNodeExpandedCollapsed'\n| project timestamp, MonitorSubjectId = tostring(customDimensions.monitorSubjectId), MonitorTypeId = tostring(customDimensions.monitorTypeId), MonitorHealthState = tostring(customDimensions.monitorHealthState), isExpanded = tostring(customDimensions.isExpanded), ClusterName = tostring(customDimensions.cluster_name), session_Id\n| extend UIComponent = strcat('HealthTreeNodeToggle: ', MonitorTypeId)\n| where MonitorHealthState != 'Healthy'\n| summarize Clicks = count() by UIComponent, session_Id, bin(timestamp, 1d)\n| render timechart\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P30D"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Clicks",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "UIComponent",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "107bfbfb-5e4b-4b2f-be11-23a215c94017"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "# Toggles of Unhealthy Tree Monitors from Navigation Telemetry",
+                  "PartSubTitle": "Last 7d",
+                  "Query": "customEvents\n| where itemType == 'customEvent'\n| where name == 'HealthTreeNodeExpandedCollapsed'\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| project timestamp, MonitorSubjectId = tostring(customDimensions.monitorSubjectId), MonitorTypeId = tostring(customDimensions.monitorTypeId), MonitorHealthState = tostring(customDimensions.monitorHealthState), isExpanded = tostring(customDimensions.isExpanded), ClusterName = tostring(customDimensions.cluster_name), session_Id\n| extend UIComponent = strcat('HealthTreeNodeToggle: ', MonitorTypeId)\n| where MonitorHealthState != 'Healthy'\n| summarize Clicks = count() by UIComponent, session_Id, bin(timestamp, 1d)\n| render timechart\n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "7d"
+                  }
+                }
+              }
+            }
+          },
+          "16": {
+            "position": {
+              "x": 0,
+              "y": 17,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\n| where itemType == 'customEvent'\n| where name == 'HealthAspectRecord'\n| extend State = tostring(customDimensions.stateDisplayName), Name = tostring(customDimensions.displayName)\n| where Name =~ 'Kubernetes infrastructure'\n| summarize count() by State\n| render piechart\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "State",
+                      "type": "string"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "49422cce-3cc2-490b-b121-58932d9b5843"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsDonut"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Health of Kubernetes Infrastructure Aspect",
+                  "PartSubTitle": "Last 30d",
+                  "Query": "customEvents\n| where itemType == 'customEvent'\n| where name == 'HealthAspectRecord'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| extend State = tostring(customDimensions.stateDisplayName), Name = tostring(customDimensions.aspectIdentifier)        \n| where Name =~ 'k8s_infrastructure'\n| summarize count() by State\n| render piechart"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "17": {
+            "position": {
+              "x": 6,
+              "y": 17,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\n| where itemType == 'customEvent'\n| where name == 'HealthAspectRecord'\n| extend State = tostring(customDimensions.stateDisplayName), Name = tostring(customDimensions.displayName)\n| where Name =~ 'Nodes'\n| summarize count() by State\n| render piechart\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "State",
+                      "type": "string"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "7b27f552-c83a-4607-a56a-c8976297a5de"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsDonut"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Health of Nodes Aspect ",
+                  "PartSubTitle": "Last 30d",
+                  "Query": "customEvents\n| where itemType == 'customEvent'\n| where name == 'HealthAspectRecord'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| extend State = tostring(customDimensions.stateDisplayName), Name = tostring(customDimensions.aspectIdentifier)\n| where Name =~ 'all_nodes'\n| summarize count() by State\n| render piechart\n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "18": {
+            "position": {
+              "x": 0,
+              "y": 21,
+              "colSpan": 22,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let customEventsData = materialize(customEvents\r\n| where itemType == 'customEvent'\r\n// cloud ops tip 1\r\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\r\n// Container Insights - Test - 1\r\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a');\r\ncustomEventsData\r\n// health tabs\r\n| where name == 'DetailsPanelTabSelectionChanged'\r\n| extend TabName = tostring(customDimensions.tabName), TelemetryName = tostring(customDimensions.telemetryName)\r\n| project timestamp, UIComponent = strcat('Tab: ', iif(isempty(TelemetryName), TabName, TelemetryName)), user_Id\r\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)\r\n| union (\r\n// health aspects\r\ncustomEventsData\r\n| where name == 'navigate'\r\n| where customDimensions.destination contains 'HealthAspectSelected'\r\n| project UIComponent = strcat('Aspect: ', tostring(customDimensions.destination)), timestamp, user_Id\r\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)    ), (\r\n// health tree node\r\ncustomEventsData\r\n| where name == 'HealthTreeNodeExpandedCollapsed'\r\n| project Data = todynamic(customDimensions.data), timestamp, MonitorSubjectId = tostring(customDimensions.monitorSubjectId), MonitorTypeId = tostring(customDimensions.monitorTypeId), isExpanded = tostring(customDimensions.isExpanded), ClusterName = tostring(customDimensions.cluster_name), user_Id\r\n| extend UIComponent = strcat('HealthTreeNodeToggle: ', MonitorTypeId)\r\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)   ), (     customEventsData\r\n| where name == 'navigate'\r\n| where customDimensions.destination contains 'HealthTreeNodeSelected'\r\n| extend AdditionalInfo = parse_json(tostring(customDimensions.additionalInformation))\r\n| extend SourceMonitorSubjectId = tostring(AdditionalInfo.sourceMonitorSubjectId), SourceMonitorTypeId = tostring(AdditionalInfo.sourceMonitorTypeId), SourceMonitorHealthState = tostring(AdditionalInfo.sourceMonitorHealthState)\r\n| extend DestinationMonitorSubjectId = tostring(AdditionalInfo.destinationMonitorSubjectId), DestinationMonitorTypeId = tostring(AdditionalInfo.destinationMonitorTypeId), DestinationMonitorHealthState = tostring(AdditionalInfo.destinationMonitorHealthState)\r\n| project timestamp, SourceMonitorSubjectId, SourceMonitorTypeId, SourceMonitorHealthState, DestinationMonitorSubjectId, DestinationMonitorTypeId, DestinationMonitorHealthState, user_Id\r\n| extend UIComponent = strcat('HealthTreeNodeSelected: ', DestinationMonitorTypeId)\r\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)   )\r\n| summarize ClickSum = sum(Clicks) by user_Id, bin(timestamp, 1d)\r\n| top 25 by ClickSum desc\r\n| join kind = leftouter (\r\n    exceptions\r\n    | extend pageUrl = tostring(customDimensions.urlHint)\r\n    | extend pageBase = tostring(split(pageUrl, '?')[0])\r\n    | where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains 'monitoring.'\r\n    | where operation_Name has 'container-perf.html'\r\n    | extend MessageProperty = todynamic(outerMessage).exception.message, ErrorTextProperty = todynamic(outerMessage).exception._errorText, WorkspaceName = tostring(todynamic(customDimensions).workspace_name)\r\n    | extend MessageProperty = iif(isempty(MessageProperty), todynamic(outerMessage).errorMessage, MessageProperty)\r\n    | extend PreMessage = tostring(iif(isempty(MessageProperty), ErrorTextProperty, MessageProperty))\r\n    | extend HttpRequestError = todynamic(todynamic(outerMessage).exception.httpRequestError)\r\n    | extend HttpError = iif(isnotempty(HttpRequestError), HttpRequestError, todynamic(todynamic(outerMessage).exception))\r\n    | extend HttpErrorStatusCode = toint(HttpError.status)\r\n    | extend HttpErrorStatusText = tostring(HttpError.statusText)\r\n    | extend HttpErrorResponseText = tostring(HttpError.responseText)\r\n    | extend HttpErrorResponseJson = parsejson(HttpErrorResponseText)\r\n    | extend PreMessage = iif(isempty(PreMessage) and isnotempty(HttpErrorStatusCode), strcat(\"Http \", HttpErrorStatusCode, \" (\", HttpErrorStatusText, \"). Response: \", HttpErrorResponseText), PreMessage)\r\n    | extend Message = iif(isempty(PreMessage), problemId, PreMessage)\r\n    | extend Message = iif(HttpErrorStatusCode == 400 and HttpErrorResponseJson.error.innererror.code == \"SemanticError\" and HttpErrorResponseJson.error.innererror.innererror.message contains \"Failed to resolve table or column expression named 'KubeNodeInventory'\", \"Http 400 (Kube* TableNotFound)\", Message)\r\n    | extend Message = iif(HttpErrorStatusCode == 400 and HttpErrorResponseJson.error.innererror.code == \"SemanticError\" and HttpErrorResponseJson.error.innererror.innererror.message contains \"Failed to resolve table or column expression named 'KubePodInventory'\", \"Http 400 (Kube* TableNotFound)\", Message)\r\n    | extend Message = iif(HttpErrorStatusCode == 404 and HttpErrorResponseJson.error.code == \"WorkspaceNotFoundError\", \"Http 404 (WorkspaceNotFound)\", Message)\r\n    | extend Message = iif(HttpErrorStatusCode == 404 and HttpErrorResponseJson.error.code == \"ParentResourceNotFound\", \"Http 404 (WorkspaceNotFound)\", Message)\r\n    | extend Message = iif(HttpErrorStatusCode == 404 and HttpErrorResponseJson.error.code == \"ResourceGroupNotFound\", \"Http 404 (ResourceGroupNotFound)\", Message)\r\n    | extend Message = iif(HttpErrorStatusCode == 403 and HttpErrorResponseJson.error.code == \"InsufficientAccessError\", \"Http 403 (InsufficientAccess)\", Message)\r\n    | extend Message = iif(HttpErrorStatusCode == 503 and HttpErrorResponseJson.error.innererror.code == \"ServiceNotResponding\", strcat(\"Http 503 (\", HttpErrorResponseJson.error.innererror.message, \")\"), Message)\r\n    | extend Message = iif(HttpErrorStatusCode == 502 and isnotempty(HttpErrorResponseJson.code),           strcat(\"Http 502 (\", HttpErrorStatusText, \") <= \", HttpErrorResponseJson.code, \" (\", HttpErrorResponseJson.reason, \")\"),           Message)\r\n    | extend Message = iif(Message contains 'Maximum response size of 8000000 bytes exceeded', 'Http 502: =**> Max ARM Size Limit 8MB', Message)\r\n    | extend Message = iif(tostring(todynamic(outerMessage).exception.textStatus) =~ 'timeout','Http timeout', Message)\r\n    | where Message !contains 'MDM Failed time series empty or null'\r\n    // cloud ops tip 1\r\n    | where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\r\n    // Container Insights - Test - 1\r\n    | where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\r\n    | where tostring(customDimensions.handledAt) !contains \"pollserver\"\r\n    | where customDimensions.handledAt !contains \"BannerUtilityHelper\"\r\n    | where customDimensions.handledAt !contains \"DeploymentsPaneViewModel\"\r\n    | where customDimensions.handledAt !contains \"ContainerClusterPane\"\r\n    | where customDimensions.handledAt !contains \"ContainerLiveTabMetricChartPane.updateLiveData\"\r\n    | where customDimensions.handledAt contains \"Health\"\r\n    | extend clusterType = iff(customDimensions.cluster_id contains \"/providers/Microsoft.ContainerService/\", \"AKS\", \"non-AKS\")\r\n    | extend Exception = tostring(todynamic(outerMessage).exception)\r\n    //| where Exception == 'Error in HealthModelService.getHealthModel : healthModel is empty, likely empty result rows'\\\r\n    | project clusterType, Message, user_Id, tostring(customDimensions.cluster_id), WorkspaceName\r\n) on user_Id\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "11365544-6ecd-4052-851a-77aa62366552"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Errors Encountered By the Most Interactive Users By Click Count",
+                  "PartSubTitle": "Last 7d",
+                  "Query": "let customEventsData = materialize(customEvents\n| where itemType == 'customEvent'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a');\ncustomEventsData\n// health tabs\n| where name == 'DetailsPanelTabSelectionChanged'\n| extend TabName = tostring(customDimensions.tabName), TelemetryName = tostring(customDimensions.telemetryName)\n| project timestamp, UIComponent = strcat('Tab: ', iif(isempty(TelemetryName), TabName, TelemetryName)), user_Id\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)\n| union (\n// health aspects\ncustomEventsData\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthAspectSelected'\n| project UIComponent = strcat('Aspect: ', tostring(customDimensions.destination)), timestamp, user_Id\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)    ), (\n// health tree node\ncustomEventsData\n| where name == 'HealthTreeNodeExpandedCollapsed'\n| project Data = todynamic(customDimensions.data), timestamp, MonitorSubjectId = tostring(customDimensions.monitorSubjectId), MonitorTypeId = tostring(customDimensions.monitorTypeId), isExpanded = tostring(customDimensions.isExpanded), ClusterName = tostring(customDimensions.cluster_name), user_Id\n| extend UIComponent = strcat('HealthTreeNodeToggle: ', MonitorTypeId)\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)   ), (     customEventsData\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthTreeNodeSelected'\n| extend AdditionalInfo = parse_json(tostring(customDimensions.additionalInformation))\n| extend SourceMonitorSubjectId = tostring(AdditionalInfo.sourceMonitorSubjectId), SourceMonitorTypeId = tostring(AdditionalInfo.sourceMonitorTypeId), SourceMonitorHealthState = tostring(AdditionalInfo.sourceMonitorHealthState)\n| extend DestinationMonitorSubjectId = tostring(AdditionalInfo.destinationMonitorSubjectId), DestinationMonitorTypeId = tostring(AdditionalInfo.destinationMonitorTypeId), DestinationMonitorHealthState = tostring(AdditionalInfo.destinationMonitorHealthState)\n| project timestamp, SourceMonitorSubjectId, SourceMonitorTypeId, SourceMonitorHealthState, DestinationMonitorSubjectId, DestinationMonitorTypeId, DestinationMonitorHealthState, user_Id\n| extend UIComponent = strcat('HealthTreeNodeSelected: ', DestinationMonitorTypeId)\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)   )\n| summarize ClickSum = sum(Clicks) by user_Id, bin(timestamp, 1d)\n| top 25 by ClickSum desc\n| project UserId = user_Id, ClickSum\n| join kind = leftouter\n(\n    exceptions\n    | extend pageUrl = tostring(customDimensions.urlHint)\n    | extend pageBase = tostring(split(pageUrl, '?')[0])\n    | where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains 'monitoring.'\n    | where operation_Name has 'container-perf.html'\n    | extend MessageProperty = todynamic(outerMessage).exception.message, ErrorTextProperty = todynamic(outerMessage).exception._errorText, WorkspaceName = tostring(todynamic(customDimensions).workspace_name)\n    | extend MessageProperty = iif(isempty(MessageProperty), todynamic(outerMessage).errorMessage, MessageProperty)\n    | extend PreMessage = tostring(iif(isempty(MessageProperty), ErrorTextProperty, MessageProperty))\n    | extend HttpRequestError = todynamic(todynamic(outerMessage).exception.httpRequestError)\n    | extend HttpError = iif(isnotempty(HttpRequestError), HttpRequestError, todynamic(todynamic(outerMessage).exception))\n    | extend HttpErrorStatusCode = toint(HttpError.status)\n    | extend HttpErrorStatusText = tostring(HttpError.statusText)\n    | extend HttpErrorResponseText = tostring(HttpError.responseText)\n    | extend HttpErrorResponseJson = parsejson(HttpErrorResponseText)\n    | extend PreMessage = iif(isempty(PreMessage) and isnotempty(HttpErrorStatusCode), strcat(\"Http \", HttpErrorStatusCode, \" (\", HttpErrorStatusText, \"). Response: \", HttpErrorResponseText), PreMessage)\n    | extend Message = iif(isempty(PreMessage), problemId, PreMessage)\n    | extend Message = iif(HttpErrorStatusCode == 400 and HttpErrorResponseJson.error.innererror.code == \"SemanticError\" and HttpErrorResponseJson.error.innererror.innererror.message contains \"Failed to resolve table or column expression named 'KubeNodeInventory'\", \"Http 400 (Kube* TableNotFound)\", Message)\n    | extend Message = iif(HttpErrorStatusCode == 400 and HttpErrorResponseJson.error.innererror.code == \"SemanticError\" and HttpErrorResponseJson.error.innererror.innererror.message contains \"Failed to resolve table or column expression named 'KubePodInventory'\", \"Http 400 (Kube* TableNotFound)\", Message)\n    | extend Message = iif(HttpErrorStatusCode == 404 and HttpErrorResponseJson.error.code == \"WorkspaceNotFoundError\", \"Http 404 (WorkspaceNotFound)\", Message)\n    | extend Message = iif(HttpErrorStatusCode == 404 and HttpErrorResponseJson.error.code == \"ParentResourceNotFound\", \"Http 404 (WorkspaceNotFound)\", Message)\n    | extend Message = iif(HttpErrorStatusCode == 404 and HttpErrorResponseJson.error.code == \"ResourceGroupNotFound\", \"Http 404 (ResourceGroupNotFound)\", Message)\n    | extend Message = iif(HttpErrorStatusCode == 403 and HttpErrorResponseJson.error.code == \"InsufficientAccessError\", \"Http 403 (InsufficientAccess)\", Message)\n    | extend Message = iif(HttpErrorStatusCode == 503 and HttpErrorResponseJson.error.innererror.code == \"ServiceNotResponding\", strcat(\"Http 503 (\", HttpErrorResponseJson.error.innererror.message, \")\"), Message)\n    | extend Message = iif(HttpErrorStatusCode == 502 and isnotempty(HttpErrorResponseJson.code),           strcat(\"Http 502 (\", HttpErrorStatusText, \") <= \", HttpErrorResponseJson.code, \" (\", HttpErrorResponseJson.reason, \")\"),           Message)\n    | extend Message = iif(Message contains 'Maximum response size of 8000000 bytes exceeded', 'Http 502: =**> Max ARM Size Limit 8MB', Message)\n    | extend Message = iif(tostring(todynamic(outerMessage).exception.textStatus) =~ 'timeout','Http timeout', Message)\n    | where Message !contains 'MDM Failed time series empty or null'\n    // cloud ops tip 1\n    | where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n    // Container Insights - Test - 1\n    | where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n    | where tostring(customDimensions.handledAt) !contains \"pollserver\"\n    | where customDimensions.handledAt !contains \"BannerUtilityHelper\"\n    | where customDimensions.handledAt !contains \"DeploymentsPaneViewModel\"\n    | where customDimensions.handledAt !contains \"ContainerClusterPane\"\n    | where customDimensions.handledAt !contains \"ContainerLiveTabMetricChartPane.updateLiveData\"\n    | where customDimensions.handledAt contains \"Health\"\n    | extend clusterType = iff(customDimensions.cluster_id contains \"/providers/Microsoft.ContainerService/\", \"AKS\", \"non-AKS\")\n    | extend Exception = tostring(todynamic(outerMessage).exception)\n    //| where Exception == 'Error in HealthModelService.getHealthModel : healthModel is empty, likely empty result rows'\\\n    | project clusterType, Message, UserId = user_Id, ClusterId = tostring(customDimensions.cluster_id), WorkspaceName\n)\non UserId\n| project-away UserId1\n| project clusterType, ClusterId, ClickSum, Message, UserId, WorkspaceName ",
+                  "GridColumnsWidth": {
+                    "Message": "727px",
+                    "clusterType": "111px",
+                    "ClickSum": "107px",
+                    "UserId": "89px"
+                  }
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "7d"
+                  }
+                }
+              }
+            }
+          },
+          "19": {
+            "position": {
+              "x": 0,
+              "y": 25,
+              "colSpan": 22,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let customEventsData = materialize(customEvents\r\n| where itemType == 'customEvent'\r\n// cloud ops tip 1\r\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\r\n// Container Insights - Test - 1\r\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a');\r\ncustomEventsData\r\n// health tabs\r\n| where name == 'DetailsPanelTabSelectionChanged'\r\n| extend TabName = tostring(customDimensions.tabName), TelemetryName = tostring(customDimensions.telemetryName)\r\n| project timestamp, UIComponent = strcat('Tab: ', iif(isempty(TelemetryName), TabName, TelemetryName)), user_Id\r\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)\r\n| union (\r\n// health aspects\r\ncustomEventsData\r\n| where name == 'navigate'\r\n| where customDimensions.destination contains 'HealthAspectSelected'\r\n| project UIComponent = strcat('Aspect: ', tostring(customDimensions.destination)), timestamp, user_Id\r\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)    ), (\r\n// health tree node\r\ncustomEventsData\r\n| where name == 'HealthTreeNodeExpandedCollapsed'\r\n| project Data = todynamic(customDimensions.data), timestamp, MonitorSubjectId = tostring(customDimensions.monitorSubjectId), MonitorTypeId = tostring(customDimensions.monitorTypeId), isExpanded = tostring(customDimensions.isExpanded), ClusterName = tostring(customDimensions.cluster_name), user_Id\r\n| extend UIComponent = strcat('HealthTreeNodeToggle: ', MonitorTypeId)\r\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)   ), (     customEventsData\r\n| where name == 'navigate'\r\n| where customDimensions.destination contains 'HealthTreeNodeSelected'\r\n| extend AdditionalInfo = parse_json(tostring(customDimensions.additionalInformation))\r\n| extend SourceMonitorSubjectId = tostring(AdditionalInfo.sourceMonitorSubjectId), SourceMonitorTypeId = tostring(AdditionalInfo.sourceMonitorTypeId), SourceMonitorHealthState = tostring(AdditionalInfo.sourceMonitorHealthState)\r\n| extend DestinationMonitorSubjectId = tostring(AdditionalInfo.destinationMonitorSubjectId), DestinationMonitorTypeId = tostring(AdditionalInfo.destinationMonitorTypeId), DestinationMonitorHealthState = tostring(AdditionalInfo.destinationMonitorHealthState)\r\n| project timestamp, SourceMonitorSubjectId, SourceMonitorTypeId, SourceMonitorHealthState, DestinationMonitorSubjectId, DestinationMonitorTypeId, DestinationMonitorHealthState, user_Id\r\n| extend UIComponent = strcat('HealthTreeNodeSelected: ', DestinationMonitorTypeId)\r\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)   )\r\n| summarize ClickSum = sum(Clicks) by user_Id, bin(timestamp, 1d)\r\n| extend NegClickSum = -ClickSum\r\n| top 25 by NegClickSum desc\r\n| project-away NegClickSum\r\n| join kind = leftouter (\r\n    exceptions\r\n    | extend pageUrl = tostring(customDimensions.urlHint)\r\n    | extend pageBase = tostring(split(pageUrl, '?')[0])\r\n    | where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains 'monitoring.'\r\n    | where operation_Name has 'container-perf.html'\r\n    | extend MessageProperty = todynamic(outerMessage).exception.message, ErrorTextProperty = todynamic(outerMessage).exception._errorText, WorkspaceName = tostring(todynamic(customDimensions).workspace_name)\r\n    | extend MessageProperty = iif(isempty(MessageProperty), todynamic(outerMessage).errorMessage, MessageProperty)\r\n    | extend PreMessage = tostring(iif(isempty(MessageProperty), ErrorTextProperty, MessageProperty))\r\n    | extend HttpRequestError = todynamic(todynamic(outerMessage).exception.httpRequestError)\r\n    | extend HttpError = iif(isnotempty(HttpRequestError), HttpRequestError, todynamic(todynamic(outerMessage).exception))\r\n    | extend HttpErrorStatusCode = toint(HttpError.status)\r\n    | extend HttpErrorStatusText = tostring(HttpError.statusText)\r\n    | extend HttpErrorResponseText = tostring(HttpError.responseText)\r\n    | extend HttpErrorResponseJson = parsejson(HttpErrorResponseText)\r\n    | extend PreMessage = iif(isempty(PreMessage) and isnotempty(HttpErrorStatusCode), strcat(\"Http \", HttpErrorStatusCode, \" (\", HttpErrorStatusText, \"). Response: \", HttpErrorResponseText), PreMessage)\r\n    | extend Message = iif(isempty(PreMessage), problemId, PreMessage)\r\n    | extend Message = iif(HttpErrorStatusCode == 400 and HttpErrorResponseJson.error.innererror.code == \"SemanticError\" and HttpErrorResponseJson.error.innererror.innererror.message contains \"Failed to resolve table or column expression named 'KubeNodeInventory'\", \"Http 400 (Kube* TableNotFound)\", Message)\r\n    | extend Message = iif(HttpErrorStatusCode == 400 and HttpErrorResponseJson.error.innererror.code == \"SemanticError\" and HttpErrorResponseJson.error.innererror.innererror.message contains \"Failed to resolve table or column expression named 'KubePodInventory'\", \"Http 400 (Kube* TableNotFound)\", Message)\r\n    | extend Message = iif(HttpErrorStatusCode == 404 and HttpErrorResponseJson.error.code == \"WorkspaceNotFoundError\", \"Http 404 (WorkspaceNotFound)\", Message)\r\n    | extend Message = iif(HttpErrorStatusCode == 404 and HttpErrorResponseJson.error.code == \"ParentResourceNotFound\", \"Http 404 (WorkspaceNotFound)\", Message)\r\n    | extend Message = iif(HttpErrorStatusCode == 404 and HttpErrorResponseJson.error.code == \"ResourceGroupNotFound\", \"Http 404 (ResourceGroupNotFound)\", Message)\r\n    | extend Message = iif(HttpErrorStatusCode == 403 and HttpErrorResponseJson.error.code == \"InsufficientAccessError\", \"Http 403 (InsufficientAccess)\", Message)\r\n    | extend Message = iif(HttpErrorStatusCode == 503 and HttpErrorResponseJson.error.innererror.code == \"ServiceNotResponding\", strcat(\"Http 503 (\", HttpErrorResponseJson.error.innererror.message, \")\"), Message)\r\n    | extend Message = iif(HttpErrorStatusCode == 502 and isnotempty(HttpErrorResponseJson.code),           strcat(\"Http 502 (\", HttpErrorStatusText, \") <= \", HttpErrorResponseJson.code, \" (\", HttpErrorResponseJson.reason, \")\"),           Message)\r\n    | extend Message = iif(Message contains 'Maximum response size of 8000000 bytes exceeded', 'Http 502: =**> Max ARM Size Limit 8MB', Message)\r\n    | extend Message = iif(tostring(todynamic(outerMessage).exception.textStatus) =~ 'timeout','Http timeout', Message)\r\n    | where Message !contains 'MDM Failed time series empty or null'\r\n    // cloud ops tip 1\r\n    | where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\r\n    // Container Insights - Test - 1\r\n    | where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\r\n    | where tostring(customDimensions.handledAt) !contains \"pollserver\"\r\n    | where customDimensions.handledAt !contains \"BannerUtilityHelper\"\r\n    | where customDimensions.handledAt !contains \"DeploymentsPaneViewModel\"\r\n    | where customDimensions.handledAt !contains \"ContainerClusterPane\"\r\n    | where customDimensions.handledAt !contains \"ContainerLiveTabMetricChartPane.updateLiveData\"\r\n    | where customDimensions.handledAt contains \"Health\"\r\n    | extend clusterType = iff(customDimensions.cluster_id contains \"/providers/Microsoft.ContainerService/\", \"AKS\", \"non-AKS\")\r\n    | extend Exception = tostring(todynamic(outerMessage).exception)\r\n    //| where Exception == 'Error in HealthModelService.getHealthModel : healthModel is empty, likely empty result rows'\\\r\n    | project clusterType, Message, user_Id, tostring(customDimensions.cluster_id), WorkspaceName\r\n) on user_Id\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P1D"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "97c7a85f-7666-4a63-84e0-a561b149e4ce"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Errors Encountered By the Least Interactive Users By Click Count",
+                  "PartSubTitle": "Last 7d",
+                  "Query": "let customEventsData = materialize(customEvents\n| where itemType == 'customEvent'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a');\ncustomEventsData\n// health tabs\n| where name == 'DetailsPanelTabSelectionChanged'\n| extend TabName = tostring(customDimensions.tabName), TelemetryName = tostring(customDimensions.telemetryName)\n| project timestamp, UIComponent = strcat('Tab: ', iif(isempty(TelemetryName), TabName, TelemetryName)), user_Id\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)\n| union (\n// health aspects\ncustomEventsData\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthAspectSelected'\n| project UIComponent = strcat('Aspect: ', tostring(customDimensions.destination)), timestamp, user_Id\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)    ), (\n// health tree node\ncustomEventsData\n| where name == 'HealthTreeNodeExpandedCollapsed'\n| project Data = todynamic(customDimensions.data), timestamp, MonitorSubjectId = tostring(customDimensions.monitorSubjectId), MonitorTypeId = tostring(customDimensions.monitorTypeId), isExpanded = tostring(customDimensions.isExpanded), ClusterName = tostring(customDimensions.cluster_name), user_Id\n| extend UIComponent = strcat('HealthTreeNodeToggle: ', MonitorTypeId)\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)   ), (     customEventsData\n| where name == 'navigate'\n| where customDimensions.destination contains 'HealthTreeNodeSelected'\n| extend AdditionalInfo = parse_json(tostring(customDimensions.additionalInformation))\n| extend SourceMonitorSubjectId = tostring(AdditionalInfo.sourceMonitorSubjectId), SourceMonitorTypeId = tostring(AdditionalInfo.sourceMonitorTypeId), SourceMonitorHealthState = tostring(AdditionalInfo.sourceMonitorHealthState)\n| extend DestinationMonitorSubjectId = tostring(AdditionalInfo.destinationMonitorSubjectId), DestinationMonitorTypeId = tostring(AdditionalInfo.destinationMonitorTypeId), DestinationMonitorHealthState = tostring(AdditionalInfo.destinationMonitorHealthState)\n| project timestamp, SourceMonitorSubjectId, SourceMonitorTypeId, SourceMonitorHealthState, DestinationMonitorSubjectId, DestinationMonitorTypeId, DestinationMonitorHealthState, user_Id\n| extend UIComponent = strcat('HealthTreeNodeSelected: ', DestinationMonitorTypeId)\n| summarize Clicks = count() by UIComponent, user_Id, bin(timestamp, 1d)   )\n| summarize ClickSum = sum(Clicks) by user_Id, bin(timestamp, 1d)\n| extend NegClickSum = -ClickSum\n| top 25 by NegClickSum desc\n| project-away NegClickSum\n| project UserId = user_Id, ClickSum\n| join kind = leftouter\n(\n    exceptions\n    | extend pageUrl = tostring(customDimensions.urlHint)\n    | extend pageBase = tostring(split(pageUrl, '?')[0])\n    | where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains 'monitoring.'\n    | where operation_Name has 'container-perf.html'\n    | extend MessageProperty = todynamic(outerMessage).exception.message, ErrorTextProperty = todynamic(outerMessage).exception._errorText, WorkspaceName = tostring(todynamic(customDimensions).workspace_name)\n    | extend MessageProperty = iif(isempty(MessageProperty), todynamic(outerMessage).errorMessage, MessageProperty)\n    | extend PreMessage = tostring(iif(isempty(MessageProperty), ErrorTextProperty, MessageProperty))\n    | extend HttpRequestError = todynamic(todynamic(outerMessage).exception.httpRequestError)\n    | extend HttpError = iif(isnotempty(HttpRequestError), HttpRequestError, todynamic(todynamic(outerMessage).exception))\n    | extend HttpErrorStatusCode = toint(HttpError.status)\n    | extend HttpErrorStatusText = tostring(HttpError.statusText)\n    | extend HttpErrorResponseText = tostring(HttpError.responseText)\n    | extend HttpErrorResponseJson = parsejson(HttpErrorResponseText)\n    | extend PreMessage = iif(isempty(PreMessage) and isnotempty(HttpErrorStatusCode), strcat(\"Http \", HttpErrorStatusCode, \" (\", HttpErrorStatusText, \"). Response: \", HttpErrorResponseText), PreMessage)\n    | extend Message = iif(isempty(PreMessage), problemId, PreMessage)\n    | extend Message = iif(HttpErrorStatusCode == 400 and HttpErrorResponseJson.error.innererror.code == \"SemanticError\" and HttpErrorResponseJson.error.innererror.innererror.message contains \"Failed to resolve table or column expression named 'KubeNodeInventory'\", \"Http 400 (Kube* TableNotFound)\", Message)\n    | extend Message = iif(HttpErrorStatusCode == 400 and HttpErrorResponseJson.error.innererror.code == \"SemanticError\" and HttpErrorResponseJson.error.innererror.innererror.message contains \"Failed to resolve table or column expression named 'KubePodInventory'\", \"Http 400 (Kube* TableNotFound)\", Message)\n    | extend Message = iif(HttpErrorStatusCode == 404 and HttpErrorResponseJson.error.code == \"WorkspaceNotFoundError\", \"Http 404 (WorkspaceNotFound)\", Message)\n    | extend Message = iif(HttpErrorStatusCode == 404 and HttpErrorResponseJson.error.code == \"ParentResourceNotFound\", \"Http 404 (WorkspaceNotFound)\", Message)\n    | extend Message = iif(HttpErrorStatusCode == 404 and HttpErrorResponseJson.error.code == \"ResourceGroupNotFound\", \"Http 404 (ResourceGroupNotFound)\", Message)\n    | extend Message = iif(HttpErrorStatusCode == 403 and HttpErrorResponseJson.error.code == \"InsufficientAccessError\", \"Http 403 (InsufficientAccess)\", Message)\n    | extend Message = iif(HttpErrorStatusCode == 503 and HttpErrorResponseJson.error.innererror.code == \"ServiceNotResponding\", strcat(\"Http 503 (\", HttpErrorResponseJson.error.innererror.message, \")\"), Message)\n    | extend Message = iif(HttpErrorStatusCode == 502 and isnotempty(HttpErrorResponseJson.code),           strcat(\"Http 502 (\", HttpErrorStatusText, \") <= \", HttpErrorResponseJson.code, \" (\", HttpErrorResponseJson.reason, \")\"),           Message)\n    | extend Message = iif(Message contains 'Maximum response size of 8000000 bytes exceeded', 'Http 502: =**> Max ARM Size Limit 8MB', Message)\n    | extend Message = iif(tostring(todynamic(outerMessage).exception.textStatus) =~ 'timeout','Http timeout', Message)\n    | where Message !contains 'MDM Failed time series empty or null'\n    // cloud ops tip 1\n    | where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n    // Container Insights - Test - 1\n    | where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n    | where tostring(customDimensions.handledAt) !contains \"pollserver\"\n    | where customDimensions.handledAt !contains \"BannerUtilityHelper\"\n    | where customDimensions.handledAt !contains \"DeploymentsPaneViewModel\"\n    | where customDimensions.handledAt !contains \"ContainerClusterPane\"\n    | where customDimensions.handledAt !contains \"ContainerLiveTabMetricChartPane.updateLiveData\"\n    | where customDimensions.handledAt contains \"Health\"\n    | extend clusterType = iff(customDimensions.cluster_id contains \"/providers/Microsoft.ContainerService/\", \"AKS\", \"non-AKS\")\n    | extend Exception = tostring(todynamic(outerMessage).exception)\n    //| where Exception == 'Error in HealthModelService.getHealthModel : healthModel is empty, likely empty result rows'\\\n    | project clusterType, Message, UserId = user_Id, ClusterId = tostring(customDimensions.cluster_id), WorkspaceName\n)\non UserId\n| project-away UserId1\n| project clusterType, ClusterId, ClickSum, Message, UserId, WorkspaceName ",
+                  "GridColumnsWidth": {
+                    "ClickSum": "98px",
+                    "clusterType": "106px",
+                    "Message": "758px",
+                    "user_Id1": "90px",
+                    "customDimensions_cluster_id": "354px",
+                    "UserId": "104px"
+                  }
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "utc",
+                    "granularity": "auto",
+                    "relative": "7d"
+                  }
+                }
+              }
+            }
+          },
+          "20": {
+            "position": {
+              "x": 0,
+              "y": 29,
+              "colSpan": 17,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "# Agent Telemetry\n",
+                    "title": "",
+                    "subtitle": "",
+                    "markdownSource": 1
+                  }
+                }
+              }
+            }
+          },
+          "21": {
+            "position": {
+              "x": 0,
+              "y": 30,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "ContainerInsightsAgent-Prod",
+                    "Name": "ContainerInsightsAgent-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/ContainerInsightsAgent-Prod/providers/microsoft.insights/components/ContainerInsightsAgent-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\n| where name contains 'HealthModel_ClusterStateChanged'\n| where timestamp > ago(7d)\n| where customDimensions contains 'ciprod11012019'\n| extend clusterId = tostring(customDimensions.AKS_RESOURCE_ID), oldState = tostring(customDimensions.old_state), newState = tostring(customDimensions.new_state)\n//| where clusterId == '/subscriptions/58eb6429-13d9-4966-bd31-8b49e15f6a09/resourceGroups/tusa01aaksv2blkbrg/providers/Microsoft.ContainerService/managedClusters/tusa01a4abdaks'\n| project timegenerated = timestamp, clusterId , oldState , newState, timestamp\n| summarize arg_max(timegenerated, oldState,newState)   by clusterId\n| summarize count()  by newState\n| render piechart \n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "newState",
+                      "type": "string"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "ebab6c64-bb3e-4c64-8e5d-874fa429d2cb"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "ContainerInsightsAgent-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsDonut"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "All-up Cluster Health States",
+                  "PartSubTitle": "7d",
+                  "Query": "customEvents\n| where name contains 'HealthModel_ClusterStateChanged'\n| where timestamp > ago(7d)\n| where customDimensions contains 'ciprod12042019'\n| extend clusterId = tostring(customDimensions.AKS_RESOURCE_ID), oldState = tostring(customDimensions.old_state), newState = tostring(customDimensions.new_state)\n//| where clusterId == '/subscriptions/58eb6429-13d9-4966-bd31-8b49e15f6a09/resourceGroups/tusa01aaksv2blkbrg/providers/Microsoft.ContainerService/managedClusters/tusa01a4abdaks'\n| project timegenerated = timestamp, clusterId , oldState , newState, timestamp\n| summarize arg_max(timegenerated, oldState,newState)   by clusterId\n| summarize count()  by newState\n| render piechart \n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "22": {
+            "position": {
+              "x": 6,
+              "y": 30,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "ContainerInsightsAgent-Prod",
+                    "Name": "ContainerInsightsAgent-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/ContainerInsightsAgent-Prod/providers/microsoft.insights/components/ContainerInsightsAgent-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "union\n(\ncustomEvents\n| where name == \"HealthMonitorStateChangeEvent\"\n| where timestamp > ago(24h)\n| extend clusterId = tostring(customDimensions.AKS_RESOURCE_ID)\n| mvexpand bagexpansion=array customDimensions\n| project customDimensions, clusterId , timestamp \n| extend key = customDimensions[0], value = todouble(customDimensions[1])\n| extend key_array = split(key, \"-\")\n| where array_length(key_array) == 3\n| summarize sum(value) by clusterId, bin(timestamp,1h)\n| summarize avgStateTransitionsPerCluster = avg(sum_value) by bin(timestamp,1h)\n),(\ncustomEvents\n| where name == \"HealthMonitorStateChangeEvent\"\n| where timestamp > ago(24h)\n| extend clusterId = tostring(customDimensions.AKS_RESOURCE_ID)\n| mvexpand bagexpansion=array customDimensions\n| project customDimensions, clusterId , timestamp \n| extend key = customDimensions[0], value = todouble(customDimensions[1])\n| extend key_array = split(key, \"-\")\n| where array_length(key_array) == 3\n| summarize sum(value) by clusterId, bin(timestamp,1h)\n| summarize 95thPercentileStateTransitionsPerCluster = percentile(sum_value,95) by bin(timestamp,1h)\n)\n| render areachart \n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "avgStateTransitionsPerCluster",
+                        "type": "real"
+                      },
+                      {
+                        "name": "95thPercentileStateTransitionsPerCluster",
+                        "type": "real"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "65b6ddef-7d02-402c-8323-291da1e345bf"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "ContainerInsightsAgent-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Area"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Monitor State Transitions per cluster",
+                  "PartSubTitle": "24h",
+                  "Query": "union\n(\ncustomEvents\n| where name == \"HealthMonitorStateChangeEvent\"\n| where timestamp > ago(24h)\n| extend clusterId = tostring(customDimensions.AKS_RESOURCE_ID)\n| mvexpand bagexpansion=array customDimensions\n| project customDimensions, clusterId , timestamp \n| extend key = customDimensions[0], value = todouble(customDimensions[1])\n| extend key_array = split(key, \"-\")\n| where array_length(key_array) == 3\n| summarize sum(value) by clusterId, bin(timestamp,1h)\n| summarize avgStateTransitionsPerCluster = avg(sum_value) by bin(timestamp,1h)\n),(\ncustomEvents\n| where name == \"HealthMonitorStateChangeEvent\"\n| where timestamp > ago(24h)\n| extend clusterId = tostring(customDimensions.AKS_RESOURCE_ID)\n| mvexpand bagexpansion=array customDimensions\n| project customDimensions, clusterId , timestamp \n| extend key = customDimensions[0], value = todouble(customDimensions[1])\n| extend key_array = split(key, \"-\")\n| where array_length(key_array) == 3\n| summarize sum(value) by clusterId, bin(timestamp,1h)\n| summarize 95thPercentileStateTransitionsPerCluster = percentile(sum_value,95) by bin(timestamp,1h)\n)\n| render areachart \n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "23": {
+            "position": {
+              "x": 12,
+              "y": 30,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "ContainerInsightsAgent-Prod",
+                    "Name": "ContainerInsightsAgent-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/ContainerInsightsAgent-Prod/providers/microsoft.insights/components/ContainerInsightsAgent-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\n| where name == \"HealthMonitorStateChangeEvent\"\n| where timestamp > ago(24h)\n| mvexpand bagexpansion=array customDimensions\n| extend key = customDimensions[0], value = todouble(customDimensions[1])\n| extend key_array = split(key, \"-\")\n| where array_length(key_array) == 3\n| extend monitor_id = tostring(key_array[0]), old_state = tostring(key_array[1]), new_state = tostring(key_array [2])\n| project timestamp, monitor_id , old_state, new_state, value\n| extend transition = strcat(old_state, '-',new_state)\n| summarize TransitionCount = sum(value) by monitor_id , bin(timestamp, 1h)\n| render timechart\n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "TransitionCount",
+                        "type": "real"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "monitor_id",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "0eb49e99-534b-4fb0-b35d-a2fb32a02e61"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "ContainerInsightsAgent-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "All Monitors Transition Counts",
+                  "PartSubTitle": "24h"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "24": {
+            "position": {
+              "x": 0,
+              "y": 34,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "ContainerInsightsAgent-Prod",
+                    "Name": "ContainerInsightsAgent-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/ContainerInsightsAgent-Prod/providers/microsoft.insights/components/ContainerInsightsAgent-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\r\n| where name == \"HealthMonitorStateChangeEvent\"\r\n| where timestamp > ago(24h)\r\n| mvexpand bagexpansion=array customDimensions\r\n| extend key = customDimensions[0], value = todouble(customDimensions[1])\r\n| extend key_array = split(key, \"-\")\r\n| where array_length(key_array) == 3\r\n| extend monitor_id = tostring(key_array[0]), old_state = tostring(key_array[1]), new_state = tostring(key_array [2])\r\n| where monitor_id == 'node_memory_utilization'\r\n| project timestamp, monitor_id , old_state, new_state, value\r\n| extend transition = strcat(old_state, '-',new_state)\r\n| summarize TransitionCount = sum(value) by transition , bin(timestamp, 1h)\r\n| render timechart\r\n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "TransitionCount",
+                        "type": "real"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "transition",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "b4ab8feb-dd8f-4aa7-ae43-c4669ac25aa6"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "ContainerInsightsAgent-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Node Memory Utilization Montior",
+                  "PartSubTitle": "24h"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "25": {
+            "position": {
+              "x": 6,
+              "y": 34,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "ContainerInsightsAgent-Prod",
+                    "Name": "ContainerInsightsAgent-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/ContainerInsightsAgent-Prod/providers/microsoft.insights/components/ContainerInsightsAgent-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\r\n| where name == \"HealthMonitorStateChangeEvent\"\r\n| where timestamp > ago(24h)\r\n| mvexpand bagexpansion=array customDimensions\r\n| extend key = customDimensions[0], value = todouble(customDimensions[1])\r\n| extend key_array = split(key, \"-\")\r\n| where array_length(key_array) == 3\r\n| extend monitor_id = tostring(key_array[0]), old_state = tostring(key_array[1]), new_state = tostring(key_array [2])\r\n| where monitor_id == 'node_cpu_utilization'\r\n| project timestamp, monitor_id , old_state, new_state, value\r\n| extend transition = strcat(old_state, '-',new_state)\r\n| summarize TransitionCount = sum(value) by transition , bin(timestamp, 1h)\r\n| render timechart\r\n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "TransitionCount",
+                        "type": "real"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "transition",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "84f99e6e-ed0b-47d4-9df6-72dcf32de0c8"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "ContainerInsightsAgent-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Node CPU Utilization Monitor",
+                  "PartSubTitle": "24h"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "26": {
+            "position": {
+              "x": 12,
+              "y": 34,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "ContainerInsightsAgent-Prod",
+                    "Name": "ContainerInsightsAgent-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/ContainerInsightsAgent-Prod/providers/microsoft.insights/components/ContainerInsightsAgent-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\r\n| where name == \"HealthMonitorStateChangeEvent\"\r\n| where timestamp > ago(24h)\r\n| mvexpand bagexpansion=array customDimensions\r\n| extend key = customDimensions[0], value = todouble(customDimensions[1])\r\n| extend key_array = split(key, \"-\")\r\n| where array_length(key_array) == 3\r\n| extend monitor_id = tostring(key_array[0]), old_state = tostring(key_array[1]), new_state = tostring(key_array [2])\r\n| where monitor_id == 'node_condition'\r\n| project timestamp, monitor_id , old_state, new_state, value\r\n| extend transition = strcat(old_state, '-',new_state)\r\n| summarize TransitionCount = sum(value) by transition , bin(timestamp, 1h)\r\n| render timechart\r\n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "TransitionCount",
+                        "type": "real"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "transition",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "41c3a3cd-5f39-4460-94ab-313012f3bf8b"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "ContainerInsightsAgent-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Node Condition Monitor",
+                  "PartSubTitle": "24h"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "model": {
+        "timeRange": {
+          "value": {
+            "relative": {
+              "duration": 24,
+              "timeUnit": 1
+            }
+          },
+          "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+        },
+        "filterLocale": {
+          "value": "en-us"
+        },
+        "filters": {
+          "value": {
+            "MsPortalFx_TimeRange": {
+              "model": {
+                "format": "utc",
+                "granularity": "auto",
+                "relative": "30d"
+              },
+              "displayCache": {
+                "name": "UTC Time",
+                "value": "Past 30 days"
+              },
+              "filteredPartIds": [
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b39d",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b39f",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3a1",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3a3",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3a5",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3a7",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3a9",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3ab",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3ad",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3af",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3b1",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3b3",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3b5",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3b7",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3b9",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3bb",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3bd",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3bf",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3c1",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3c5",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3c7",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3c9",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3cb",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3cd",
+                "StartboardPart-AnalyticsPart-c5acd19a-082f-46d3-aed0-2c358696b3cf"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "name": "Cluster Health Telemetry Dashboard",
+  "type": "Microsoft.Portal/dashboards",
+  "location": "INSERT LOCATION",
+  "tags": {
+    "hidden-title": "Cluster Health Telemetry Dashboard"
+  },
+  "apiVersion": "2015-08-01-preview"
+}

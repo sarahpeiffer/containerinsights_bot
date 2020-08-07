@@ -1,0 +1,101 @@
+// size
+@header-margin-top: 10px;
+@header-font-size: 14px;
+@header-height: @header-font-size + @header-margin-top;
+
+// colors
+@header-text-color: #595959;
+@workbook-icon-template-background-color: #a47aaf;
+@workbook-icon-recent-background-color: #55d455;
+@workbook-background-color: rgb(248, 248, 248);
+@workbook-border-color: rgb(204, 204, 204);
+@workbook-hover-outline-color: #00bcf2;
+
+// dark theme
+@dark-svg-fill: #fff;
+@dark-theme-header-text-color: #e0e0e0;
+@dark-workbook-background-color: rgb(28, 28, 28);
+@dark-workbook-border-color: rgb(81, 81, 81);
+
+.workbook-panel {
+    display: flex;
+    flex-direction: column;
+    .workbook-link-section {
+        cursor: pointer;
+        font-size: 13px;
+        margin: 3px 0 3px 15px;
+        display: flex;
+        .workbook-link-row {
+            width: 265px;
+            flex-direction: row;
+            display: flex;
+            border: 1px solid @workbook-border-color;
+            background: @workbook-background-color;
+            margin-right: 16px;
+            .workbook-link-icon {
+                margin: -1px 4px -1px -1px;
+                padding: 12px 12px 6px;
+            }
+            .workbook-icon-template-color {
+                background-color: @workbook-icon-template-background-color;
+            }
+            .workbook-icon-recent-color {
+                background-color: @workbook-icon-recent-background-color;
+            }
+            .workbook-link-text {
+                flex: 1 1 0%;
+                display: block;
+                flex-direction: column;
+                padding: 5px;
+                width: 200px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                margin: auto 0px;
+            }
+
+            body.dark & {
+                background-color: @dark-workbook-background-color;
+                color: @dark-theme-header-text-color;
+                border: 1px solid @dark-workbook-border-color;
+            }
+
+            &:hover {
+                outline: 1px solid @workbook-hover-outline-color;
+            }
+        }
+        
+        svg {
+            height: 24px;
+            width: 24px;
+        }
+    }
+}
+
+.expandable-section-header {
+    display: flex;
+    flex-direction: row;
+    font-size: @header-font-size;
+    margin-top: @header-margin-top;
+    height: @header-height;
+    .expandable-section-icon {
+        width: 11px;
+        display: flex;
+        margin-right: 8px;
+        cursor: pointer;
+
+        body.dark & {
+            fill: @dark-svg-fill;
+        }
+    }
+    .expandable-section-title {
+        user-select: none;
+        display: flex;
+        color: @header-text-color;
+        cursor: pointer;
+
+        body.dark & {
+            color: @dark-theme-header-text-color;
+        }
+    }
+}

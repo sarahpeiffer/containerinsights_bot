@@ -1,0 +1,37 @@
+// dark mode variables
+@dark-text-color: #fff;
+
+.chart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    body.dark & {
+        color: @dark-text-color;   
+    }
+
+    .aggregation-options {
+        display: flex;
+        border: 1px solid silver;
+        border-right: none;
+
+        body.dark & {
+            border: 1px solid #666;
+        }
+
+        .aggregation-option {
+            padding: 2px 7px 4px;
+            text-align: center;
+            border-right: 1px solid silver;
+            cursor: pointer;
+
+            body.dark & {
+                border-right: 1px solid #666;
+            }
+
+            &.selected-option {
+                background-color: #ddf0ff;
+            }
+        }
+    }
+}

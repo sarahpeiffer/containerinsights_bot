@@ -1,0 +1,32 @@
+
+@import 'MainPage.less';
+@hyperlink-color:#015cda;
+@hyperlink-darkmode-color: #0089fa;
+
+a.default-insights-rg-button {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: @hyperlink-color;
+
+    action-bar & {
+        color: black;
+    }
+    
+    body.dark & {
+        color: @hyperlink-darkmode-color;
+    }
+    
+    .rg-svg {
+        height: 16px;
+        width: 16px;
+        fill: @hyperlink-color;
+        padding-right: 5px;
+    
+        body.dark & {
+            fill: @hyperlink-darkmode-color;
+        }
+    }
+}
+
+

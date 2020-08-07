@@ -1,0 +1,1 @@
+@powershell -command .\clean.secrets.ps1

@@ -1,0 +1,39 @@
+{
+	"extensions": [{
+		"Name": "BlobStorageCopy",
+		"Type": "Microsoft.InfraInsights.Deployment/BlobStorageCopy",
+		"Version": "2018-4-1",
+		"ConnectionProperties": {
+			"Endpoint": "https://inin-prod-eus-deploy-funcs.azurewebsites.net/api/BlobStorageCopy/",
+			"ContentType": "application/json",
+			"MaxExecutionTime": "PT10M",
+			"Authentication": {
+				"Type": "CertificateAuthentication",
+				"Reference": {
+					"Provider": "AzureKeyVault",
+					"Parameters": {
+						"SecretId": "https://inin-prod-eus-keyvault.vault.azure.net/secrets/InIn-Prod-EUS-Deployment-Certificate"
+					}
+				}
+			}
+		},
+		"Payloadproperties": {
+			"ArtifactsArchiveUri": {
+				"Reference": {
+					"Path": "web.zip"
+				}
+			},
+			"TargetContainerName": {
+				"Value": "web"
+			},
+			"TargetStorageAccountConnectionString": {
+				"Reference": {
+					"Provider": "AzureKeyVault",
+					"Parameters": {
+						"SecretId": "https://inin-prod-eus-keyvault.vault.azure.net/secrets/TargetStorageAccountConnectionString"
+					}
+				}
+			}
+		}
+	}]
+}

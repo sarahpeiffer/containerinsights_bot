@@ -1,0 +1,36 @@
+@default-hyperlink-color: #015cda;
+
+.toggle-switch {
+    display: flex;
+    padding: 8px 0;
+    color: @default-hyperlink-color;
+    .toggle-switch-label {
+        margin: auto 5px;
+    }
+    .toggle-switch-button {
+        height: 20px;
+        width: 40px;
+        border: 1px solid @default-hyperlink-color;
+        border-radius: 15px;
+        display: flex;
+        margin: auto;
+        .toggle-switch-state {
+            height: 15px;
+            width: 15px;
+            background: @default-hyperlink-color;
+            border-radius: 15px;
+            margin: auto;
+        }
+        .true {
+            transform: translateX(10px);
+        }
+        .false {
+            transform: translateX(-10px);
+        }
+    }
+}
+
+.toggle-switch-info-box {
+    display: flex;
+    padding: 15px 0;
+}

@@ -1,0 +1,2417 @@
+{
+  "properties": {
+    "lenses": {
+      "0": {
+        "order": 0,
+        "parts": {
+          "0": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 6,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "# AVAILABILITY AND PAGE VIEWS",
+                    "title": "",
+                    "subtitle": ""
+                  }
+                }
+              }
+            }
+          },
+          "1": {
+            "position": {
+              "x": 6,
+              "y": 0,
+              "colSpan": 6,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "# PAGE LOAD PERFORMANCE\n",
+                    "title": "",
+                    "subtitle": ""
+                  }
+                }
+              }
+            }
+          },
+          "2": {
+            "position": {
+              "x": 12,
+              "y": 0,
+              "colSpan": 6,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "# UNIQUE USER COUNTS\n",
+                    "title": "",
+                    "subtitle": ""
+                  }
+                }
+              }
+            }
+          },
+          "3": {
+            "position": {
+              "x": 18,
+              "y": 0,
+              "colSpan": 6,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "# EXCEPTIONS (excluding test subs)",
+                    "title": "",
+                    "subtitle": ""
+                  }
+                }
+              }
+            }
+          },
+          "4": {
+            "position": {
+              "x": 24,
+              "y": 0,
+              "colSpan": 6,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "# ALL EXCEPTIONS",
+                    "title": "",
+                    "subtitle": ""
+                  }
+                }
+              }
+            }
+          },
+          "5": {
+            "position": {
+              "x": 30,
+              "y": 0,
+              "colSpan": 6,
+              "rowSpan": 1
+            },
+            "metadata": {
+              "inputs": [],
+              "type": "Extension/HubsExtension/PartType/MarkdownPart",
+              "settings": {
+                "content": {
+                  "settings": {
+                    "content": "# Load Health\n",
+                    "title": "",
+                    "subtitle": "",
+                    "markdownSource": 1
+                  }
+                }
+              }
+            }
+          },
+          "6": {
+            "position": {
+              "x": 0,
+              "y": 1,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let multiclusterPageViewsQuery = pageViews\n| where timestamp > ago(30d)\n| where name contains \"Multicluster\" \n| where operation_Name contains \"multicluster-health\" and operation_Name startswith \"/web\"\n| where customDimensions.cluster_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2';\nlet multiclusterPageViews = materialize(multiclusterPageViewsQuery);\nmulticlusterPageViews\n| summarize Count = count() by name, bin(timestamp, 1d)\n| render timechart"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "DateTime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Count",
+                        "type": "Int64"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "name",
+                        "type": "String"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/5ef2c7f6-7cbe-4d89-b6fd-e626e269e03f"
+                },
+                {
+                  "name": "PartId",
+                  "value": "06b53cc0-64c2-47db-8175-947b6325733d"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Analytics Page view counts by grid",
+                  "PartSubTitle": "Last 30d",
+                  "Query": "let multiclusterPageViewsQuery = pageViews\n| where name contains \"Multicluster\" \n| where operation_Name contains \"multicluster-health\"\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n// | where pageBase contains 'afd.'\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains \"monitoring.\"\n| where customDimensions.cluster_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2';\nlet multiclusterPageViews = materialize(multiclusterPageViewsQuery);\nmulticlusterPageViews\n| summarize Count = count() by name, bin(timestamp, 1d)\n| render timechart"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "7": {
+            "position": {
+              "x": 6,
+              "y": 1,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\n| where timestamp >= ago(14d)\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n// | where pageBase contains 'afd.'\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains \"monitoring.\"\n| where name == 'iFrameLoadMeasures'\n| where (customDimensions.subArea contains \"multi\")\n| project timestamp, customMeasurements, customDimensions.clusterSubscriptionIds\n| where customDimensions_clusterSubscriptionIds !contains \"692aea0b-2d89-4e7e-ae30-fffe40782ee2\"\n| where customDimensions_clusterSubscriptionIds !contains \"72c8e8ca-dc16-47dc-b65c-6b5875eb600a\"\n| project timestamp, PackageLoad = todouble(customMeasurements.frame_constructor) - todouble(customMeasurements.frame_htmlLoaded),    BladeLoad = todouble(customMeasurements.frame_htmlLoaded) - todouble(customMeasurements.auxme_constructor),    onLoadComplete=todouble(customMeasurements.onLoadComplete)\n| summarize PackageLoad = percentile(PackageLoad, 95), BladeLoad = percentile(BladeLoad, 95), OnLoadComplete = percentile(onLoadComplete, 95) by bin(timestamp, 1d)\n| render timechart"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "PackageLoad",
+                        "type": "real"
+                      },
+                      {
+                        "name": "BladeLoad",
+                        "type": "real"
+                      },
+                      {
+                        "name": "OnLoadComplete",
+                        "type": "real"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "7db55111-0079-40e3-9133-54c7bcc9568f"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Major Loading Areas",
+                  "PartSubTitle": "InfraInsightsUX-Prod",
+                  "Query": "customEvents\n| where timestamp >= ago(7d)\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n// | where pageBase contains 'afd.'\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains \"monitoring.\"\n| where name == 'iFrameLoadMeasures'\n| where (customDimensions.subArea contains \"multi\")\n| project timestamp, customMeasurements, customDimensions.clusterSubscriptionIds\n| where customDimensions_clusterSubscriptionIds !contains \"692aea0b-2d89-4e7e-ae30-fffe40782ee2\"\n| where customDimensions_clusterSubscriptionIds !contains \"72c8e8ca-dc16-47dc-b65c-6b5875eb600a\"\n| project timestamp, PackageLoad = todouble(customMeasurements.frame_constructor) - todouble(customMeasurements.frame_htmlLoaded),    BladeLoad = todouble(customMeasurements.frame_htmlLoaded) - todouble(customMeasurements.auxme_constructor),    \nonLoadComplete=todouble(customMeasurements.onLoadComplete), MsgDeliveryLatency= todouble(customMeasurements.frame_firstInitMessageReceived) - todouble(customMeasurements.frame_startMessaging)\n| summarize PackageLoad = percentile(PackageLoad, 95), BladeLoad = percentile(BladeLoad, 95), OnLoadComplete = percentile(onLoadComplete, 95), MsgDeliveryLatency = percentile(MsgDeliveryLatency, 95)   by bin(timestamp, 1d)\n| render timechart"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "8": {
+            "position": {
+              "x": 12,
+              "y": 1,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "Name": "InfraInsightsUX-Prod",
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG"
+                  }
+                },
+                {
+                  "name": "TimeContext",
+                  "value": {
+                    "durationMs": 1209600000,
+                    "createdTime": "Start Time",
+                    "isInitialTime": false,
+                    "grain": 1,
+                    "useDashboardTimeRange": false
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "RestoreData",
+                  "value": "{\"version\":\"Segmentation/2.0\",\"metric\":\"Users\",\"cohortId\":\"\",\"isAntiCohort\":false,\"chartType\":3,\"eventsDataObject\":{\"version\":\"EventsDropdown/1.0\",\"typesWithAllSelected\":{},\"events\":[{\"value\":\"MulticlusterMainPage\",\"type\":3,\"displayText\":\"MulticlusterMainPage\"}],\"cohortsIds\":[]},\"filters\":[],\"by\":null,\"grain\":\"1d\",\"splitBy\":null,\"timeContext\":{\"durationMs\":1209600000,\"endTime\":null,\"createdTime\":\"Start Time\",\"isInitialTime\":false,\"grain\":1,\"useDashboardTimeRange\":false},\"histograms\":[\"context.location.country\",\"context.device.osVersion\",\"context.device.browserVersion\"],\"heroVisible\":true,\"gridsVisible\":true,\"insightsVisible\":true,\"isSampleRandom\":true,\"apdexThreshold\":null}",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/UsersSegmentationPinnedPart",
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "9": {
+            "position": {
+              "x": 18,
+              "y": 1,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let startTimestamp = ago(14d);\nlet endTimestamp = now();\nexceptions\n| where timestamp > startTimestamp\n| where timestamp <= endTimestamp\n| where customDimensions.subArea contains \"multi\"\n| where customDimensions.urlHint contains \"inin-prod-eus-ux.azureedge.net\" or customDimensions.urlHint contains \"ininprodeusuxbase.microsoft.com\"\n| extend Version = tostring(split(operation_Name, '/', 2)[0])\n| summarize count() by bin(timestamp, 1d), Version\n| render barchart\n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "DateTime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "Int64"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "Version",
+                        "type": "String"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/5ef2c7f6-7cbe-4d89-b6fd-e626e269e03f"
+                },
+                {
+                  "name": "PartId",
+                  "value": "a086e4ae-6054-4676-888b-87ce31444a31"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Bar"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Exceptions by Version",
+                  "PartSubTitle": "Last 30d",
+                  "Query": "exceptions\n| where customDimensions.clusterSubscriptionIds !contains \"72c8e8ca-dc16-47dc-b65c-6b5875eb600a\"  \n| where customDimensions.clusterSubscriptionIds !contains \"692aea0b-2d89-4e7e-ae30-fffe40782ee2\"  \n| where customDimensions.clusterSubscriptionIds !contains \"7e18f665-fcf3-4ea4-97b0-262828036007\" \n| extend Operation = tostring(split(operation_Name, '/', 6)[0])\n| where customDimensions.subArea contains 'multi' or Operation contains 'multi'\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains \"monitoring.\"\n| extend Version = tostring(split(operation_Name, '/', 5)[0])\n| summarize count() by bin(timestamp, 1d), Version\n| render barchart\n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "10": {
+            "position": {
+              "x": 24,
+              "y": 1,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let startTimestamp = ago(14d);\nlet endTimestamp = now();\nexceptions\n| where timestamp > startTimestamp\n| where timestamp <= endTimestamp\n| where customDimensions.subArea == \"MulticlusterMonitoredList\" or customDimensions.subArea == \"MulticlusterNonMonitoredList\"\n| where customDimensions.urlHint contains \"inin-prod-eus-ux.azureedge.net\" or customDimensions.urlHint contains \"ininprodeusuxbase.microsoft.com\"\n| extend Version = tostring(split(operation_Name, '/', 2)[0])\n| summarize count() by bin(timestamp, 1d), Version\n| render barchart\n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "DateTime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "Int64"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "Version",
+                        "type": "String"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/5ef2c7f6-7cbe-4d89-b6fd-e626e269e03f"
+                },
+                {
+                  "name": "PartId",
+                  "value": "e13d4e2f-2e05-4476-9147-b5253072b37a"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Bar"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Exceptions by Version",
+                  "PartSubTitle": "Last 30d",
+                  "Query": "exceptions\n| extend Operation = tostring(split(operation_Name, '/', 6)[0])\n| where customDimensions.subArea contains 'multi' or Operation contains 'multi'\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains \"monitoring.\"\n| extend Version = tostring(split(operation_Name, '/', 5)[0])\n| summarize count() by bin(timestamp, 1d), Version\n| render barchart\n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "11": {
+            "position": {
+              "x": 30,
+              "y": 1,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\r\n| where timestamp >= ago(14d)\r\n| extend pageUrl = tostring(customDimensions.urlHint)\r\n| extend pageBase = tostring(split(pageUrl, '?')[0])\r\n// | where pageBase contains 'afd.'\r\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains \"monitoring.\"\r\n| where name contains \"MulticlstersLoadHealthButton\" or name contains \"MulticlustersLoadHealthButton\"\r\n| summarize dcount(user_Id) by bin(timestamp, 1d)\r\n| render timechart"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "dcount_user_Id",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "e1b4747c-18f8-4fd0-9cbf-6da41fe418ae"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Number of Users clicking LoadHealth DELETE",
+                  "PartSubTitle": "InfraInsightsUX-Prod"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "12": {
+            "position": {
+              "x": 36,
+              "y": 1,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let startTimestamp = ago(90d);\nlet endTimestamp = now();\ncustomEvents\n| where timestamp > startTimestamp\n| where timestamp <= endTimestamp\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n// either cdn host or hosting service\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.'  or pageBase contains 'monitoring.'\n| where operation_Name has 'container-perf.html' or operation_Name contains \"multicluster-health.html\"\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| where name =~ 'navigate'\n| project Source = tostring(customDimensions.source), Destination = tostring(customDimensions.destination), timestamp\n//| where Destination == 'MultiClusterMainPage' or (Source == 'MultiClusterMainPage' and (Destination == 'ChartsPage' or Destination == 'ControllerGrid' or Destination == 'NodeGrid' or Destination == 'ContainerGrid' or Destination == 'HealthPage'))\n| where Destination == 'MultiClusterMainPage' or (Source == 'MultiClusterMainPage' and (Destination == 'ChartsPage' or Destination == 'ControllerGrid' or Destination == 'NodeGrid' or Destination == 'ContainerGrid' or Destination == 'HealthPage'))\n| extend Destination = iif(Destination == 'MultiClusterMainPage', 'toMultiCluster', 'toSingleCluster')\n| summarize count() by Destination, bin(timestamp, 1d)\n| render timechart\n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "Destination",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "9e40ca74-dfcd-479c-98fe-17a2f14bf3d8"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Clicks Between Single Cluster and Multicluster",
+                  "PartSubTitle": "Last 30d"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "13": {
+            "position": {
+              "x": 42,
+              "y": 1,
+              "colSpan": 7,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n// either cdn host or hosting service\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.'  or pageBase contains 'monitoring.'\n| where operation_Name has 'container-perf.html' or operation_Name contains \"multicluster-health.html\"\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| where name == 'GettingStartedButtonClick'\n| extend button = tostring(customDimensions.button)\n| summarize count() by button, bin(timestamp, 1d)\n| render timechart\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "button",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "12e1f7f1-5462-4a83-8242-c6810859db20"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Get Started Tab Button Clicks",
+                  "PartSubTitle": "Last 7d"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "7d"
+                  }
+                }
+              }
+            }
+          },
+          "14": {
+            "position": {
+              "x": 0,
+              "y": 5,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": " pageViews\n| where timestamp > ago(30d)\n| where name contains \"Multicluster\"\n| where operation_Name contains \"multicluster-health\"\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains \"monitoring.\"\n| where customDimensions.cluster_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n| extend Cloud = tostring(customDimensions.cloudType)\n| summarize Count = count() by Cloud, bin(timestamp, 1d)\n| render timechart "
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Count",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "Cloud",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "36358710-abce-4bde-acee-8eea945c951d"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Page view count by Cloud",
+                  "PartSubTitle": "30d"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "15": {
+            "position": {
+              "x": 6,
+              "y": 5,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\n| where timestamp >= ago(14d)\n| where (customDimensions.urlHint contains \"inin-prod-eus-ux.azureedge.net\") or ((customDimensions.urlHint contains \"ininprodeusuxbase.microsoft.com\"))\n| where name == 'iFrameLoadMeasures'\n| where operation_Name contains \"/container-perf.html\"\n| project timestamp, customMeasurements\n| mvexpand bagexpansion=array customMeasurements\n| where customMeasurements[0] !contains 'gridDataLoadComplete'\n| project timestamp, value = todouble(customMeasurements[1]), name = tostring(customMeasurements[0])\n| summarize percentile(value, 95) by bin(timestamp, 1d), name\n| order by timestamp, percentile_value_95 asc\n| render timechart"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "DateTime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "percentile_value_95",
+                        "type": "Double"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "name",
+                        "type": "String"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/5ef2c7f6-7cbe-4d89-b6fd-e626e269e03f"
+                },
+                {
+                  "name": "PartId",
+                  "value": "e62341ac-39bd-473d-a20a-af9d07e11e7c"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Detailed Timing",
+                  "PartSubTitle": "InfraInsightsUX-Prod",
+                  "Query": "customEvents\n| where timestamp >= ago(14d)\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n// | where pageBase contains 'afd.'\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains \"monitoring.\"\n| where name == 'iFrameLoadMeasures'\n| where operation_Name contains \"/multicluster-health.html\"\n| project timestamp, customMeasurements\n| mvexpand bagexpansion=array customMeasurements\n| where customMeasurements[0] !contains 'gridDataLoadComplete'\n| project timestamp, value = todouble(customMeasurements[1]), name = tostring(customMeasurements[0])\n| where name !contains \"mainContentQuery\" \n| where name !contains \"logAnalyticsTokenReceived\" \n| where name !contains \"tokensRequested\"\n| summarize percentile(value, 95) by bin(timestamp, 1d), name\n| order by timestamp, percentile_value_95 asc\n| render timechart"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "utc",
+                    "granularity": "1d",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "16": {
+            "position": {
+              "x": 12,
+              "y": 5,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "pageViews\n| where timestamp > startofday(ago(14d))\n| where name contains \"Multicluster\"\n| where operation_Name contains \"multicluster-health\"\n| where (url contains \"ininprodeusuxbase.microsoft.com\") or (url contains \"afd.\") or (url contains \"monitoring.\")\n| extend Cloud = tostring(customDimensions.cloudType) \n| where Cloud =~ \"MoonCake\"\n| summarize Users=dcount(user_Id) by bin(timestamp, 1d)\n| order by timestamp asc\n| render barchart\n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Users",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "a0049333-63d5-41b9-af0e-22afa06ebc84"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Bar"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Users - MoonCake",
+                  "PartSubTitle": "14d"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "17": {
+            "position": {
+              "x": 18,
+              "y": 5,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let startTimestamp = ago(14d);\nlet endTimestamp = now();\nexceptions\n| where timestamp > startTimestamp\n| where timestamp <= endTimestamp\n| where customDimensions.subArea contains \"multi\"\n| where customDimensions.urlHint contains \"inin-prod-eus-ux.azureedge.net\" or customDimensions.urlHint contains \"ininprodeusuxbase.microsoft.com\"\n| extend MessageProperty = todynamic(outerMessage).exception.message,           ErrorTextProperty = todynamic(outerMessage).exception._errorText,          WorkspaceName = tostring(todynamic(customDimensions).workspace_name)\n| extend Version = tostring(split(operation_Name, '/', 2)[0])\n| extend PreMessage = tostring(iif(isempty(MessageProperty), ErrorTextProperty, MessageProperty))\n// see if http error is in \"new format\"\n| extend HttpError = todynamic(todynamic(outerMessage).exception.httpRequestError)\n| extend HttpErrorStatusCode = toint(HttpError.status)\n| extend HttpErrorStatusText = tostring(HttpError.statusText)\n| extend HttpErrorResponseText = tostring(HttpError.responseText)\n| extend PreMessage = iif(isempty(PreMessage) and isnotempty(HttpErrorStatusCode), strcat(\"Http \", HttpErrorStatusCode, \" (\", HttpErrorStatusText, \"). Response: \", HttpErrorResponseText), PreMessage)\n| extend Message = iif(isempty(PreMessage), \"<Can't parse error object>\", PreMessage)\n| extend Message = iif(Message startswith \"Http 404 (Not Found). Response: {\\\"error\\\":{\\\"code\\\":\\\"ResourceNotFound\\\"\", \"Http 404 (WorkspaceNotFound)\", Message)\n| extend Message = iif(Message startswith \"Http 404 (Not Found). Response: {\\\"error\\\":{\\\"code\\\":\\\"ResourceGroupNotFound\\\"\", \"Http 404 (ResourceGroupNotFound)\", Message)\n| extend Message = iif(Message startswith \"Http 400 (Bad Request). Response: {\\\"error\\\":{\\\"code\\\":\\\"InvalidApiVersionParameter\\\"\", \"Http 400 (InvalidApiVersionParameter)\", Message)\n| extend Message = iif(Message startswith \"Http 403 (Forbidden). Response: {\\\"error\\\":{\\\"code\\\":\\\"AuthorizationFailed\\\"\", \"Http 403 (AccessToWorkspaceDenied)\", Message)\n| extend Message = iif(Message startswith 'Http 400 (Bad Request). Response: {\"error\":{\"message\":\"The request had some invalid properties\",\"code\":\"BadArgumentError\",\"innererror\":{\"code\":\"SyntaxError\",\"message\":\"Syntax Error\"}}}', \"Http 400 (QuerySyntaxError)\", Message)\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| summarize Users = dcount(user_Id), Errors = count() by Version, Message\n| order by Users desc, Errors desc, Message, Version\n| extend Affected_U = Users\n| project Version, Message, Affected_U, Errors"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/5ef2c7f6-7cbe-4d89-b6fd-e626e269e03f"
+                },
+                {
+                  "name": "PartId",
+                  "value": "dfc3fc0f-2dbe-4b20-b582-2901db295471"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Affected User Counts",
+                  "PartSubTitle": "Last 1d",
+                  "Query": "exceptions\n| where customDimensions.clusterSubscriptionIds !contains \"72c8e8ca-dc16-47dc-b65c-6b5875eb600a\"  \n| where customDimensions.clusterSubscriptionIds !contains \"692aea0b-2d89-4e7e-ae30-fffe40782ee2\"  \n| where customDimensions.clusterSubscriptionIds !contains \"7e18f665-fcf3-4ea4-97b0-262828036007\" \n| where customDimensions.subArea contains \"multi\"\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n// | where pageBase contains 'afd.'\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains \"monitoring.\"\n| extend MessageProperty = todynamic(outerMessage).exception,           ErrorTextProperty = todynamic(outerMessage).exception._errorText,          WorkspaceName = tostring(todynamic(customDimensions).workspace_name)\n| extend Version = tostring(split(operation_Name, '/', 5)[0])\n| extend PreMessage = tostring(iif(isempty(MessageProperty), ErrorTextProperty, MessageProperty))\n// see if http error is in \"new format\"\n| extend HttpError = todynamic(todynamic(outerMessage).exception.httpRequestError)\n| extend HttpErrorStatusCode = toint(HttpError.status)\n| extend HttpErrorStatusText = tostring(HttpError.statusText)\n| extend HttpErrorResponseText = tostring(HttpError.responseText)\n| extend PreMessage = iif(isempty(PreMessage) and isnotempty(HttpErrorStatusCode), strcat(\"Http \", HttpErrorStatusCode, \" (\", HttpErrorStatusText, \"). Response: \", HttpErrorResponseText), PreMessage)\n| extend Message = iif(isempty(PreMessage), \"<Can't parse error object>\", PreMessage)\n| extend Message = iif(Message startswith \"Http 404 (Not Found). Response: {\\\"error\\\":{\\\"code\\\":\\\"ResourceNotFound\\\"\", \"Http 404 (WorkspaceNotFound)\", Message)\n| extend Message = iif(Message startswith \"Http 404 (Not Found). Response: {\\\"error\\\":{\\\"code\\\":\\\"ResourceGroupNotFound\\\"\", \"Http 404 (ResourceGroupNotFound)\", Message)\n| extend Message = iif(Message startswith \"Http 400 (Bad Request). Response: {\\\"error\\\":{\\\"code\\\":\\\"InvalidApiVersionParameter\\\"\", \"Http 400 (InvalidApiVersionParameter)\", Message)\n| extend Message = iif(Message startswith \"Http 403 (Forbidden). Response: {\\\"error\\\":{\\\"code\\\":\\\"AuthorizationFailed\\\"\", \"Http 403 (AccessToWorkspaceDenied)\", Message)\n| extend Message = iif(Message startswith 'Http 400 (Bad Request). Response: {\"error\":{\"message\":\"The request had some invalid properties\",\"code\":\"BadArgumentError\",\"innererror\":{\"code\":\"SyntaxError\",\"message\":\"Syntax Error\"}}}', \"Http 400 (QuerySyntaxError)\", Message)\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| summarize Users = dcount(user_Id), Errors = count() by Version, Message\n| order by Users desc, Errors desc, Message, Version\n| extend Affected_U = Users\n| project Version, Message, Affected_U, Errors",
+                  "GridColumnsWidth": {
+                    "Affected_U": "87px",
+                    "Errors": "90px",
+                    "Version": "161px"
+                  }
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "24h"
+                  }
+                }
+              }
+            }
+          },
+          "18": {
+            "position": {
+              "x": 24,
+              "y": 5,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let startTimestamp = ago(14d);\nlet endTimestamp = now();\nexceptions\n| where timestamp > startTimestamp\n| where timestamp <= endTimestamp\n| where customDimensions.subArea contains \"multi\"\n| where customDimensions.urlHint contains \"inin-prod-eus-ux.azureedge.net\" or customDimensions.urlHint contains \"ininprodeusuxbase.microsoft.com\"\n| extend MessageProperty = todynamic(outerMessage).exception.message,           ErrorTextProperty = todynamic(outerMessage).exception._errorText,          WorkspaceName = tostring(todynamic(customDimensions).workspace_name)\n| extend Version = tostring(split(operation_Name, '/', 2)[0])\n| extend PreMessage = tostring(iif(isempty(MessageProperty), ErrorTextProperty, MessageProperty))\n// see if http error is in \"new format\"\n| extend HttpError = todynamic(todynamic(outerMessage).exception.httpRequestError)\n| extend HttpErrorStatusCode = toint(HttpError.status)\n| extend HttpErrorStatusText = tostring(HttpError.statusText)\n| extend HttpErrorResponseText = tostring(HttpError.responseText)\n| extend PreMessage = iif(isempty(PreMessage) and isnotempty(HttpErrorStatusCode), strcat(\"Http \", HttpErrorStatusCode, \" (\", HttpErrorStatusText, \"). Response: \", HttpErrorResponseText), PreMessage)\n| extend Message = iif(isempty(PreMessage), \"<Can't parse error object>\", PreMessage)\n| extend Message = iif(Message startswith \"Http 404 (Not Found). Response: {\\\"error\\\":{\\\"code\\\":\\\"ResourceNotFound\\\"\", \"Http 404 (WorkspaceNotFound)\", Message)\n| extend Message = iif(Message startswith \"Http 404 (Not Found). Response: {\\\"error\\\":{\\\"code\\\":\\\"ResourceGroupNotFound\\\"\", \"Http 404 (ResourceGroupNotFound)\", Message)\n| extend Message = iif(Message startswith \"Http 400 (Bad Request). Response: {\\\"error\\\":{\\\"code\\\":\\\"InvalidApiVersionParameter\\\"\", \"Http 400 (InvalidApiVersionParameter)\", Message)\n| extend Message = iif(Message startswith \"Http 403 (Forbidden). Response: {\\\"error\\\":{\\\"code\\\":\\\"AuthorizationFailed\\\"\", \"Http 403 (AccessToWorkspaceDenied)\", Message)\n| extend Message = iif(Message startswith 'Http 400 (Bad Request). Response: {\"error\":{\"message\":\"The request had some invalid properties\",\"code\":\"BadArgumentError\",\"innererror\":{\"code\":\"SyntaxError\",\"message\":\"Syntax Error\"}}}', \"Http 400 (QuerySyntaxError)\", Message)\n| summarize Users = dcount(user_Id), Errors = count() by Version, Message\n| order by  Users desc, Errors desc, Message, Version\n| extend Affected_U = Users\n| project Version, Message, Affected_U, Errors\n"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/5ef2c7f6-7cbe-4d89-b6fd-e626e269e03f"
+                },
+                {
+                  "name": "PartId",
+                  "value": "794897b5-c87e-4ef0-b961-91f85488e38a"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Affected User Counts",
+                  "PartSubTitle": "Last 1d",
+                  "Query": "let startTimestamp = ago(1d);\nlet endTimestamp = now();\nexceptions\n| where timestamp > startTimestamp\n| where timestamp <= endTimestamp\n| where customDimensions.subArea contains \"multi\"\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n// | where pageBase contains 'afd.'\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains \"monitoring.\"\n| extend MessageProperty = todynamic(outerMessage).exception,           ErrorTextProperty = todynamic(outerMessage).exception._errorText,          WorkspaceName = tostring(todynamic(customDimensions).workspace_name)\n| extend Version = tostring(split(operation_Name, '/', 5)[0])\n| extend PreMessage = tostring(iif(isempty(MessageProperty), ErrorTextProperty, MessageProperty))\n// see if http error is in \"new format\"\n| extend HttpError = todynamic(todynamic(outerMessage).exception.httpRequestError)\n| extend HttpErrorStatusCode = toint(HttpError.status)\n| extend HttpErrorStatusText = tostring(HttpError.statusText)\n| extend HttpErrorResponseText = tostring(HttpError.responseText)\n| extend PreMessage = iif(isempty(PreMessage) and isnotempty(HttpErrorStatusCode), strcat(\"Http \", HttpErrorStatusCode, \" (\", HttpErrorStatusText, \"). Response: \", HttpErrorResponseText), PreMessage)\n| extend Message = iif(isempty(PreMessage), \"<Can't parse error object>\", PreMessage)\n| extend Message = iif(Message startswith \"Http 404 (Not Found). Response: {\\\"error\\\":{\\\"code\\\":\\\"ResourceNotFound\\\"\", \"Http 404 (WorkspaceNotFound)\", Message)\n| extend Message = iif(Message startswith \"Http 404 (Not Found). Response: {\\\"error\\\":{\\\"code\\\":\\\"ResourceGroupNotFound\\\"\", \"Http 404 (ResourceGroupNotFound)\", Message)\n| extend Message = iif(Message startswith \"Http 400 (Bad Request). Response: {\\\"error\\\":{\\\"code\\\":\\\"InvalidApiVersionParameter\\\"\", \"Http 400 (InvalidApiVersionParameter)\", Message)\n| extend Message = iif(Message startswith \"Http 403 (Forbidden). Response: {\\\"error\\\":{\\\"code\\\":\\\"AuthorizationFailed\\\"\", \"Http 403 (AccessToWorkspaceDenied)\", Message)\n| extend Message = iif(Message startswith 'Http 400 (Bad Request). Response: {\"error\":{\"message\":\"The request had some invalid properties\",\"code\":\"BadArgumentError\",\"innererror\":{\"code\":\"SyntaxError\",\"message\":\"Syntax Error\"}}}', \"Http 400 (QuerySyntaxError)\", Message)\n| summarize Users = dcount(user_Id), Errors = count() by Version, Message\n| order by  Users desc, Errors desc, Message, Version\n| extend Affected_U = Users\n| project Version, Message, Affected_U, Errors\n",
+                  "GridColumnsWidth": {
+                    "Affected_U": "88px",
+                    "Errors": "78px"
+                  }
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "24h"
+                  }
+                }
+              }
+            }
+          },
+          "19": {
+            "position": {
+              "x": 30,
+              "y": 5,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\r\n| where timestamp >= ago(14d)\r\n| extend pageUrl = tostring(customDimensions.urlHint)\r\n| extend pageBase = tostring(split(pageUrl, '?')[0])\r\n// | where pageBase contains 'afd.'\r\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains \"monitoring.\"\r\n| where name contains \"MulticlstersLoadHealthButton\" or name contains \"MulticlustersLoadHealthButton\"\r\n| summarize count = count() by bin(timestamp, 1d)\r\n| render timechart"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "361806c6-904b-4d58-9f19-bb5665fb6d49"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Number of LoadHealth Clicks DELETE",
+                  "PartSubTitle": "InfraInsightsUX-Prod"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "20": {
+            "position": {
+              "x": 36,
+              "y": 5,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let startTimestamp = ago(14d);\nlet endTimestamp = now();\ncustomEvents\n| where timestamp > startTimestamp\n| where timestamp <= endTimestamp\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains 'monitoring.'\n| where operation_Name has 'container-perf.html'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| where name =~ 'navigate'\n| project timestamp, user_Id, Source = customDimensions.source, Destination = customDimensions.destination\n| where Destination == 'MultiClusterMainPage'\n| summarize Users = dcount(user_Id) by bin(timestamp, 1d)\n| render timechart\n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Users",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "5d2579f5-01f1-45e8-8298-2842f125c586"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Unique Users of Multicluster Button",
+                  "PartSubTitle": "Last 30d"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "21": {
+            "position": {
+              "x": 42,
+              "y": 5,
+              "colSpan": 7,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let MonitoredandUnmonitoredTabViews = customEvents\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n// either cdn host or hosting service\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.'  or pageBase contains 'monitoring.'\n| where operation_Name contains \"multicluster-health.html\"\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| where name =~ 'navigate'\n| project Source = tostring(customDimensions.source), Destination = tostring(customDimensions.destination), timestamp\n| extend Tab = Destination\n| where Tab == 'MultiClusterGettingStartedTab' or Tab == 'MultiClusterMonitoredGrid' or Tab == 'MultiClusterNonMonitoredGrid' \n| summarize TabViews = count() by Tab, bin(timestamp, 1d);\nlet GetStartedTabViews = \npageViews\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n// either cdn host or hosting service\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.'  or pageBase contains 'monitoring.'\n| where operation_Name contains \"multicluster-health.html\"\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| where name == 'MulticlusterMainPage'\n| extend Tab = 'MultiClusterGettingStartedTab'\n| summarize TabViews = count() by Tab, bin(timestamp, 1d);\nMonitoredandUnmonitoredTabViews \n| union (GetStartedTabViews)\n| render timechart \n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P7D"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "TabViews",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "Tab",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "19774f69-03fc-4706-9156-7c631457a07b"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Tab Views",
+                  "PartSubTitle": "Last 30d",
+                  "Query": "let MonitoredandUnmonitoredTabViews = customEvents\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n// either cdn host or hosting service\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.'  or pageBase contains 'monitoring.'\n| where operation_Name contains \"multicluster-health.html\"\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| where name =~ 'navigate'\n| project Source = tostring(customDimensions.source), Destination = tostring(customDimensions.destination), timestamp\n| extend Tab = Destination\n| where Tab == 'MultiClusterGettingStartedTab' or Tab == 'MultiClusterMonitoredGrid' or Tab == 'MultiClusterNonMonitoredGrid'\n| summarize TabViews = count() by Tab, bin(timestamp, 1d);\nlet GetStartedTabViews =  pageViews\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n// either cdn host or hosting service\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.'  or pageBase contains 'monitoring.'\n| where operation_Name contains \"multicluster-health.html\"\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| where name == 'MulticlusterMainPage'\n| extend Tab = 'MultiClusterGettingStartedTab'\n| summarize TabViews = count() by Tab, bin(timestamp, 1d);\nMonitoredandUnmonitoredTabViews\n| union (GetStartedTabViews)\n| extend Tab = iif(Tab == 'MultiClusterGettingStartedTab', 'GetStarted', iif(Tab == 'MultiClusterMonitoredGrid', 'Monitored', 'Unmonitored'))\n| render timechart"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "22": {
+            "position": {
+              "x": 0,
+              "y": 9,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let multiclusterPageViewsQuery = pageViews\n| where timestamp > ago(30d)\n| where name contains \"Multicluster\"\n| where operation_Name contains \"multicluster-health\" and operation_Name startswith \"/web\"\n| where customDimensions.cluster_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2';\nlet multiclusterPageViews = materialize(multiclusterPageViewsQuery);\nmulticlusterPageViews\n| summarize Count = count() by operation_Name, bin(timestamp, 1d)\n| project Version = operation_Name, timestamp, Count\n| render timechart\n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "DateTime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Count",
+                        "type": "Int64"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "Version",
+                        "type": "String"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/5ef2c7f6-7cbe-4d89-b6fd-e626e269e03f"
+                },
+                {
+                  "name": "PartId",
+                  "value": "8abb920e-a22d-4bc0-be87-c6cfec1b0267"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Page view count by version",
+                  "PartSubTitle": "InfraInsightsUX-Prod",
+                  "Query": "let multiclusterPageViewsQuery = pageViews\n| where timestamp > ago(30d)\n| where name contains \"Multicluster\"\n| where operation_Name contains \"multicluster-health\"\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n// | where pageBase contains 'afd.'\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains \"monitoring.\"\n| where customDimensions.cluster_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2';\nlet multiclusterPageViews = materialize(multiclusterPageViewsQuery);\nmulticlusterPageViews\n| summarize Count = count() by operation_Name, bin(timestamp, 1d)\n| project Version = operation_Name, timestamp, Count\n| render timechart\n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "23": {
+            "position": {
+              "x": 6,
+              "y": 9,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "pageViews\n| project timestamp, customDimensions, user_Id\n| extend PeriodEnd = range(startofday(now(-14d)), startofday(now()), 1d)\n| mvexpand PeriodEnd\n| extend PeriodEndDateTime = todatetime(PeriodEnd)\n| where timestamp <= PeriodEndDateTime\n| where timestamp > datetime_add('day', -1, PeriodEndDateTime)\n| where customDimensions.mainArea == \"Containers\"\n| where customDimensions.subArea contains \"multi\"\n| where isempty(customDimensions.urlHint) or customDimensions.urlHint contains \"ininprodeusuxbase.microsoft.com\"\n| summarize DAU = dcount(user_Id) by PeriodEndDateTime\n| join\n(\n    pageViews\n    | extend PeriodEnd = range(startofday(now(-14d)), startofday(now()), 1d)\n    | mvexpand PeriodEnd\n    | extend PeriodEndDateTime = todatetime(PeriodEnd)\n    | where timestamp <= PeriodEndDateTime\n    | where timestamp > datetime_add('day', -30, PeriodEndDateTime)\n    | where customDimensions.mainArea == \"Containers\"\n    | where customDimensions.subArea contains \"multi\"\n    | where customDimensions.urlHint contains \"inin-prod-eus-ux.azureedge.net\" or customDimensions.urlHint contains \"ininprodeusuxbase.microsoft.com\"\n    | summarize MAU = dcount(user_Id) by PeriodEndDateTime\n)\non PeriodEndDateTime\n| summarize DAU = sum(DAU), MAU = sum(MAU) by PeriodEndDateTime\n| extend DAUOverMAU = todouble(DAU)*100/MAU\n| project PeriodEndDateTime, DAUOverMAU\n| render timechart\n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "PeriodEndDateTime",
+                      "type": "DateTime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "DAUOverMAU",
+                        "type": "Double"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/5ef2c7f6-7cbe-4d89-b6fd-e626e269e03f"
+                },
+                {
+                  "name": "PartId",
+                  "value": "6d25d7d3-9053-44b1-9823-f4ff21b1180c"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "DAU vs MAU, %",
+                  "PartSubTitle": "InfraInsightsUX-Prod",
+                  "Query": "pageViews\n| project timestamp, customDimensions, user_Id\n| extend PeriodEnd = range(startofday(now(-14d)), startofday(now()), 1d)\n| mvexpand PeriodEnd\n| extend PeriodEndDateTime = todatetime(PeriodEnd)\n| where timestamp <= PeriodEndDateTime\n| where timestamp > datetime_add('day', -1, PeriodEndDateTime)\n| where customDimensions.mainArea == \"Containers\"\n| where customDimensions.subArea contains \"multi\"\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n// | where pageBase contains 'afd.'\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains \"monitoring.\"\n| summarize DAU = dcount(user_Id) by PeriodEndDateTime\n| join\n(\n    pageViews\n    | extend PeriodEnd = range(startofday(now(-14d)), startofday(now()), 1d)\n    | mvexpand PeriodEnd\n    | extend PeriodEndDateTime = todatetime(PeriodEnd)\n    | where timestamp <= PeriodEndDateTime\n    | where timestamp > datetime_add('day', -30, PeriodEndDateTime)\n    | where customDimensions.mainArea == \"Containers\"\n    | where customDimensions.subArea contains \"multi\"\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains 'monitoring.'\n    | summarize MAU = dcount(user_Id) by PeriodEndDateTime\n)\non PeriodEndDateTime\n| summarize DAU = sum(DAU), MAU = sum(MAU) by PeriodEndDateTime\n| extend DAUOverMAU = todouble(DAU)*100/MAU\n| project PeriodEndDateTime, DAUOverMAU\n| render timechart\n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "24": {
+            "position": {
+              "x": 12,
+              "y": 9,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "pageViews\n| where timestamp > startofday(ago(14d))\n| where name contains \"Multicluster\"\n| where operation_Name contains \"multicluster-health\"\n| where (url contains \"ininprodeusuxbase.microsoft.com\") or (url contains \"afd.\") or (url contains \"monitoring.\")\n| extend Cloud = tostring(customDimensions.cloudType) \n| where Cloud =~ \"FairFax\"\n| summarize Users=dcount(user_Id) by bin(timestamp, 1d)\n| order by timestamp asc\n| render barchart"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "Users",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "b99dc72a-34fd-432e-ab35-09cdd60e7a9c"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Bar"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Users - FairFax",
+                  "PartSubTitle": "14d"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "25": {
+            "position": {
+              "x": 18,
+              "y": 9,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let startTimestamp = ago(14d);\r\nlet endTimestamp = now();\r\nexceptions\r\n| where timestamp > startTimestamp\r\n| where timestamp <= endTimestamp\r\n| where customDimensions.subArea == \"MulticlusterMonitoredList\" or customDimensions.subArea == \"MulticlusterNonMonitoredList\"\r\n| where customDimensions.urlHint contains \"inin-prod-eus-ux.azureedge.net\" or customDimensions.urlHint contains \"ininprodeusuxbase.microsoft.com\"\r\n| extend MessageProperty = todynamic(outerMessage).exception.message,            ErrorTextProperty = todynamic(outerMessage).exception._errorText,           WorkspaceName = tostring(todynamic(customDimensions).workspace_name)\r\n| extend PreMessage = tostring(iif(isempty(MessageProperty), ErrorTextProperty, MessageProperty))\r\n// see if http error is in \"new format\"\r\n| extend HttpError = todynamic(todynamic(outerMessage).exception.httpRequestError)\r\n| extend HttpErrorStatusCode = toint(HttpError.status)\r\n| extend HttpErrorStatusText = tostring(HttpError.statusText)\r\n| extend HttpErrorResponseText = tostring(HttpError.responseText)\r\n| extend PreMessage = iif(isempty(PreMessage) and isnotempty(HttpErrorStatusCode), strcat(\"Http \", HttpErrorStatusCode, \" (\", HttpErrorStatusText, \"). Response: \", HttpErrorResponseText), PreMessage)\r\n| extend Message = iif(isempty(PreMessage), \"<Can't parse error object>\", PreMessage)\r\n| extend Message = iif(Message startswith \"Http 404 (Not Found). Response: {\\\"error\\\":{\\\"code\\\":\\\"ResourceNotFound\\\"\", \"Http 404 (WorkspaceNotFound)\", Message)\r\n| extend Message = iif(Message startswith \"Http 404 (Not Found). Response: {\\\"error\\\":{\\\"code\\\":\\\"ResourceGroupNotFound\\\"\", \"Http 404 (ResourceGroupNotFound)\", Message)\r\n| extend Message = iif(Message startswith \"Http 400 (Bad Request). Response: {\\\"error\\\":{\\\"code\\\":\\\"InvalidApiVersionParameter\\\"\", \"Http 400 (InvalidApiVersionParameter)\", Message)\r\n| extend Message = iif(Message startswith \"Http 403 (Forbidden). Response: {\\\"error\\\":{\\\"code\\\":\\\"AuthorizationFailed\\\"\", \"Http 403 (AccessToWorkspaceDenied)\", Message)\r\n| extend Message = iif(Message startswith 'Http 400 (Bad Request). Response: {\"error\":{\"message\":\"The request had some invalid properties\",\"code\":\"BadArgumentError\",\"innererror\":{\"code\":\"SyntaxError\",\"message\":\"Syntax Error\"}}}', \"Http 400 (QuerySyntaxError)\", Message)\r\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\r\n// cloud ops tip 1\r\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\r\n// Container Insights - Test - 1\r\n| summarize count() by bin(timestamp, 1d), Message\r\n| render barchart\r\n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "DateTime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "Int64"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "Message",
+                        "type": "String"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/5ef2c7f6-7cbe-4d89-b6fd-e626e269e03f"
+                },
+                {
+                  "name": "PartId",
+                  "value": "b23d0c33-9ee8-4215-a660-b0278bef0f63"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Bar"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Exceptions Count by Message",
+                  "PartSubTitle": "InfraInsightsUX-Prod",
+                  "Query": "let startTimestamp = ago(14d);\nlet endTimestamp = now();\nexceptions\n| where timestamp > startTimestamp\n| where timestamp <= endTimestamp\n| where customDimensions.clusterSubscriptionIds !contains \"72c8e8ca-dc16-47dc-b65c-6b5875eb600a\"  \n| where customDimensions.clusterSubscriptionIds !contains \"692aea0b-2d89-4e7e-ae30-fffe40782ee2\"  \n| where customDimensions.clusterSubscriptionIds !contains \"7e18f665-fcf3-4ea4-97b0-262828036007\" \n| where customDimensions.subArea == \"MulticlusterMonitoredList\" or customDimensions.subArea == \"MulticlusterNonMonitoredList\"\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n// | where pageBase contains 'afd.'\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains \"monitoring.\"\n| extend MessageProperty = todynamic(outerMessage).exception.message,            ErrorTextProperty = todynamic(outerMessage).exception._errorText,           WorkspaceName = tostring(todynamic(customDimensions).workspace_name)\n| extend PreMessage = tostring(iif(isempty(MessageProperty), ErrorTextProperty, MessageProperty))\n// see if http error is in \"new format\"\n| extend HttpError = todynamic(todynamic(outerMessage).exception.httpRequestError)\n| extend HttpErrorStatusCode = toint(HttpError.status)\n| extend HttpErrorStatusText = tostring(HttpError.statusText)\n| extend HttpErrorResponseText = tostring(HttpError.responseText)\n| extend PreMessage = iif(isempty(PreMessage) and isnotempty(HttpErrorStatusCode), strcat(\"Http \", HttpErrorStatusCode, \" (\", HttpErrorStatusText, \"). Response: \", HttpErrorResponseText), PreMessage)\n| extend Message = iif(isempty(PreMessage), \"<Can't parse error object>\", PreMessage)\n| extend Message = iif(Message startswith \"Http 404 (Not Found). Response: {\\\"error\\\":{\\\"code\\\":\\\"ResourceNotFound\\\"\", \"Http 404 (WorkspaceNotFound)\", Message)\n| extend Message = iif(Message startswith \"Http 404 (Not Found). Response: {\\\"error\\\":{\\\"code\\\":\\\"ResourceGroupNotFound\\\"\", \"Http 404 (ResourceGroupNotFound)\", Message)\n| extend Message = iif(Message startswith \"Http 400 (Bad Request). Response: {\\\"error\\\":{\\\"code\\\":\\\"InvalidApiVersionParameter\\\"\", \"Http 400 (InvalidApiVersionParameter)\", Message)\n| extend Message = iif(Message startswith \"Http 403 (Forbidden). Response: {\\\"error\\\":{\\\"code\\\":\\\"AuthorizationFailed\\\"\", \"Http 403 (AccessToWorkspaceDenied)\", Message)\n| extend Message = iif(Message startswith 'Http 400 (Bad Request). Response: {\"error\":{\"message\":\"The request had some invalid properties\",\"code\":\"BadArgumentError\",\"innererror\":{\"code\":\"SyntaxError\",\"message\":\"Syntax Error\"}}}', \"Http 400 (QuerySyntaxError)\", Message)\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n// Container Insights - Test - 1\n| summarize count() by bin(timestamp, 1d), Message\n| render barchart\n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "26": {
+            "position": {
+              "x": 24,
+              "y": 9,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "exceptions\n| extend Operation = tostring(split(operation_Name, '/', 6)[0])\n| where customDimensions.subArea contains 'multi' or Operation contains 'multi'\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains \"monitoring.\"\n| extend Version = tostring(split(operation_Name, '/', 5)[0])\n| summarize count() by bin(timestamp, 1d), tostring(customDimensions.subArea)\n| render timechart\n"
+                },
+                {
+                  "name": "TimeRange",
+                  "value": "P30D"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "customDimensions_subArea",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "14600a00-10d9-49a9-9ee1-11f3a73374a1"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Exceptions by Subarea",
+                  "PartSubTitle": "Last 30d"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              },
+              "filters": {
+                "MsPortalFx_TimeRange": {
+                  "model": {
+                    "format": "local",
+                    "granularity": "auto",
+                    "relative": "30d"
+                  }
+                }
+              }
+            }
+          },
+          "27": {
+            "position": {
+              "x": 30,
+              "y": 9,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\r\n| where timestamp >= ago(14d)\r\n| extend pageUrl = tostring(customDimensions.urlHint)\r\n| extend pageBase = tostring(split(pageUrl, '?')[0])\r\n// | where pageBase contains 'afd.'\r\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains \"monitoring.\"\r\n| where name contains \"LoadMulticlustersHealthBannerDisplayed\" \r\n| summarize count() by bin(timestamp, 1d)\r\n| render timechart"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "5709859a-ec54-4a5f-be01-72abda5a4103"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Banner Display count DELETE",
+                  "PartSubTitle": "InfraInsightsUX-Prod"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "28": {
+            "position": {
+              "x": 12,
+              "y": 13,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "Name": "InfraInsightsUX-Prod",
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG"
+                  }
+                },
+                {
+                  "name": "TimeContext",
+                  "value": {
+                    "durationMs": 5184000000,
+                    "createdTime": "Start Time",
+                    "isInitialTime": false,
+                    "grain": 1,
+                    "useDashboardTimeRange": false
+                  },
+                  "isOptional": true
+                },
+                {
+                  "name": "ConfigurationId",
+                  "value": null,
+                  "isOptional": true
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0",
+                  "isOptional": true
+                },
+                {
+                  "name": "RestoreData",
+                  "value": "{\"version\":\"Segmentation/2.0\",\"metric\":\"Users\",\"cohortId\":\"\",\"isAntiCohort\":false,\"chartType\":3,\"eventsDataObject\":{\"version\":\"EventsDropdown/1.0\",\"typesWithAllSelected\":{},\"events\":[{\"value\":\"MulticlusterMainPage\",\"type\":3,\"displayText\":\"MulticlusterMainPage\"}],\"cohortsIds\":[]},\"filters\":[],\"by\":null,\"grain\":\"1d\",\"splitBy\":null,\"timeContext\":{\"durationMs\":5184000000,\"endTime\":null,\"createdTime\":\"Start Time\",\"isInitialTime\":false,\"grain\":1,\"useDashboardTimeRange\":false},\"histograms\":[\"context.location.country\",\"context.device.osVersion\",\"context.device.browserVersion\"],\"heroVisible\":true,\"gridsVisible\":true,\"insightsVisible\":true,\"isSampleRandom\":true,\"apdexThreshold\":null}",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/UsersSegmentationPinnedPart",
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "29": {
+            "position": {
+              "x": 12,
+              "y": 17,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "pageViews\n| project timestamp, customDimensions, user_Id\n| extend PeriodEnd = range(startofday(now(-14d)), startofday(now()), 1d)\n| mvexpand PeriodEnd\n| extend PeriodEndDateTime = todatetime(PeriodEnd)\n| where timestamp <= PeriodEndDateTime\n| where timestamp > datetime_add('day', -30, PeriodEndDateTime)\n//| where customDimensions.mainArea == \"Multicluster\"\n| where (customDimensions.subArea contains \"multi\")\n| where customDimensions.urlHint contains \"inin-prod-eus-ux.azureedge.net\" or customDimensions.urlHint contains \"ininprodeusuxbase.microsoft.com\"\n| summarize MinTimestamp = min(timestamp), Maximestamp = max(timestamp) by user_Id, PeriodEndDateTime\n| where Maximestamp - MinTimestamp > 1d\n| summarize count() by PeriodEndDateTime\n| order by PeriodEndDateTime\n| render barchart"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "PeriodEndDateTime",
+                      "type": "DateTime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "Int64"
+                      }
+                    ],
+                    "splitBy": [],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/5ef2c7f6-7cbe-4d89-b6fd-e626e269e03f"
+                },
+                {
+                  "name": "PartId",
+                  "value": "ec479ee6-857d-4ec4-94fe-77d942d928b4"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Bar"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Engaged Users (1 Page View at least 2 days out of last 30D)",
+                  "PartSubTitle": "InfraInsightsUX-Prod",
+                  "Query": "pageViews\n| project timestamp, customDimensions, user_Id\n| extend PeriodEnd = range(startofday(now(-14d)), startofday(now()), 1d)\n| mvexpand PeriodEnd\n| extend PeriodEndDateTime = todatetime(PeriodEnd)\n| where timestamp <= PeriodEndDateTime\n| where timestamp > datetime_add('day', -30, PeriodEndDateTime)\n//| where customDimensions.mainArea == \"Multicluster\"\n| where (customDimensions.subArea contains \"multi\")\n| extend pageUrl = tostring(customDimensions.urlHint)\n| extend pageBase = tostring(split(pageUrl, '?')[0])\n// | where pageBase contains 'afd.'\n| where pageBase contains 'ininprodeusuxbase.' or pageBase contains 'afd.' or pageBase contains \"monitoring.\"\n| summarize MinTimestamp = min(timestamp), Maximestamp = max(timestamp) by user_Id, PeriodEndDateTime\n| where Maximestamp - MinTimestamp > 1d\n| summarize count() by PeriodEndDateTime\n| order by PeriodEndDateTime\n| render barchart"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "model": {
+        "timeRange": {
+          "value": {
+            "relative": {
+              "duration": 24,
+              "timeUnit": 1
+            }
+          },
+          "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+        },
+        "filterLocale": {
+          "value": "en-us"
+        },
+        "filters": {
+          "value": {
+            "MsPortalFx_TimeRange": {
+              "model": {
+                "format": "utc",
+                "granularity": "auto",
+                "relative": "30d"
+              },
+              "displayCache": {
+                "name": "UTC Time",
+                "value": "Past 30 days"
+              },
+              "filteredPartIds": [
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca78516",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca78518",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca7851c",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca7851e",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca78520",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca78522",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca78524",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca78526",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca78528",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca7852a",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca7852c",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca7852e",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca78530",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca78532",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca78534",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca78536",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca78538",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca7853a",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca7853c",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca7853e",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca78540",
+                "StartboardPart-AnalyticsPart-7988f9b1-41ce-4117-bd42-ec990ca78544"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "name": "Multicluster Health Overview Page Dashboard",
+  "type": "Microsoft.Portal/dashboards",
+  "location": "INSERT LOCATION",
+  "tags": {
+    "hidden-title": "Multicluster Health Overview Page Dashboard"
+  },
+  "apiVersion": "2015-08-01-preview"
+}

@@ -1,0 +1,45 @@
+let clusterId = '<cluster-id>';
+let alertedHealthStatuses = dynamic(['critical', 'unknown']);
+let NodesHealthyThreshold = 0.85;
+let NodesCriticalThreshold = 0.6;
+let UserPodsHealthyThreshold = 1.0;
+let UserPodsCriticalThreshold = 0.9;
+let SystemPodsHealthyThreshold = 1.0;
+let SystemPodsCriticalThreshold = 1.0;
+KubeNodeInventory 
+| where ClusterId =~ clusterId
+| summarize arg_max(TimeGenerated, Status) by ClusterId, Computer
+| extend HealthStatus = iif(Status contains 'outofdisk' or Status contains 'networkunavailable', 'critical',
+                        iif(Status contains 'pressure', 'warning',
+                        iif(Status contains 'ready', 'healthy', 'unknown')))
+| summarize NodeCount = count(), HealthyNodeCount = sumif(1, HealthStatus == 'healthy') by ClusterId
+| project ClusterId, NodeCount, 
+          HealthyNodeRatio = todouble(HealthyNodeCount) / NodeCount
+| join (
+    KubePodInventory
+    | where ClusterId =~ clusterId
+    | summarize arg_max(TimeGenerated, PodStatus) by ClusterId, Namespace, Computer, PodUid
+    | summarize PodCountByStatus = count(PodUid) by ClusterId, Namespace, PodStatus
+    | summarize PodCount = sum(PodCountByStatus), HealthyPodCount = sumif(PodCountByStatus, PodStatus contains 'running' or PodStatus contains 'succeeded') by ClusterId, Namespace
+    | summarize SystemPodCount = sumif(PodCount, Namespace =~ 'kube-system'),
+                SystemHealthyPodCount = sumif(HealthyPodCount, Namespace =~ 'kube-system'),
+                UserPodCount = sumif(PodCount, Namespace !~ 'kube-system'),
+                UserHealthyPodCount = sumif(HealthyPodCount, Namespace !~ 'kube-system') by ClusterId
+    | project ClusterId, SystemPodCount, UserPodCount, SystemPodsHealthRatio = iif(SystemPodCount == 0, 0.0, todouble(SystemHealthyPodCount) / SystemPodCount), 
+              UserPodsHealthRatio = iif(UserPodCount == 0, 0.0, todouble(UserHealthyPodCount) / UserPodCount)
+) on ClusterId
+| project ClusterId,
+          NodesHealthStatus = iif(NodeCount == 0, 'unknown',
+                              iif(HealthyNodeRatio > NodesHealthyThreshold, 'healthy',
+                              iif(HealthyNodeRatio <= NodesCriticalThreshold, 'critical', 'warning'))),
+          UserPodsHealthStatus = iif(SystemPodCount == 0 and UserPodCount == 0, 'unknown',
+                                 iif(SystemPodCount > 0 and UserPodCount == 0, 'healthy',
+                                 iif(UserPodsHealthRatio >= UserPodsHealthyThreshold, 'healthy',
+                                 iif(UserPodsHealthRatio < UserPodsCriticalThreshold, 'critical', 'warning')))),
+          SystemPodsHealthStatus = iif(SystemPodCount == 0, 'unknown',
+                                   iif(SystemPodsHealthRatio >= SystemPodsHealthyThreshold, 'healthy',
+                                   iif(SystemPodsHealthRatio < SystemPodsCriticalThreshold, 'critical', 'warning')))
+| extend ClusterHealthStatus = iif(NodesHealthStatus == 'unknown' or UserPodsHealthStatus == 'unknown' or SystemPodsHealthStatus == 'unknown', 'unknown',
+                               iif(NodesHealthStatus == 'critical' or UserPodsHealthStatus == 'critical' or SystemPodsHealthStatus == 'critical', 'critical',
+                               iif(NodesHealthStatus == 'warning' or UserPodsHealthStatus == 'warning' or SystemPodsHealthStatus == 'warning', 'warning', 'healthy')))
+| where ClusterHealthStatus in (alertedHealthStatuses)

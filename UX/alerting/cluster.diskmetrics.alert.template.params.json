@@ -1,0 +1,30 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterName": {
+            "value": "telegrafmetrics-1"
+        },
+        "clusterResourceId": {
+            "value": "/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2/resourceGroups/telegrafmetrics-1/providers/Microsoft.ContainerService/managedClusters/telegrafmetrics-1"
+        },
+        "workspaceResourceId": {
+            "value": "/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2/resourceGroups/mms-wcus/providers/Microsoft.OperationalInsights/workspaces/wiredatawcus"
+        },
+        "alertSeverity": {
+            "value": 1
+        },
+        "actionGroupResourceId": {
+            "value": "/subscriptions/0b88dfdb-55b3-4fb0-b474-5b6dcbe6b2ef/resourcegroups/default-activitylogalerts/providers/microsoft.insights/actiongroups/nickb-action-group"
+        },
+        "diskUsedPercentUnhealthyThreshold": {
+            "value": 90
+        }, 
+        "frequencyInMinutes": {
+            "value": 5
+        },
+        "timeWindowInMinutes": {
+            "value": 60
+        }
+    }
+}

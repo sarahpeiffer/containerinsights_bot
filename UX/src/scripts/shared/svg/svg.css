@@ -1,0 +1,254 @@
+.msportalfx-svg-c01 {
+    fill: #fff;
+  }
+  .msportalfx-svg-c03 {
+    fill: #a0a1a2;
+  }
+  .msportalfx-svg-c04 {
+    fill: #7a7a7a;
+  }
+  .msportalfx-svg-c05 {
+    fill: #3e3e3e;
+  }
+  .msportalfx-svg-c06 {
+    fill: #1e1e1e;
+  }
+  .msportalfx-svg-c10 {
+    fill: #ff8c00;
+  }
+  .msportalfx-svg-c11 {
+    fill: #fcd116;
+  }
+  .msportalfx-svg-c13 {
+    fill: #b8d432;
+  }
+  .msportalfx-svg-c14 {
+    fill: #7fba00;
+  }
+  .msportalfx-svg-c15 {
+    fill: #59b4d9;
+  }
+  .msportalfx-svg-c16 {
+    fill: #3999c6;
+  }
+  .msportalfx-svg-c17 {
+    fill: #804998;
+  }
+  .msportalfx-svg-c19 {
+    fill: #0072c6;
+  }
+  .msportalfx-svg-c20 {
+    fill: #68217a;
+  }
+  .msportalfx-svg-c22 {
+    fill: #e81123;
+  }
+  .index-advisor-path01 {
+    stroke: none;
+    fill-rule: evenodd;
+    fill: #2a3281;
+    fill-opacity: 1;
+  }
+  .index-advisor-path02 {
+    stroke: none;
+    fill-rule: evenodd;
+    fill: #ffffff;
+    fill-opacity: 1;
+  }
+  .alert-path01 {
+    fill: none;
+    stroke: #f3763a;
+    stroke-width: 1.6;
+    stroke-miterlimit: 10;
+  }
+  .alert-path02 {
+    fill: #f3763a;
+  }
+  .alert-path03 {
+    fill: #f3763a;
+  }
+  .msportalfx-svg-palette-blue > *,
+  .msportalfx-svg-palette-blue > g > * {
+    fill: #3999c6;
+  }
+  .expand-path01 {
+    fill: #000;
+  }
+  .svg-on-white {
+    fill: #807d82;
+    stroke: #807d82;
+  }
+  .dark .svg-on-white {
+    fill: #ffffff;
+    stroke: #ffffff;
+  }
+  .dark .app-map-mono-node-color {
+    fill: #ffffff;
+  }
+  .app-map-mono-node-color {
+    fill: #a6a4a8;
+  }
+  .app-map-mono-title-color {
+    fill: #414042;
+  }
+  .dark .app-map-mono-title-color {
+    fill: #a6a4a8;
+  }
+  .time-range-color-1 {
+    fill: #5e6768;
+  }
+  .time-range-color-2 {
+    fill: #58595b;
+  }
+  .dark .time-range-color-1,
+  .dark .time-range-color-2 {
+    fill: #ffffff;
+  }
+  .msportalfx-svg-loading-ellipsis-square .msportalfx-svg-loading-square:nth-child(1) {
+    -webkit-animation-delay: 0s;
+    animation-delay: 0s;
+  }
+  .msportalfx-svg-loading-ellipsis-square .msportalfx-svg-loading-square:nth-child(2) {
+    -webkit-animation-delay: .2s;
+    animation-delay: .2s;
+  }
+  .msportalfx-svg-loading-ellipsis-square .msportalfx-svg-loading-square:nth-child(3) {
+    -webkit-animation-delay: .4s;
+    animation-delay: .4s;
+  }
+  .msportalfx-svg-loading-ellipsis-square .msportalfx-svg-loading-square {
+    -webkit-animation: ProgressFlagAnimation 1.45s infinite ease-in-out;
+    animation: ProgressFlagAnimation 1.45s infinite ease-in-out;
+  }
+  .azc-fill-white {
+    fill: #fff;
+  }
+  .fxs-fill-secondary {
+    fill: #a9abad;
+  }
+  .filter-toolbar-polyline {
+    fill: none;
+    stroke: #414042;
+    stroke-miterlimit: 10;
+  }
+  .calendar-c01 {
+    fill: #A0A1A2;
+  }
+  .Mongo_x002D_green {
+    fill: url(#SVGID_1_);
+  }
+  .Mongo_x002D_litegreen {
+    fill: url(#SVGID_2_);
+  }
+  .Mongo_x002D_gradient {
+    fill: url(#SVGID_3_);
+  }
+  .transparent_x002D_white {
+    opacity: 0;
+    fill: #FFFFFF;
+  }
+  .mongo_st0 {
+    fill: url(#SVGID_4_);
+  }
+  .mongo_st1 {
+    fill: url(#SVGID_5_);
+  }
+  .mongo_st2 {
+    fill: url(#SVGID_6_);
+  }
+  .Redis_x002D_darkred {
+    fill: #A41E11;
+  }
+  .Redis_x002D_litered {
+    fill: #D82C20;
+  }
+  .white {
+    fill: #FFFFFF;
+  }
+  .Redis_x002D_darkerred {
+    fill: #7A0C00;
+  }
+  .Redis_x002D_mediumred {
+    fill: #AD2115;
+  }
+  .redis_st0 {
+    fill: #A41E11;
+  }
+  .redis_st1 {
+    fill: #D82C20;
+  }
+  .Postgresql_x002D_blue {
+    fill: #336791;
+  }
+  .postgres_st0 {
+    fill: none;
+    stroke: #FFFFFF;
+    stroke-width: 0.3368;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .MySQL_x002D_blue {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    fill: #00678F;
+  }
+  .mysql_white {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    fill: #FFFFFF;
+  }
+  .MySQL_x002D_orange {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+    fill: #E38D1A;
+  }
+  @-webkit-keyframes ProgressFlagAnimation {
+    0% {
+      opacity: 1;
+    }
+    30% {
+      opacity: 0.6;
+    }
+    60% {
+      opacity: 0.3;
+    }
+  }
+  @keyframes ProgressFlagAnimation {
+    0% {
+      opacity: 1;
+    }
+    30% {
+      opacity: 0.6;
+    }
+    60% {
+      opacity: 0.3;
+    }
+  }
+  
+ msportalfx-svg-placeholder
+.fxs-consoleerrorinfo-icon {
+  width: 25px;
+  height: 25px;
+}
+
+.cls-1 {
+  fill: #3999c6;
+}
+.cls-2 {
+  fill: #59b4d9;
+}
+.cls-3 {
+  fill: #fff;
+  opacity: 0.5;
+  isolation: isolate;
+}
+.cls-4 {
+  fill: #7a7a7a;
+}
+
+svg.st { enable-background: new 0 0 50 50; }
+svg.st > path.st0 { fill:#010200; }
+svg.st > path.st1 { fill:#050200; }
+svg.st path.st2 { fill:#050200; }
+
+svg.compute { enable-background:new 0 0 16 16; }

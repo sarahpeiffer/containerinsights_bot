@@ -1,0 +1,126 @@
+@page-lft-rt-margins: 25px;
+@special-padding-left: 15px;
+@button-active-outline-color: #00BCF2;
+// @border-color: rgb(96, 94, 92);
+
+// light theme
+@light-hover-color: rgba(85,179,255, 0.1);
+@light-button-color: #015cda;
+
+// dark theme
+@dark-hover-color: rgba(128,128,128,.3);
+@dark-button-color: #0089fa;
+@dark-text-color: #fff;
+
+.action-bar { 
+    font-size: 13px;
+    fill: @light-button-color;
+
+    body.dark & {
+        fill: @dark-button-color;
+    }
+
+    .item-list {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        height: 35px;
+        -webkit-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: 0 @page-lft-rt-margins 0 @special-padding-left; // nib: We want our page to having left and right padding of 25px. To give each button in the action bar identical padding, we have to cut the left padding for the page by the left padding for the first action button
+        
+        .item {
+            font-size: 12px;
+            line-height: normal;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-flex: 0 0 auto;
+            flex: 0 0 auto;
+            position: relative;
+            box-sizing: border-box;
+            padding: 0 10px;
+            border: 0;
+            overflow: visible;
+            text-align: left;
+            height: 30px;
+            cursor: pointer;
+
+            &:active, &:focus {
+                outline: @button-active-outline-color dotted 1px;
+            }
+
+            &:hover {
+                background-color: @light-hover-color;
+            }
+        
+            body.dark &:hover {
+                background-color: @dark-hover-color;
+            }
+
+            &.disabled {
+                pointer-events: none;
+                opacity: 0.5;
+            }
+
+            .item-container {
+                display: flex;
+                
+                .item-text {
+                    font-size: 13px;
+                    position: relative;
+                    background-color: inherit;
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    max-width: 180px;
+                }
+    
+                .item-icon {
+                    height: 16px;
+                    width: 16px;
+                    padding-right: 5px;
+                }
+            }
+
+            &.item-seperator {
+                padding: 0;
+                margin: 0 -3px;
+                outline: 0;
+                pointer-events: none;
+
+                .item-container {
+                    .item-icon {
+                        width: 21px;
+                        height: 21px;
+                        padding-right: 0;
+                    }
+                }
+
+                &:active, &:focus {
+                    outline: none;
+                }
+
+                &:hover {
+                    background-color: unset;
+                }
+            
+                body.dark &:hover {
+                    background-color: unset;
+                }
+            }
+        }
+    }
+}
+
+
+.pulldown-menu {
+    z-index: 1000;
+}

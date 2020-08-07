@@ -1,0 +1,45 @@
+{
+  "components": [
+    {
+      "component": {
+        "npmjs.org": {
+          "name": "@appinsights/aichartcore"
+        }
+      },
+      "ms.ignore": true
+    },
+    {
+      "component": {
+        "npmjs.org": {
+          "name": "applicationinsights-js"
+        }
+      },
+      "ms.ignore": true
+    },
+    {
+      "component": {
+        "npmjs.org": {
+          "name": "appinsights-iframe-shared"
+        }
+      },
+      "ms.ignore": true
+    },
+    {
+      "component": {
+        "npmjs.org": {
+          "name": "vsts-npm-auth"
+        }
+      },
+      "ms.ignore": true
+    },
+    {
+      "component": {
+        "npmjs.org": {
+          "name": "indexof",
+          "version": "0.0.1"
+        }
+      },
+      "ms.license": "MIT"
+    }
+  ]
+}

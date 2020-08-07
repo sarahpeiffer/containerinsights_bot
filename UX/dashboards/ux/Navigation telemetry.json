@@ -1,0 +1,710 @@
+{
+  "properties": {
+    "lenses": {
+      "0": {
+        "order": 0,
+        "parts": {
+          "0": {
+            "position": {
+              "x": 0,
+              "y": 0,
+              "colSpan": 5,
+              "rowSpan": 10
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents \n| where timestamp >= ago(7d)\n| where operation_Name contains \"/container-perf.html\"\n| where operation_Name !contains \"latest\"\n| where operation_Name contains \"web\"\n| where name == \"kustoContainerClusterChartsLoad\" \n    or  name == \"kustoContainerHostHierarchyLoad\"\n    or  name == \"kustoContainerControllerHierarchyLoad\"\n    or  name == \"kustoContainerListLoad\"\n| extend start_time = todatetime(customDimensions.startDateTimeUtc)\n| extend end_time = todatetime(customDimensions.endDateTimeUtc)\n| extend time_range_in_minutes = datetime_diff('minute', end_time , start_time)\n| summarize count() by time_range_in_minutes\n| extend time_range_in_minutes_string = iff(time_range_in_minutes < 30, \" < 30 mins\" ,\n                                        iff(time_range_in_minutes == 30, \"30 mins\" ,\n                                        iff(time_range_in_minutes == 60, \"1 hour\" ,\n                                        iff(time_range_in_minutes == 360, \"6 hours\" , \n                                        iff(time_range_in_minutes == 720, \"12 hours\" ,\n                                        iff(time_range_in_minutes == 1440, \"24 hours\" ,\n                                        iff(time_range_in_minutes == 4320, \"3 days\" ,\n                                        iff(time_range_in_minutes == 10080, \"7 days\" ,\n                                        iff(time_range_in_minutes == 43200, \"30 days\" ,\n                                        iff(time_range_in_minutes > 43200, \"> 30 days\" ,\n                                        strcat(tostring(time_range_in_minutes), \" mins\")))))))))))\n| project time_range_in_minutes_string, count_\n| order by count_ desc\n"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/6aab1eed-226d-49d0-911a-2b1d118cb62d"
+                },
+                {
+                  "name": "PartId",
+                  "value": "bb4ebb53-981c-486f-b4ae-6ccb5d40cfdb"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "TimePill selections",
+                  "PartSubTitle": "7d",
+                  "Query": "customEvents \n| where timestamp >= ago(7d)\n| where operation_Name contains \"/container-perf.html\"\n| where operation_Name !contains \"latest\"\n| where operation_Name contains \"web\" or operation_Name startswith \"/monitoring/Content/iframe/infrainsights.app\"\n| where name == \"kustoContainerClusterChartsLoad\" \n    or  name == \"kustoContainerHostHierarchyLoad\"\n    or  name == \"kustoContainerControllerHierarchyLoad\"\n    or  name == \"kustoContainerListLoad\"\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| extend start_time = todatetime(customDimensions.startDateTimeUtc)\n| extend end_time = todatetime(customDimensions.endDateTimeUtc)\n| extend time_range_in_minutes = datetime_diff('minute', end_time , start_time)\n| summarize count() by time_range_in_minutes\n| extend time_range_string = iff(time_range_in_minutes < 30, \" < 30 mins\" ,\n                                        iff(time_range_in_minutes == 30, \"30 mins\" ,\n                                        iff(time_range_in_minutes == 60, \"1 hour\" ,\n                                        iff(time_range_in_minutes == 360, \"6 hours\" , \n                                        iff(time_range_in_minutes == 720, \"12 hours\" ,\n                                        iff(time_range_in_minutes == 1440, \"24 hours\" ,\n                                        iff(time_range_in_minutes == 4320, \"3 days\" ,\n                                        iff(time_range_in_minutes == 10080, \"7 days\" ,\n                                        iff(time_range_in_minutes == 43200, \"30 days\" ,\n                                        iff(time_range_in_minutes > 43200, \"> 30 days\" ,\n                                        strcat(tostring(time_range_in_minutes), \" mins\")))))))))))\n| project time_range_string, count_\n| summarize sum(count_) by time_range_string\n| order by sum_count_ desc"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "1": {
+            "position": {
+              "x": 5,
+              "y": 0,
+              "colSpan": 7,
+              "rowSpan": 10
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents \n| where timestamp >= ago(7d)\n| where name == 'navigate'\n| where operation_Name contains \"/container-perf.html\" or operation_Name contains \"multicluster-health.html\"\n| where operation_Name !contains \"latest\"\n| where operation_Name contains \"web\"\n| project tempSource = tostring(customDimensions.source), destination = tostring(customDimensions.destination)\n| extend source = iff(tempSource contains \"0\", \"ChartsPage\", \n                    iff(tempSource contains \"1\", \"NodeGrid\",\n                        iff(tempSource contains \"2\", \"ControllerGrid\",\n                            iff(tempSource contains \"3\", \"ContainerGrid\", tempSource))))\n| summarize count() by source, destination\n| order by count_ desc \n"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/6aab1eed-226d-49d0-911a-2b1d118cb62d"
+                },
+                {
+                  "name": "PartId",
+                  "value": "f6feff87-5809-4420-a7ec-d5521d0ec1d7"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Captured Usage",
+                  "PartSubTitle": "7d",
+                  "Query": "customEvents \n| where timestamp >= ago(7d)\n| where name == 'navigate'\n| where operation_Name contains \"/container-perf.html\" or operation_Name contains \"multicluster-health.html\"\n| where operation_Name !contains \"latest\"\n| where operation_Name contains \"web\" or operation_Name startswith \"/monitoring/Content/iframe/infrainsights.app\"\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| project tempSource = tostring(customDimensions.source), destination = tostring(customDimensions.destination)\n| extend source = iff(tempSource contains \"0\", \"ChartsPage\", \n                    iff(tempSource contains \"1\", \"NodeGrid\",\n                        iff(tempSource contains \"2\", \"ControllerGrid\",\n                            iff(tempSource contains \"3\", \"ContainerGrid\", tempSource))))\n| summarize count() by source, destination\n| order by count_ desc \n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "2": {
+            "position": {
+              "x": 12,
+              "y": 0,
+              "colSpan": 4,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents \n| where timestamp >= ago(7d)\n| where operation_Name contains \"/container-perf.html\"\n| where operation_Name !contains \"latest\"\n| where operation_Name contains \"web\"\n| where name == \"kustoContainerClusterChartsLoad\" \n    or  name == \"kustoContainerHostHierarchyLoad\"\n    or  name == \"kustoContainerControllerHierarchyLoad\"\n    or  name == \"kustoContainerListLoad\"\n| extend namespace_exisits = tostring(customDimensions.namespace) == \"\"\n| summarize count() by namespace_exisits"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/6aab1eed-226d-49d0-911a-2b1d118cb62d"
+                },
+                {
+                  "name": "PartId",
+                  "value": "adefc913-e8fe-4b07-83d0-bc4692c67e49"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Namespace pill",
+                  "PartSubTitle": "7d",
+                  "Query": "customEvents \n| where timestamp >= ago(7d)\n| where operation_Name contains \"/container-perf.html\"\n| where operation_Name !contains \"latest\"\n| where operation_Name contains \"web\" or operation_Name startswith \"/monitoring/Content/iframe/infrainsights.app\"\n| where name == \"kustoContainerClusterChartsLoad\" \n    or  name == \"kustoContainerHostHierarchyLoad\"\n    or  name == \"kustoContainerControllerHierarchyLoad\"\n    or  name == \"kustoContainerListLoad\"\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| extend namespace_exisits = tostring(customDimensions.namespace) != \"\"\n| summarize count() by namespace_exisits\n| order by namespace_exisits "
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "3": {
+            "position": {
+              "x": 16,
+              "y": 0,
+              "colSpan": 7,
+              "rowSpan": 5
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents \n| where timestamp >= ago(7d)\n| where operation_Name contains \"/container-perf.html\"\n| where operation_Name !contains \"latest\"\n| where operation_Name contains \"web\"\n| where name == \"kustoContainerClusterChartsLoad\" \n    or  name == \"kustoContainerHostHierarchyLoad\"\n    or  name == \"kustoContainerControllerHierarchyLoad\"\n    or  name == \"kustoContainerListLoad\"\n| extend namespace_exisits = tostring(customDimensions.namespace) != \"\"\n| extend service_name_exisits = tostring(customDimensions.service_name) != \"\"\n| extend host_name_exisits = tostring(customDimensions.host_name) != \"\"\n| summarize count() by host_name_exisits, namespace_exisits, service_name_exisits \n| order by count_ desc\n"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/6aab1eed-226d-49d0-911a-2b1d118cb62d"
+                },
+                {
+                  "name": "PartId",
+                  "value": "650baf7a-60b0-4f3c-aded-c2df16c0e889"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Variable Pill Selections",
+                  "PartSubTitle": "7d",
+                  "Query": "customEvents \n| where timestamp >= ago(7d)\n| where operation_Name contains \"/container-perf.html\"\n| where operation_Name !contains \"latest\"\n| where operation_Name contains \"web\" or operation_Name startswith \"/monitoring/Content/iframe/infrainsights.app\"\n| where name == \"kustoContainerClusterChartsLoad\" \n    or  name == \"kustoContainerHostHierarchyLoad\"\n    or  name == \"kustoContainerControllerHierarchyLoad\"\n    or  name == \"kustoContainerListLoad\"\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| extend namespace_exisits = tostring(customDimensions.namespace) != \"\"\n| extend service_name_exisits = tostring(customDimensions.service_name) != \"\"\n| extend host_name_exisits = tostring(customDimensions.host_name) != \"\"\n| summarize count() by host_name_exisits, namespace_exisits, service_name_exisits \n| order by count_ desc\n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "4": {
+            "position": {
+              "x": 23,
+              "y": 0,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "let segregatedCount=customEvents \n| where timestamp >= ago(7d)\n| where name == 'navigate'\n| where operation_Name contains \"/container-perf.html\" or operation_Name contains \"multicluster-health.html\"\n| where operation_Name !contains \"latest\"\n| where operation_Name contains \"web\"\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| where customDimensions.destination contains \"LiveLogs\" or customDimensions.destination contains \"LiveData\"\n| project PropertyPanel=split(customDimensions.source,':')[2], user_Id, timestamp\n| summarize dcount(user_Id) by bin(timestamp, 1d), tostring(PropertyPanel);\nsegregatedCount\n| render timechart \n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "DateTime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "dcount_user_Id",
+                        "type": "Int64"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "PropertyPanel",
+                        "type": "String"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/6aab1eed-226d-49d0-911a-2b1d118cb62d"
+                },
+                {
+                  "name": "PartId",
+                  "value": "e46491e4-75e6-4919-af03-04eb3a450d47"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Property Panel Clicks By Grid",
+                  "PartSubTitle": "InfraInsightsUX-Prod",
+                  "Query": "let segregatedCount=customEvents \n| where timestamp >= ago(7d)\n| where name == 'navigate'\n| where operation_Name contains \"/container-perf.html\" or operation_Name contains \"multicluster-health.html\"\n| where operation_Name !contains \"latest\"\n| where operation_Name contains \"web\" or operation_Name startswith \"/monitoring/Content/iframe/infrainsights.app\"\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| where customDimensions.destination contains \"LiveLogs\" or customDimensions.destination contains \"LiveData\"\n| project PropertyPanel=split(customDimensions.source,':')[2], user_Id, timestamp\n| summarize dcount(user_Id) by bin(timestamp, 1d), tostring(PropertyPanel);\nsegregatedCount\n| render timechart \n"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "5": {
+            "position": {
+              "x": 12,
+              "y": 3,
+              "colSpan": 4,
+              "rowSpan": 3
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents \n| where timestamp >= ago(7d)\n| where operation_Name contains \"/container-perf.html\"\n| where operation_Name !contains \"latest\"\n| where operation_Name contains \"web\"\n| where name == \"kustoContainerClusterChartsLoad\" \n    or  name == \"kustoContainerHostHierarchyLoad\"\n    or  name == \"kustoContainerControllerHierarchyLoad\"\n    or  name == \"kustoContainerListLoad\"\n| extend service_name_exisits = tostring(customDimensions.service_name) == \"\"\n| summarize count() by service_name_exisits\n"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/6aab1eed-226d-49d0-911a-2b1d118cb62d"
+                },
+                {
+                  "name": "PartId",
+                  "value": "3d4722b6-9506-4499-adb9-a3c01ff69169"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Service pill",
+                  "PartSubTitle": "7d",
+                  "Query": "customEvents \n| where timestamp >= ago(7d)\n| where operation_Name contains \"/container-perf.html\"\n| where operation_Name !contains \"latest\"\n| where operation_Name contains \"web\" or operation_Name startswith \"/monitoring/Content/iframe/infrainsights.app\"\n| where name == \"kustoContainerClusterChartsLoad\" \n    or  name == \"kustoContainerHostHierarchyLoad\"\n    or  name == \"kustoContainerControllerHierarchyLoad\"\n    or  name == \"kustoContainerListLoad\"\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| extend service_name = tostring(customDimensions.service_name) != \"\"\n| summarize count() by service_name\n| order by service_name"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "6": {
+            "position": {
+              "x": 16,
+              "y": 5,
+              "colSpan": 6,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents\r\n| where timestamp >= ago(7d)\r\n| where itemType == 'customEvent'\r\n| where name == 'DetailsPanelTabSelectionChanged'\r\n| project Data = todynamic(customDimensions.data), timestamp, name, customDimensions, UIComponent = strcat('Tab: ', tostring(customDimensions.tabName))\r\n| summarize count() by UIComponent, bin(timestamp, 1d)\r\n| union (\r\ncustomEvents\r\n| where timestamp >= ago(7d)\r\n| where itemType == 'customEvent'\r\n| where name == 'navigate'\r\n| where customDimensions.destination == 'k8s_infrastructure' or customDimensions.destination == 'all_nodes' // health aspects\r\n| project UIComponent = strcat('Aspect: ', tostring(customDimensions.destination)), timestamp\r\n| summarize count() by UIComponent, bin(timestamp, 1d)\r\n)\r\n| render timechart \r\n"
+                },
+                {
+                  "name": "Dimensions",
+                  "value": {
+                    "xAxis": {
+                      "name": "timestamp",
+                      "type": "datetime"
+                    },
+                    "yAxis": [
+                      {
+                        "name": "count_",
+                        "type": "long"
+                      }
+                    ],
+                    "splitBy": [
+                      {
+                        "name": "UIComponent",
+                        "type": "string"
+                      }
+                    ],
+                    "aggregation": "Sum"
+                  }
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "PartId",
+                  "value": "d1ab2692-6f15-4a64-a15d-a367cb271224"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsChart"
+                },
+                {
+                  "name": "SpecificChart",
+                  "value": "Line"
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "DashboardId",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Not Live: Health Click Telemetry for Tabs and Aspects",
+                  "PartSubTitle": "InfraInsightsUX-Prod"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          },
+          "7": {
+            "position": {
+              "x": 12,
+              "y": 6,
+              "colSpan": 4,
+              "rowSpan": 4
+            },
+            "metadata": {
+              "inputs": [
+                {
+                  "name": "ComponentId",
+                  "value": {
+                    "SubscriptionId": "13d371f9-5a39-46d5-8e1b-60158c49db84",
+                    "ResourceGroup": "InfraInsightsUX-Prod-Monitoring-RG",
+                    "Name": "InfraInsightsUX-Prod",
+                    "ResourceId": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourcegroups/InfraInsightsUX-Prod-Monitoring-RG/providers/microsoft.insights/components/InfraInsightsUX-Prod"
+                  }
+                },
+                {
+                  "name": "Query",
+                  "value": "customEvents \n| where timestamp >= ago(7d)\n| where operation_Name contains \"/container-perf.html\"\n| where operation_Name !contains \"latest\"\n| where operation_Name contains \"web\"\n| where name == \"kustoContainerClusterChartsLoad\" \n    or  name == \"kustoContainerHostHierarchyLoad\"\n    or  name == \"kustoContainerControllerHierarchyLoad\"\n    or  name == \"kustoContainerListLoad\"\n| extend host_name_exisits = tostring(customDimensions.host_name) == \"\"\n| summarize count() by host_name_exisits \n"
+                },
+                {
+                  "name": "Version",
+                  "value": "1.0"
+                },
+                {
+                  "name": "DashboardId",
+                  "value": "/subscriptions/13d371f9-5a39-46d5-8e1b-60158c49db84/resourceGroups/dashboards/providers/Microsoft.Portal/dashboards/6aab1eed-226d-49d0-911a-2b1d118cb62d"
+                },
+                {
+                  "name": "PartId",
+                  "value": "50bbda82-9ba1-41d5-9b14-947d1e255b9d"
+                },
+                {
+                  "name": "PartTitle",
+                  "value": "Analytics"
+                },
+                {
+                  "name": "PartSubTitle",
+                  "value": "InfraInsightsUX-Prod"
+                },
+                {
+                  "name": "resourceTypeMode",
+                  "value": "components"
+                },
+                {
+                  "name": "ControlType",
+                  "value": "AnalyticsGrid"
+                },
+                {
+                  "name": "Dimensions",
+                  "isOptional": true
+                },
+                {
+                  "name": "TimeRange",
+                  "isOptional": true
+                },
+                {
+                  "name": "SpecificChart",
+                  "isOptional": true
+                }
+              ],
+              "type": "Extension/AppInsightsExtension/PartType/AnalyticsPart",
+              "settings": {
+                "content": {
+                  "PartTitle": "Node pill",
+                  "PartSubTitle": "7d",
+                  "Query": "customEvents \n| where timestamp >= ago(7d)\n| where operation_Name contains \"/container-perf.html\"\n| where operation_Name !contains \"latest\"\n| where operation_Name contains \"web\" or operation_Name startswith \"/monitoring/Content/iframe/infrainsights.app\"\n| where name == \"kustoContainerClusterChartsLoad\" \n    or  name == \"kustoContainerHostHierarchyLoad\"\n    or  name == \"kustoContainerControllerHierarchyLoad\"\n    or  name == \"kustoContainerListLoad\"\n// cloud ops tip 1\n| where customDimensions.workspace_id !startswith '/subscriptions/692aea0b-2d89-4e7e-ae30-fffe40782ee2'\n// Container Insights - Test - 1\n| where customDimensions.workspace_id !startswith '/subscriptions/72c8e8ca-dc16-47dc-b65c-6b5875eb600a'\n| extend host_name_exists = tostring(customDimensions.host_name) != \"\"\n| summarize count() by host_name_exists\n| order by host_name_exists"
+                }
+              },
+              "asset": {
+                "idInputName": "ComponentId",
+                "type": "ApplicationInsights"
+              }
+            }
+          }
+        }
+      }
+    },
+    "metadata": {
+      "model": {
+        "timeRange": {
+          "value": {
+            "relative": {
+              "duration": 24,
+              "timeUnit": 1
+            }
+          },
+          "type": "MsPortalFx.Composition.Configuration.ValueTypes.TimeRange"
+        },
+        "filterLocale": {
+          "value": "en-us"
+        },
+        "filters": {
+          "value": {
+            "MsPortalFx_TimeRange": {
+              "model": {
+                "format": "utc",
+                "granularity": "auto",
+                "relative": "7d"
+              },
+              "displayCache": {
+                "name": "UTC Time",
+                "value": "Past 7 days"
+              },
+              "filteredPartIds": [
+                "StartboardPart-AnalyticsPart-c5d23c82-8590-40db-a169-c47598a792a2",
+                "StartboardPart-AnalyticsPart-c5d23c82-8590-40db-a169-c47598a792a4",
+                "StartboardPart-AnalyticsPart-c5d23c82-8590-40db-a169-c47598a792a6",
+                "StartboardPart-AnalyticsPart-c5d23c82-8590-40db-a169-c47598a792a8",
+                "StartboardPart-AnalyticsPart-c5d23c82-8590-40db-a169-c47598a792aa",
+                "StartboardPart-AnalyticsPart-c5d23c82-8590-40db-a169-c47598a792ac",
+                "StartboardPart-AnalyticsPart-c5d23c82-8590-40db-a169-c47598a792ae",
+                "StartboardPart-AnalyticsPart-c5d23c82-8590-40db-a169-c47598a792b0"
+              ]
+            }
+          }
+        }
+      }
+    }
+  },
+  "name": "Navigation telemetry",
+  "type": "Microsoft.Portal/dashboards",
+  "location": "INSERT LOCATION",
+  "tags": {
+    "hidden-title": "Navigation telemetry"
+  },
+  "apiVersion": "2015-08-01-preview"
+}

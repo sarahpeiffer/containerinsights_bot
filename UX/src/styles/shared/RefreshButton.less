@@ -1,0 +1,45 @@
+@button-outline-color-active-focused: #00BCF2;
+
+// light theme
+@light-button-color: #015cda;
+
+// dark theme
+@dark-text-color: #fff;
+@dark-button-color: #0089fa;
+
+.default-refresh-button {
+    cursor: pointer;
+    width: fit-content;
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+
+    .svg {
+        height: 16px;
+        width: 16px;
+        padding-right: 5px;
+        fill: @light-button-color;
+        body.dark & { 
+            fill: @dark-button-color;
+        }
+    }
+
+    .text {
+        height: 100%;
+        width: fit-content;
+        font-size: 13px;
+        body.dark & {
+            color: @dark-text-color;
+        }
+    }
+    
+    &:focus {
+        outline: @button-outline-color-active-focused dashed 1px;
+    }
+
+    &.disabled {
+        opacity: 0.5;
+    }
+}

@@ -1,0 +1,234 @@
+[
+  {
+    "Type": "dashboard",
+    "Id": "a4812246-f96d-45f6-9567-a8c9b742a935",
+    "Title": "Pin To DashBoard",
+    "Body": {
+      "title": "Pin To DashBoard",
+      "hits": 0,
+      "panelsJSON": "[{\"type\":\"visualization\",\"size_x\":7,\"size_y\":5,\"isTempObject\":false,\"id\":\"17fe87f5-2df1-4722-9593-c3f7b7772b5e\",\"uid\":\"99a109ee-367e-46a3-8cc8-f0b2b07b6bf0\",\"col\":1,\"row\":1,\"vis_id\":\"7651cc7f-4490-46d4-b491-7ab07660f3ae\",\"saved_data\":\"\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"title\":\"Insights Charts by Chart Type\"},{\"type\":\"visualization\",\"size_x\":7,\"size_y\":4,\"isTempObject\":false,\"id\":\"015c8aba-1e41-413b-a245-18a9b4b17eb0\",\"uid\":\"29653ddf-9e79-4bec-955a-7eb91618456c\",\"col\":8,\"row\":1,\"vis_id\":\"9163f642-2f0e-4831-88b3-819be395ac81\",\"saved_data\":\"\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"title\":\"Daily Active Users Pinning Charts\"},{\"type\":\"search\",\"size_x\":9,\"size_y\":4,\"isTempObject\":false,\"id\":\"c3611a0d-bd98-4de1-9757-54e56cfe3245\",\"uid\":\"2ad3f00d-9b47-4b46-801a-f1ecbbe658af\",\"col\":15,\"row\":1,\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}}},{\"type\":\"visualization\",\"size_x\":7,\"size_y\":6,\"isTempObject\":false,\"id\":\"6e31e0bc-3486-4641-a647-e76c70721230\",\"uid\":\"5c5bc425-1b6b-46f0-8da6-8eeb00a823d4\",\"col\":8,\"row\":5,\"vis_id\":\"e794b924-7d3f-48d4-b301-bc9e8978c38f\",\"saved_data\":\"\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}}},{\"id\":\"ce76ec34-c1f5-4d39-8519-be8a5a5a6824\",\"type\":\"visualization\",\"isCloned\":false,\"isInputType\":false,\"isRequired\":false,\"size_x\":7,\"size_y\":5,\"uid\":\"812c5037-bf4c-43c8-8afb-604206e7f24d\",\"col\":1,\"row\":6,\"vis_id\":\"7527dc16-c723-4264-8475-139d9bbaa156\",\"saved_data\":\"\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}}}]",
+      "inputPanelsJSON": "[]",
+      "requiredInputMessage": "Please select required inputs.",
+      "version": 1,
+      "cachingEnabled": false,
+      "cachingDataFreshenessMinutes": 30,
+      "timeRestore": true,
+      "timeRefreshIntervalValue": 0,
+      "timeRoundBy": "Auto",
+      "timeFormat": "Local",
+      "tabsJSON": "[]",
+      "tabsType": "default",
+      "useGlobalFilters": false,
+      "mode": "Authoring Mode",
+      "showTitle": true,
+      "showTitleButtons": false,
+      "renameTile": true,
+      "editVisualization": true,
+      "exportDataToCSV": true,
+      "showClonePanel": true,
+      "showRefresh": true,
+      "showExportToImage": true,
+      "showInspectQuery": true,
+      "showMoveToOtherSection": true,
+      "showDebug": false,
+      "showTime": false,
+      "showBorders": true,
+      "showFilter": true,
+      "showCustomTimeAggregation": false,
+      "showPanelTitle": true,
+      "showWorkspaceInfo": false,
+      "panelTitle": {
+        "alignment": "center",
+        "font": "",
+        "style": {
+          "bold": false,
+          "italic": false,
+          "underline": false
+        },
+        "size": "1.3em",
+        "color": "#3d85c6"
+      },
+      "capitalizedTitles": false,
+      "extraColumns": true,
+      "dashboardTimeFilterLimit": {
+        "options": {
+          "text": "Weeks",
+          "value": "Week(s)"
+        },
+        "value": 2,
+        "limitEnabled": false
+      },
+      "queryOptimizationEnabled": false,
+      "inspectQuery": true,
+      "exportPanelToImage": true,
+      "clonePanel": true,
+      "refreshPanel": true,
+      "removePanel": true,
+      "moveToSection": true,
+      "makeItInput": true,
+      "openInExplore": true,
+      "showPanelMenu": true,
+      "showInputPanelMenu": true,
+      "showInputApplyButton": false,
+      "showInputTitle": false,
+      "editInput": true,
+      "inputRequired": true,
+      "refreshInput": true,
+      "removeInput": true,
+      "moveInputToSection": true,
+      "groupsJson": "{\"keys\":[\"global\"],\"groups\":{\"global\":{\"title\":\"global\",\"color\":\"#00bcf2\"}},\"groupsByPanel\":{\"99a109ee-367e-46a3-8cc8-f0b2b07b6bf0\":{\"sourceGroups\":[\"global\"],\"destinationGroups\":[],\"title\":\"\"},\"29653ddf-9e79-4bec-955a-7eb91618456c\":{\"sourceGroups\":[\"global\"],\"destinationGroups\":[],\"title\":\"\"},\"812c5037-bf4c-43c8-8afb-604206e7f24d\":{\"sourceGroups\":[\"global\"],\"destinationGroups\":[],\"title\":\"\"},\"5c5bc425-1b6b-46f0-8da6-8eeb00a823d4\":{\"sourceGroups\":[\"global\"],\"destinationGroups\":[],\"title\":\"\"},\"2ad3f00d-9b47-4b46-801a-f1ecbbe658af\":{\"sourceGroups\":[\"global\"],\"destinationGroups\":[],\"title\":\"\"}},\"groupsByTab\":{},\"filtersByTab\":{},\"allOtherFilters\":[],\"filtersToBeApplied\":[],\"modifiedPanels\":[]}",
+      "vis_id": "51ca63fb-0ad6-448f-9c94-3a49019763a9",
+      "customTimeagg": "",
+      "filterPrompt": false,
+      "supportGroupsJSON": "[]",
+      "customMessageText": "",
+      "customMessageIsEnabled": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "6e31e0bc-3486-4641-a647-e76c70721230",
+    "Title": "Number of Navigations from Pinned Charts toInsights",
+    "Body": {
+      "title": "Number of Navigations from Pinned Charts toInsights",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":false,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"count_\",\"color\":\"#006e8a\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#848e96\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"polyfit\":{\"fit\":false,\"line_type\":\"linear\",\"reg_only\":false},\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"count_\",\"type\":\"Int64\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"PreciseTimeStamp\",\"type\":\"DateTime\"},\"aggCustomLabel\":\"\"}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"e794b924-7d3f-48d4-b301-bc9e8978c38f\"}",
+      "vis_id": "e794b924-7d3f-48d4-b301-bc9e8978c38f",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"azportalpartner.kusto.windows.net\",\"database\":\"AzPtlCosmos\",\"filter\":[],\"timefield\":\"PreciseTimeStamp\",\"query\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").table(\\\"ExtTelemetry\\\") \\n| where PreciseTimeStamp >= ago(30d) and PreciseTimeStamp <= ago(0d)\\n| where extension == \\\"Microsoft_Azure_Monitoring\\\"\\n| where source =~ \\\"ChartPart\\\"\\n| where action =~ \\\"NavigatingBackToAKSClusterInsights\\\" or action =~ \\\"NavigatingToContainerInsights\\\"\\n| summarize count() by  bin(PreciseTimeStamp, 1d)\\n| render timechart\",\"allQueries\":{\"content\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").table(\\\"ExtTelemetry\\\") \\r\\n| where PreciseTimeStamp >= ago(30d) and PreciseTimeStamp <= ago(0d)\\r\\n| where extension == \\\"Microsoft_Azure_Monitoring\\\"\\r\\n| where source =~ \\\"ChartPart\\\"\\r\\n| where action =~ \\\"NavigatingBackToAKSClusterInsights\\\" or action =~ \\\"NavigatingToContainerInsights\\\"\\r\\n| summarize count() by  bin(PreciseTimeStamp, 1d)\\r\\n| render timechart \",\"startLine\":1,\"startColumn\":1,\"endLine\":7,\"endColumn\":19},\"timefilter\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\"}}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "ce76ec34-c1f5-4d39-8519-be8a5a5a6824",
+    "Title": "Daily Active Users Navigating from Pinned Chart to Insights",
+    "Body": {
+      "title": "Daily Active Users Navigating from Pinned Chart to Insights",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":false,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"count_\",\"color\":\"#006e8a\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#848e96\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"polyfit\":{\"fit\":false,\"line_type\":\"linear\",\"reg_only\":false},\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"count_\",\"type\":\"Int64\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"TimeStamp\",\"type\":\"DateTime\"},\"aggCustomLabel\":\"\"}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"7527dc16-c723-4264-8475-139d9bbaa156\"}",
+      "vis_id": "7527dc16-c723-4264-8475-139d9bbaa156",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"azportalpartner.kusto.windows.net\",\"database\":\"AzPtlCosmos\",\"filter\":[],\"timefield\":\"TimeStamp\",\"query\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").table(\\\"ExtTelemetry\\\") \\n| where PreciseTimeStamp >= ago(30d) and PreciseTimeStamp <= ago(0d)\\n| where extension == \\\"Microsoft_Azure_Monitoring\\\"\\n| where source =~ \\\"ChartPart\\\"\\n| where action =~ \\\"NavigatingBackToAKSClusterInsights\\\" or action =~ \\\"NavigatingToContainerInsights\\\"\\n| summarize Tried = count() by TimeStamp = bin(PreciseTimeStamp, 1d), userId\\n| summarize count() by TimeStamp\\n| render timechart \",\"allQueries\":{\"content\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").table(\\\"ExtTelemetry\\\") \\r\\n| where PreciseTimeStamp >= ago(30d) and PreciseTimeStamp <= ago(0d)\\r\\n| where extension == \\\"Microsoft_Azure_Monitoring\\\"\\r\\n| where source =~ \\\"ChartPart\\\"\\r\\n| where action =~ \\\"NavigatingBackToAKSClusterInsights\\\" or action =~ \\\"NavigatingToContainerInsights\\\"\\r\\n| summarize Tried = count() by TimeStamp = bin(PreciseTimeStamp, 1d), userId\\r\\n| summarize count() by TimeStamp\\r\\n| render timechart \\r\\n\\r\\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":8,\"endColumn\":20},\"timefilter\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\"}}"
+      }
+    }
+  },
+  {
+    "Type": "search",
+    "Id": "c3611a0d-bd98-4de1-9757-54e56cfe3245",
+    "Title": "Total Users Use Pin To Dashboard",
+    "Body": {
+      "title": "Total Users Use Pin To Dashboard",
+      "columns": [
+        {
+          "id": 0,
+          "name": "Time"
+        },
+        {
+          "id": 1,
+          "name": "PinChartUser"
+        },
+        {
+          "id": 2,
+          "name": "TotalUser"
+        },
+        {
+          "id": 3,
+          "name": "Percentage"
+        }
+      ],
+      "formats": {
+        "Percentage": {
+          "name": "Percentage",
+          "type": "SqlDecimal"
+        },
+        "PinChartUser": {
+          "name": "PinChartUser",
+          "type": "SqlDecimal"
+        },
+        "Time": {
+          "name": "Time",
+          "type": "String"
+        },
+        "TotalUser": {
+          "name": "TotalUser",
+          "type": "SqlDecimal"
+        }
+      },
+      "aggregations": {},
+      "sort": [],
+      "showGridGroupingBar": true,
+      "showFilterButton": true,
+      "showDetails": true,
+      "wrapText": false,
+      "showPagination": false,
+      "excelStyleFilter": true,
+      "showSearchToolbar": false,
+      "headerFontSize": "1.0em",
+      "headerFontWeight": "bold",
+      "headerFontStyle": "normal",
+      "headerFont": "",
+      "bodyFontSize": "1.0em",
+      "bodyFontWeight": "normal",
+      "bodyFontStyle": "normal",
+      "bodyFont": "",
+      "showColumnSettingOnDashboard": false,
+      "isClickable": true,
+      "searchFilterTags": [],
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"azportalpartner.kusto.windows.net\",\"database\":\"AzPtlCosmos\",\"query\":\"let 7Days=7d;\\nlet 14Days=14d;\\nlet 30Days=30d;\\nlet 7DaysCache = cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").table(\\\"ExtTelemetry\\\") \\n| where extension == \\\"Microsoft_Azure_Monitoring\\\" \\n| where source =~ \\\"akscluster/insights\\\" or source =~ \\\"AzureMonitor/Containers\\\" or source =~ \\\"AKSInBladeContainerInsights\\\" \\nor source =~ \\\"InBladeContainerInsightsFrameBlade\\\" or source =~ \\\"MonExtMultiAKSClusterInsights\\\"\\n| where PreciseTimeStamp >= ago(7Days);\\nlet 7pinUser = 7DaysCache\\n| where source =~ \\\"InBladeContainerInsightsFrameBlade\\\"\\n| where action =~ \\\"pinInsightsChartToDashboard\\\"\\n| distinct userId\\n| summarize count()\\n| project a='a', pin=todecimal(count_);\\nlet 7totalUser = 7DaysCache\\n| distinct userId\\n| summarize count()\\n| project a='a', tot=todecimal(count_) ;\\nlet 7data=7totalUser\\n| join 7pinUser on a\\n| project Time='Last 7 days',PinChartUser= pin, TotalUser= tot, Percentage = 100*pin/tot, index=1;\\nlet 14DaysCache = cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").table(\\\"ExtTelemetry\\\") \\n| where extension == \\\"Microsoft_Azure_Monitoring\\\"\\n| where source =~ \\\"akscluster/insights\\\" or source =~ \\\"AzureMonitor/Containers\\\" or source =~ \\\"AKSInBladeContainerInsights\\\" \\nor source =~ \\\"InBladeContainerInsightsFrameBlade\\\" or source =~ \\\"MonExtMultiAKSClusterInsights\\\"\\n| where PreciseTimeStamp >= ago(14Days);\\nlet 14pinUser = 14DaysCache\\n| where source =~ \\\"InBladeContainerInsightsFrameBlade\\\"\\n| where action =~ \\\"pinInsightsChartToDashboard\\\"\\n| distinct userId\\n| summarize count()\\n| project a='a', pin=todecimal(count_);\\nlet 14totalUser = 14DaysCache\\n| distinct userId\\n| summarize count()\\n| project a='a', tot=todecimal(count_) ;\\nlet 14data=14totalUser\\n| join 14pinUser on a\\n| project Time='Last 14 days',PinChartUser= pin, TotalUser= tot, Percentage = 100*pin/tot, index=2;\\nlet 30DaysCache = cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").table(\\\"ExtTelemetry\\\") \\n| where extension == \\\"Microsoft_Azure_Monitoring\\\"\\n| where source =~ \\\"akscluster/insights\\\" or source =~ \\\"AzureMonitor/Containers\\\" or source =~ \\\"AKSInBladeContainerInsights\\\" \\nor source =~ \\\"InBladeContainerInsightsFrameBlade\\\" or source =~ \\\"MonExtMultiAKSClusterInsights\\\"\\n| where PreciseTimeStamp >= ago(30Days);\\nlet 30pinUser = 30DaysCache\\n| where source =~ \\\"InBladeContainerInsightsFrameBlade\\\"\\n| where action contains \\\"pinInsightsChartToDashboard\\\"\\n| distinct userId\\n| summarize count()\\n| project a='a', pin=todecimal(count_);\\nlet 30totalUser = 30DaysCache\\n| distinct userId\\n| summarize count()\\n| project a='a', tot=todecimal(count_) ;\\nlet 30data=30totalUser\\n| join 30pinUser on a\\n| project Time='Last 30 days',PinChartUser= pin, TotalUser= tot, Percentage = 100*pin/tot, index=3;\\n7data\\n| union 14data\\n| union 30data\\n| sort by index asc\\n| project Time, PinChartUser, TotalUser, Percentage;\",\"allQueries\":{\"content\":\"let 7Days=7d;\\r\\nlet 14Days=14d;\\r\\nlet 30Days=30d;\\r\\nlet 7DaysCache = cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").table(\\\"ExtTelemetry\\\") \\r\\n| where extension == \\\"Microsoft_Azure_Monitoring\\\" \\r\\n| where source =~ \\\"akscluster/insights\\\" or source =~ \\\"AzureMonitor/Containers\\\" or source =~ \\\"AKSInBladeContainerInsights\\\" \\r\\nor source =~ \\\"InBladeContainerInsightsFrameBlade\\\" or source =~ \\\"MonExtMultiAKSClusterInsights\\\"\\r\\n| where PreciseTimeStamp >= ago(7Days);\\r\\nlet 7pinUser = 7DaysCache\\r\\n| where source =~ \\\"InBladeContainerInsightsFrameBlade\\\"\\r\\n| where action =~ \\\"pinInsightsChartToDashboard\\\"\\r\\n| distinct userId\\r\\n| summarize count()\\r\\n| project a='a', pin=todecimal(count_);\\r\\nlet 7totalUser = 7DaysCache\\r\\n| distinct userId\\r\\n| summarize count()\\r\\n| project a='a', tot=todecimal(count_) ;\\r\\nlet 7data=7totalUser\\r\\n| join 7pinUser on a\\r\\n| project Time='Last 7 days',PinChartUser= pin, TotalUser= tot, Percentage = 100*pin/tot, index=1;\\r\\nlet 14DaysCache = cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").table(\\\"ExtTelemetry\\\") \\r\\n| where extension == \\\"Microsoft_Azure_Monitoring\\\"\\r\\n| where source =~ \\\"akscluster/insights\\\" or source =~ \\\"AzureMonitor/Containers\\\" or source =~ \\\"AKSInBladeContainerInsights\\\" \\r\\nor source =~ \\\"InBladeContainerInsightsFrameBlade\\\" or source =~ \\\"MonExtMultiAKSClusterInsights\\\"\\r\\n| where PreciseTimeStamp >= ago(14Days);\\r\\nlet 14pinUser = 14DaysCache\\r\\n| where source =~ \\\"InBladeContainerInsightsFrameBlade\\\"\\r\\n| where action =~ \\\"pinInsightsChartToDashboard\\\"\\r\\n| distinct userId\\r\\n| summarize count()\\r\\n| project a='a', pin=todecimal(count_);\\r\\nlet 14totalUser = 14DaysCache\\r\\n| distinct userId\\r\\n| summarize count()\\r\\n| project a='a', tot=todecimal(count_) ;\\r\\nlet 14data=14totalUser\\r\\n| join 14pinUser on a\\r\\n| project Time='Last 14 days',PinChartUser= pin, TotalUser= tot, Percentage = 100*pin/tot, index=2;\\r\\nlet 30DaysCache = cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").table(\\\"ExtTelemetry\\\") \\r\\n| where extension == \\\"Microsoft_Azure_Monitoring\\\"\\r\\n| where source =~ \\\"akscluster/insights\\\" or source =~ \\\"AzureMonitor/Containers\\\" or source =~ \\\"AKSInBladeContainerInsights\\\" \\r\\nor source =~ \\\"InBladeContainerInsightsFrameBlade\\\" or source =~ \\\"MonExtMultiAKSClusterInsights\\\"\\r\\n| where PreciseTimeStamp >= ago(30Days);\\r\\nlet 30pinUser = 30DaysCache\\r\\n| where source =~ \\\"InBladeContainerInsightsFrameBlade\\\"\\r\\n| where action contains \\\"pinInsightsChartToDashboard\\\"\\r\\n| distinct userId\\r\\n| summarize count()\\r\\n| project a='a', pin=todecimal(count_);\\r\\nlet 30totalUser = 30DaysCache\\r\\n| distinct userId\\r\\n| summarize count()\\r\\n| project a='a', tot=todecimal(count_) ;\\r\\nlet 30data=30totalUser\\r\\n| join 30pinUser on a\\r\\n| project Time='Last 30 days',PinChartUser= pin, TotalUser= tot, Percentage = 100*pin/tot, index=3;\\r\\n7data\\r\\n| union 14data\\r\\n| union 30data\\r\\n| sort by index asc\\r\\n| project Time, PinChartUser, TotalUser, Percentage;\\r\\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":62,\"endColumn\":53},\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "17fe87f5-2df1-4722-9593-c3f7b7772b5e",
+    "Title": "ContainerInsights Charts by Chart Type",
+    "Body": {
+      "title": "ContainerInsights Charts by Chart Type",
+      "visState": "{\"type\":\"histogram\",\"params\":{\"addRefLine\":false,\"refValue\":0,\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"mode\":\"grouped\",\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"node-count\",\"color\":\"#00bcf2\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"cpu\",\"color\":\"#006e8a\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"pod-count\",\"color\":\"#6f87d8\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"memory\",\"color\":\"#663db8\",\"paletteName\":\"\",\"paletteIndex\":0}],\"isHorizontal\":false,\"showHorizontal\":true,\"showLabels\":false,\"labelcolor\":\"white\",\"enableAnalysis\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"count_\",\"type\":\"Int64\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"TimeStamp\",\"type\":\"DateTime\"},\"aggCustomLabel\":\"\"}},{\"id\":\"3\",\"type\":\"bucketValueOf\",\"schema\":\"group\",\"params\":{\"field\":{\"name\":\"charttype\",\"type\":\"String\"},\"aggCustomLabel\":\"\"}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"7651cc7f-4490-46d4-b491-7ab07660f3ae\"}",
+      "vis_id": "7651cc7f-4490-46d4-b491-7ab07660f3ae",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"azportalpartner.kusto.windows.net\",\"database\":\"AzPtlCosmos\",\"filter\":[],\"timefield\":\"TimeStamp\",\"query\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").table(\\\"ExtTelemetry\\\") \\n| where PreciseTimeStamp >= ago(30d) and PreciseTimeStamp <= ago(0d)\\n| where extension == \\\"Microsoft_Azure_Monitoring\\\"\\n| where source =~ \\\"InBladeContainerInsightsFrameBlade\\\"\\n| where action =~ \\\"pinInsightsChartToDashboard\\\"\\n| extend charttype = case(data contains \\\"cpu\\\", \\\"cpu\\\", \\ndata contains \\\"memory\\\", \\\"memory\\\", \\ndata contains \\\"node-count\\\", \\\"node-count\\\",\\ndata contains \\\"pod-count\\\", \\\"pod-count\\\",\\n\\\"\\\")\\n| where charttype != \\\"\\\"\\n| summarize count() by TimeStamp = bin(PreciseTimeStamp, 1d), ['charttype']\\n| render timechart   \",\"timefilter\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\"},\"allQueries\":{\"content\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").table(\\\"ExtTelemetry\\\") \\r\\n| where PreciseTimeStamp >= ago(30d) and PreciseTimeStamp <= ago(0d)\\r\\n| where extension == \\\"Microsoft_Azure_Monitoring\\\"\\r\\n| where source =~ \\\"InBladeContainerInsightsFrameBlade\\\"\\r\\n| where action =~ \\\"pinInsightsChartToDashboard\\\"\\r\\n| extend charttype = case(data contains \\\"cpu\\\", \\\"cpu\\\", \\r\\ndata contains \\\"memory\\\", \\\"memory\\\", \\r\\ndata contains \\\"node-count\\\", \\\"node-count\\\",\\r\\ndata contains \\\"pod-count\\\", \\\"pod-count\\\",\\r\\n\\\"\\\")\\r\\n| where charttype != \\\"\\\"\\r\\n| summarize count() by TimeStamp = bin(PreciseTimeStamp, 1d), ['charttype']\\r\\n| render timechart   \",\"startLine\":1,\"startColumn\":1,\"endLine\":13,\"endColumn\":22},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "015c8aba-1e41-413b-a245-18a9b4b17eb0",
+    "Title": "Daily Active Users",
+    "Body": {
+      "title": "Daily Active Users",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":false,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"DailyActiveUser\",\"color\":\"#00bcf2\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#848e96\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"polyfit\":{\"fit\":false,\"line_type\":\"linear\",\"reg_only\":false},\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"DailyActiveUser\",\"type\":\"Int64\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"TimeStamp\",\"type\":\"DateTime\"},\"aggCustomLabel\":\"\"}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"9163f642-2f0e-4831-88b3-819be395ac81\"}",
+      "vis_id": "9163f642-2f0e-4831-88b3-819be395ac81",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"azportalpartner.kusto.windows.net\",\"database\":\"AzPtlCosmos\",\"filter\":[],\"timefield\":\"TimeStamp\",\"query\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").table(\\\"ExtTelemetry\\\") \\n| where PreciseTimeStamp >= ago(30d) and PreciseTimeStamp <= ago(0d)\\n| where extension == \\\"Microsoft_Azure_Monitoring\\\"\\n| where source =~ \\\"InBladeContainerInsightsFrameBlade\\\"\\n| where action =~ \\\"pinInsightsChartToDashboard\\\"\\n| summarize Tried = count() by TimeStamp = bin(PreciseTimeStamp, 1d), userId\\n| summarize DailyActiveUser = count() by TimeStamp\\n| render  timechart \",\"allQueries\":{\"content\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").table(\\\"ExtTelemetry\\\") \\r\\n| where PreciseTimeStamp >= ago(30d) and PreciseTimeStamp <= ago(0d)\\r\\n| where extension == \\\"Microsoft_Azure_Monitoring\\\"\\r\\n| where source =~ \\\"InBladeContainerInsightsFrameBlade\\\"\\r\\n| where action =~ \\\"pinInsightsChartToDashboard\\\"\\r\\n| summarize Tried = count() by TimeStamp = bin(PreciseTimeStamp, 1d), userId\\r\\n| summarize DailyActiveUser = count() by TimeStamp\\r\\n| render  timechart \",\"startLine\":1,\"startColumn\":1,\"endLine\":8,\"endColumn\":21},\"timefilter\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\"},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  }
+]

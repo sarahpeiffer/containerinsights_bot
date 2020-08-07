@@ -1,0 +1,271 @@
+// ROWHEIGHT and LOADINGSVGHEIGHT are also constants in ../scripts/shared/ComparisonGrid.tsx
+// If you change them here, you must also change them in ComparisonGrid.tsx
+@COMPARISONGRIDROWHEIGHT: 37px;
+@LOADINGSVGHEIGHT: 25px;
+@COMPARISONGRIDSGWIDTH: 1165px;
+@LOADMORECONTAINERHEIGHT: 48px;
+
+// dark mode variables
+@dark-text-color: #fff;
+@dark-mode-hyperlink-text-color: #0089fa;
+@dark-mode-body-background-color: #111;
+@dark-mode-grid-overlay-background-color: rgba(17, 16, 0, 0.5);
+
+// note: height of the grid container is 100% less 44px (grid control panel with metric selection)
+//       less 10px for bottom margin
+// bbax: BUG: weird issue on chrome with zoom, at 90% the control panel rounds weird and is off by 1px from
+// expected 44px (24px + 10px top border + 10px bottom border)
+.comparison-grid-container {
+    height: ~'calc(100% - 45px)' !important;
+    width: 100% !important;
+    position: relative !important;
+}
+
+.drop-down-pill {
+    margin-top: 0 !important;
+    margin-left: 6px;
+}
+
+#grid-item-count {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-family: az_ea_font, wf_segoe-ui_normal,"Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: normal;
+    color: #474747;
+    padding: 0px;
+
+    body.dark & {
+        color: @dark-text-color;
+    }
+}
+
+.outer-sg-container {
+    position:  relative !important;
+    height: ~'calc(-16px + 100%)' !important; 
+
+    width: 100% !important;
+    .SplitPane {
+        .Pane1 {
+            margin-top: 1%;
+        }
+        .Pane2 {
+            height: 100%;
+        }
+    }
+}
+
+.outer-sg {
+    height: 100%; 
+    min-height: 300px; 
+    width: 100% !important;
+}
+
+#sg {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.loading-state {
+    position: absolute;
+    top: 5em;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.loading-state-svg {
+    display: flex;
+    height: @COMPARISONGRIDROWHEIGHT !important;
+}
+
+#loading-svg {
+    height: 30px !important;
+}
+
+.sg-row-loading-icon-container {
+    display: flex;
+    width: 30px;
+    height: @COMPARISONGRIDROWHEIGHT;
+}
+
+.sg-row-data-overflow {
+    position: fixed;
+    width: 100%;
+    z-index: 99999;
+    background-color: antiquewhite;
+    height: 36px;
+    left: 0;
+    padding-left: 36px;
+    cursor: default;
+
+    body.dark & {
+        color: @dark-text-color;
+        background-color: #333;
+    }
+}
+
+.grid-overlay {
+    width: 100%;
+    top: 0;
+}
+
+.no-data-msg {
+    .no-data-msg-positioner {
+        position: relative;    
+        top: 0;
+        left: 0;
+        display: flex;
+        height: 8em !important;
+        width: 100%;
+    }
+
+    #no-data-msg { 
+        font-family: az_ea_font, wf_segoe-ui_normal,"Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
+        font-size: 12px;
+        font-weight: normal;
+        line-height: normal;
+        color: rgb(37, 37, 37);
+        padding: 5px;
+        position: absolute !important;
+
+        body.dark & {
+            color: @dark-text-color;
+            background-color: @dark-mode-body-background-color;
+            border: 1px solid @dark-text-color;
+            box-sizing: border-box;
+        }
+    }
+}
+
+.error-msg {
+    position: absolute !important;
+    .error-msg-positioner {
+        position: relative;    
+        top: 0;
+        left: 0;
+        display: flex;
+        height: @COMPARISONGRIDROWHEIGHT * 4 !important;
+        width: 100%;
+    }
+}
+
+.load-more-button {
+    display: flex;
+    height: @LOADMORECONTAINERHEIGHT;
+    flex: 0 1 @LOADMORECONTAINERHEIGHT;
+}
+
+#load-more-button {
+    // position: relative;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+
+    body.dark & {
+        color: @dark-mode-hyperlink-text-color;
+    }
+}
+
+.colored-sg-cell-formatting {
+    position: absolute;
+    bottom: 0px;
+    width: 85% !important; 
+    height: 32px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.position-absolute {
+    position: absolute;
+}
+.position-relative {
+    position: relative;
+}
+
+.not-click-through {
+    pointer-events: auto;
+}
+.click-through {
+    pointer-events: none;
+}
+
+.centering-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.center-flex-content {
+    justify-content: center;
+    align-items: center;
+}
+
+.unset-height {
+    height: auto !important;
+}
+
+.invisible {
+    display: none;
+}
+
+.transparent {
+    opacity: 0.5;
+}
+
+.grid-plus-load-more {
+    display: flex;
+    flex-flow: column;
+}
+
+.grid-plus-load-more-loaded {
+    height: 100%;
+}
+
+.sg-data-plus-loadmore-overlay {
+    position: relative;
+    top: @COMPARISONGRIDROWHEIGHT;
+    height: ~'calc(100% - 37px)';
+    width: 100%;
+}
+
+.sg-row {
+    body.dark & {
+        color: @dark-text-color;
+    }
+}
+
+.superimpose-z-index {
+    z-index: 11111;
+}
+
+.sg-text {
+    width: 100%;
+
+    // bbax: note that title + subtitle != the 37px full line-height.. this is by design right now
+    // to avoid adding a dummy div into the mix to fill up the extra space we don't want or need
+    // Moved to Refactor Task to mitigate risk:
+    // https://msecg.visualstudio.com/DefaultCollection/OMS/_workitems/edit/182436
+    .sg-text-title {
+        height: 24px;
+        line-height: 24px;
+        font-size: 1.2em;
+    }
+    .sg-text-subtitle {
+        line-height: 8px;
+        height: 8px;
+        font-size: 0.75em;
+    }
+}
+
+.sg-col {
+    text-align: center;
+    // overflow: visible !important;
+}

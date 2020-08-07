@@ -1,0 +1,145 @@
+@dark-mode-text-color: #e0e0e0;
+@dark-mode-background-color: #252525;
+@load-more-div-height: 49px;
+@default-hyperlink-color: #015cda;
+
+.MainPage-root {
+    overflow-x: hidden; // IE11 fix to remove horizontal scrollbar
+    .content-root {
+        overflow-x: hidden;
+        body.dark & {
+            background: #111111;
+        }
+        .maps-control-panel {
+            background: #fff;
+            padding-right: 10px;
+        }
+        .infra-main-tabs {
+            height: calc(100vh ~'-' @load-more-div-height);
+            padding: 2px; // IE11 fix to remove vertical scrollbar
+            .compute-pane-header {
+                margin: 0 10px;
+            }
+            .react-tabs__tab-panel--selected {
+                padding: 0;
+            }
+            .react-tabs__tab-list {
+                .react-tabs__tab {
+                    font-size: 13px;
+                }
+            }
+            .comparison-grid-container {
+                height: ~'calc(100% - 60px)';
+                width: ~'calc(100% - 20px)';
+                position: relative;
+                .outer-sg {
+                    min-height: 120px;
+                    margin: 0;
+                    #sg {
+                        height: calc(100% ~'-' @load-more-div-height);
+                        .sg-body {
+                            height: calc(100% ~'-' 36px);
+                        }
+                    }
+                    .load-more-button {
+                        flex: 0 1 @load-more-div-height;
+                        box-sizing: border-box;
+                        & > div {
+                            height: 100%;
+                            width: 100%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-around;
+                            &:hover {
+                                background-color: #e0e0e0;
+                            }
+                        }
+                    }
+                }
+                .loading-state {
+                    top: 0;
+                    margin-left: 0;
+                    .sg-data-plus-loadmore-overlay {
+                        top: 0;
+                        height: 100%;
+                    }
+                }
+            }
+        }
+    }
+    .compute-grid-pane {
+        #sg {
+            .sg-body {
+                > div:first-child {
+                    overflow-y: hidden !important;
+                }
+            }
+        }
+    }
+}
+
+.perf-list-tool-pane {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 20px 0 5px;
+
+    body.dark & {
+        @dark-mode-text-color: #e0e0e0;
+    }
+
+    .label-vm-perf  {
+        padding-right: 10px;
+
+        label {
+            body.dark & {
+                color: @dark-mode-text-color;
+            }
+        }
+    }
+
+    .control-vm-perf-list {
+        margin-right: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+
+    input, select {
+        height: 18px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgba(127,127,127,.7);
+        box-sizing: border-box;
+        font-size: 12px;
+        height: 23px;
+        font-family: az_ea_font,wf_segoe-ui_normal,"Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
+
+        body.dark & {
+            color: @dark-mode-text-color;
+            background-color: @dark-mode-background-color;
+        }
+    }
+
+    select {
+        padding: 1px 3px 3px 3px;
+    }
+
+    input {
+        padding: 1px 3px 3px 8px;
+    }
+
+    .searchbox-filter-by-name {
+        width: 300px;
+    }
+
+    .metric-dropdown-vm-perf {
+        margin-right: 5px;
+    }
+
+    input::placeholder {
+        color: rgba(127,127,127,.7);
+        font-style: italic;
+        font-size: 12px;
+        font-family: az_ea_font,wf_segoe-ui_normal,"Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
+    }
+}

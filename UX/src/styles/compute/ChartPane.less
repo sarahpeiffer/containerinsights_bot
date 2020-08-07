@@ -1,0 +1,285 @@
+@import '~@appinsights/aichartcore/components/Styles/App.less';
+@import '~@appinsights/aichartcore/components/Styles/AiChart.less';
+@import '~@appinsights/aichartcore/AI/ME/Styles/AiBarChart.less';
+@import '~@appinsights/aichartcore/AI/ME/Styles/Chart.less';
+@import '~@appinsights/aichartcore/AI/ME/Styles/spinner.less';
+
+@min-chart-width: 500px;
+@inter-chart-spacing: 0.55em;
+
+// light theme
+@default-hyperlink-color: #015cda;
+
+// dark theme
+@dark-mode-hyperlink-color: #0089fa;
+@dark-text-color: #fff;
+
+body {
+    overflow: hidden; // TODO fix tooltips to attach to a descendant node
+}
+
+@media all and (max-width: 1555px) {
+    .narrow .chartRoot {
+        width: 94%;
+    }
+}
+
+@media all and (max-width: 1150px) {
+    .chartRoot {
+        width: 94%;
+    }
+}
+
+@media all and (min-width: 1555px) {
+    .narrow .chartRoot {
+        width: ~"calc(-1.5em + 48%)";
+        min-width: @min-chart-width;
+    }
+}
+
+@media all and (min-width: 1150px) {
+    .chartRoot {
+        width: ~"calc(-1.5em + 48%)";
+        min-width: @min-chart-width;
+    }
+}
+
+.chart-pane {
+    margin-top: @inter-chart-spacing;
+    .compute-chart-paneroot-override {
+        .chartRoot {
+            padding: 1em 2em 2em 0;
+            margin: @inter-chart-spacing;
+            border: solid 1px lightgray;
+            box-shadow: 1px 5px 15px rgba(180, 180, 180, 0.2);
+            float: left;
+            body.dark & {
+                border: solid 1px #777;
+            }
+            .chart-header {
+                .heading {
+                    flex: auto;
+                    h2 {
+                        margin-left: 20px;
+                        font-size: 14px;
+                        font-weight: 400;
+                        .grid-tooltip-wrapper {
+                            display: inline-block;
+                            .grid-tooltip {
+                                padding: 0;
+                                margin-left: 5px;
+                            }
+                        }
+                    }
+                    .subTitle {
+                        margin-left: 20px;
+                        margin-bottom: 10px;
+                        font-weight: 700;
+                        font-size: 10px;
+                    }
+                }
+                .hyperlinks {
+                    margin-left: 10px;
+                    .workbook-button {
+                        vertical-align: unset;
+                    }
+                    .icon {
+                        display: inline-block;
+                        height: 15px;
+                        width: 15px;
+                        margin: 0 5px 0 5px;
+                        cursor: pointer;
+                        &:hover {
+                            opacity: 0.5;
+                        }
+                        body.dark &{
+                            fill: @dark-mode-hyperlink-color;
+                        }
+                    }
+                    .disabled-icon {
+                        display: inline-block;
+                        height: 15px;
+                        width: 15px;
+                        margin: 0 5px 0 5px;
+                        cursor: none;
+                        opacity: 0.5;
+                    }
+                }
+                .heading-inline {
+                    flex: auto;
+                    h2 {
+                        margin-left: 20px;
+                        font-size: 14px;
+                        font-weight: 400;
+                        .grid-tooltip-wrapper {
+                            display: inline-block;
+                            .grid-tooltip {
+                                padding: 0;
+                                margin-left: 5px;
+                            }
+                        }
+                        display: inline-block;
+                    }
+                    .subTitle {
+                        margin-left: 20px;
+                        margin-bottom: 10px;
+                        font-weight: 700;
+                        font-size: 10px;
+                    }
+                    .border {
+                        border-bottom: 0px solid #000
+                    }
+                }
+            }
+        }
+    }
+}
+
+.compute-chart-click-enabled {
+    .chartRoot {
+        cursor: pointer;
+        &:hover {
+            box-shadow: 1px 5px 15px rgba(180, 180, 180, 1);
+        .chart-container {
+            .fxc-monitorchart-graphContainer {
+                cursor: pointer;
+            }
+            div {
+                svg {
+                    cursor: pointer;
+                }
+            }
+        }
+        }
+    }
+}
+
+.connectionpane-override {
+    padding: 5px 5px 5px 5px;
+
+    .chart-header {
+        padding: 1em 0 0.2em 0.7em;
+        .title {
+            font-size: 14px;
+            font-weight: bold;
+            display: inline-block;
+        }
+        .subTitle{
+            font-size: 9px;
+            font-weight: lighter;
+            margin-bottom: 4em;
+        }
+
+        .toggle-options {
+            z-index: 99;
+        }
+        .aggregation-options {
+            z-index: 99;
+        }
+
+        .grid-tooltip {
+            display: inline-block;
+            margin-left: 0.7em;
+        }
+
+        body.dark &{
+            color: @dark-text-color;
+        }
+    }
+
+    .chart-container {
+        cursor: default;
+        position: relative;
+        padding-right: 5px;
+
+        div {
+            svg {
+                padding-left: 5px;
+                height: 200px;
+            }
+        }
+
+        .fxc-monitorchart-graphContainer {
+            cursor: default;
+        }
+    }
+}
+
+.fxc-monitorchartv2-progress-dots {
+    .fxc-monitorchartv2-progress-dots-individual {
+        body.dark & {
+            // make chart loading dots visible in dark mode
+            background-color: #fff;
+        }
+    }
+}
+
+.fxc-monitorchart-tooltip-root {
+    .fxc-monitorchart-tooltip-body {
+        .compute-chart-tooltip-body {
+            .compute-chart-tooltip-head {
+                font-weight: bold;
+            }
+            .subtitle {
+                color: #777;
+                font-size: 11px;
+                font-style: italic;
+            }
+            .entry {
+                text-align: left;
+                border-left-style: solid;
+                border-left-width: 3px;
+                border-bottom-style: solid;
+                border-bottom-width: 1px;
+                padding-left: 5px;
+                .value {
+                    font-size: 15px;
+                    font-weight: bold;
+                    padding-right: 2px;
+                }
+                .unit {
+                    font-size: 11px;
+                    color: #777;
+                }
+            }
+            .no-data {
+                font-size: 14px;
+                font-weight: bold;
+                text-align: center;
+            }
+        }
+    }
+}
+
+.hyperlink-svg {
+    padding-left: 5px;
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    fill: @default-hyperlink-color;
+
+    body.dark & {
+        fill: @dark-mode-hyperlink-color;
+    }
+}
+
+.workbook-button {
+    color: black;
+    background: transparent;
+    border:none;
+    padding: 0px;
+    height: 100%;
+    cursor: pointer;
+    display: inline-flex;
+    vertical-align: middle;
+    margin-left: 5px;
+    margin-bottom: 3px;
+}
+
+.workbook-icon {
+    height: 16px;
+    width: 16px;
+    body.dark & {
+        color: @dark-text-color;
+    }
+}

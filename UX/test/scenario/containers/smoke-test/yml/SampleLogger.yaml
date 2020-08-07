@@ -1,0 +1,40 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+  name: mc2-rs
+spec:
+  replicas: 4
+  selector:
+   matchLabels:
+    app: myApp
+  template:
+   metadata:
+    labels:
+     app: myApp
+   spec:
+    volumes:
+    - name: html
+      emptyDir: {}
+    containers:
+    - name: 1st
+      image: nginx
+      volumeMounts:
+      - name: html
+        mountPath: /usr/share/nginx/html
+    - name: 2nd
+      image: debian
+      volumeMounts:
+      - name: html
+        mountPath: /html
+      command: ["/bin/sh", "-c"]
+      args:
+        - while true; do
+            echo "查看文";
+            echo "This line is a test!"
+            sleep 1;
+          done
+    tolerations:
+     - key: "node-role.kubernetes.io/master"
+       operator: "Equal"
+       value: "true"
+       effect: "NoSchedule"

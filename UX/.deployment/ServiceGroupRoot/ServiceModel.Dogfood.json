@@ -1,0 +1,35 @@
+{
+	"$schema": "http://schema.express.azure.com/schemas/2015-01-01-alpha/ServiceModel.json",
+	"contentVersion": "0.0.0.1",
+	
+	"ServiceMetadata": {
+		"ServiceGroup": "Azure.InfrastructureInsights.UX",
+		"Environment": "Dogfood"
+	},
+
+	"ServiceResourceGroupDefinitions": [{
+		"Name": "InfraInsightsUX",
+		"ServiceResourceDefinitions": [{
+			"Name": "InfraInsightsUX",
+			"ComposedOf": {
+				"Extension": {
+					"AllowedTypes": [{
+						"Type": "Microsoft.InfraInsights.Deployment/BlobStorageCopy"
+					}]
+				}
+			}
+		}]
+	}],
+
+	"ServiceResourceGroups": [{
+		"AzureResourceGroupName": "InfraInsights-Dogfood-UX",
+		"Location": "East US",
+		"InstanceOf": "InfraInsightsUX",
+		"AzureSubscriptionId": "09af8f6f-d4e5-4b9d-950b-b7aa2e897477",
+		"ServiceResources": [{
+			"Name": "InfraInsightsUX",
+			"InstanceOf": "InfraInsightsUX",
+			"RolloutParametersPath": "RolloutParams.Dogfood.json"
+		}]
+	}]
+}

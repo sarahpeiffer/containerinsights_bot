@@ -1,0 +1,210 @@
+@import '~@appinsights/aichartcore/components/Styles/App.less';
+@import '~@appinsights/aichartcore/components/Styles/AiChart.less';
+@import '~@appinsights/aichartcore/AI/ME/Styles/AiBarChart.less';
+@import '~@appinsights/aichartcore/AI/ME/Styles/Chart.less';
+@import '~@appinsights/aichartcore/AI/ME/Styles/spinner.less';
+
+@min-chart-width: 500px;
+@content-margin: 0px;
+
+// chart messages
+@chart-message-dark-background: rgba(25, 25, 25, 0.7);
+@chart-message-light-background: #fff;
+@chart-message-text-color-on-dark-background: rgb(224, 224, 224);
+@chart-message-text-color-on-light-background: #252525;
+@chart-legend-text-color-on-dark-background: rgb(174, 174, 174);
+@chart-legend-text-color-on-light-background: rgb(87, 91, 96);
+@chart-message-troubleshooting-link-on-dark-background: #55b3ff;
+@chart-message-troubleshooting-link-on-light-background: #015cda;
+@chart-message-dark-background-box-shadow-color: rgba(180, 180, 180, 0.2);
+@chart-message-light-background-box-shadow-color: rgba(180, 180, 180, 0.7);
+@chart-message-dark-background-box-border-color: #666;
+@chart-message-light-background-box-border-color: rgba(127, 127, 127, 0.7);
+
+// dark theme
+@dark-mode-hyperlink-color: #0089fa;
+
+.chartToolTipContainer {
+    position: absolute;
+    z-index: 999999;
+    visibility: hidden;
+    background-color: #DCDCDC;
+    border: solid;
+    margin: 3px;
+    padding: 3px;
+}
+
+.chartpane-root {
+    margin-left: @content-margin;
+    margin-right: @content-margin;
+
+    .chart-header {
+        .chart-header-text {
+             flex: auto;
+        }
+        .subTitle{
+            font-size: 9px;
+            font-weight: lighter;
+            margin-bottom: 4em;
+        }
+        h2 {
+            margin-bottom: 0px;
+        }
+
+        .toggle-options {
+            z-index: 99;
+        }
+        .aggregation-options {
+            z-index: 99;
+        }
+        .hyperlinks {            
+            .icon {
+                display: inline-block;
+                height: 15px;
+                width: 15px;
+                margin: 0 5px 0 5px;
+                cursor: pointer;
+                &:hover {
+                    opacity: 0.5;
+                }
+                body.dark &{
+                    fill: @dark-mode-hyperlink-color;
+                }
+            }          
+        }
+    }
+    
+    .chart-container {
+        cursor: default;
+        position: relative;
+
+        div {
+            svg {
+                padding-left: 15px;
+            }
+        }
+
+        .fxc-monitorchart-graphContainer {
+            cursor: default;
+        }
+    }
+
+    .chart-plus-message {
+        text-align: center;
+    }
+
+    .chart-message-panel {
+        position: relative !important;
+        top: -160px;
+        display: inline;
+        padding: 20px 60px;
+        z-index: 200;  // TimeRange box has z-index of 250 and can be hidden behind the error message's(on charts) z-index is >= 250
+        min-width: 190px;
+    }
+
+    .error-msg {
+        background-color: @chart-message-dark-background;
+        color: @chart-message-text-color-on-dark-background;
+        border: solid 1px @chart-message-light-background-box-border-color;
+        box-shadow: 5px 5px 10px @chart-message-light-background-box-shadow-color;
+
+        .troubleshooting-link {
+            color: @chart-message-troubleshooting-link-on-dark-background;
+        }
+
+        body.dark & {
+            box-shadow: 2px 2px 10px @chart-message-dark-background-box-shadow-color;
+        }
+    }
+
+    .nodata-msg {
+        background-color: @chart-message-light-background;
+        color: @chart-message-text-color-on-light-background;
+        border: solid 1px @chart-message-light-background-box-border-color;
+        box-shadow: 5px 5px 10px @chart-message-light-background-box-shadow-color;
+
+        .troubleshooting-link {
+            color: @chart-message-troubleshooting-link-on-light-background;
+
+            body.dark & {
+                color: @chart-message-troubleshooting-link-on-dark-background;
+            }
+        }
+
+        body.dark & {
+            background-color: @chart-message-dark-background;
+            color: @chart-message-text-color-on-dark-background;
+            border: solid 1px @chart-message-dark-background-box-border-color;
+            box-shadow: 2px 2px 10px @chart-message-dark-background-box-shadow-color;
+        }
+    }
+}
+
+.fxc-monitorchart-resource {
+    fill: @chart-legend-text-color-on-light-background;
+
+    body.dark & {
+        fill: @chart-legend-text-color-on-dark-background;
+    }
+}
+
+.chart-pane {
+    overflow: auto;
+    width: 100%;
+}
+
+// bbax: must stay below chartpane-root for precedence
+.chart-paneroot-override {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    position: relative;
+
+    .chartRoot {
+        width: ~"calc(-2em + 47%)";
+        min-width: @min-chart-width;
+        box-shadow: 1px 5px 15px rgba(180, 180, 180, 0.2);
+        margin: 1em;
+        border: solid 1px lightgray;
+        padding: 1em 2em 2em 0;
+
+        body.dark & {
+            border: solid 1px #666;
+        }
+    }
+    .chart-header {
+        .subTitle{
+            margin-left: 20px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            font-size: 10px;
+        }
+        .hyperlinks {
+            margin-left: 10px;
+            .icon {
+                display: inline-block;
+                height: 15px;
+                width: 15px;
+                margin: 0 5px 0 5px;
+                cursor: pointer;
+                &:hover {
+                    opacity: 0.5;
+                }
+            }
+        }
+        h2 {
+            margin-left: 20px;
+            font-size: 14px;
+            font-weight: 400;
+        }
+    }
+}
+
+.fxc-monitorchartv2-progress-dots {
+    .fxc-monitorchartv2-progress-dots-individual {
+        body.dark & {
+            // make chart loading dots visible in dark mode
+            background-color: #fff;
+        }
+    }
+}

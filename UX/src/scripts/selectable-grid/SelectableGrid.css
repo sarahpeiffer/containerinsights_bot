@@ -1,0 +1,180 @@
+/* Smart Detection colors */
+.selectable-grid {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+  .selectable-grid * {
+    box-sizing: inherit;
+  }
+  .selectable-grid .sg-row {
+    height: 37px;
+    line-height: 37px;
+    font-size: 12px;
+    border-bottom: 1px solid #ccc;
+  }
+  .selectable-grid .sg-body {
+    flex: none; /* Needed to override SelectableGrid's own style */
+    overflow: auto;
+    height: 100%;
+  }
+  .selectable-grid .sg-body.sg-noheader {
+    box-shadow: 0 -1px 0 #cccccc;
+    /* Hack to make border without changing DOM size */
+  }
+  .selectable-grid .sg-body .sg-row {
+    cursor: pointer;
+    display: flex;
+  }
+  .selectable-grid .sg-body .sg-row .sg-col:first-of-type {
+    padding-left: 10px;
+  }
+  .selectable-grid .sg-body .sg-row.sg-fixedrow {
+    font-weight: bold;
+    border-bottom-width: 2px;
+  }
+  .selectable-grid .sg-body .sg-row:hover,
+  .selectable-grid .sg-body .sg-row:hover[data-sgselected="true"] {
+    background: #f3f3f3;
+  }
+  .selectable-grid .sg-body .sg-row[data-sgselected="true"] {
+    background: #e5f8fd;
+  }
+  .selectable-grid .sg-body .sg-row .sg-row-colorindicator {
+    height: 100%;
+    width: 10px;
+    margin-right: 5px;
+  }
+  .selectable-grid .sg-body > div {
+    /* Fix for scrollbar flickering. Needs to be important because
+                 Overflow properties are set in style tags by AutoSizer */
+    overflow-x: hidden !important;
+    overflow-y: visible !important;
+    height: 100% !important;
+    width: 100% !important;
+  }
+  .selectable-grid .sg-col {
+    display: inline-block;
+    text-align: left;
+    position: relative;
+    padding: 0 5px;
+    min-width: 0;
+  }
+  .selectable-grid .sg-col .sg-text {      
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 100%;
+  }
+  .selectable-grid .sg-col .sg-checkbox {
+    display: block;
+    margin: 8px auto;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    position: relative;
+  }
+  .selectable-grid .sg-col .sg-checkbox[data-sgchecked="true"] {
+    background: teal;
+  }
+  .selectable-grid .sg-col .sg-barcell {
+    width: 100%;
+    height: 100%;
+  }
+  .selectable-grid .sg-col .sg-barcell .sg-barbox {
+    height: 10px;
+    margin-top: 14px;
+    background-color: #95b2d7;
+  }
+  .selectable-grid .sg-col .sg-barcell .sg-barbox-sub {
+    height: 100%;
+  }
+  .selectable-grid .sg-col.sg-barbacked .sg-bb-colvm {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+  .selectable-grid .sg-col.sg-barbacked .sg-bb-bar {
+    position: absolute;
+    z-index: 1;
+    background-color: #95b2d7;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  .selectable-grid .sg-head {
+    display: flex;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 10px;
+    color: #1f2327;
+  }
+  .selectable-grid .sg-head .sg-col {
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    border-right: 1px solid transparent;
+  }
+  .selectable-grid .sg-head .sg-col:last-child {
+    text-align: center;
+    border-right: none;
+  }
+  .selectable-grid .sg-head .sg-col .sg-text {
+    width: auto;
+  }
+  .selectable-grid .sg-head .sg-col .sg-sortindicator {
+    height: 11px;
+    flex: 1 1 0px;
+    position: relative;
+  }
+  .selectable-grid .sg-head .sg-col .sg-sortindicator svg {
+    width: 11px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+  .selectable-grid .sg-head .sg-col .sg-headerplugin {
+    width: auto;
+  }
+  .selectable-grid .sg-head:hover .sg-col {
+    border-right: 1px solid #ccc;
+  }
+  .selectable-grid .sg-head:hover .sg-col:last-child {
+    border-right: none;
+  }
+  .dark .selectable-grid .sg-body {
+    color: #acacac;
+  }
+  .dark .selectable-grid .sg-body .sg-row {
+    border-bottom-color: #30353a;
+  }
+  .dark .selectable-grid .sg-body .sg-row:hover,
+  .dark .selectable-grid .sg-body .sg-row:hover[data-sgselected="true"] {
+    background: #3d3d3d;
+  }
+  .dark .selectable-grid .sg-body .sg-row[data-sgselected="true"] {
+    background: #383838;
+  }
+  .dark .selectable-grid .sg-col .sg-checkbox {
+    border-color: #dcdfe2;
+  }
+  .dark .selectable-grid .sg-col .sg-barcell .sg-barbox,
+  .dark .selectable-grid .sg-col .sg-barcell .sg-barbox-sub {
+    background-color: #21404f;
+  }
+  .dark .selectable-grid .sg-col.sg-barbacked .sg-bb-bar {
+    background-color: #21404f;
+  }
+  .dark .selectable-grid .sg-head {
+    border-color: #dcdfe2;
+    color: #e0e0e0;
+  }
+  .dark .selectable-grid .sg-head .sg-col .sg-sortindicator {
+    fill: #e0e0e0;
+  }

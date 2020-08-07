@@ -1,0 +1,15 @@
+.outer-sg {
+    /** nib: Because of the live logs split, there are structural differences between
+        Grid.tsx and MulticlusterGrid.tsx. The padding for .outer-sg specified in Grid.tsx
+        causes the grid in MulticlusterGrid.tsx to be misaligned with the other content on the page.
+     */
+    padding: 0;
+}
+
+.loading-state {
+    position: absolute;
+    top: 14px !important;
+    left: 0;
+    height: ~"calc(100% - 14px)" !important; // 31px = sg header height. So this put
+    width: 100%;
+}    

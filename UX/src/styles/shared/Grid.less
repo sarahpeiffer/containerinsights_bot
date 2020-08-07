@@ -1,0 +1,256 @@
+// ROWHEIGHT and LOADINGSVGHEIGHT are also constants in ../scripts/shared/ComparisonGrid.tsx
+// If you change them here, you must also change them in ComparisonGrid.tsx
+@COMPARISONGRIDROWHEIGHT: 37px;
+@LOADINGSVGHEIGHT: 25px;
+@COMPARISONGRIDSGWIDTH: 1090px;
+@LOADMORECONTAINERHEIGHT: 48px;
+
+// variables for dark mode
+@dark-mode-text-color: #fff;
+@dark-mode-hyperlink-text-color: #4894fe;
+@dark-mode-body-background-color: #111;
+@dark-mode-grid-overlay-background-color: rgba(17, 16, 0, 0.5);
+
+// note: height of the grid container is 100% less 23px (grid control panel with metric selection)
+//       less 10px for bottom margin
+.comparison-grid-container {
+    height: ~'calc(100% - 44px)';
+    width: 100% !important;
+    position: relative;
+}
+
+#grid-item-count {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    font-family: az_ea_font, wf_segoe-ui_normal,"Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    line-height: normal;
+    color: #474747;
+    padding: 0px;
+
+    body.dark & {
+        color: @dark-mode-text-color;
+    }
+}
+
+.outer-sg-container {
+    height: 100%; 
+    min-height: 300px; 
+    width: 100% !important;
+}
+
+.outer-sg {
+    min-height: 120px;
+    margin: 0;
+    height: 100%; 
+    width: 100% !important;
+}
+
+.selectable-grid .sg-body {
+    flex: none;
+    height: calc(100% ~'-' 37px);
+}
+
+#sg {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.loading-state {
+    position: absolute;
+    top: 31px;
+    left: 0;
+    height: ~"calc(100% - 31px)"; // 31px = sg header height. So this put
+    width: 100%;
+}    
+
+
+.loading-state-svg {
+    display: flex;
+    height: @COMPARISONGRIDROWHEIGHT !important;
+}
+
+.loading-icon-container {
+    display: flex;
+    height: @COMPARISONGRIDROWHEIGHT !important;
+}
+
+.grid-loading-svg-size {
+    height: 30px;
+    width: 30px;
+}
+
+// governs the size of the loading svg inside the grid hierarchy
+.gridLoad {
+    width: 30px;
+}
+
+.grid-overlay {
+    width: 100%;
+    top: 0;
+}
+
+.no-data-msg {
+    .no-data-msg-positioner {
+        position: relative;    
+        top: 0;
+        left: 0;
+        display: flex;
+        height: @COMPARISONGRIDROWHEIGHT * 4;
+        width: 100%;
+    }
+
+    #no-data-msg { 
+        font-family: az_ea_font, wf_segoe-ui_normal,"Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
+        font-size: 12px;
+        font-weight: normal;
+        line-height: normal;
+        color: rgb(37, 37, 37);
+
+        body.dark & {
+            color: @dark-mode-text-color;
+            background-color: @dark-mode-body-background-color;
+            border: 1px solid @dark-mode-text-color;
+            box-sizing: border-box;
+            padding: 10px 55px 10px 55px;
+        }
+    }
+}
+
+.unset-height {
+    height: auto !important;
+}
+
+.error-msg {
+    .error-msg-positioner {
+        position: relative;    
+        top: 0;
+        left: 0;
+        display: flex;
+        height: @COMPARISONGRIDROWHEIGHT * 4 !important;
+        width: 100%;
+    }
+}
+
+.troubleshooting-link {
+    color: @dark-mode-hyperlink-text-color;
+    margin-left: 3px;
+    top: 30%;
+    position: relative;
+}
+
+.error-banner .troubleshooting-link {
+    color: #55b3ff;
+}
+
+.load-more-button {
+    display: flex;
+    height: @LOADMORECONTAINERHEIGHT;
+    flex: 0 1 @LOADMORECONTAINERHEIGHT;
+}
+
+#load-more-button {
+    // position: relative;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+
+    body.dark & {
+        color: @dark-mode-hyperlink-text-color;
+    }
+}
+
+.colored-sg-cell-formatting {
+    position: absolute;
+    bottom: 0px;
+    width: 85% !important; 
+    height: 32px;
+    text-align: center;
+    border-radius: 2px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.position-absolute {
+    position: absolute;
+}
+.position-relative {
+    position: relative;
+}
+
+.not-click-through {
+    pointer-events: auto;
+}
+.click-through {
+    pointer-events: none;
+}
+
+.centering-container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.center-flex-content {
+    justify-content: center;
+    align-items: center;
+}
+
+.transparent {
+    opacity: 0.5;
+}
+.transparent-grid-overlay {
+
+    body.dark & {
+        background-color: @dark-mode-grid-overlay-background-color !important;
+    }
+}
+
+.grid-plus-load-more {
+    display: flex;
+    flex-flow: column;
+}
+
+.grid-plus-load-more-loaded {
+    height: 100%;
+}
+
+.sg-data-plus-loadmore-overlay {
+    position: relative;
+    top: @COMPARISONGRIDROWHEIGHT;
+    height: ~'calc(100% - 37px)';
+    width: 100%;
+}
+
+.sg-text {
+    width: 100%;
+
+    // bbax: note that title + subtitle != the 37px full line-height.. this is by design right now
+    // to avoid adding a dummy div into the mix to fill up the extra space we don't want or need
+    // Moved to Refactor Task to mitigate risk:
+    // https://msecg.visualstudio.com/DefaultCollection/OMS/_workitems/edit/182436
+    .sg-text-title {
+        height: 24px;
+        line-height: 24px;
+        font-size: 1.2em;
+    }
+    .sg-text-subtitle {
+        line-height: 8px;
+        height: 8px;
+        font-size: 0.75em;
+    }
+}
+
+.sg-col {
+    text-align: center;
+}
+
+.size-nesting-indicators {
+    height: 0.637em !important;
+    width: 0.637em !important;
+}

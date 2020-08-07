@@ -65,7 +65,6 @@ namespace Microsoft.BotBuilderSamples
             }
             else
             {
-
                 var promptOptions = new PromptOptions { Prompt = MessageFactory.Text("Please enter the name of the node this pod is on") };
 
                 return await stepContext.PromptAsync(nameof(TextPrompt), promptOptions, cancellationToken);
@@ -75,6 +74,7 @@ namespace Microsoft.BotBuilderSamples
         private async Task<DialogTurnResult> FindPodsAsync(WaterfallStepContext stepContext, CancellationToken cancellationToken)
         {
             string result = (string)stepContext.Result;
+            //skip this step if the user has already specified a pod
             if (this.PodName != "")
             {
                 return await stepContext.NextAsync(this.PodName, cancellationToken);
@@ -85,6 +85,8 @@ namespace Microsoft.BotBuilderSamples
                 var userProfile = (UserProfile)stepContext.Values[UserInfo];
                 var token = userProfile.Token;
                 var clusterId = userProfile.ClusterId;
+
+                //make request to see all pods on a node
                 HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Add("Authorization", token);
                 var id = userProfile.WorkspaceId;
@@ -93,24 +95,29 @@ namespace Microsoft.BotBuilderSamples
                 var podsQuery = "{\"query\":\"set query_take_max_records = 20; set truncationmaxsize = 67108864;let endDateTime = now();let startDateTime = ago(30m);let trendBinSize = 1m; KubePodInventory | where TimeGenerated < endDateTime   | where TimeGenerated >= startDateTime | where Computer == \\\"" + result + "\\\" | distinct Name\",\"workspaceFilters\":{\"regions\":[]}}";
                 var podsContent = new StringContent(podsQuery, Encoding.UTF8, "application/json");
                 var podsResponse = await client.PostAsync(postLoc, podsContent);
-                var podsResponseString = await podsResponse.Content.ReadAsStringAsync();
-                dynamic podsObj = JsonConvert.DeserializeObject(podsResponseString);
-
-                var podsString = "";
-                var nodePods = podsObj.tables[0].rows;
-                for (var i = 0; i < nodePods.Count; ++i)
+                if(podsResponse != null)
                 {
-                    if (podsString != "")
-                    {
-                        podsString += ", ";
-                    }
-                    podsString += "\"*(" + nodePods[i][0] + ")*\"";
+                    var podsResponseString = await podsResponse.Content.ReadAsStringAsync();
+                    dynamic podsObj = JsonConvert.DeserializeObject(podsResponseString);
 
+                    var podsString = "";
+                    var nodePods = podsObj.tables[0].rows;
+                    for (var i = 0; i < nodePods.Count; ++i)
+                    {
+                        if (podsString != "")
+                        {
+                            podsString += ", ";
+                        }
+                        podsString += "\"*(" + nodePods[i][0] + ")*\"";
+
+                    }
+                    string podsJson = "{\"Name\" : \"Pods on Node " + result + "\", \"Pods \" : [" + podsString + "]}";
+                    var promptOptions = new PromptOptions { Prompt = MessageFactory.Text("Please enter or select a pod") };
+                    await stepContext.Context.SendActivityAsync(podsJson);
+                    return await stepContext.PromptAsync(nameof(TextPrompt), promptOptions, cancellationToken);
                 }
-                string podsJson = "{\"Name\" : \"Pods on Node " + result + "\", \"Pods \" : [" + podsString + "]}";
-                var promptOptions = new PromptOptions { Prompt = MessageFactory.Text("Please enter or select a pod") };
-                await stepContext.Context.SendActivityAsync(podsJson);
-                return await stepContext.PromptAsync(nameof(TextPrompt), promptOptions, cancellationToken);
+                return await stepContext.EndDialogAsync(stepContext.Values[UserInfo], cancellationToken);
+
             }
         }
 
@@ -130,9 +137,9 @@ namespace Microsoft.BotBuilderSamples
 
             PodQueryHelper podHandler = new PodQueryHelper(podName, token, clusterId, id, userProfile.KubeAPIToken, userProfile.APIServer, userProfile.KubeCert, timeRange);
 
-            
+
             dynamic readyObj = await podHandler.readyQueryAsync();
-            if(readyObj == null)
+            if (readyObj == null)
             {
                 await stepContext.Context.SendActivityAsync("something went wrong");
                 return await stepContext.EndDialogAsync(stepContext.Values[UserInfo], cancellationToken);
@@ -149,23 +156,23 @@ namespace Microsoft.BotBuilderSamples
             this.Namespace = nameSpace;
 
             string containerCount = await podHandler.containerQueryAsync();
-           
+
             dynamic cpuobj = await podHandler.cpuQueryAsync();
             double cpuPercent = 0.0;
             double cpuMaxPercent = 0.0;
-            if(cpuobj != null)
+            if (cpuobj != null)
             {
                 var cpuUsage = cpuobj.tables[0].rows[0][0];
                 var cpuMax = cpuobj.tables[0].rows[0][1];
-                if(cpuMax!= null)
+                if (cpuMax != null)
                 {
                     cpuMaxPercent = (double)cpuMax;
-                    if(Double.IsNaN(cpuMaxPercent))
+                    if (Double.IsNaN(cpuMaxPercent))
                     {
                         cpuMaxPercent = 0.0;
                     }
                 }
-                if(cpuUsage != null)
+                if (cpuUsage != null)
                 {
                     cpuPercent = (double)cpuUsage;
                 }
@@ -173,36 +180,40 @@ namespace Microsoft.BotBuilderSamples
 
             dynamic memoryObj = await podHandler.memoryQueryAsync();
             double memoryPercent = 0.0;
-            if(memoryObj != null)
+            if (memoryObj != null)
             {
                 var memoryUsage = memoryObj.tables[0].rows[0][0];
                 if (memoryUsage != null)
                 {
                     memoryPercent = (double)memoryUsage;
-                    if(Double.IsNaN(memoryPercent))
+                    if (Double.IsNaN(memoryPercent))
                     {
                         memoryPercent = 0.0;
                     }
                 }
             }
-
             var kubeEvents = await podHandler.kubeEventsQueryAsync();
 
-            dynamic responseJson = await podHandler.describePodAsync();
-
-            var conditionErrors = podHandler.conditionErrors(responseJson);
-
-            var containerErrors = podHandler.containerErrors(responseJson);
-
-            if(containerErrors != "")
+            var liveErrors = "";
+            if (userProfile.APIServer != null)
             {
-                containerErrors = " , \"Container Errors\" : \"\", " + containerErrors;
+                dynamic responseJson = await podHandler.describePodAsync();
+
+                var conditionErrors = podHandler.conditionErrors(responseJson);
+
+                var containerErrors = podHandler.containerErrors(responseJson);
+                if (containerErrors != "")
+                {
+                    containerErrors = " , \"Container Errors\" : \"\", " + containerErrors;
+                }
+                liveErrors = ", \"Live Errors\" : [" + conditionErrors + "]" + containerErrors;
             }
-            
-            string jsonForUX = "{\"Name\" : \"" + podName + "\", \"Status: \" : \"" + status + "\", \"Container Count: \" : \"" + containerCount + "\", \"Average CPU: \" : \"" + Math.Round(cpuPercent, 2) + "%\", \"Max CPU: \" : \"" + Math.Round(cpuMaxPercent, 2) + "%\", \"Average Memory: \" : \"" + Math.Round(memoryPercent, 2) + "%\",  \"Kube Events\" : [" + kubeEvents + "], \"Live Errors\" : [" + conditionErrors + "]" + containerErrors + "}";
+
+
+            string jsonForUX = "{\"Name\" : \"" + podName + "\", \"Status: \" : \"" + status + "\", \"Container Count: \" : \"" + containerCount + "\", \"Average CPU: \" : \"" + Math.Round(cpuPercent, 2) + "%\", \"Max CPU: \" : \"" + Math.Round(cpuMaxPercent, 2) + "%\", \"Average Memory: \" : \"" + Math.Round(memoryPercent, 2) + "%\",  \"Kube Events\" : [" + kubeEvents + "]" + liveErrors + "}";
 
             await stepContext.Context.SendActivityAsync(jsonForUX);
-            if(containerCount != "0" && status == "Running")
+            if (containerCount != "0" && status == "Running")
             {
                 var promptOptions = new PromptOptions { Prompt = MessageFactory.Text("Would you like to view logs for containers on this pod? *(Yes)* / *(No)*.") };
 
@@ -248,11 +259,11 @@ namespace Microsoft.BotBuilderSamples
                     return await stepContext.EndDialogAsync(stepContext.Values[UserInfo], cancellationToken);
                 }
                 containerResponseString = await proxyresponse.Content.ReadAsStringAsync();
-                
+
             }
             else
             {
-                
+
                 var containersuri = proxyUri + "?query=" + System.Web.HttpUtility.UrlEncode(apiServerAddr + "/api/v1/namespaces/" + nameSpace + "/pods/" + podName);
                 var containerResponse = await kubeClient.PostAsync(containersuri, queryContent);
                 if (!containerResponse.IsSuccessStatusCode)
@@ -268,7 +279,7 @@ namespace Microsoft.BotBuilderSamples
             var containers = containersJson.spec.containers;
             var innitContainers = containersJson.spec.initContainers;
             List<String> containerList = new List<String>();
-            for(int i = 0; i < containers.Count; ++i)
+            for (int i = 0; i < containers.Count; ++i)
             {
                 string containerName = (string)containers[i].name;
                 containerList.Add(containerName);
@@ -323,46 +334,18 @@ namespace Microsoft.BotBuilderSamples
 
                     }
                 }
-                
-               
+
+
             }
-            if(logsResponseString == "")
+            if (logsResponseString == "")
             {
                 logsResponseString = "No logs found for containers on this pod.";
             }
             await stepContext.Context.SendActivityAsync((string)logsResponseString);
-
-
-
-
             return await stepContext.EndDialogAsync(stepContext.Values[UserInfo], cancellationToken);
 
         }
 
 
-
     }
-
-    /*            var containerLogsQuery = "{\"query\":\"set query_take_max_records = 1001; set truncationmaxsize = 67108864; let endDateTime = now(); let startDateTime = ago(" + timeRange + "); let trendBinSize = 1m; ContainerLog| where LogEntrySource == \\\"stderr\\\"| where TimeGenerated < endDateTime | where TimeGenerated >= startDateTime | join(KubePodInventory| where TimeGenerated < endDateTime | where TimeGenerated >= startDateTime)on ContainerID | where PodUid contains \\\"" + podUid + "\\\" | project PodUid, LogEntry, ContainerID| summarize count() by LogEntry, ContainerID\",\"workspaceFilters\":{ \"regions\":[]}}";
-                        var containerLogContent = new StringContent(containerLogsQuery, Encoding.UTF8, "application/json");
-                        var containerLogResponse = await client.PostAsync(postLoc, containerLogContent);
-                        var containerLogResponseString = await containerLogResponse.Content.ReadAsStringAsync();
-                        dynamic containerLogObj = JsonConvert.DeserializeObject(containerLogResponseString);
-                        var containerLogData = containerLogObj.tables[0].rows;
-                        var containerLogs = "\"There are no recent standard error logs related to this pod\"";
-                        if (containerLogData.Count > 0)
-                        {
-                            containerLogs = "";
-                            for (int i = 0; i < containerLogData.Count; ++i)
-                            {
-                                string count = containerLogData[i][2] > 1 ? "counts" : "count";
-                                string verb = containerLogData[i][2] > 1 ? "are" : "is";
-                                if (containerLogs != "")
-                                {
-                                    containerLogs += ", ";
-                                }
-                                string containerLogsString = "\"There " + verb + " " + containerLogData[i][2] + " " + count + " of " + containerLogData[i][0] + " for container " + containerLogData[i][1] + ".\"";
-                                containerLogs += containerLogsString;
-                            }
-                        }*/
 }

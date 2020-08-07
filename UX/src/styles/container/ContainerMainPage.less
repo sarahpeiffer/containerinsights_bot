@@ -1,0 +1,250 @@
+@import '~react-tabs/style/react-tabs.less';
+@import '~appinsights-iframe-shared/out/Css/global.less';
+
+@font: "Segoe UI", "Segoe UI", "Segoe", Tahoma, Helvetica, Arial, sans-serif;
+@tab-blue: #095aaa;
+@fontSemibold: "Segoe UI Semibold", "Segoe WP Semibold", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
+
+// heights, widths, padding, margins, etc.
+@action-bar-height: 36px;
+@trendchart-grid-column-width: 200px; // Keep this in sync with corresponding variable in Constants 
+@page-lft-rt-margins: 25px;
+
+// light theme
+@light-hyperlink-color: #015cda;
+@light-border-color: rgba(204,204,204,.8) !important;
+@light-hover-color: rgba(85,179,255, 0.1);
+
+// dark theme
+@dark-button-color-active: #0078d4;
+@dark-button-color: #0089fa;
+@dark-hyperlink-color: #0089fa;
+@dark-text-color: #fff;
+@dark-border-color: rgb(96, 94, 92);
+@dark-background-color: #111111;
+@dark-hover-color: rgba(128,128,128,.3);
+
+// Page layout
+.full-height { // Remove once VM Insights puts removes the styles they need from MainPage.less
+    height: 100%;
+    width: 100%; 
+
+    .MainPage-root { // Everything below here should be in every main page to allow for style tweaks
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+
+        .action-bar { 
+            display: block;
+            height: @action-bar-height; // Height!
+            min-height: @action-bar-height;
+            width: 100%;
+            box-sizing: border-box;
+            border-bottom: solid 1px @light-border-color;
+
+            body.dark & {
+                border-bottom: solid 1px @dark-border-color;
+            }
+        }
+
+        .content-details-pane-normal-height {
+            height: ~"calc(100% - 36px)"; // 36px = action bar height        
+        }
+
+        .content-details-pane-height-with-banner {
+            height: ~"calc(100% - 72px)" !important; // 36px = action bar height + 36 px = banner bar height
+        }
+
+        .content-details-pane { // N.B. parent div is MainPage-root. Height here is 100% less the tab switching control height (Not set explicitly, check through browser)
+            width: 100%;
+            display: flex;
+
+            .content-root {
+                overflow: auto;
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+
+                body.dark & {
+                    background-color: @dark-background-color;
+                }
+
+                .control-panel { 
+                    // height = 45px. Check through browser
+                    display: flex;
+                    flex-wrap: wrap;
+                    flex: 0 0 auto;
+                    padding: 10px @page-lft-rt-margins;
+                    align-items: center;
+                    padding: 10px 25px 0 25px;
+                    background-color: inherit;
+                    
+                    body.dark & {
+                        background-color: inherit;
+                    }
+
+                    .workbooks-dropdown-container {
+                        font-size: 13px;
+                        margin-left: auto;
+                        cursor: pointer;
+                        display: flex;
+                        a {
+                            padding: 10px;
+                            z-index: 1;
+                        }
+                    }
+
+                    .live-metrics-dropdown {
+                        height: 26px;
+                        margin-left: 10px;
+                    }
+
+                } 
+
+                .infra-main-tabs.with-console-window {
+                    min-height: 383px; // yet another magic number (this is also a prime number)
+                }
+        
+                .infra-main-tabs {
+                    height: ~"calc(-45px + 100%)"; // N.B. container specific. Might not need this
+                    display: flex;
+                    flex-direction: column;
+                    flex: 1 1 auto;
+                    box-sizing: border-box;
+                    
+                    body.dark & {
+                        background-color: @dark-background-color;
+                    }
+
+                    .pane-header {
+                        display: flex;
+                        flex: 0 0 auto; // Height is currently 58px (including padding and margin). Confirm through browser
+                        justify-content: space-between;
+                        padding-right: 10px; // testing if its not needed
+                        margin: 10px 0 0 0 !important;
+                        border-bottom: 1px solid @light-border-color;
+                    
+                        body.dark & {
+                            border-bottom-color: @dark-border-color;
+                        }
+
+                        .react-tabs__tab-list {
+                            width: auto;
+                            min-width: 400px;
+                            box-sizing: border-box;
+                            margin: 0;
+                            border-bottom: 0;
+                    
+                            .react-tabs__tab {
+                                font-size: 16px;
+                                font-weight: 400;
+                                font-family: @font;
+                                color: @dark-button-color-active;
+                    
+                                body.dark & {
+                                    color: @dark-text-color;
+                                }
+                    
+                                &.selected-tab { // N.B. refers to the tab selected
+                                    color: black;
+                                    border-bottom: 3px solid @dark-button-color-active;
+                                    font-weight: 750;
+
+                                    body.dark & {
+                                        color: @dark-text-color;
+                                    }
+                                }
+                                &:hover {
+                                    background-color: @light-hover-color;
+                                    
+                                    body.dark & {
+                                        background-color: @dark-hover-color;
+                                    }
+                                }
+                                &:focus {
+                                    box-shadow: inset 0px -2px 0px 0px hsl(208, 99%, 50%);
+                                    border-top-style: dotted;
+                                    border-left-style: dotted;
+                                    border-right-style: dotted;
+                                    border-top-left-radius: 2px;
+                                    border-top-right-radius: 2px;
+                    
+                                    body.dark & {
+                                        box-shadow: inset 0px -2px 0px 0px hsl(207, 100%, 49%);
+                    
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .react-tabs__tab-panel--selected { // N.B. refers to the tab panel selected
+                        display: flex;
+                        flex: 1 1 auto;
+                        padding: 0 !important;
+                        user-select: unset;
+                        height: ~"calc(100% - 58px)"; // N.B. parent div is infra-main-tabs. Height here is 100% less the tab switching control height (Not set explicitly, check through browser)
+    
+                        .grid-pane {
+                            display: flex !important;
+                            flex-direction: row !important;
+                            width: 100% !important;
+                            padding: 0 !important;
+
+                            .grid-sub-pane-cew {
+                                padding: 0 20px;
+                                overflow: auto;
+                                flex: 1;
+                                display: flex;
+                                flex-direction: column;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: lightgray;
+    font-size: 0.8em;
+}
+
+::-moz-placeholder {
+    /* Firefox 19+ */
+    color: lightgray;
+    font-size: 0.8em;
+}
+
+:-ms-input-placeholder {
+    /* IE 10+ */
+    color: lightgray;
+    font-size: 0.8em;
+}
+
+:-moz-placeholder {
+    /* Firefox 18- */
+    color: lightgray;
+    font-size: 0.8em;
+}
+
+.property-panel:not(.property-panel-collapsed) {
+    width: calc(20px ~'+' 25%);
+    flex: 0 0 calc(20px ~'+' 25%);
+}
+
+.Select-menu-outer {
+    width: 400px !important;
+    min-width: 400px !important;
+}
+
+.sg-barchart {
+    min-width: @trendchart-grid-column-width !important; // nibs: This overrides the native sg styling for sg-col, which is 0
+
+    .barchart {
+        height: 100%;
+        width: 100%;
+    }
+}

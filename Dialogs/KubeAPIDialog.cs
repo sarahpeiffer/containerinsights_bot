@@ -60,6 +60,7 @@ namespace Microsoft.BotBuilderSamples
             var proxyUri = "https://aks-kubeapi-proxy-prod.trafficmanager.net/api/clusterApiProxy";
             AgentTroubleshootingHandler agentTroubleshootingHandler = null;
 
+            //if there is a kube certificate we were sent from the UX we want to use the CI proxy. Eventually this shouldn't be needed anymore
             if (userProfile.KubeCert == null)
             {
                 agentTroubleshootingHandler = new AgentTroubleshootingAKS(userProfile.KubeAPIToken, userProfile.APIServer, userProfile.KubeCert);

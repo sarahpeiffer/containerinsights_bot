@@ -1,0 +1,267 @@
+@propertyTabBorderColor: #afafaf;
+@light-portal-border-color: rgba(204,204,204,.8);
+@propertyTabBackgroundColor: #ffffff;
+@propertyTabBorderThickness: 1px;
+@expandCollapseActionBarWidth: 18px;
+@COLLAPSE_SIDEBAR_HOVER_COLOR: rgba(0, 188, 242, .1);
+@subtitle-color: #595959;
+
+// light theme
+@light-hyperlink-color: #015cda;
+@light-hyperlink-color-hover: #016afe;
+@light-hover-color: rgba(85, 179, 255, 0.1);
+@light-resizer-dots-color: #4e555e;
+
+// dark theme 
+@dark-collapsable-panel-border-color: #666;
+@dark-text-color: #fff;
+@dark-svg-fill: #fff;
+@dark-hyperlink-color: #0076D6;
+@dark-title-color: #0076D6;
+@dark-subtitle-color: #acacac;
+@dark-collapse-sidebar-hover-color: rgba(0, 188, 242, .1);
+@dark-table-td-border-bottom-color: #666;
+@dark-table-th-border-bottom-color: #bbb;
+@dark-background-black: #111;
+@dark-hover-background-color: #595959;
+@dark-hover-color: rgba(128, 128, 128, .3);
+@dark-button-color-active: #0078d4;
+
+.property-panel2 {
+    z-index: 99999;
+    background: none;
+
+    min-width: 300px;
+    overflow: hidden;
+    display: flex;
+
+    body.dark & {
+        color: @dark-text-color;
+
+        svg {
+            fill: @dark-svg-fill;
+        }
+    }
+
+    .resize-handle {
+        display: flex;
+        width: 4px;
+        flex: 0 0 4px;
+        background: @light-portal-border-color;
+        border: 1px solid @light-portal-border-color;
+        cursor: col-resize;
+        opacity: 1;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        line-height: 7px;
+        margin-top: -2px;
+
+        .resize-dots {
+            height: auto;
+            width: 4px;
+            display: inline-flex;
+            overflow: hidden;
+            opacity: 0.5;
+            color: @light-resizer-dots-color;
+            
+            &:before {
+                content: "\25CF \25CF \25CF";
+                font-size: 7px;
+            }
+
+            body.dark & {
+                color: @dark-svg-fill;
+            }
+        }
+
+
+        body.dark & {
+            border: 1px solid #666;
+            background: #666;
+        }
+    }
+
+    .panelHeaderWrapper {
+        border-bottom: 1px solid @light-portal-border-color;
+        flex: 0 0 auto;
+        overflow: hidden;
+        width: 100%;
+
+        .panelHeaderCollapseButton {
+            display: inline-block;
+            vertical-align: top;
+            position: absolute;
+            margin-left: 4px;
+            margin-top: 4px;
+            z-index: 99999;
+        
+            button {
+                display: block;
+                background: transparent;
+                position: relative;
+                cursor: pointer;
+                padding: 0;
+                width: 100%;
+                border-width: 0;
+        
+                svg {
+                    height: 8px;
+                    width: 8px;
+                    top: 16px;
+                    left: 4px;
+                    pointer-events: none;
+        
+                    body.dark & {
+                        fill: @dark-svg-fill;
+                    }
+                }
+        
+                :hover {
+                    background-color: rgba(0, 137, 250, .08);
+        
+                    body.dark & {
+                        background-color: @dark-collapse-sidebar-hover-color;
+                    }
+                }
+        
+                :focus {
+                    outline: #00bcf2 dashed 1px;
+                }
+            }
+        }
+    }
+
+    .panelMainBodyWrapper {
+        width: 100%;
+        height: ~"calc(100% - 72px)";
+        flex: 1;
+    }
+
+    .property-panel2-body {
+        width: 100%; // 18px = @expandCollapseActionBarWidth
+        height: 100%;
+
+        .property-content2 {
+            height: 100%;
+
+            .propertyPanel2Tabs {
+                display: flex;
+                flex-direction: row-reverse;
+                height: 100%;
+                background: @propertyTabBackgroundColor;
+                
+                body.dark & {
+                    background: @dark-background-black;
+                }
+
+                .react-tabs__tab {
+                    color: @dark-button-color-active;
+
+                    body.dark & {
+                        color: @dark-text-color;
+                    }
+        
+                    &:hover {
+                        background-color: @light-hover-color;
+
+                        body.dark & {
+                            background-color: @dark-hover-color;
+                        }
+                    }
+                }
+
+                .propertyPanel2TabHeaders {
+                    display: flex;
+                    flex-direction: column;
+                    padding: 0;
+                    background: @propertyTabBackgroundColor;
+                    margin: 0;
+                    border-left: @propertyTabBorderThickness solid @light-portal-border-color;
+
+                    body.dark & {
+                        background: @dark-background-black;
+                        border-left: @propertyTabBorderThickness solid @dark-text-color;
+                    }
+
+                    .propertyPanel2Pane {
+                        color: @dark-background-black;
+                        border-left: 2px solid transparent;
+                        margin: 0 0 0 -2px;
+                        border-right: 6px solid @dark-button-color-active;
+                        border-bottom: @propertyTabBorderThickness solid @light-portal-border-color;
+                        overflow: hidden;
+
+                        body.dark & {
+                            border-bottom: @propertyTabBorderThickness solid @dark-text-color;
+                        }
+                    }
+
+                    .property-panel2-tab-icon {
+                        height: 24px;
+                        width: 24px;
+                        margin-top: 2px;
+                        margin-left: 10px;
+                    }
+
+                    .property-panel2-tab-text {
+                        font-weight: bold;
+                        font-size: 10px;
+                        text-align: center;
+                        margin-top: 5px;
+                    }
+                }
+
+                //also for the left large pane
+                .propertyPanel2Pane {
+                    overflow: auto;
+                    margin: 25px;
+                    display: block;
+                    background: @propertyTabBackgroundColor;
+
+                    body.dark & {
+                        background: @dark-background-black;
+                    }
+                }
+            }
+        }
+
+    }
+
+    .property-panel2-hidden {
+        display: none;
+    }
+}
+
+.react-tabs__tab-panel.propertyPanel2Pane {
+        flex: 1;
+} 
+
+.react-tabs__tab.propertyPanel2Pane:not(:first-child) {
+    border-top: @propertyTabBorderThickness solid @light-portal-border-color;
+
+    body.dark & { 
+        border-top: @propertyTabBorderThickness solid @dark-text-color;
+    }
+} 
+
+.property-panel2:focus {
+    outline: none;
+}
+
+.panelFullContentWrapper {
+    height: 100%;
+    display: flex;
+    width: ~"calc(100% - 6px)";
+    flex-direction: column;
+}
+
+.property-panel2-collapsed {
+    width: @expandCollapseActionBarWidth;
+    flex: 0 0 @expandCollapseActionBarWidth;
+    min-width: @expandCollapseActionBarWidth;
+}
+
+.property-panel2-hidden {
+    display: none;
+}

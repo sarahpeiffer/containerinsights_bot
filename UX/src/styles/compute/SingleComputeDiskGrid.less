@@ -1,0 +1,46 @@
+.grid-div {
+  margin-left: 20px;
+  margin-bottom: 20px;
+
+  &.single-vm-disk-grid {
+    .sg-sortindicator {
+      display: none;
+    }
+
+    .no-data-msg-div {
+      body.dark & {
+        color: #e0e0e0;
+      }
+    }
+  }
+}
+
+.selectable-grid .sg-row.sg-head {
+  text-transform: initial;
+}
+
+.no-data-spacer {
+  margin-bottom:70px;
+}
+
+.selectable-grid .sg-head .sg-col:last-child {
+  text-align: left!important;
+}
+
+// This avoids the charts jumping too much when the table is loaded
+.loading-temporary-height {
+  height: 200px;
+}
+
+.no-data-msg-div {
+  display: flex;
+  flex-direction: column;
+}
+
+.no-data-msg {
+  align-self: center;
+}
+
+.data-error-msg {
+  margin-left: 10px;
+}

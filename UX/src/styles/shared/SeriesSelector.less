@@ -1,0 +1,52 @@
+// dark mode variables
+@dark-mode-selected-backgroun-color: #083e68;
+@dark-mode-text-color: #fff;
+
+.series-selector {
+    display: flex;
+    border: 1px solid silver;
+    border-right: none;
+    z-index: 99;
+
+    body.dark & {
+        color: @dark-mode-text-color;   
+        border: 1px solid #666;
+    }
+
+    .series-option {
+        padding: 2px 7px 4px;
+        text-align: center;
+        border-right: 1px solid silver;
+        cursor: pointer;
+
+        body.dark & {
+            border-right: 1px solid #666;
+        }
+
+        &.selected-option {
+            background-color: #ddf0ff;
+
+            body.dark & {
+                background-color: @dark-mode-selected-backgroun-color;
+            }
+        }
+    }
+
+    &.disabled {
+        position: relative;
+      
+        &::before {
+            content: '';
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            background-color: #ffffffaa;
+
+            body.dark & {
+                background-color: #1a1a1aaa;
+            }
+        }
+    }
+}

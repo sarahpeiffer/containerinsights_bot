@@ -1,0 +1,139 @@
+{
+    "$schema": "http://schemas.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "clusterName": {
+            "type": "string",
+            "metadata": {
+                "description": "Friendly name of the cluster to use in alert name / description"
+            }
+        },
+        "clusterResourceId": {
+            "type": "string",
+            "metadata": {
+                "description": "Cluster Azure Resource Id (ARM id) for AKS cluster in form /subscriptions/{id}/resourceGroups/{group-name}/providers/Microsoft.ContainerService/managedClusters/{cluster-name}"
+            }
+        },
+        "workspaceResourceId": {
+            "type": "string",
+            "metadata": {
+                "description": "Log Analytics workspace Azure Resource Id (ARM id) for Log Analytics workspace in form /subscriptions/{id}/resourceGroups/{group-name}/providers/microsoft.operationalinsights/workspaces/{workspace-name}"
+            }
+        },
+        "alertSeverity": {
+            "type": "int",
+            "allowedValues": [0, 1, 2, 3, 4],
+            "metadata": {
+                "description": "Alert severity"
+            }
+        },
+        "actionGroupResourceId": {
+            "type": "string",
+            "metadata": {
+                "description": "Action group to use for alert in form /subscriptions/{id}/resourceGroups/{group-name}/providers/microsoft.insights/actiongroups/{action-group-name}"
+            }
+        },
+        "frequencyInMinutes": {
+            "type": "int",
+            "defaultValue": 5,
+            "metadata": {
+                "description": "Frequency of alert query evaluation"
+            }
+        },
+        "timeWindowInMinutes": {
+            "type": "int",
+            "defaultValue": 60,
+            "metadata": {
+                "description": "Look-back time window of the alert query"
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "region where alert rule is created. Example: eastus"
+            }
+        },
+        "nodesHealthyThresholdPercent": {
+            "type": "int",
+            "defaultValue": 85,
+            "metadata": {
+                "description": "Cluster node pool is considered healthy if percentage of healthy nodes in the pool is greater than this parameter value. Node is considered healthy if it is reporting to be 'Ready' without any pressures or critical conditions"
+            }
+        },
+        "nodesCriticalThresholdPercent": {
+            "type": "int",
+            "defaultValue": 60,
+            "metadata": {
+                "description": "Cluster node pool is considered critical if percentage of nodes in critical state in the pool is less or equal to this parameter value. Node is considered critical if it is reporting 'out of disk' or 'network unavailable' conditions"
+            }
+        },
+        "userPodsHealthyThresholdPercent": {
+            "type": "int",
+            "defaultValue": 100,
+            "metadata": {
+                "description": "Cluster user pod set is considered healthy if percentage of healthy user pods in the user pod set (pods not in kube-system namespace) is greater or equal to this parameter value. User pod is considered healthy if it is 'running' or 'completed'"
+            }
+        },
+        "userPodsCriticalThresholdPercent": {
+            "type": "int",
+            "defaultValue": 90,
+            "metadata": {
+                "description": "Cluster user pod set is considered critical if percentage of healthy user pods in the user pod set (pods not in kube-system namespace) is less than this parameter value. User pod is considered healthy if it is 'running' or 'completed'"
+            }
+        },
+        "systemPodsHealthyThresholdPercent": {
+            "type": "int",
+            "defaultValue": 100,
+            "metadata": {
+                "description": "Cluster system pod set is considered healthy if percentage of healthy pods in kube-system namespace is greater or equal to this parameter value. System pod is considered healthy if it is 'running' or 'completed'"
+            }
+        },
+        "systemPodsCriticalThresholdPercent": {
+            "type": "int",
+            "defaultValue": 100,
+            "metadata": {
+                "description": "Cluster system pod set is considered critical if percentage of healthy pods in kube-system namespace is less than this parameter value. System pod is considered healthy if it is 'running' or 'completed'"
+            }
+        }
+    },
+    "variables": {
+        "alertName": "[concat('Cluster ', parameters('clusterName'), ' is unhealthy')]",
+        "alertDescription": "[concat('Cluster ', parameters('clusterName'), ' is in unhealthy state')]",
+        "alertTagName": "[concat('hidden-link:', parameters('workspaceResourceId'))]"
+    },
+    "resources": [
+        {
+            "name": "[variables('alertName')]",
+            "type": "microsoft.insights/scheduledQueryRules",
+            "apiVersion": "2018-04-16",
+            "location": "[parameters('location')]",
+            "tags": {"[variables('alertTagName')]": "Resource"},
+            "properties": {
+                "description": "[variables('alertDescription')]",
+                "enabled": "true",
+                "source": {
+                    "query": "[concat('let clusterId = \"', parameters('clusterResourceId'), '\";', 'let alertedHealthStatuses = dynamic([\"critical\", \"unknown\"]);                    let NodesHealthyThreshold = ', parameters('nodesHealthyThresholdPercent'), '/100.0;                    let NodesCriticalThreshold = ', parameters('nodesCriticalThresholdPercent'), '/100.0;                    let UserPodsHealthyThreshold = ', parameters('userPodsHealthyThresholdPercent'), '/100.0;                    let UserPodsCriticalThreshold = ', parameters('userPodsCriticalThresholdPercent'), '/100.0;                    let SystemPodsHealthyThreshold = ', parameters('systemPodsHealthyThresholdPercent'), '/100.0;                    let SystemPodsCriticalThreshold = ', parameters('systemPodsCriticalThresholdPercent'), '/100.0;                    KubeNodeInventory                     | where ClusterId =~ clusterId                    | summarize arg_max(TimeGenerated, Status) by ClusterId, Computer                    | extend HealthStatus = iif(Status contains \"outofdisk\" or Status contains \"networkunavailable\", \"critical\",                                            iif(Status contains \"pressure\", \"warning\",                                            iif(Status contains \"ready\", \"healthy\", \"unknown\")))                    | summarize NodeCount = count(), HealthyNodeCount = sumif(1, HealthStatus == \"healthy\") by ClusterId                    | project ClusterId, NodeCount,                               HealthyNodeRatio = todouble(HealthyNodeCount) / NodeCount                    | join (                        KubePodInventory                        | where ClusterId =~ clusterId                        | summarize arg_max(TimeGenerated, PodStatus) by ClusterId, Namespace, Computer, PodUid                        | summarize PodCountByStatus = count(PodUid) by ClusterId, Namespace, PodStatus                        | summarize PodCount = sum(PodCountByStatus), HealthyPodCount = sumif(PodCountByStatus, PodStatus contains \"running\" or PodStatus contains \"succeeded\") by ClusterId, Namespace                        | summarize SystemPodCount = sumif(PodCount, Namespace =~ \"kube-system\"),                                    SystemHealthyPodCount = sumif(HealthyPodCount, Namespace =~ \"kube-system\"),                                    UserPodCount = sumif(PodCount, Namespace !~ \"kube-system\"),                                    UserHealthyPodCount = sumif(HealthyPodCount, Namespace !~ \"kube-system\") by ClusterId                        | project ClusterId, SystemPodCount, UserPodCount, SystemPodsHealthRatio = iif(SystemPodCount == 0, 0.0, todouble(SystemHealthyPodCount) / SystemPodCount),                                   UserPodsHealthRatio = iif(UserPodCount == 0, 0.0, todouble(UserHealthyPodCount) / UserPodCount)                    ) on ClusterId                    | project ClusterId,                              NodesHealthStatus = iif(NodeCount == 0, \"unknown\",                                                  iif(HealthyNodeRatio > NodesHealthyThreshold, \"healthy\",                                                  iif(HealthyNodeRatio <= NodesCriticalThreshold, \"critical\", \"warning\"))),                              UserPodsHealthStatus = iif(SystemPodCount == 0 and UserPodCount == 0, \"unknown\",                                                     iif(SystemPodCount > 0 and UserPodCount == 0, \"healthy\",                                                     iif(UserPodsHealthRatio >= UserPodsHealthyThreshold, \"healthy\",                                                     iif(UserPodsHealthRatio < UserPodsCriticalThreshold, \"critical\", \"warning\")))),                              SystemPodsHealthStatus = iif(SystemPodCount == 0, \"unknown\",                                                       iif(SystemPodsHealthRatio >= SystemPodsHealthyThreshold, \"healthy\",                                                       iif(SystemPodsHealthRatio < SystemPodsCriticalThreshold, \"critical\", \"warning\")))                    | extend ClusterHealthStatus = iif(NodesHealthStatus == \"unknown\" or UserPodsHealthStatus == \"unknown\" or SystemPodsHealthStatus == \"unknown\", \"unknown\",                                                   iif(NodesHealthStatus == \"critical\" or UserPodsHealthStatus == \"critical\" or SystemPodsHealthStatus == \"critical\", \"critical\",                                                   iif(NodesHealthStatus == \"warning\" or UserPodsHealthStatus == \"warning\" or SystemPodsHealthStatus == \"warning\", \"warning\", \"healthy\")))                    | where ClusterHealthStatus in (alertedHealthStatuses)')]",
+                    "authorizedResources": [],
+                    "dataSourceId": "[parameters('workspaceResourceId')]",
+                    "queryType": "ResultCount"
+                },
+                "schedule": {
+                    "frequencyInMinutes": "[parameters('frequencyInMinutes')]",
+                    "timeWindowInMinutes": "[parameters('timeWindowInMinutes')]"
+                },
+                "action": {
+                    "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction",
+                    "severity": "[parameters('alertSeverity')]",
+                    "aznsAction":{
+                        "actionGroup":"[array(parameters('actionGroupResourceId'))]"
+                    },
+                    "trigger": {
+                        "thresholdOperator": "GreaterThan",
+                        "threshold": 0
+                    }
+                }
+            }
+        }
+    ]
+}

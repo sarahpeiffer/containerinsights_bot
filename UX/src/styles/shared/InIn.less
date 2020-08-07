@@ -1,0 +1,81 @@
+// light theme
+@light-hover-color: rgba(85,179,255, 0.1);
+@light-hyperlink-color: #015cda;
+
+// dark theme
+@dark-text-color: #fff;
+@dark-hyperlink-color: #4894fe;
+@dark-hover-color: rgba(128,128,128,.3);
+
+// not used
+@font: "Segoe UI", "Segoe UI", "Segoe", Tahoma, Helvetica, Arial, sans-serif;
+@fontSemibold: "Segoe UI Semibold", "Segoe WP Semibold", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
+
+html {
+    height: 100%;
+
+    body {
+        font-family: wf_segoe-ui_normal, "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
+        font-size: 12px;
+        line-height: normal;
+        margin: 0;
+        height: 100%;
+        box-sizing: border-box;
+        background-color: transparent !important; // ensure body background isn't set by any of our lib's so that we can support dark mode
+    }
+
+    body.dark {
+        color: @dark-text-color;
+    }
+}
+
+// Global styles
+a { 
+    text-decoration: none; // removes underlines from a-tags
+    color: @light-hyperlink-color;
+
+    body.dark & {
+        color: @dark-hyperlink-color;
+    }
+
+    &:hover {
+        background-color: @light-hover-color;
+    }
+
+    body.dark &:hover {
+        background-color: @dark-hover-color;
+    }
+}
+
+svg {
+    height: 100%;
+    width: 100%;
+}
+
+.hyperlink-svg {
+    fill: @light-hyperlink-color;
+
+    body.dark & {
+        fill: @dark-hyperlink-color;
+    }
+}
+
+.invisible {
+    display: none !important;
+}
+
+.center-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.column-flex {
+    flex-direction: column;
+}
+
+.not-click-through {
+    pointer-events: auto;
+}

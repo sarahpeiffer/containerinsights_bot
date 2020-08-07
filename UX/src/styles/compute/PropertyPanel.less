@@ -1,0 +1,230 @@
+@propertyTabBackgroundColor: #ffffff;
+@svg-size: 15px;
+@vminsights-collapsed-div-width: 77px;
+
+// light theme
+@hyperlink-color: #015cda;
+@light-hyperlink-color-hover: #016afe;
+
+// dark theme
+@dark-title-color: #0089fa;
+@dark-text-color: #e0e0e0;
+@dark-svg-fill: #fff;
+
+.vm-panel {
+    .customized-collapsed {
+        width: @vminsights-collapsed-div-width !important; //TODO have to add !important so far to walk around, shall be fix in
+        flex: 0 0 @vminsights-collapsed-div-width !important; //https://msazure.visualstudio.com/InfrastructureInsights/_workitems/edit/3104665
+        background: @propertyTabBackgroundColor;
+    }
+    .vm-insights-collapse-icon {
+        margin: 0;
+        padding: 20px;
+        &:hover {
+            opacity: 0.7;
+        }
+    }
+    .vm-insights-collapse-icon-disabled {
+        padding: 20px;
+        cursor: default;
+        width: 30px;
+        height: 30px;
+        svg {
+            height: 100%;
+            width: 100%;
+            fill: #aaa;
+        }
+    }
+    .property-panel {
+        .property-panel-tab-headers {
+            width: 77px;
+        }
+        .blue-loading-dots {
+            margin: 5px auto;
+        }
+        .info-box-component {
+            .info-box-body {
+                display: flex;
+                margin: 10px 10px 10px 0;
+                padding: 20px;
+                background: #f0f8ff;
+                color: #000;
+            }
+            .error-state {
+                background: #FFCCCC;
+            }
+            .info-box-icon {
+                height: 30%;
+                width: 30%;
+                margin: auto;
+                padding-right: 10px;
+                max-width: 30px;
+                max-height: 30px;
+            }
+            .info-box-content {
+                margin: auto;
+            }
+        }
+        .alert-panel {
+            .expandable-section-title {
+                flex-direction: column;
+                .expandable-section-subtitle {
+                    font-size: 0.9rem;
+                    color: #777;
+                }
+                body.dark & {
+                    color: @dark-text-color;
+                }
+            }
+            .expandable-section-body {
+                .alert-panel-navigate-text {
+                    &:active {
+                        background: @hyperlink-color;
+                        color: #fff;
+                        body.dark & {
+                            background: @dark-title-color;
+                        }
+                    }
+                }
+                .monospace {
+                    font-family: Consolas, "Courier New", monospace;
+                    padding: 10px;
+                    background: #f0f0f0;
+                    body.dark & {
+                        background: #333;
+                    }
+                }
+            }
+        }
+        .log-event-tabular {
+            height: 575px;
+            width: 325px;
+            body.dark &{
+                color: @dark-text-color
+            }
+        }
+        .property-panel-header-info-link {
+            color: #0057A3;
+            padding: 10px;
+            display: flex;
+        }
+        .expandable-section-2 {
+            padding: 0;
+            margin: 0 20px 0 0;
+            .expandable-section-header {
+                display: flex;
+                flex-direction: row;
+                font-size: 1.1rem;
+                font-weight: bold;
+                margin-top: 12px;
+                height: 32px; // font-size 20px + margin-top 12px
+                cursor: pointer;
+                .expandable-section-icon {
+                    width: 11px;
+                    display: inline-block;
+                    margin-right: 8px;
+                    cursor: pointer;
+                    margin-left: 0;
+                    body.dark & {
+                        fill: @dark-svg-fill;
+                    }
+                }
+                .expandable-section-title {
+                    user-select: none;
+                    display: flex;
+                    color: #252525;
+                    cursor: pointer;
+                    font-weight: 600;
+                    svg {
+                        width: 20px;
+                        height: 20px;
+                        vertical-align: middle;
+                    }
+                    body.dark & {
+                        color: @dark-text-color;
+                    }
+                    .expandable-section-maintitle {
+                        .expandable-section-maintitle-span {
+                            vertical-align: middle;
+                            margin-left: 5px;
+                        }
+                    }
+                }
+                &:hover .expandable-section-icon svg path {
+                    fill: @light-hyperlink-color-hover;
+                }
+            }
+            .button {
+                margin: 10px auto;
+                font-size: .8rem;
+                display: block;
+            }
+            
+            .expandable-section-body {
+                margin-left: 15px;
+                .quick-link-section {
+                    svg {
+                        width: 16px;
+                        height: 16px;
+                        color: #161616;
+                    }
+                }
+                table {
+                    width: 90%;
+                    margin: 10px 0;
+                    td, th {
+                        padding: 5px;
+                    }
+                    tbody {
+                        svg {
+                            width: 20px;
+                            height: 20px;
+                            vertical-align: middle;
+                        }
+                    }
+                }
+            }
+            .quick-link {
+                padding-bottom: 3px;
+                border-bottom: 2px solid #eee;
+            }
+        }
+        .workspace, .computer-group {
+            .button {
+                margin-left: 0;
+            }
+        }
+        .sg-text {
+            .info-tooltip {
+                padding-left: 5px;
+                svg {
+                    height: 10px;
+                    width: 15px;
+                }
+            }
+        }
+    }
+}
+.connection-property-panel {
+    display: block;
+    .expandable-section-2 {
+        .expandable-section-body {
+            cursor: pointer;
+            margin-top: 3px;
+            margin-bottom: 3px;
+            margin-left: 15px;
+            color: #0089fa;
+            margin-bottom: 5px;
+            font-size: 13px;
+            span {
+                vertical-align: super;
+                margin-left: 6px;
+            }
+            svg {
+                height: 16px;
+                width: 16px;
+                color: #161616
+            }
+        }
+    }
+}

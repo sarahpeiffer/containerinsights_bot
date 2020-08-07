@@ -1,0 +1,5 @@
+;Configuration for Ownership Enforcer 
+; configuration is based on the link https://onebranch.visualstudio.com/Ownership%20Enforcer/_wiki/wikis/Ownership-Enforcer.wiki?pagePath=%2FOwnership%20Enforcer%2FConfiguring%20Ownership%20Enforcer&wikiVersion=GBwikiMaster&pageId=960
+; adding OMScontainers for any pull request as optional
+OMScontainers
+*jobyt

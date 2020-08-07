@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="unknown">
+
+<head>
+    <title>Infrastructure Insights: Container</title>
+    <meta charset="utf-8">
+
+    <script type="text/javascript">
+        window.containerInsights = {};
+        window.containerInsights.performanceMeasures = {
+            frame_htmlLoaded: Date.now()
+        };
+    </script>
+
+<script type='text/javascript'> </script>
+    <script type="text/javascript" src="../web/base-libs/jquery.3.2.1.min.js"></script>
+    <script type="text/javascript" src="../web/base-libs/moment.2.20.1.min.js"></script>
+    <script type="text/javascript" src="./container-preload.js"></script>
+
+    <script type="text/javascript">
+        window.containerInsights.performanceMeasures['frame_queryScriptLoaded'] = Date.now();
+    </script>
+
+    <link rel="stylesheet" href="./container-perf.css">
+    <link rel="stylesheet" href="./container-deployments.css">
+    <link rel="stylesheet" href="./container-health.css">
+</head>
+
+<body>
+    <div class="full-height center-flex" id="root" role="main" aria-label="container-insights-single-cluster-root">
+        <div class='blue-loading-dots'>
+            <div class='fxs-progress-dots-dot large'></div>
+            <div class='fxs-progress-dots-dot large'></div>
+            <div class='fxs-progress-dots-dot large'></div>
+        </div>
+    </div>
+</body>
+
+</html>

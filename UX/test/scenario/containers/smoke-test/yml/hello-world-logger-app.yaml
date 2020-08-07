@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: hello-world-logger-app
+spec:
+  replicas: 1
+  selector:
+    app: hello-world-logger-app
+  template:
+    metadata:
+      name: hello-world-logger-app
+      labels:
+        app: hello-world-logger-app
+    spec:
+      containers:
+      - name: hello-world-logger-app
+        image: nickbacr.azurecr.io/hello-world-logger-app
+        ports:
+        - containerPort: 80

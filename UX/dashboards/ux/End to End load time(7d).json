@@ -1,0 +1,1044 @@
+[
+  {
+    "Type": "dashboard",
+    "Id": "End to End load time(7d)",
+    "Title": "End to End load time(7d)",
+    "Body": {
+      "title": "End to End load time(7d)",
+      "hits": 0,
+      "panelsJSON": "[{\"type\":\"search\",\"size_x\":14,\"size_y\":4,\"isTempObject\":false,\"id\":\"InBladeContainerInsights\",\"uid\":\"82096c5c-3a51-420e-a7d5-aa08f334e3ce\",\"col\":1,\"row\":1,\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}}},{\"id\":\"MultiAKS Load P95\",\"type\":\"visualization\",\"isCloned\":false,\"size_x\":8,\"size_y\":5,\"uid\":\"fd9fed5d-7c0d-4e4b-938d-d7b1a1035dca\",\"col\":15,\"row\":1,\"vis_id\":\"a2747164-cbc4-4421-b725-d6b153890004\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"title\":\"Multi-cluster Extension Query Latency(P95)\",\"saved_data\":\"\"},{\"type\":\"visualization\",\"size_x\":7,\"size_y\":4,\"isTempObject\":false,\"id\":\"BrowseBlade Load P95\",\"uid\":\"7d141ceb-2fb5-4fad-b752-c53e25530bd0\",\"col\":1,\"row\":5,\"vis_id\":\"7a566813-d0bd-4077-b26c-f6d054e28dc2\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"saved_data\":\"\"},{\"type\":\"visualization\",\"size_x\":7,\"size_y\":4,\"isTempObject\":false,\"id\":\"InbladeCI Load P95\",\"uid\":\"7f2e5f8b-8a8b-4bb0-ab59-1aacc83baf95\",\"col\":8,\"row\":5,\"vis_id\":\"7a566813-d0bd-4077-b26c-f6d054e28dc2\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"saved_data\":\"\"},{\"id\":\"MultiClusterView- ARGQueryErrors\",\"type\":\"search\",\"isCloned\":false,\"size_x\":8,\"size_y\":4,\"uid\":\"208c2d89-19b5-4783-bd73-d10e50c91d98\",\"col\":15,\"row\":6,\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"title\":\"MultiClusterView- ARGQueryErrors(last 24hours)\"},{\"type\":\"visualization\",\"size_x\":10,\"size_y\":4,\"isTempObject\":false,\"id\":\"Extesion Loads\",\"uid\":\"f168e487-4f9b-42bc-8eea-8edcc257dafb\",\"col\":1,\"row\":9,\"vis_id\":\"65984873-7daf-4b00-a69d-cc15052f5041\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"saved_data\":\"\"},{\"type\":\"search\",\"size_x\":4,\"size_y\":4,\"isTempObject\":false,\"id\":\"Active Versions (arg_max)\",\"uid\":\"71d124fd-cd5a-4610-a842-4afbf51478e7\",\"col\":11,\"row\":9,\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}}},{\"id\":\"OnboardingFromMultiCluster\",\"type\":\"visualization\",\"isCloned\":false,\"size_x\":8,\"size_y\":4,\"uid\":\"d879a33e-1541-496d-b402-8400f517af30\",\"col\":15,\"row\":10,\"vis_id\":\"0aae3852-68e7-4023-bfdc-3d87fbf6658f\",\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"title\":\"OnboardingFromMultiCluster(30d)\",\"saved_data\":\"\"},{\"type\":\"search\",\"size_x\":14,\"size_y\":11,\"isTempObject\":false,\"id\":\"Feedback\",\"uid\":\"298edaf9-a68d-4e8b-aee3-aff014eb8d6d\",\"col\":1,\"row\":13,\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}}},{\"id\":\"Users Vs Total Clusters\",\"type\":\"visualization\",\"isCloned\":false,\"size_x\":8,\"size_y\":4,\"uid\":\"71a5624a-c10b-4db8-92be-b3dcc6538677\",\"col\":15,\"row\":14,\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"vis_id\":\"86c3d505-3d69-4cdf-9914-9bcb9a97ba7e\",\"title\":\"Users Vs Total Clusters (External Only)(30D)\",\"saved_data\":\"\"},{\"id\":\"Users Vs Total Clusters (MS Tenant Only)\",\"type\":\"visualization\",\"isCloned\":false,\"size_x\":8,\"size_y\":4,\"uid\":\"eaa3e6a5-a804-44b2-a59d-a770a6e593d6\",\"col\":15,\"row\":18,\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}},\"title\":\"Users Vs Total Clusters (MS Tenant Only)(30D)\",\"vis_id\":\"0e736168-91f0-4771-868b-51d5da95313e\",\"saved_data\":\"\"},{\"id\":\"Users Vs Total Monitored (AKS and ACSEngine) Clusters (External Only)\",\"type\":\"search\",\"isCloned\":false,\"size_x\":8,\"size_y\":4,\"uid\":\"00765761-d6bb-4b64-a33b-09c5240ba421\",\"col\":15,\"row\":22,\"Configure\":{\"Filters\":{\"FieldList\":[],\"IsInclude\":true,\"ChooseAll\":true,\"IgnoreTime\":false}}}]",
+      "inputPanelsJSON": "[]",
+      "requiredInputMessage": "Please select required inputs.",
+      "version": 1,
+      "cachingEnabled": false,
+      "cachingDataFreshenessMinutes": 30,
+      "timeRestore": true,
+      "timeRefreshIntervalValue": 0,
+      "timeRoundBy": "Auto",
+      "timeFormat": "Local",
+      "tabsJSON": "[]",
+      "tabsType": "default",
+      "useGlobalFilters": false,
+      "mode": "Authoring Mode",
+      "showTitle": true,
+      "showTitleButtons": true,
+      "renameTile": true,
+      "editVisualization": true,
+      "exportDataToCSV": true,
+      "showClonePanel": true,
+      "showRefresh": true,
+      "showExportToImage": true,
+      "showInspectQuery": true,
+      "showMoveToOtherSection": true,
+      "showDebug": false,
+      "showTime": false,
+      "showBorders": false,
+      "showFilter": true,
+      "showCustomTimeAggregation": false,
+      "showPanelTitle": true,
+      "showWorkspaceInfo": false,
+      "panelTitle": {
+        "alignment": "left",
+        "font": "",
+        "style": {
+          "bold": true,
+          "italic": false,
+          "underline": false
+        },
+        "size": "1.0em",
+        "color": "#7b8a8b"
+      },
+      "capitalizedTitles": false,
+      "extraColumns": true,
+      "dashboardTimeFilterLimit": {
+        "options": {
+          "text": "Weeks",
+          "value": "Week(s)"
+        },
+        "value": 2,
+        "limitEnabled": false
+      },
+      "queryOptimizationEnabled": false,
+      "inspectQuery": true,
+      "exportPanelToImage": true,
+      "clonePanel": true,
+      "refreshPanel": true,
+      "removePanel": true,
+      "moveToSection": true,
+      "makeItInput": true,
+      "openInExplore": true,
+      "showPanelMenu": true,
+      "showInputPanelMenu": true,
+      "showInputApplyButton": false,
+      "showInputTitle": false,
+      "editInput": true,
+      "inputRequired": true,
+      "refreshInput": true,
+      "removeInput": true,
+      "moveInputToSection": true,
+      "groupsJson": "{\"keys\":[\"global\"],\"groups\":{\"global\":{\"title\":\"global\",\"color\":\"#00bcf2\"}},\"groupsByPanel\":{\"82096c5c-3a51-420e-a7d5-aa08f334e3ce\":{\"sourceGroups\":[\"global\"],\"destinationGroups\":[],\"title\":\"\"},\"298edaf9-a68d-4e8b-aee3-aff014eb8d6d\":{\"sourceGroups\":[\"global\"],\"destinationGroups\":[],\"title\":\"\"},\"7d141ceb-2fb5-4fad-b752-c53e25530bd0\":{\"sourceGroups\":[\"global\"],\"destinationGroups\":[],\"title\":\"\"},\"7f2e5f8b-8a8b-4bb0-ab59-1aacc83baf95\":{\"sourceGroups\":[\"global\"],\"destinationGroups\":[],\"title\":\"\"},\"71d124fd-cd5a-4610-a842-4afbf51478e7\":{\"sourceGroups\":[\"global\"],\"destinationGroups\":[],\"title\":\"\"},\"fd9fed5d-7c0d-4e4b-938d-d7b1a1035dca\":{\"sourceGroups\":[\"global\"],\"destinationGroups\":[],\"title\":\"\"},\"208c2d89-19b5-4783-bd73-d10e50c91d98\":{\"sourceGroups\":[\"global\"],\"destinationGroups\":[],\"title\":\"\"},\"d879a33e-1541-496d-b402-8400f517af30\":{\"sourceGroups\":[\"global\"],\"destinationGroups\":[],\"title\":\"\"},\"71a5624a-c10b-4db8-92be-b3dcc6538677\":{\"sourceGroups\":[\"global\"],\"destinationGroups\":[],\"title\":\"\"},\"eaa3e6a5-a804-44b2-a59d-a770a6e593d6\":{\"sourceGroups\":[\"global\"],\"destinationGroups\":[],\"title\":\"\"},\"f168e487-4f9b-42bc-8eea-8edcc257dafb\":{\"sourceGroups\":[\"global\"],\"destinationGroups\":[],\"title\":\"\"},\"00765761-d6bb-4b64-a33b-09c5240ba421\":{\"sourceGroups\":[\"global\"],\"destinationGroups\":[],\"title\":\"\"}},\"groupsByTab\":{},\"filtersByTab\":{},\"allOtherFilters\":[],\"filtersToBeApplied\":[],\"modifiedPanels\":[]}",
+      "vis_id": "3964a0e2-2d75-4374-8353-a0acb80e6d5f",
+      "customTimeagg": "",
+      "filterPrompt": false,
+      "supportGroupsJSON": "[]",
+      "customMessageText": "",
+      "customMessageIsEnabled": false,
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "MultiAKS Load P95",
+    "Title": "MultiAKS Load P95",
+    "Body": {
+      "title": "MultiAKS Load P95",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":false,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"Extension/Microsoft_Azure_Monitoring/Blade/InfraInsightsMultiAksClusterInsightsFrameBlade\",\"color\":\"#00bcf2\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"InitOrRefresh\",\"color\":\"#6f87d8\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"ARGQuery\",\"color\":\"#daa05d\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"GetSelectedSubscription\",\"color\":\"#663db8\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#848e96\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false,\"polyfit\":{\"fit\":false,\"line_type\":\"linear\",\"reg_only\":false}},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"P95\",\"type\":\"Double\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"PreciseTimeStamp\",\"type\":\"DateTime\"}}},{\"id\":\"3\",\"type\":\"bucketValueOf\",\"schema\":\"group\",\"params\":{\"field\":{\"name\":\"name\",\"type\":\"String\"}}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"a2747164-cbc4-4421-b725-d6b153890004\"}",
+      "vis_id": "a2747164-cbc4-4421-b725-d6b153890004",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"lens.kusto.windows.net\",\"database\":\"Sandbox\",\"query\":\"let BladeLoadTime =\\ncluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ClientTelemetry\\n| where PreciseTimeStamp >= startofday(ago(14d)) and PreciseTimeStamp <= ago(0d)\\n| where action == \\\"BladeFullReady\\\"\\n| where name contains \\\"Microsoft_Azure_Monitoring\\\"\\n| where name contains 'InfraInsightsMultiAksClusterInsightsFrameBlade'\\n| where actionModifier == 'complete'\\n| extend OpenedBy = tostring(todynamic(data).openedByBladeName) \\n| summarize Users = dcount(userId, 2), Loads = count(), percentiles(duration, 50, 80, 90, 95, 99) by name, bin(PreciseTimeStamp, 1d)\\n//| order by name, IncludesExtensionLoadTime\\n| order by PreciseTimeStamp asc \\n| project PreciseTimeStamp, P95 = percentile_duration_95, name;\\nBladeLoadTime\\n| union (\\n cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\n| where PreciseTimeStamp >= startofday(ago(14d)) and PreciseTimeStamp <= ago(0d)\\n| where source =~ \\\"AzureMonitor/Containers\\\" \\n| where action =~ \\\"getClustersFromBackend\\\"\\n| where actionModifier =~ \\\"Complete\\\"\\n| extend name = \\\"getClustersArgQuery\\\"\\n|summarize P95 = percentile(duration, 95) by bin(PreciseTimeStamp, 1d), name\\n)\\n| render timechart \\n\",\"allQueries\":{\"content\":\"let BladeLoadTime =\\r\\ncluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ClientTelemetry\\r\\n| where PreciseTimeStamp >= startofday(ago(14d)) and PreciseTimeStamp <= ago(0d)\\r\\n| where action == \\\"BladeFullReady\\\"\\r\\n| where name contains \\\"Microsoft_Azure_Monitoring\\\"\\r\\n| where name contains 'InfraInsightsMultiAksClusterInsightsFrameBlade'\\r\\n| where actionModifier == 'complete'\\r\\n| extend OpenedBy = tostring(todynamic(data).openedByBladeName) \\r\\n| summarize Users = dcount(userId, 2), Loads = count(), percentiles(duration, 50, 80, 90, 95, 99) by name, bin(PreciseTimeStamp, 1d)\\r\\n//| order by name, IncludesExtensionLoadTime\\r\\n| order by PreciseTimeStamp asc \\r\\n| project PreciseTimeStamp, P95 = percentile_duration_95, name;\\r\\nBladeLoadTime\\r\\n| union (\\r\\n cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\r\\n| where PreciseTimeStamp >= startofday(ago(14d)) and PreciseTimeStamp <= ago(0d)\\r\\n| where source =~ \\\"AzureMonitor/Containers\\\" \\r\\n| where action =~ \\\"getClustersFromBackend\\\"\\r\\n| where actionModifier =~ \\\"Complete\\\"\\r\\n| extend name = \\\"getClustersArgQuery\\\"\\r\\n|summarize P95 = percentile(duration, 95) by bin(PreciseTimeStamp, 1d), name\\r\\n)\\r\\n| render timechart \",\"startLine\":1,\"startColumn\":1,\"endLine\":23,\"endColumn\":20},\"filter\":[],\"timefilter\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\",\"from\":null,\"to\":null},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "BrowseBlade Load P95",
+    "Title": "BrowseBlade Load P95",
+    "Body": {
+      "title": "BrowseBlade Load P95",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":true,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"AppInsightsExtension\",\"color\":\"#006e8a\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"Microsoft_Azure_Monitoring\",\"color\":\"#6f87d8\",\"paletteName\":\"\",\"paletteIndex\":0},{\"label\":\"Microsoft_Azure_WorkloadInsights\",\"color\":\"#663db8\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#848e96\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false,\"polyfit\":{\"fit\":false,\"line_type\":\"linear\",\"reg_only\":false}},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"percentile_duration_95\",\"type\":\"Double\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"TIMESTAMP\",\"type\":\"DateTime\"}}},{\"id\":\"3\",\"type\":\"bucketValueOf\",\"schema\":\"group\",\"params\":{\"field\":{\"name\":\"name\",\"type\":\"String\"}}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"7a566813-d0bd-4077-b26c-f6d054e28dc2\"}",
+      "vis_id": "7a566813-d0bd-4077-b26c-f6d054e28dc2",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"lens.kusto.windows.net\",\"database\":\"Sandbox\",\"query\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ClientTelemetry\\n| where PreciseTimeStamp > startofday(ago(14d))\\n| where action == \\\"ExtensionLoad\\\" and actionModifier == \\\"complete\\\"\\n| where name == \\\"AppInsightsExtension\\\" or name == \\\"Microsoft_Azure_Monitoring\\\"\\n| extend BundlingKind = tostring(todynamic(query)['bundlingKind'])\\n| extend Blk = strcat(name, BundlingKind)\\n| project duration, TIMESTAMP, BundlingKind, name, Blk\\n| summarize percentile(duration, 95) by bin(TIMESTAMP, 1d), name\\n| order by TIMESTAMP desc\\n| render timechart \\n\",\"allQueries\":{\"content\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ClientTelemetry\\n| where PreciseTimeStamp > startofday(ago(14d))\\n| where action == \\\"ExtensionLoad\\\" and actionModifier == \\\"complete\\\"\\n| where name == \\\"AppInsightsExtension\\\" or name == \\\"Microsoft_Azure_Monitoring\\\"\\n| extend BundlingKind = tostring(todynamic(query)['bundlingKind'])\\n| extend Blk = strcat(name, BundlingKind)\\n| project duration, TIMESTAMP, BundlingKind, name, Blk\\n| summarize percentile(duration, 95) by bin(TIMESTAMP, 1d), name\\n| order by TIMESTAMP desc\\n| render timechart \",\"startLine\":1,\"startColumn\":1,\"endLine\":10,\"endColumn\":20},\"filter\":[],\"timefilter\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\",\"from\":null,\"to\":null},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "InbladeCI Load P95",
+    "Title": "InbladeCI Load P95",
+    "Body": {
+      "title": "InbladeCI Load P95",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":true,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":40000,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"extension/microsoft_azure_monitoring/blade/inbladecontainerinsightsframeblade\",\"color\":\"#00bcf2\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#848e96\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false,\"polyfit\":{\"fit\":false,\"line_type\":\"linear\",\"reg_only\":false}},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"percentile_duration_95\",\"type\":\"Double\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"PreciseTimeStamp\",\"type\":\"DateTime\"}}},{\"id\":\"3\",\"type\":\"bucketValueOf\",\"schema\":\"group\",\"params\":{\"field\":{\"name\":\"name\",\"type\":\"String\"}}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"7a566813-d0bd-4077-b26c-f6d054e28dc2\"}",
+      "vis_id": "7a566813-d0bd-4077-b26c-f6d054e28dc2",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"lens.kusto.windows.net\",\"database\":\"Sandbox\",\"query\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ClientTelemetry\\n| where PreciseTimeStamp >= startofday(ago(14d)) and PreciseTimeStamp <= ago(0d)\\n| where action == \\\"BladeFullReady\\\"\\n| extend name = tolower(name)\\n| where name contains \\\"microsoft_azure_monitoring\\\"\\n| where name contains 'inbladecontainerinsights'\\n| where actionModifier == 'complete'\\n| summarize Users = dcount(userId, 2), Loads = count(), percentiles(duration, 50, 80, 90, 95, 99) by name, bin(PreciseTimeStamp, 1d)\\n| order by PreciseTimeStamp asc \\n| project PreciseTimeStamp, percentile_duration_95, name\\n| render timechart \",\"allQueries\":{\"content\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ClientTelemetry\\n| where PreciseTimeStamp >= startofday(ago(14d)) and PreciseTimeStamp <= ago(0d)\\n| where action == \\\"BladeFullReady\\\"\\n| extend name = tolower(name)\\n| where name contains \\\"microsoft_azure_monitoring\\\"\\n| where name contains 'inbladecontainerinsights'\\n| where actionModifier == 'complete'\\n| summarize Users = dcount(userId, 2), Loads = count(), percentiles(duration, 50, 80, 90, 95, 99) by name, bin(PreciseTimeStamp, 1d)\\n| order by PreciseTimeStamp asc \\n| project PreciseTimeStamp, percentile_duration_95, name\\n| render timechart \\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":11,\"endColumn\":20},\"filter\":[],\"timefilter\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\",\"from\":null,\"to\":null},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "search",
+    "Id": "Active Versions (arg_max)",
+    "Title": "Active Versions (arg_max)",
+    "Body": {
+      "title": "Active Versions (arg_max)",
+      "columns": [],
+      "formats": {
+        "BuildNumber": {
+          "name": "BuildNumber",
+          "type": "String"
+        },
+        "DeploymentId": {
+          "name": "DeploymentId",
+          "type": "String"
+        },
+        "env_appId": {
+          "name": "env_appId",
+          "type": "String"
+        },
+        "env_appVer": {
+          "name": "env_appVer",
+          "type": "String"
+        },
+        "env_cloud_deploymentUnit": {
+          "name": "env_cloud_deploymentUnit",
+          "type": "String"
+        },
+        "env_cloud_environment": {
+          "name": "env_cloud_environment",
+          "type": "String"
+        },
+        "env_cloud_location": {
+          "name": "env_cloud_location",
+          "type": "String"
+        },
+        "env_cloud_name": {
+          "name": "env_cloud_name",
+          "type": "String"
+        },
+        "env_cloud_role": {
+          "name": "env_cloud_role",
+          "type": "String"
+        },
+        "env_cloud_roleInstance": {
+          "name": "env_cloud_roleInstance",
+          "type": "String"
+        },
+        "env_cloud_roleVer": {
+          "name": "env_cloud_roleVer",
+          "type": "String"
+        },
+        "env_cloud_ver": {
+          "name": "env_cloud_ver",
+          "type": "String"
+        },
+        "env_cv": {
+          "name": "env_cv",
+          "type": "String"
+        },
+        "env_epoch": {
+          "name": "env_epoch",
+          "type": "String"
+        },
+        "env_flags": {
+          "name": "env_flags",
+          "type": "Int64"
+        },
+        "env_iKey": {
+          "name": "env_iKey",
+          "type": "String"
+        },
+        "env_name": {
+          "name": "env_name",
+          "type": "String"
+        },
+        "env_os": {
+          "name": "env_os",
+          "type": "String"
+        },
+        "env_osVer": {
+          "name": "env_osVer",
+          "type": "String"
+        },
+        "env_popSample": {
+          "name": "env_popSample",
+          "type": "Double"
+        },
+        "env_seqNum": {
+          "name": "env_seqNum",
+          "type": "Int64"
+        },
+        "env_time": {
+          "name": "env_time",
+          "type": "DateTime"
+        },
+        "env_ver": {
+          "name": "env_ver",
+          "type": "String"
+        },
+        "Extension": {
+          "name": "Extension",
+          "type": "String"
+        },
+        "MemberName": {
+          "name": "MemberName",
+          "type": "String"
+        },
+        "Message": {
+          "name": "Message",
+          "type": "String"
+        },
+        "ServerId": {
+          "name": "ServerId",
+          "type": "String"
+        },
+        "Source": {
+          "name": "Source",
+          "type": "String"
+        },
+        "SourceFilePath": {
+          "name": "SourceFilePath",
+          "type": "String"
+        },
+        "SourceLineNumber": {
+          "name": "SourceLineNumber",
+          "type": "Int64"
+        },
+        "SourceMoniker": {
+          "name": "SourceMoniker",
+          "type": "String"
+        },
+        "SourceNamespace": {
+          "name": "SourceNamespace",
+          "type": "String"
+        },
+        "SourceVersion": {
+          "name": "SourceVersion",
+          "type": "String"
+        },
+        "$table": {
+          "name": "$table",
+          "type": "String"
+        },
+        "ServerId1": {
+          "name": "ServerId1",
+          "type": "String"
+        },
+        "clippy": {
+          "name": "clippy",
+          "type": "String"
+        },
+        "Message_stage1": {
+          "name": "Message_stage1",
+          "type": "Dynamic"
+        },
+        "test": {
+          "name": "test",
+          "type": "String"
+        },
+        "Stage1": {
+          "name": "Stage1",
+          "type": "Dynamic"
+        },
+        "MPACFlight": {
+          "name": "MPACFlight",
+          "type": "Dynamic"
+        },
+        "Stage2": {
+          "name": "Stage2",
+          "type": "Dynamic"
+        },
+        "Stage3": {
+          "name": "Stage3",
+          "type": "Dynamic"
+        },
+        "Stage4": {
+          "name": "Stage4",
+          "type": "Dynamic"
+        },
+        "Stage5": {
+          "name": "Stage5",
+          "type": "Dynamic"
+        },
+        "Mpac": {
+          "name": "Mpac",
+          "type": "Dynamic"
+        },
+        "mpac": {
+          "name": "mpac",
+          "type": "Dynamic"
+        },
+        "Name": {
+          "name": "Name",
+          "type": "Dynamic"
+        },
+        "Version": {
+          "name": "Version",
+          "type": "Dynamic"
+        }
+      },
+      "aggregations": {},
+      "sort": [],
+      "showGridGroupingBar": true,
+      "showFilterButton": true,
+      "showDetails": true,
+      "wrapText": false,
+      "showPagination": false,
+      "excelStyleFilter": true,
+      "showSearchToolbar": false,
+      "headerFontSize": "1.0em",
+      "headerFontWeight": "bold",
+      "headerFontStyle": "normal",
+      "headerFont": "",
+      "bodyFontSize": "1.0em",
+      "bodyFontWeight": "normal",
+      "bodyFontStyle": "normal",
+      "bodyFont": "",
+      "showColumnSettingOnDashboard": false,
+      "isClickable": true,
+      "searchFilterTags": [],
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"lens.kusto.windows.net\",\"database\":\"Sandbox\",\"query\":\"cluster(\\\"Azportalpartner\\\").database(\\\"HostingService\\\").Information\\n| where Extension == \\\"monitoring\\\"\\n| where Message startswith 'Fetched: url'\\n| where Message contains 'stage1'\\n| summarize arg_max(env_time, *)\\n| project MessageFix = replace(\\\"\\\\\\\"hsvc17d0d300d[0-9]*\\\\\\\":.\\\\\\\"[0-9.]*\\\\\\\",\\\\n\\\", \\\"\\\", Message) \\n| project clippy = extract(\\\"(?ms).*({.*})\\\", 1, MessageFix, typeof(dynamic)) \\n| mvexpand bagexpansion=array clippy \\n| project Name=tostring(clippy[0]), Version=clippy[1]\\n| where Name == \\\"mpacflight\\\" or Name == \\\"stage1\\\" or Name == \\\"stage2\\\" or Name == \\\"stage3\\\" or Name == \\\"stage4\\\" or Name == \\\"stage5\\\"\\n| sort by Name asc \\n//| project mpac = clippy.mpacflight, Stage1 = clippy.stage1, Stage2 = clippy.stage2, Stage3 = clippy.stage3, Stage4 = clippy.stage4, Stage5 = clippy.stage5\\n//| project Mpac = clippy.mpacflight, Stage1 = clippy.stage1, Stage2 = clippy.stage2, Stage3 = clippy.stage3, Stage4 = clippy.stage4, Stage5 = clippy.stage5\\n//| project clippy = extract(\\\"(.*)\\\", 0, Message)\\n//| project Message.stage1\",\"allQueries\":{\"content\":\"cluster(\\\"Azportalpartner\\\").database(\\\"HostingService\\\").Information\\n| where Extension == \\\"monitoring\\\"\\n| where Message startswith 'Fetched: url'\\n| where Message contains 'stage1'\\n| summarize arg_max(env_time, *)\\n| project MessageFix = replace(\\\"\\\\\\\"hsvc17d0d300d[0-9]*\\\\\\\":.\\\\\\\"[0-9.]*\\\\\\\",\\\\n\\\", \\\"\\\", Message) \\n| project clippy = extract(\\\"(?ms).*({.*})\\\", 1, MessageFix, typeof(dynamic)) \\n| mvexpand bagexpansion=array clippy \\n| project Name=tostring(clippy[0]), Version=clippy[1]\\n| where Name == \\\"mpacflight\\\" or Name == \\\"stage1\\\" or Name == \\\"stage2\\\" or Name == \\\"stage3\\\" or Name == \\\"stage4\\\" or Name == \\\"stage5\\\"\\n| sort by Name asc \\n//| project mpac = clippy.mpacflight, Stage1 = clippy.stage1, Stage2 = clippy.stage2, Stage3 = clippy.stage3, Stage4 = clippy.stage4, Stage5 = clippy.stage5\\n//| project Mpac = clippy.mpacflight, Stage1 = clippy.stage1, Stage2 = clippy.stage2, Stage3 = clippy.stage3, Stage4 = clippy.stage4, Stage5 = clippy.stage5\\n//| project clippy = extract(\\\"(.*)\\\", 0, Message)\\n//| project Message.stage1\\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":15,\"endColumn\":27},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "search",
+    "Id": "Feedback",
+    "Title": "Feedback",
+    "Body": {
+      "title": "Feedback",
+      "columns": [
+        {
+          "name": "source",
+          "id": 1,
+          "type": "String",
+          "display": true,
+          "filterable": true
+        },
+        {
+          "name": "grade",
+          "id": 2,
+          "type": "Object",
+          "display": true,
+          "filterable": true
+        },
+        {
+          "name": "text",
+          "id": 3,
+          "type": "Object",
+          "display": true,
+          "filterable": true
+        },
+        {
+          "name": "TIMESTAMP",
+          "id": 0,
+          "type": "DateTime",
+          "display": true,
+          "filterable": true
+        },
+        {
+          "name": "allowContactThroughEmail",
+          "id": 4,
+          "type": "Object",
+          "display": true,
+          "filterable": true
+        },
+        {
+          "name": "email",
+          "id": 5,
+          "type": "String",
+          "display": true,
+          "filterable": true
+        }
+      ],
+      "formats": {
+        "clientVersion": {
+          "name": "clientVersion",
+          "type": "String"
+        },
+        "grade": {
+          "name": "grade",
+          "type": "Dynamic"
+        },
+        "text": {
+          "name": "text",
+          "type": "Dynamic"
+        },
+        "TIMESTAMP": {
+          "name": "TIMESTAMP",
+          "type": "DateTime"
+        },
+        "source": {
+          "name": "source",
+          "type": "String"
+        },
+        "acceptLanguage": {
+          "name": "acceptLanguage",
+          "type": "String"
+        },
+        "action": {
+          "name": "action",
+          "type": "String"
+        },
+        "actionModifier": {
+          "name": "actionModifier",
+          "type": "String"
+        },
+        "ActivityId": {
+          "name": "ActivityId",
+          "type": "String"
+        },
+        "assetType": {
+          "name": "assetType",
+          "type": "String"
+        },
+        "browserId": {
+          "name": "browserId",
+          "type": "String"
+        },
+        "buildNumber": {
+          "name": "buildNumber",
+          "type": "String"
+        },
+        "clientIP": {
+          "name": "clientIP",
+          "type": "String"
+        },
+        "clientRequestId": {
+          "name": "clientRequestId",
+          "type": "String"
+        },
+        "clientTime": {
+          "name": "clientTime",
+          "type": "Int64"
+        },
+        "clientTimeZone": {
+          "name": "clientTimeZone",
+          "type": "Int64"
+        },
+        "context": {
+          "name": "context",
+          "type": "String"
+        },
+        "data": {
+          "name": "data",
+          "type": "String"
+        },
+        "datajson": {
+          "name": "datajson",
+          "type": "Object"
+        },
+        "Deployment": {
+          "name": "Deployment",
+          "type": "String"
+        },
+        "duration": {
+          "name": "duration",
+          "type": "Double"
+        },
+        "EventId": {
+          "name": "EventId",
+          "type": "Int64"
+        },
+        "extension": {
+          "name": "extension",
+          "type": "String"
+        },
+        "httpVerb": {
+          "name": "httpVerb",
+          "type": "String"
+        },
+        "journeyId": {
+          "name": "journeyId",
+          "type": "String"
+        },
+        "Level": {
+          "name": "Level",
+          "type": "Int64"
+        },
+        "name": {
+          "name": "name",
+          "type": "String"
+        },
+        "objectId": {
+          "name": "objectId",
+          "type": "String"
+        },
+        "other": {
+          "name": "other",
+          "type": "String"
+        },
+        "Pid": {
+          "name": "Pid",
+          "type": "Int64"
+        },
+        "PreciseTimeStamp": {
+          "name": "PreciseTimeStamp",
+          "type": "DateTime"
+        },
+        "ProviderGuid": {
+          "name": "ProviderGuid",
+          "type": "String"
+        },
+        "ProviderName": {
+          "name": "ProviderName",
+          "type": "String"
+        },
+        "query": {
+          "name": "query",
+          "type": "String"
+        },
+        "referrer": {
+          "name": "referrer",
+          "type": "String"
+        },
+        "requestPath": {
+          "name": "requestPath",
+          "type": "String"
+        },
+        "requestUri": {
+          "name": "requestUri",
+          "type": "String"
+        },
+        "Role": {
+          "name": "Role",
+          "type": "String"
+        },
+        "RoleInstance": {
+          "name": "RoleInstance",
+          "type": "String"
+        },
+        "RowKey": {
+          "name": "RowKey",
+          "type": "String"
+        },
+        "scrubbedClientIP": {
+          "name": "scrubbedClientIP",
+          "type": "String"
+        },
+        "serverId": {
+          "name": "serverId",
+          "type": "String"
+        },
+        "sessionId": {
+          "name": "sessionId",
+          "type": "String"
+        },
+        "SourceMoniker": {
+          "name": "SourceMoniker",
+          "type": "String"
+        },
+        "SourceNamespace": {
+          "name": "SourceNamespace",
+          "type": "String"
+        },
+        "SourceVersion": {
+          "name": "SourceVersion",
+          "type": "String"
+        },
+        "TaskName": {
+          "name": "TaskName",
+          "type": "String"
+        },
+        "tenantId": {
+          "name": "tenantId",
+          "type": "String"
+        },
+        "Tid": {
+          "name": "Tid",
+          "type": "Int64"
+        },
+        "userAgent": {
+          "name": "userAgent",
+          "type": "String"
+        },
+        "userId": {
+          "name": "userId",
+          "type": "String"
+        },
+        "userTypeHint": {
+          "name": "userTypeHint",
+          "type": "String"
+        },
+        "allowContactThroughEmail": {
+          "name": "allowContactThroughEmail",
+          "type": "Object"
+        },
+        "Email": {
+          "name": "Email",
+          "type": "Object"
+        },
+        "email": {
+          "name": "email",
+          "type": "String"
+        },
+        "sessionId1": {
+          "name": "sessionId1",
+          "type": "String"
+        }
+      },
+      "aggregations": {},
+      "sort": [],
+      "showGridGroupingBar": true,
+      "showFilterButton": true,
+      "showDetails": true,
+      "wrapText": false,
+      "showPagination": true,
+      "excelStyleFilter": true,
+      "showSearchToolbar": false,
+      "headerFontSize": "1.0em",
+      "headerFontWeight": "bold",
+      "headerFontStyle": "normal",
+      "headerFont": "",
+      "bodyFontSize": "1.0em",
+      "bodyFontWeight": "normal",
+      "bodyFontStyle": "normal",
+      "bodyFont": "",
+      "showColumnSettingOnDashboard": false,
+      "isClickable": true,
+      "searchFilterTags": [],
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"lens.kusto.windows.net\",\"database\":\"Sandbox\",\"allQueries\":{\"content\":\" cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\n| where TIMESTAMP > datetime(2018-05-13)\\n| where (source == \\\"AKSInBladeContainerInsights\\\" or source == \\\"MonExtMultiAKSClusterInsights\\\") and action == \\\"ContainerInsightsFeedback\\\"\\n| extend datajson = todynamic(data)\\n| project TIMESTAMP, source= iff(source == \\\"AKSInBladeContainerInsights\\\", \\\"ContainerInsights\\\", \\\"MultiAKSClusterInsights\\\" ), grade = datajson.feedbackClassification, text = datajson.feedback, allowContactThroughEmail = datajson.allowContactThroughEmail, Email = datajson.customerEmail, clientVersion, sessionId\\n| join (\\n    cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").SvcSessions | summarize email = any(email) by sessionId \\n) on sessionId\\n| project TIMESTAMP, source, grade, text , allowContactThroughEmail , email\\n| sort by TIMESTAMP desc \\n\\n\\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":10,\"endColumn\":26},\"query\":\" cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\n| where TIMESTAMP > datetime(2018-05-13)\\n| where (source == \\\"AKSInBladeContainerInsights\\\" or source == \\\"MonExtMultiAKSClusterInsights\\\") and action == \\\"ContainerInsightsFeedback\\\"\\n| extend datajson = todynamic(data)\\n| project TIMESTAMP, source= iff(source == \\\"AKSInBladeContainerInsights\\\", \\\"ContainerInsights\\\", \\\"MultiAKSClusterInsights\\\" ), grade = datajson.feedbackClassification, text = datajson.feedback, allowContactThroughEmail = datajson.allowContactThroughEmail, Email = datajson.customerEmail, clientVersion, sessionId\\n| join (\\n    cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").SvcSessions | summarize email = any(email) by sessionId \\n) on sessionId\\n| project TIMESTAMP, source, grade, text , allowContactThroughEmail , email\\n| sort by TIMESTAMP desc \\n\",\"timefield\":\"TIMESTAMP\",\"groupByColumns\":[],\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "search",
+    "Id": "Users Vs Total Monitored (AKS and ACSEngine) Clusters (External Only)",
+    "Title": "Users Vs Total Monitored (AKS and ACSEngine) Clusters (External Only)",
+    "Body": {
+      "title": "Users Vs Total Monitored (AKS and ACSEngine) Clusters (External Only)",
+      "columns": [
+        {
+          "name": "Users",
+          "id": 0,
+          "type": "Int64",
+          "display": true,
+          "filterable": true
+        },
+        {
+          "name": "totalMonitoredClustersCount",
+          "id": 1,
+          "type": "String",
+          "display": true,
+          "filterable": true
+        }
+      ],
+      "formats": {
+        "totalMonitoredClustersCount": {
+          "name": "totalMonitoredClustersCount",
+          "type": "String"
+        },
+        "Users": {
+          "name": "Users",
+          "type": "Int64"
+        }
+      },
+      "aggregations": {},
+      "sort": [],
+      "showGridGroupingBar": true,
+      "showFilterButton": true,
+      "showDetails": true,
+      "wrapText": false,
+      "showPagination": false,
+      "excelStyleFilter": true,
+      "showSearchToolbar": false,
+      "headerFontSize": "1.0em",
+      "headerFontWeight": "bold",
+      "headerFontStyle": "normal",
+      "headerFont": "",
+      "bodyFontSize": "1.0em",
+      "bodyFontWeight": "normal",
+      "bodyFontStyle": "normal",
+      "bodyFont": "",
+      "showColumnSettingOnDashboard": false,
+      "isClickable": true,
+      "searchFilterTags": [],
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"armprod.kusto.windows.net\",\"database\":\"ARMProd\",\"query\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\n| where PreciseTimeStamp >= ago(1d) and PreciseTimeStamp <= ago(0d)\\n| where source =~ \\\"AzureMonitor/Containers\\\"\\n| where action !contains \\\"fail\\\"\\n| where actionModifier =~ \\\"complete\\\"\\n| where IsInternalTenant(tenantId) == false\\n| project TIMESTAMP, userId, totalMonitoredClustersCount = iff(isempty(todynamic(data).totalMonitoredClustersCount) == false,   todynamic(data).totalMonitoredClustersCount,  0)\\n| summarize Users = dcount(userId) by tostring(totalMonitoredClustersCount)\\n| project   Users, totalMonitoredClustersCount\",\"allQueries\":{\"content\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\n| where PreciseTimeStamp >= ago(1d) and PreciseTimeStamp <= ago(0d)\\n| where source =~ \\\"AzureMonitor/Containers\\\"\\n| where action !contains \\\"fail\\\"\\n| where actionModifier =~ \\\"complete\\\"\\n| where IsInternalTenant(tenantId) == false\\n| project TIMESTAMP, userId, totalMonitoredClustersCount = iff(isempty(todynamic(data).totalMonitoredClustersCount) == false,   todynamic(data).totalMonitoredClustersCount,  0)\\n| summarize Users = dcount(userId) by tostring(totalMonitoredClustersCount)\\n| project   Users, totalMonitoredClustersCount\",\"startLine\":1,\"startColumn\":1,\"endLine\":9,\"endColumn\":47},\"filter\":[],\"timefilter\":{\"from\":\"now/m-7d\",\"to\":\"now/m\",\"mode\":\"quick\",\"roundBy\":\"Auto\",\"timeFormat\":\"Local\"},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "Extesion Loads",
+    "Title": "Extesion Loads",
+    "Body": {
+      "title": "Extesion Loads",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":true,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"extension/microsoft_azure_monitoring/blade/azuremonitoringbrowseblade\",\"color\":\"#663db8\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#848e96\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false,\"polyfit\":{\"fit\":false,\"line_type\":\"linear\",\"reg_only\":false}},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"percentile_duration_95\",\"type\":\"Double\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"PreciseTimeStamp\",\"type\":\"DateTime\"}}},{\"id\":\"3\",\"type\":\"bucketValueOf\",\"schema\":\"group\",\"params\":{\"field\":{\"name\":\"name\",\"type\":\"String\"}}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"65984873-7daf-4b00-a69d-cc15052f5041\"}",
+      "vis_id": "65984873-7daf-4b00-a69d-cc15052f5041",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"lens.kusto.windows.net\",\"database\":\"Sandbox\",\"query\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ClientTelemetry\\n| where PreciseTimeStamp >= startofday(ago(14d)) and PreciseTimeStamp <= ago(0d)\\n| where action == \\\"BladeFullReady\\\"\\n| extend name = tolower(name) \\n| where name contains \\\"Microsoft_Azure_Monitoring\\\"\\n| where name contains \\\"azuremonitoringbrowseblade\\\"\\n| where actionModifier == \\\"complete\\\"\\n| extend IncludesExtensionLoadTime = toboolean(todynamic(data).includesExtensionLoadTime)\\n| extend OpenedBy = tostring(todynamic(data).openedByBladeName) \\n| summarize Users = dcount(userId, 2), Loads = count(), percentiles(duration, 50, 80, 90, 95, 99) by name, bin(PreciseTimeStamp, 1d)\\n| order by PreciseTimeStamp asc \\n| project PreciseTimeStamp, percentile_duration_95, name\\n| render timechart\",\"filter\":[],\"timefilter\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\",\"from\":null,\"to\":null},\"allQueries\":{\"content\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ClientTelemetry\\n| where PreciseTimeStamp >= startofday(ago(14d)) and PreciseTimeStamp <= ago(0d)\\n| where action == \\\"BladeFullReady\\\"\\n| extend name = tolower(name) \\n| where name contains \\\"Microsoft_Azure_Monitoring\\\"\\n| where name contains \\\"azuremonitoringbrowseblade\\\"\\n| where actionModifier == \\\"complete\\\"\\n| extend IncludesExtensionLoadTime = toboolean(todynamic(data).includesExtensionLoadTime)\\n| extend OpenedBy = tostring(todynamic(data).openedByBladeName) \\n| summarize Users = dcount(userId, 2), Loads = count(), percentiles(duration, 50, 80, 90, 95, 99) by name, bin(PreciseTimeStamp, 1d)\\n| order by PreciseTimeStamp asc \\n| project PreciseTimeStamp, percentile_duration_95, name\\n| render timechart\",\"startLine\":1,\"startColumn\":1,\"endLine\":13,\"endColumn\":19},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "OnboardingFromMultiCluster",
+    "Title": "OnboardingFromMultiCluster",
+    "Body": {
+      "title": "OnboardingFromMultiCluster",
+      "visState": "{\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"showCircles\":true,\"showYAxisTitle\":true,\"showXAxisTitle\":true,\"showXAxisTickLabels\":true,\"showYAxisTickLabels\":true,\"smoothLines\":false,\"addRefLine\":false,\"refValue\":0,\"interpolate\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"scale\":\"linear\",\"setCustomYAxisMinMax\":false,\"minYAxis\":0,\"maxYAxis\":0,\"defaultYExtents\":false,\"colorMode\":{\"name\":\"Individual\",\"title\":\"Exact Match\"},\"colorSettings\":[{\"label\":\"OnboardingSuceeded\",\"color\":\"#006e8a\",\"paletteName\":\"\",\"paletteIndex\":0}],\"enableAnalysis\":false,\"isHorizontal\":false,\"showHorizontal\":true,\"labelcolor\":\"#848e96\",\"showLabels\":false,\"zeroFill\":false,\"rotateXLab\":false,\"rotateDegrees\":\"Default\",\"rotateLabelDegrees\":[\"Default\",\"15\",\"30\",\"45\",\"60\",\"75\",\"90\"],\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false,\"polyfit\":{\"fit\":false,\"line_type\":\"linear\",\"reg_only\":false}},\"aggs\":[{\"id\":\"1\",\"type\":\"metricValueOf\",\"schema\":\"metric\",\"params\":{\"field\":{\"name\":\"count_\",\"type\":\"Int64\"},\"aggCustomLabel\":\"\"}},{\"id\":\"2\",\"type\":\"bucketValueOf\",\"schema\":\"segment\",\"params\":{\"field\":{\"name\":\"TIMESTAMP\",\"type\":\"DateTime\"}}},{\"id\":\"3\",\"type\":\"bucketValueOf\",\"schema\":\"group\",\"params\":{\"field\":{\"name\":\"action\",\"type\":\"String\"}}}],\"listeners\":{},\"fielddata_fields\":{},\"size\":0,\"vis_id\":\"0aae3852-68e7-4023-bfdc-3d87fbf6658f\"}",
+      "vis_id": "0aae3852-68e7-4023-bfdc-3d87fbf6658f",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "[]",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"aks.kusto.windows.net\",\"database\":\"AKSprod\",\"query\":\" cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\n| where PreciseTimeStamp >= ago(30d) and PreciseTimeStamp <= ago(0d)\\n| where source =~ \\\"AzureMonitor/Containers\\\" \\n| where action =~ \\\"OnboardingSuceeded\\\" or action =~ \\\"OnboardingFailed\\\"\\n| summarize count() by bin(TIMESTAMP, 1d), action\\n| render  timechart \",\"filter\":[],\"timefilter\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\",\"from\":null,\"to\":null},\"allQueries\":{\"content\":\" cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\n| where PreciseTimeStamp >= ago(30d) and PreciseTimeStamp <= ago(0d)\\n| where source =~ \\\"AzureMonitor/Containers\\\" \\n| where action =~ \\\"OnboardingSuceeded\\\" or action =~ \\\"OnboardingFailed\\\"\\n| summarize count() by bin(TIMESTAMP, 1d), action\\n| render  timechart \",\"startLine\":1,\"startColumn\":1,\"endLine\":6,\"endColumn\":21},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "Users Vs Total Clusters",
+    "Title": "Users Vs Total Clusters",
+    "Body": {
+      "title": "Users Vs Total Clusters",
+      "visState": "{\"type\":\"ds_explore\",\"params\":{\"opacity\":\"0.5\",\"diameter\":\"6\",\"maxrecords\":100000,\"colorSettings\":[],\"help\":{\"X-axis\":\"Values for X - Axis\",\"Y-axis\":\"Values for Y - Axis\",\"Color\":\"Column that contains factors that is used for plotting different colors\",\"Shape\":\"Column that contains factors that is used for plotting different shape\",\"Size\":\"Column that contains value that transforms to point's size\"},\"outlierOpacity\":\"0.5\",\"showLabels\":false,\"jitter\":true,\"gridLines\":false,\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false},\"aggs\":[],\"listeners\":{},\"fielddata_fields\":{\"yval\":{\"id\":1,\"name\":\"Users\",\"type\":\"Int64\",\"count\":2,\"analyzed\":false,\"indexed\":true,\"scripted\":false},\"xval\":{\"id\":0,\"name\":\"totalClusters\",\"type\":\"String\",\"count\":2,\"analyzed\":false,\"indexed\":true,\"scripted\":false}},\"size\":0,\"vis_id\":\"86c3d505-3d69-4cdf-9914-9bcb9a97ba7e\"}",
+      "vis_id": "86c3d505-3d69-4cdf-9914-9bcb9a97ba7e",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "\"[]\"",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"armprod.kusto.windows.net\",\"database\":\"ARMProd\",\"maxrecords\":100000,\"query\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\n| where PreciseTimeStamp >= ago(30d) and PreciseTimeStamp <= ago(0d)\\n| where source =~ \\\"AzureMonitor/Containers\\\" \\n| where action =~ \\\"InitOrRefreshMultiClusterDataProviderLatency\\\" or action =~ \\\"InitOrRefreshMultiAksDataProviderLatency\\\" or action =~ \\\"UpdateClustersFromBackendLatency\\\"\\n| where actionModifier =~ \\\"complete\\\"\\n| where IsInternalTenant(tenantId) == false\\n| project TIMESTAMP, userId, totalClusters = iff(isempty(todynamic(data).totalClustersCount) == false,   todynamic(data).totalClustersCount,  todynamic(data).totalManagedClustersCount)\\n| summarize Users = dcount(userId) by tostring(totalClusters)\\n| project  totalClusters, Users \",\"allQueries\":{\"content\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\n| where PreciseTimeStamp >= ago(30d) and PreciseTimeStamp <= ago(0d)\\n| where source =~ \\\"AzureMonitor/Containers\\\" \\n| where action =~ \\\"InitOrRefreshMultiClusterDataProviderLatency\\\" or action =~ \\\"InitOrRefreshMultiAksDataProviderLatency\\\" or action =~ \\\"UpdateClustersFromBackendLatency\\\"\\n| where actionModifier =~ \\\"complete\\\"\\n| where IsInternalTenant(tenantId) == false\\n| project TIMESTAMP, userId, totalClusters = iff(isempty(todynamic(data).totalClustersCount) == false,   todynamic(data).totalClustersCount,  todynamic(data).totalManagedClustersCount)\\n| summarize Users = dcount(userId) by tostring(totalClusters)\\n| project  totalClusters, Users \\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":9,\"endColumn\":33},\"filter\":[],\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[],\"timefilter\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\",\"from\":null,\"to\":null}}"
+      }
+    }
+  },
+  {
+    "Type": "visualization",
+    "Id": "Users Vs Total Clusters (MS Tenant Only)",
+    "Title": "Users Vs Total Clusters (MS Tenant Only)",
+    "Body": {
+      "title": "Users Vs Total Clusters (MS Tenant Only)",
+      "visState": "{\"type\":\"ds_explore\",\"params\":{\"opacity\":\"0.5\",\"diameter\":\"6\",\"maxrecords\":100000,\"colorSettings\":[],\"help\":{\"X-axis\":\"Values for X - Axis\",\"Y-axis\":\"Values for Y - Axis\",\"Color\":\"Column that contains factors that is used for plotting different colors\",\"Shape\":\"Column that contains factors that is used for plotting different shape\",\"Size\":\"Column that contains value that transforms to point's size\"},\"outlierOpacity\":\"0.5\",\"showLabels\":false,\"jitter\":false,\"gridLines\":false,\"ShowVizOptions\":true,\"VizOptionsFilterable\":true,\"VizOptionsSlicerMode\":false},\"aggs\":[],\"listeners\":{},\"fielddata_fields\":{\"yval\":{\"id\":1,\"name\":\"Users\",\"type\":\"Int64\",\"count\":2,\"analyzed\":false,\"indexed\":true,\"scripted\":false},\"xval\":{\"id\":0,\"name\":\"totalClusters\",\"type\":\"String\",\"count\":2,\"analyzed\":false,\"indexed\":true,\"scripted\":false}},\"size\":0,\"vis_id\":\"0e736168-91f0-4771-868b-51d5da95313e\"}",
+      "vis_id": "0e736168-91f0-4771-868b-51d5da95313e",
+      "saved_data": "",
+      "version": 1,
+      "isAnalysisResult": false,
+      "analysisResultBody": "\"{}\"",
+      "autoDashGenerated": false,
+      "uncheckedItems": "\"[]\"",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"armprod.kusto.windows.net\",\"database\":\"ARMProd\",\"maxrecords\":100000,\"query\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\n| where PreciseTimeStamp >= ago(30d) and PreciseTimeStamp <= ago(0d)\\n| where source =~ \\\"AzureMonitor/Containers\\\" \\n| where action =~ \\\"InitOrRefreshMultiClusterDataProviderLatency\\\" or action =~ \\\"InitOrRefreshMultiAksDataProviderLatency\\\" or action =~ \\\"UpdateClustersFromBackendLatency\\\"\\n| where actionModifier =~ \\\"complete\\\"\\n| where IsInternalTenant(tenantId) == true\\n| project TIMESTAMP, userId, totalClusters = iff(isempty(todynamic(data).totalClustersCount) == false,   todynamic(data).totalClustersCount,  todynamic(data).totalManagedClustersCount)\\n| summarize Users = dcount(userId) by tostring(totalClusters)\\n| project  totalClusters, Users \",\"allQueries\":{\"content\":\"cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\n| where PreciseTimeStamp >= ago(30d) and PreciseTimeStamp <= ago(0d)\\n| where source =~ \\\"AzureMonitor/Containers\\\" \\n| where action =~ \\\"InitOrRefreshMultiClusterDataProviderLatency\\\" or action =~ \\\"InitOrRefreshMultiAksDataProviderLatency\\\" or action =~ \\\"UpdateClustersFromBackendLatency\\\"\\n| where actionModifier =~ \\\"complete\\\"\\n| where IsInternalTenant(tenantId) == true\\n| project TIMESTAMP, userId, totalClusters = iff(isempty(todynamic(data).totalClustersCount) == false,   todynamic(data).totalClustersCount,  todynamic(data).totalManagedClustersCount)\\n| summarize Users = dcount(userId) by tostring(totalClusters)\\n| project  totalClusters, Users \",\"startLine\":1,\"startColumn\":1,\"endLine\":9,\"endColumn\":33},\"filter\":[],\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[],\"timefilter\":{\"roundBy\":\"Auto\",\"timeFormat\":\"Local\",\"from\":null,\"to\":null}}"
+      }
+    }
+  },
+  {
+    "Type": "search",
+    "Id": "InBladeContainerInsights",
+    "Title": "InBladeContainerInsights",
+    "Body": {
+      "title": "InBladeContainerInsights",
+      "columns": [],
+      "formats": {
+        "AlertSeverity": {
+          "name": "AlertSeverity",
+          "type": "String"
+        },
+        "BladeCount": {
+          "name": "BladeCount",
+          "type": "Int64"
+        },
+        "BladeName": {
+          "name": "BladeName",
+          "type": "String"
+        },
+        "Bytes": {
+          "name": "Bytes",
+          "type": "Int64"
+        },
+        "Extension": {
+          "name": "Extension",
+          "type": "String"
+        },
+        "FullBladeName": {
+          "name": "FullBladeName",
+          "type": "String"
+        },
+        "FullDuration50": {
+          "name": "FullDuration50",
+          "type": "Int64"
+        },
+        "FullDuration80": {
+          "name": "FullDuration80",
+          "type": "Int64"
+        },
+        "FullDuration95": {
+          "name": "FullDuration95",
+          "type": "Int64"
+        },
+        "FullDuration99": {
+          "name": "FullDuration99",
+          "type": "Int64"
+        },
+        "LockedBlade": {
+          "name": "LockedBlade",
+          "type": "String"
+        },
+        "RedScore": {
+          "name": "RedScore",
+          "type": "Int64"
+        },
+        "Samples": {
+          "name": "Samples",
+          "type": "Int64"
+        },
+        "StaticMenu": {
+          "name": "StaticMenu",
+          "type": "String"
+        },
+        "XHRCount": {
+          "name": "XHRCount",
+          "type": "Int64"
+        },
+        "XHRCount95": {
+          "name": "XHRCount95",
+          "type": "Int64"
+        },
+        "XHRMax": {
+          "name": "XHRMax",
+          "type": "Int64"
+        },
+        "AvgCompletedRequests": {
+          "name": "AvgCompletedRequests",
+          "type": "Double"
+        },
+        "AvgPendingRequests": {
+          "name": "AvgPendingRequests",
+          "type": "Double"
+        },
+        "AvgRequestDuration": {
+          "name": "AvgRequestDuration",
+          "type": "Double"
+        },
+        "AvgRequestSize": {
+          "name": "AvgRequestSize",
+          "type": "Double"
+        },
+        "BladeLoadsWithTrackedNetworkRequests": {
+          "name": "BladeLoadsWithTrackedNetworkRequests",
+          "type": "Int64"
+        },
+        "CompletedRequests_20th": {
+          "name": "CompletedRequests_20th",
+          "type": "Double"
+        },
+        "CompletedRequests_95th": {
+          "name": "CompletedRequests_95th",
+          "type": "Double"
+        },
+        "InMenuLoads": {
+          "name": "InMenuLoads",
+          "type": "Int64"
+        },
+        "MenuConfigDuration95": {
+          "name": "MenuConfigDuration95",
+          "type": "Int64"
+        },
+        "PctOfMenuLoads": {
+          "name": "PctOfMenuLoads",
+          "type": "Double"
+        },
+        "PendingRequests_20th": {
+          "name": "PendingRequests_20th",
+          "type": "Double"
+        },
+        "PendingRequests_95th": {
+          "name": "PendingRequests_95th",
+          "type": "Double"
+        }
+      },
+      "aggregations": {},
+      "sort": [],
+      "showGridGroupingBar": true,
+      "showFilterButton": true,
+      "showDetails": true,
+      "wrapText": false,
+      "excelStyleFilter": true,
+      "showSearchToolbar": false,
+      "headerFontSize": "1.0em",
+      "headerFontWeight": "bold",
+      "headerFontStyle": "normal",
+      "headerFont": "",
+      "bodyFontSize": "1.0em",
+      "bodyFontWeight": "normal",
+      "bodyFontStyle": "normal",
+      "bodyFont": "",
+      "showColumnSettingOnDashboard": false,
+      "isClickable": true,
+      "searchFilterTags": [],
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"lens.kusto.windows.net\",\"database\":\"Sandbox\",\"query\":\"cluster(\\\"Azportalpartner\\\").database(\\\"Framework\\\").BladePerformanceIncludingNetwork(ago(7d), now())\\n| where BladeName has \\\"InBladeContainerInsightsFrameBlade\\\" or BladeName has \\\"AzureMonitoringBrowseBlade\\\" or BladeName has \\\"InfraInsightsMultiAksClusterInsightsFrameBlade\\\" and Extension == \\\"Microsoft_Azure_Monitoring\\\"\\n| project BladeName, BladeCount, FullDuration80, FullDuration95, FullDuration99\\n\",\"allQueries\":{\"content\":\"cluster(\\\"Azportalpartner\\\").database(\\\"Framework\\\").BladePerformanceIncludingNetwork(ago(7d), now())\\r\\n| where BladeName has \\\"InBladeContainerInsightsFrameBlade\\\" or BladeName has \\\"AzureMonitoringBrowseBlade\\\" or BladeName has \\\"InfraInsightsMultiAksClusterInsightsFrameBlade\\\" and Extension == \\\"Microsoft_Azure_Monitoring\\\"\\r\\n| project BladeName, BladeCount, FullDuration80, FullDuration95, FullDuration99\",\"startLine\":1,\"startColumn\":1,\"endLine\":3,\"endColumn\":80},\"groupByColumns\":[],\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  },
+  {
+    "Type": "search",
+    "Id": "MultiClusterView- ARGQueryErrors",
+    "Title": "MultiClusterView- ARGQueryErrors",
+    "Body": {
+      "title": "MultiClusterView- ARGQueryErrors",
+      "columns": [
+        {
+          "name": "Customer",
+          "id": 0,
+          "type": "String",
+          "display": true,
+          "filterable": true
+        },
+        {
+          "name": "errorCode",
+          "id": 2,
+          "type": "String",
+          "display": true,
+          "filterable": true
+        },
+        {
+          "name": "ErrorCount",
+          "id": 3,
+          "type": "Int64",
+          "display": true,
+          "filterable": true
+        },
+        {
+          "name": "AffctedUsers",
+          "id": 4,
+          "type": "Int64",
+          "display": true,
+          "filterable": true
+        }
+      ],
+      "formats": {
+        "AffctedUsers": {
+          "name": "AffctedUsers",
+          "type": "Int64"
+        },
+        "Customer": {
+          "name": "Customer",
+          "type": "String"
+        },
+        "errorCode": {
+          "name": "errorCode",
+          "type": "String"
+        },
+        "ErrorCount": {
+          "name": "ErrorCount",
+          "type": "Int64"
+        },
+        "Operation": {
+          "name": "Operation",
+          "type": "String"
+        },
+        "action": {
+          "name": "action",
+          "type": "String"
+        }
+      },
+      "aggregations": {},
+      "sort": [],
+      "showGridGroupingBar": true,
+      "showFilterButton": true,
+      "showDetails": true,
+      "wrapText": false,
+      "showPagination": false,
+      "excelStyleFilter": true,
+      "showSearchToolbar": false,
+      "headerFontSize": "1.0em",
+      "headerFontWeight": "bold",
+      "headerFontStyle": "normal",
+      "headerFont": "",
+      "bodyFontSize": "1.0em",
+      "bodyFontWeight": "normal",
+      "bodyFontStyle": "normal",
+      "bodyFont": "",
+      "showColumnSettingOnDashboard": false,
+      "isClickable": true,
+      "searchFilterTags": [],
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"datasourceType\":\"Kusto\",\"cluster\":\"armprod.kusto.windows.net\",\"database\":\"ARMProd\",\"query\":\"  cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\n| where PreciseTimeStamp >= ago(1d) and PreciseTimeStamp <= ago(0d)\\n| where source =~ \\\"AzureMonitor/Containers\\\" \\n| where action contains \\\"Failed\\\" \\n| extend errorCode = tostring(todynamic(tostring(todynamic(data))).error.jqXHR.responseJSON.error.code)\\n| project TIMESTAMP,userId, action, errorCode, isInternal = IsInternalTenant(tenantId)\\n| summarize AffctedUsers = dcount(userId), ErrorCount = count() by action, errorCode, isInternal  \\n| project Customer = iff(isInternal == true, 'Internal', 'External'), action, errorCode, ErrorCount, AffctedUsers\\n\",\"allQueries\":{\"content\":\"  cluster(\\\"Azportalpartner\\\").database(\\\"AzurePortal\\\").ExtTelemetry\\n| where PreciseTimeStamp >= ago(1d) and PreciseTimeStamp <= ago(0d)\\n| where source =~ \\\"AzureMonitor/Containers\\\" \\n| where action contains \\\"Failed\\\" \\n| extend errorCode = tostring(todynamic(tostring(todynamic(data))).error.jqXHR.responseJSON.error.code)\\n| project TIMESTAMP,userId, action, errorCode, isInternal = IsInternalTenant(tenantId)\\n| summarize AffctedUsers = dcount(userId), ErrorCount = count() by action, errorCode, isInternal  \\n| project Customer = iff(isInternal == true, 'Internal', 'External'), action, errorCode, ErrorCount, AffctedUsers\\n\",\"startLine\":1,\"startColumn\":1,\"endLine\":8,\"endColumn\":114},\"isInclude\":true,\"chooseAll\":true,\"ignoreTime\":false,\"fieldList\":[]}"
+      }
+    }
+  }
+]

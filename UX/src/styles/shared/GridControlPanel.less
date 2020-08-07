@@ -1,0 +1,190 @@
+// dark mode variables
+@dark-mode-text-color: #fff;
+@dark-mode-background-color: #111;
+
+.pane-control-panel { 
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+
+    & > * {
+        margin-top: 10px;
+    }
+
+    body.dark & {
+        color: @dark-mode-text-color;
+    }
+
+    .label-container {
+        padding-right: 10px;
+
+        label {
+            body.dark & {
+                color: @dark-mode-text-color;
+            }
+        }
+    }
+
+    .control-container {
+        margin-right: 20px;
+    }
+
+    input, select {
+        height: 18px;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgba(127,127,127,.7);
+        box-sizing: border-box;
+        font-size: 12px;
+        height: 23px;
+        font-family: az_ea_font,wf_segoe-ui_normal,"Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
+
+        body.dark & {
+            color: @dark-mode-text-color;
+            background-color: @dark-mode-background-color;
+        }
+    }
+
+    select {
+        padding: 1px 3px 3px 3px;
+    }
+
+    input {
+        padding: 1px 3px 3px 8px;
+    }
+
+    .search-for-name-filter {
+        width: 200px;
+        border-style: solid;
+        border-color: grey;
+    }
+
+    .search-filter-animation {
+        -webkit-animation: blinkBorder; /* Safari 4.0 - 8.0 */
+        -webkit-animation-iteration-count: 4; /* Safari 4.0 - 8.0 */
+        animation: blinkBorder 0.5s;
+        animation-iteration-count: 4;
+    }
+
+    /* Safari 4.0 - 8.0 */
+    @-webkit-keyframes blinkBorder {
+        from, to {
+            border-color: grey;
+        }
+        50% {
+            border-color: blue;
+        }
+    }
+
+    /* Standard syntax */
+    @keyframes blinkBorder {
+        from, to {
+            border-color: grey;
+        }
+        50% {
+            border-color: blue;
+        }
+    }
+
+    .metric-dropdown-container {
+        margin-right: 25px;
+    }
+
+    input::placeholder {
+        color: rgba(127,127,127,.7);
+        font-style: italic;
+        font-size: 12px;
+        font-family: az_ea_font,wf_segoe-ui_normal,"Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
+
+        body.dark & {
+            color: #acacac;
+        }
+    }
+}
+
+// TODO: Remove grid-control-panel related things
+//       and switch to pane-control-panel
+.grid-control-panel {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.grid-control-panel-label-container {
+    min-height: 20px;
+    padding-right: 10px;
+}
+
+.grid-control-panel-label-container label {
+    color: #474747;
+    vertical-align: middle;
+
+    body.dark & {
+        color: @dark-mode-text-color;
+    }
+}
+
+.grid-control-panel-control-container {
+    padding-right: 10px;
+}
+
+.grid-control-panel-input {
+    color: #252525;
+    border-color: #bbb;
+    background-color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border-width: 1px;
+    border-style: solid;
+    display: block;
+    padding: 2px 3px 3px 8px;
+    min-height: 16px;
+    font-family: az_ea_font,wf_segoe-ui_normal,"Segoe UI","Segoe WP",Tahoma,Arial,sans-serif;
+    font-size: 100%;
+    height: 23px;
+
+    body.dark & {
+        color: @dark-mode-text-color;
+        background-color: @dark-mode-background-color;
+    }
+}
+.aggregation-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-left:5px;
+    padding: 10px;
+
+    .aggregation-options {
+        display: flex;
+        border: 1px solid silver;
+        border-right: none;
+
+        body.dark & {
+            border: 1px solid #666;
+        }
+
+        .aggregation-option {
+            padding: 2px 7px 4px;
+            text-align: center;
+            border-right: 1px solid silver;
+            cursor: pointer;
+
+            &.selected-option {
+                background-color: #ddf0ff;
+            }
+            
+            body.dark & {
+                border-right: 1px solid #666;
+
+                color: @dark-mode-text-color;   
+                &.selected-option {
+                    background-color: #083e68;
+                }              
+            }
+        }
+    }
+}

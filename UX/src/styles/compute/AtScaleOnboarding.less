@@ -1,0 +1,96 @@
+@light-hyperlink-color: #015cda; // Dark Blue
+@light-hyperlink-color-hover: #016afe;  // Dark Blue
+@dark-text-color: #e0e0e0; // Grey
+
+.onboarding-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+    .onboarding-image {
+        padding: 10px;
+        display: flex;
+    }
+    .zero-workspace-message {
+        font-size: 16px;
+        font-weight: 600;
+        padding: 10px;
+        align-content: center;
+        svg {
+            height: 16px;
+            width: 16px;
+            vertical-align: middle;
+        }
+    }
+    .onboarding-message-title {
+        font-size: 12px;
+        font-weight: 600;
+        padding: 10px;
+    }
+    .onboarding-message {
+        font-size: 11px;
+        font-weight: 500;
+        padding: 10px;
+        width: 70%;
+        align-content: center;
+    }
+    .more-questions {
+        font-size: 13px;
+        font-weight: 600;
+    }
+    .know-more-text {
+        padding: 25px;
+        width: 75%;
+        text-align: center;
+        border-radius: 12px;
+        background: #2687CE;
+        color: white;
+    }
+    .help-link {
+        font-size:12px;
+        font-weight: 500
+    }
+}
+
+.azure-onboarding-section {
+    display: flex;
+    background-color: #F4F4F4; // Grey
+    width: 99%;
+    .onboarding-image {
+        padding: 10px;
+        display: flex;
+        width: 10%;
+        min-width: 150px;
+        max-width: 210px;
+    }
+    .onboarding-body {
+        flex: 1;
+        margin: auto;
+        padding: 20px;
+        .zero-workspace-message {
+            font-size: 16px;
+            font-weight: 600;
+            padding: 10px;
+            align-content: center;
+            display: block;
+        }
+    }
+    .onboarding-button {
+        margin: 75% -20%;
+        font-size: 12px;
+        cursor: pointer;
+        background-color: @light-hyperlink-color;
+        border-width: 0;
+        color: #fff; // White
+        line-height: 1.9;
+        padding: 3px 20px;
+        white-space: nowrap;
+        body.dark & {
+            color: @dark-text-color;
+        }
+        &:hover {
+            background-color: @light-hyperlink-color-hover;
+        }
+    }
+    
+}

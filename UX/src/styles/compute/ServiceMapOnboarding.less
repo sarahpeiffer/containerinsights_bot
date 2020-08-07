@@ -1,0 +1,52 @@
+.map-onboarding-section {
+    display: flex;
+    margin-right: 25px;
+    background-color: rgb(244, 244, 244);
+    .onboarding-image {
+        min-width: 175px;
+        max-width: 300px;
+        flex: 3;
+    }
+    .onboarding-midsection {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 25px;
+        font-size: 13px;
+        flex: 9;
+        .know-more-text {
+            font-size: 14px;
+        }
+        .know-more-text-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: auto;
+        }
+        .have-more-questions {
+            font-weight: bold;
+        }
+        .onboarding-learn-more-link,
+        .onboarding-support-matrix-link {
+            font-weight: bold;
+            &:hover {
+                background-color: transparent;
+                text-decoration: underline;
+            }
+        }
+        .external-link-svg {
+            display: inline-flex;
+            width: 12px;
+            height: 12px;
+            margin: 0 5px;
+            vertical-align: middle;
+        }
+    }
+    .onboarding-endsection {
+        display: flex;
+        flex: 1;
+        min-width: 125px;
+        .button {
+            margin: auto;
+        }
+    }
+}

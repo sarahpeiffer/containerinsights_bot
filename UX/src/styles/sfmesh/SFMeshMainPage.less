@@ -1,0 +1,186 @@
+@import '~react-tabs/style/react-tabs.less';
+
+@COMPARISONGRIDSGWIDTH: 1210px;
+@page-lft-rt-margins: 25px;
+
+@default-hyperlink-color: #015cda;
+@border-color: rgba(128,128,128,.25);
+@tab-blue: #095aaa;
+@font: "Segoe UI", "Segoe UI", "Segoe", Tahoma, Helvetica, Arial, sans-serif;
+@fontSemibold: "Segoe UI Semibold", "Segoe WP Semibold", "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
+@hover-color: rgba(85,179,255, 0.1);
+@light-section-background: rgba(105,130,155,.06);
+@dark-section-background-color: rgb(50, 49, 48); // nib: same color as portal sidebar. I didn't see any guidance on this. Pass by Dave Adams
+
+@multicluster-dashboard-height: 174px; // nib: height of the multicluster dashboard. See C:\Work\infrainsights\UX\src\styles\multicluster\ControlPanel.less
+
+// dark mode variables
+@dark-mode-button-active: #00BCF2;
+@dark-mode-button: #0089fa;
+@dark-mode-text-color: #e0e0e0;
+@dark-mode-background-black: #111;
+@dark-mode-hyperlink-color: #0089fa;
+@dark-mode-svg-fill: #fff;
+@hover-darkmode-color: rgba(85,179,255, 0.2);
+
+html {
+    height: 100%;
+}
+
+body {
+    font-family: wf_segoe-ui_normal, "Segoe UI", "Segoe WP", Tahoma, Arial, sans-serif;
+    font-size: 12px;
+    line-height: normal;
+    margin: 0;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: transparent !important; // ensure body background isn't set by any of our lib's so that we can support dark mode
+}
+
+.full-height {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.MainPage-root {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+.center-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.column-flex {
+    flex-direction: column;
+}
+
+.loading-icon-main {
+    width: 3em;
+}
+
+.content-root {
+    overflow: auto;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    body.dark & {
+        background: #111111;
+    }
+
+    .control-panel {
+        display: flex;
+        flex: 0 0 auto;
+        align-items: center;
+        background-color: @light-section-background;
+        padding: 10px 25px;
+
+        body.dark & {
+            background-color: @dark-section-background-color;
+        }
+    }
+}
+
+.tooltip-container {
+    z-index: 999999 !important;
+}
+
+// note: height below is 100% less tab switching control height
+.tab-pane-height {
+    height: ~"calc(100% - 57px)";
+}
+
+.pane-header {
+    display: flex;
+    flex: 0 0 auto;
+    padding: 0;
+    margin: 10px 20px;
+    border-bottom: 1px solid;
+    border-bottom-color: #bbb;
+    justify-content: space-between;
+
+    body.dark & {
+        border-bottom-color: #666;
+    }
+}
+
+.error-banner {
+    height: 40px;
+    width: 400px;
+    margin: auto;
+    top: 30%;
+    position: relative;
+    text-align: center;
+    background-color: rgba(25, 25, 25, 0.7);
+    z-index: 5;
+
+    .error-banner-text {
+        color: @dark-mode-text-color;
+        top: 30%;
+        position: relative;
+    }
+}
+
+.dark .error-banner {
+    background-color: rgba(25, 25, 25, 0.7);
+    border: 1px solid #c0c0c0;
+}
+
+.actionsContextLink {
+    float: left;
+    padding-left: 2px;
+    color: #0057A3;
+
+    body.dark & {
+        color: @dark-mode-hyperlink-color;
+    }
+}
+
+.actionsContextMenuItem {
+    float: left;
+    margin-top: 4px;
+    height: 28px;
+    width: 33px;
+}
+
+a { 
+    text-decoration: none; // removes underlines from a-tags
+    color: @default-hyperlink-color;
+
+    body.dark & {
+        color: @dark-mode-hyperlink-color;
+    }
+
+    &:hover {
+        background-color: @hover-color;
+    }
+
+    body.dark &:hover {
+        background-color: @hover-darkmode-color;
+    }
+}
+
+svg {
+    height: 100%;
+    width: 100%;
+}
+
+.hyperlink-svg {
+    fill: @default-hyperlink-color;
+
+    body.dark & {
+        fill: @dark-mode-hyperlink-color;
+    }
+}
+
+.display-none {
+    display: none;
+}
+

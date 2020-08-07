@@ -1,0 +1,29 @@
+apiVersion: apps/v1beta1
+kind: Deployment
+metadata:
+ name: coin-test-unscheduledpod-1c
+ labels:
+  CointestdeploymentLabel1: d1
+  CointestdeploymentLabel2: d2
+spec:
+ replicas: 1
+ selector:
+  matchLabels:
+   app: coin-test-unscheduledpods-1c
+ template:
+  metadata:
+   labels:
+    CointestPodLabel1: p1
+    CointestPodLabel2: p2
+    app: coin-test-unscheduledpods-1c
+  spec: 
+   containers:
+    - name: c1
+      image: vishiy/hello:err100eps
+   nodeSelector:
+    beta.kubernetes.io/os: nonexistent
+    kubernetes.io/role: nonexistent
+
+  
+ 
+     

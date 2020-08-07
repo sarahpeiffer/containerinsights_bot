@@ -1,0 +1,101 @@
+@border-color: rgba(127, 127, 127, 0.7);
+
+// light theme
+@light-button-color: #015cda;
+
+// dark theme
+@dark-button-color: #0089fa;
+@dark-mode-text-color: #fff;
+@dark-mode-background-color: #111;
+
+.live-metrics-toggle-switch {
+    display: flex;
+    align-items: center;
+
+    .toggle-switch-text {
+        margin-right: 5px;
+    }
+
+    .switch {
+        position: relative;
+        display: inline-block;
+        width: 57px;
+        height: 25px;
+    }
+    .switch input {
+        display: none;
+    }
+
+    /* Describes the slider container */
+    .slider {
+        border: 1px solid @border-color;
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: white;
+        -webkit-transition: .4s;
+        transition: .4s;
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+        border-radius: 34px;
+    }
+    
+    /* Describes the slider */
+    .slider:before {
+      position: absolute;
+        content: "";
+        height: 12px;
+        width: 12px;
+        left: 5px;
+        transform: translate(0,-50%);
+        top: 50%;
+        background-color: black;
+        -webkit-transition: .4s; // how fast the slider will move
+        transition: .4s;
+        border-radius: 50%;
+    }
+
+    /* What happens to the slider when the input checkbox is checked */
+    input:checked + .slider:before {
+        -webkit-transform: translate(33px, -50%);
+        -ms-transform: translate(33px, -50%);
+        transform: translate(33px, -50%);
+        background-color: white;
+    }
+    
+    /* Changes the color of the slider box when the toggle is activated */
+    input:checked + .slider {
+        background-color: @light-button-color;
+
+      body.dark & {
+        background-color: @dark-button-color;
+      }
+    }
+    
+    /* Content after the slider */ 
+    .slider:after {
+        content:'Off';
+        color: black;
+        display: block;
+        position: absolute;
+        transform: translate(0,-50%);
+        top: 50%;
+        right: 8px;
+        -webkit-transition: .4s; // how fast the slider will move
+        transition: .4s;
+    }
+    
+    /* Content after the slider, when the input checkbox is checked */
+    input:checked + .slider:after {  
+        content:'On';
+        color: white;
+        -webkit-transform: translate(-25px, -50%);
+        -ms-transform: translate(-25px, -50%);
+        transform: translate(-25px, -50%);
+    }
+}
